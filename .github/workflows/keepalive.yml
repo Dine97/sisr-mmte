@@ -1,0 +1,22 @@
+# Filet de sécurité : réveille la base Supabase deux fois par semaine pour qu'elle ne soit jamais mise en pause
+# (le plan gratuit met un projet en pause après une semaine sans aucune activité).
+# Cet appel ne lit ni n'écrit aucune donnée : il appelle seulement la fonction publique « ping », qui répond « ok ».
+# L'adresse et la clé ci-dessous sont celles de config.js : elles sont publiques par conception.
+name: Garder la base éveillée
+on:
+  schedule:
+    - cron: "17 6 * * 1,4"      # lundi et jeudi, 06 h 17 UTC
+  workflow_dispatch:             # lancement à la main possible : onglet Actions > Run workflow
+permissions: {}
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Contacter la base
+        run: |
+          code=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+            "https://azlqesosivisqqquplbd.supabase.co/rest/v1/rpc/ping" \
+            -H "apikey: sb_publishable_O7ZrkNkUTm14yC60gVvcpA_RphjZ93i" \
+            -H "Content-Type: application/json" -d '{}')
+          echo "Réponse de la base : $code"
+          test "$code" = "200"

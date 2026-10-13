@@ -109,6 +109,51 @@ img.lg:not([src]){visibility:hidden}
 .spin{width:28px;height:28px;border-radius:50%;border:3px solid #ffffff44;border-top-color:#fff;animation:rot .8s linear infinite;margin:22px auto 0}
 @keyframes rot{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.spin{animation-duration:3s}}
+/* v2 : alertes, pièces jointes, administration, graphiques */
+:root{--w:#8A4B00;--wb:#FFF1DB;--r:#B42318;--rb:#FDE7E4;--v2:#6da7ec}
+.pill.al{background:var(--wb);color:var(--w)}.pill.rt{background:var(--rb);color:var(--r)}.pill.rf{background:#fff;border:1px solid var(--l);color:var(--g);font-weight:600}
+#nb.late{background:var(--r)}
+nav button{white-space:nowrap}
+.bell{position:relative;padding:6px 9px!important}.bell svg{display:block}.bell b{position:absolute;top:-6px;right:-6px;min-width:19px;height:19px;border-radius:10px;background:var(--r);color:#fff;font-size:11px;line-height:19px;text-align:center;padding:0 5px}.bell b:empty{display:none}
+.rolep{font-size:11.5px;color:#B9CBDB}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin:2px 0 6px}
+.ln .tp small{font-size:10px}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}.ctl select{width:auto;padding:7px 10px;font-size:14px}
+.tg{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1.5px solid var(--l);border-radius:999px;background:#fff;font-size:14px;font-weight:600;cursor:pointer}.tg input{width:18px;height:18px;accent-color:var(--n)}
+details.sv{margin-top:14px;border:1.5px solid var(--l);border-radius:12px;padding:0 12px;background:#fff}details.sv summary{cursor:pointer;padding:11px 0;font-weight:700;font-size:14px}details.sv[open] summary{border-bottom:1px solid var(--l);margin-bottom:6px}
+details.sv .q{grid-template-columns:1fr}
+.pjl{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+.pjl li{display:flex;gap:10px;align-items:center;background:var(--f);border-radius:10px;padding:6px 8px;font-size:13px}.pjl li span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pjl img{width:42px;height:42px;object-fit:cover;border-radius:6px;flex:none;background:#fff}.pjl .ic{width:42px;height:42px;border-radius:6px;background:#fff;display:grid;place-items:center;font-weight:800;color:var(--n);font-size:12px;flex:none}
+.pjl button{border:0;background:none;font-size:20px;cursor:pointer;color:var(--g);width:32px;height:32px}
+.pjg{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:8px;margin-top:6px}
+.pjg a{display:block;text-decoration:none;color:inherit;background:var(--f);border-radius:10px;overflow:hidden;font-size:11.5px;text-align:center}.pjg img{display:block;width:100%;height:78px;object-fit:cover}.pjg .ic{height:78px;display:grid;place-items:center;font-weight:800;color:var(--n)}.pjg span{display:block;padding:4px 6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hi{margin-top:12px}.hi summary{cursor:pointer;font-weight:700;font-size:13px;color:var(--n)}.hi ol{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px;font-size:12.5px}.hi li{background:var(--f);border-radius:10px;padding:8px 10px;overflow-wrap:anywhere}.hi li b{color:var(--n)}.hi li small{display:block;color:var(--g)}
+.sim{list-style:none;margin:10px 0;padding:0;display:grid;gap:8px}.sim li{background:var(--f);border-radius:10px;padding:9px 11px;font-size:13.5px}.sim li b{display:block}.sim li small{color:var(--g)}
+.rap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--wb);color:var(--w);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-weight:600;font-size:13.5px}.rap span{flex:1;min-width:200px}.rap button{border-color:var(--w);color:var(--w)}
+.sbn{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.sbn button{border:1.5px solid var(--l);background:#fff;border-radius:999px;padding:7px 14px;font-weight:700;font-size:13px;cursor:pointer;color:var(--g);font-family:inherit}.sbn button.on{background:var(--n);border-color:var(--n);color:#fff}
+.cpt{background:#fff;border-radius:14px;padding:12px 14px;margin-bottom:10px}.cpt h4{margin:0}.cpt small{color:var(--g);overflow-wrap:anywhere}
+.cpt .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:10px 0 4px}.cpt .g2 label{margin:0 0 3px;font-size:12px;color:var(--g)}.cpt .g2 select{padding:8px 10px;font-size:14px}
+.cpt .act{margin-top:8px}.cpt.att{border:2px solid var(--w)}
+.gl{display:grid;gap:6px}.gl .row{display:flex;gap:8px;align-items:center;background:#fff;border-radius:10px;padding:6px 10px}.gl .row span{flex:1;min-width:0;overflow-wrap:anywhere}.gl .row.off span{color:var(--g);text-decoration:line-through}
+.gl .row button{border:1.5px solid var(--l);background:#fff;border-radius:16px;padding:4px 10px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit}
+.add{display:flex;gap:8px;margin:0 0 12px}.add input{flex:1}.add button{flex:none;width:auto;margin:0;padding:0 18px}
+.jr{display:grid;gap:8px}.jr .e{background:#fff;border-radius:12px;padding:9px 12px;font-size:13px;overflow-wrap:anywhere}.jr .e b{color:var(--n)}.jr .e small{color:var(--g);display:block}
+.prev{margin-top:12px;font-size:13.5px}.prev table{font-size:12px}.prev .bad{color:var(--r);margin:8px 0 0;padding-left:18px}.prev .bad li{margin:2px 0}
+.gr{background:#fff;border-radius:14px;padding:12px 14px;margin-bottom:14px}.gr h4{margin:0 0 4px;color:var(--n)}.gr .sb{margin:0 0 8px;color:var(--g);font-size:12.5px}
+.gr svg{display:block;width:100%;height:auto;overflow:visible}.gr text{font:11px system-ui,-apple-system,"Segoe UI",Arial,sans-serif;fill:#55616E}.gr .ax{stroke:#D5DBE2;stroke-width:1}.gr .cl{cursor:default}.gr .cl:focus{outline:none}.gr .cl:hover .hit,.gr .cl:focus .hit{fill:#0E2A470f}
+.lgd{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--g);margin:2px 0 6px}.lgd i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.gr details{margin-top:8px;font-size:12.5px}.gr details summary{cursor:pointer;color:var(--n);font-weight:700}
+#tip{position:fixed;z-index:200;pointer-events:none;background:#fff;color:var(--t);border:1px solid var(--l);border-radius:10px;padding:7px 10px;box-shadow:0 6px 20px #0E2A4730;font-size:12.5px;max-width:240px;opacity:0;transition:opacity .08s}#tip.on{opacity:1}#tip b{display:block;font-size:14px;color:var(--n)}#tip span{display:block;color:var(--g)}
+.dlt{font-size:11.5px;font-weight:600;margin-top:2px;color:var(--g)}.dlt.up{color:#1B6B3A}.dlt.dn{color:var(--r)}
+.k small{display:block}
+.kpi{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.fl{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.qr{display:block;width:200px;max-width:100%;margin:10px auto;background:#fff;border:1px solid var(--l);border-radius:10px;padding:8px}.sec{font-family:ui-monospace,Menlo,Consolas,monospace;word-break:break-all;background:var(--f);border-radius:8px;padding:8px 10px;font-size:13px;text-align:center}
+.nt{display:grid;gap:8px;margin:12px 0 0}.nt .ni{display:block;width:100%;text-align:left;border:0;background:var(--f);border-radius:12px;padding:10px 12px;font:inherit;font-size:14px;cursor:pointer;color:inherit}.nt .ni:hover{background:#e3e9f1}.nt .ni b{color:var(--n)}.nt .ni span{display:block;font-weight:600;margin-top:3px;overflow-wrap:anywhere}.nt .ni small{display:block;color:var(--g);margin-top:2px;font-size:12.5px}
+@media (max-width:520px){nav button{font-size:12px;padding:10px 2px}.add{flex-direction:column}.add button{padding:12px}}
+@media (max-width:480px){header{padding:10px 12px;gap:8px}header h1{font-size:18px;white-space:nowrap}header .acc{display:none}header button{white-space:nowrap;font-size:13px;padding:6px 8px}.logo{padding:4px 6px}.logo img{height:32px}}
+@media (max-width:340px){header h1{font-size:15px}.logo img{height:28px}header{gap:6px;padding:10px 8px}}
 </style>
 </head>
 <body>
@@ -123,18 +168,25 @@ img.lg:not([src]){visibility:hidden}
       <label for="pw">Mot de passe</label><div class="pw"><input id="pw" type="password" autocomplete="current-password"><button type="button" class="vu" id="vu" aria-pressed="false" aria-label="Afficher le mot de passe">Afficher</button></div>
       <button class="ok" id="lb">Se connecter</button><div class="msg" id="le" role="alert"></div>
     </form>
-    <p class="aide">Mot de passe oublié ? Contactez l'administrateur de l'application.</p>
+    <form id="cf" novalidate hidden>
+      <p class="sub" style="margin-top:0">Double authentification : saisissez le code à 6 chiffres affiché par votre application d'authentification.</p>
+      <label for="cd6">Code de vérification</label><input id="cd6" inputmode="numeric" autocomplete="one-time-code" maxlength="6" pattern="[0-9]*" placeholder="000000" style="font-size:22px;letter-spacing:6px;text-align:center">
+      <button class="ok" id="cb">Vérifier</button><div class="msg" id="ce6" role="alert"></div>
+      <p class="aide"><button type="button" class="ghost" id="cx">Annuler et se déconnecter</button></p>
+    </form>
+    <p class="aide" id="lai">Mot de passe oublié ? Contactez l'administrateur de l'application.</p>
   </div>
   <p class="lp">Accès réservé au personnel autorisé · Bénin Control SA</p>
 </div></div>
 <header id="hd" hidden>
   <div class="logo"><img class="lg" alt="Bénin Control"></div>
   <div><h1 id="nom"></h1><div class="acc" id="acc"></div></div>
-  <span class="sp"></span><button id="cpt">Mon compte</button>
+  <span class="sp"></span><button id="bell" class="bell" aria-label="Notifications" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><b id="bn"></b></button><button id="cpt">Mon compte</button>
 </header>
 <main id="mn" hidden>
 <div id="app">
-<nav><button data-v="saisie" class="on">Nouvelle requête</button><button data-v="ec">En cours<span id="nb"></span></button><button data-v="bord">Tableau de bord</button></nav>
+<div class="rap" id="rap" hidden><span id="rapt"></span><button type="button" class="ghost" id="rapb">Faire la sauvegarde</button><button type="button" class="ghost" id="rapx" aria-label="Masquer">×</button></div>
+<nav><button data-v="saisie" class="on">Nouvelle requête</button><button data-v="ec">En cours<span id="nb"></span></button><button data-v="bord">Tableau de bord</button><button data-v="adm" id="nadm" hidden>Admin</button></nav>
 
 <section id="saisie" class="card">
   <div class="eb" id="eb" hidden><span id="ebt"></span><button type="button" class="ghost" id="ann">Annuler la modification</button></div>
@@ -144,15 +196,26 @@ img.lg:not([src]){visibility:hidden}
   <label for="u">Usager</label><div class="cb"><input id="u" placeholder="Rechercher ou saisir un usager"></div>
   <div class="lb">Canal</div><div class="chips" id="cn"></div>
   <label for="ds">Description de la requête</label><div class="cb"><input id="ds" placeholder="Choisir une requête type ou écrire"></div>
+  <label for="k">Catégorie <span class="opt">(facultatif)</span></label><select id="k"></select>
   <label for="a">Agent MMTE</label><select id="a"></select>
   <label for="ob">Observation <span class="opt">(facultatif)</span></label><textarea id="ob" rows="3" placeholder="Détails utiles : numéro de châssis, échange avec l'usager, précisions de traitement…"></textarea>
   <label class="sw"><input type="checkbox" id="rs"> La requête est déjà résolue</label>
   <div id="rb" hidden><label>Date de résolution</label><div class="q"><input type="date" id="rd" aria-label="Date de résolution"><input type="time" id="rh" aria-label="Heure de résolution, facultative"></div>
     <div class="sc"><button type="button" data-j="0" data-r="1">Aujourd'hui</button><button type="button" data-j="1" data-r="1">Hier</button></div></div>
+  <details class="sv" id="suivi"><summary>Suivi <span class="opt">(facultatif) : échéance, motif d'attente</span></summary>
+    <label for="ech">À traiter avant le</label><div class="q"><input type="date" id="ech" aria-label="Échéance"></div>
+    <label for="mo">Motif d'attente <span class="opt">(si la requête est en cours)</span></label><select id="mo"></select><div style="height:12px"></div>
+  </details>
+  <label>Pièces jointes <span class="opt">(facultatif : photos, captures d'écran, PDF ; 5 Mo maximum chacune)</span></label>
+  <input type="file" id="pj" accept="image/*,application/pdf" multiple hidden>
+  <button type="button" class="ghost" id="pjb">+ Ajouter une photo ou un PDF</button>
+  <ul class="pjl" id="pjl"></ul>
   <button class="ok" id="ok">Enregistrer la requête</button><div class="err" id="er"></div>
 </section>
 
-<section id="ec" hidden><p class="hint">Touche une requête pour voir son détail et son observation.</p><div id="ecl"></div></section>
+<section id="ec" hidden>
+  <div class="ctl"><label class="tg"><input type="checkbox" id="mes"> Mes requêtes</label><select id="tri" aria-label="Tri"><option value="a">Plus anciennes d'abord</option><option value="e">Échéance la plus proche</option><option value="r">Plus récentes d'abord</option></select></div>
+  <p class="hint">Touche une requête pour voir son détail et son observation.</p><div id="ecl"></div></section>
 
 <section id="bord" hidden>
   <div class="card"><div class="wk"><button id="pv" aria-label="Semaine précédente">‹</button><select id="fs" aria-label="Semaine"></select><button id="nx" aria-label="Semaine suivante">›</button></div>
@@ -160,71 +223,119 @@ img.lg:not([src]){visibility:hidden}
       <div class="cb"><input id="fu" placeholder="Tous les usagers" aria-label="Usager"></div>
       <select id="fa" aria-label="Agent"></select>
       <select id="ft" aria-label="Statut"><option value="">Tous les statuts</option><option value="c">En cours</option><option value="r">Résolues</option></select>
-      <input id="fk" placeholder="Mot-clé" aria-label="Mot-clé dans la description et l'observation"></div>
+      <select id="fg" aria-label="Catégorie"></select>
+      <input id="fk" placeholder="Mot-clé ou n° (REQ-…)" aria-label="Mot-clé ou numéro de référence"></div>
+    <label class="tg" style="margin-top:10px"><input type="checkbox" id="fmes"> Mes requêtes seulement</label>
     <p class="per" id="per"></p></div>
-  <div class="kpi" id="kpi"></div><div class="reps" id="rep"></div>
-  <div class="card"><div class="bar"><b id="cnt">Détail des requêtes</b><span><button class="ghost" id="xl">Exporter en Excel</button><button class="ghost" id="pdf">Exporter en PDF</button></span></div>
+  <div class="kpi" id="kpi"></div>
+  <div class="gr"><h4>Évolution sur 12 semaines</h4><p class="sb" id="trs"></p><div class="lgd"><span><i style="background:var(--n)"></i>Résolues</span><span><i style="background:var(--v2)"></i>En cours</span></div><div id="trc"></div><details><summary>Voir les données</summary><div class="tw" id="trt"></div></details></div>
+  <div class="reps" id="rep"></div>
+  <div class="reps" id="rep2"></div>
+  <div class="card"><div class="bar"><b id="cnt">Détail des requêtes</b><span><button class="ghost" id="xl">Exporter en Excel</button><button class="ghost" id="pdf">Exporter en PDF</button><button class="ghost" id="rdr">Rapport de direction</button></span></div>
     <p class="hint" style="margin:0 0 8px">Clique sur une ligne pour voir le détail, modifier ou supprimer.</p>
     <div class="tw"><table id="tb"><thead></thead><tbody></tbody></table></div><p class="hint" id="plus" style="margin:10px 0 0" hidden></p></div>
+</section>
+
+<section id="adm" hidden>
+  <div class="sbn" id="sbn"><button data-s="cpt" class="on">Comptes</button><button data-s="lst">Listes</button><button data-s="cor">Corbeille</button><button data-s="jrn">Journal</button><button data-s="don">Données</button></div>
+  <div id="adm-cpt"></div><div id="adm-lst" hidden></div><div id="adm-cor" hidden></div><div id="adm-jrn" hidden></div><div id="adm-don" hidden></div>
 </section>
 </div>
 </main>
 <dialog id="dg" aria-labelledby="dgt"><div class="dgi" id="dgb"></div></dialog>
+<dialog id="dd" aria-labelledby="ddt"><div class="dgi">
+  <div class="dgh"><div><span class="pill al">Attention</span><h2 id="ddt">Une requête semblable existe déjà</h2></div><button type="button" class="x" data-x aria-label="Fermer">×</button></div>
+  <p class="hint" style="margin-top:10px">Même usager, description proche, à moins de 48 h d'écart. Vérifiez qu'il ne s'agit pas d'un doublon.</p>
+  <ul class="sim" id="ddl"></ul>
+  <div class="act"><button type="button" class="ok" id="ddo">Enregistrer quand même</button><button type="button" class="ghost" id="dda">Revenir au formulaire</button></div>
+</div></dialog>
+<dialog id="dn" aria-labelledby="dnt"><div class="dgi">
+  <div class="dgh"><div><span class="pill">Notifications</span><h2 id="dnt">Requêtes qui vous concernent</h2></div><button type="button" class="x" data-x aria-label="Fermer">×</button></div>
+  <div class="nt" id="dnl"></div>
+  <div class="act"><button type="button" class="ghost" id="dnv">Tout marquer comme lu</button></div>
+</div></dialog>
 <dialog id="dc" aria-labelledby="dct"><div class="dgi">
-  <div class="dgh"><div><span class="pill">Mon compte</span><h2 id="dct"></h2></div><button type="button" class="x" data-x aria-label="Fermer">×</button></div>
+  <div class="dgh"><div><span class="pill">Mon compte</span><h2 id="dct"></h2><p class="rolep" id="dcr" style="color:var(--g);margin:4px 0 0"></p></div><button type="button" class="x" data-x aria-label="Fermer">×</button></div>
   <form id="mdp" class="pn" novalidate>
     <label for="n1" style="margin-top:6px">Nouveau mot de passe <span class="opt">(8 caractères minimum)</span></label><input id="n1" type="password" autocomplete="new-password">
     <label for="n2">Confirmer le mot de passe</label><input id="n2" type="password" autocomplete="new-password">
     <div class="msg" id="me" role="alert"></div>
     <button class="ok" id="mb">Changer le mot de passe</button>
   </form>
+  <div class="pn" id="mfa"><b>Double authentification</b>
+    <p class="hint" id="mfat" style="margin:6px 0 0"></p><div id="mfab"></div></div>
+  <div class="pn" id="ntf" hidden><b>Notifications</b>
+    <p class="hint" id="ntft" style="margin:6px 0 0"></p><div class="act" style="margin-top:6px"><button type="button" class="ghost" id="ntfb">Activer les notifications</button></div></div>
   <div class="act"><button type="button" class="ghost" id="inst" hidden>Installer l'application</button><button type="button" class="ghost" id="out">Se déconnecter</button></div>
 </div></dialog>
+<div id="tip" role="tooltip"></div>
 <div id="toast" role="status"></div>
 
 <script type="module">
 /* ======== CONFIGURATION (à adapter) ======== */
 const CFG = window.SISR_CONFIG || {};   // renseignée dans config.js (adresse du projet Supabase + clé publique)
 const NOM = "SISR-MMTE", ACC = "Système d'Inscription et de Suivi des Requêtes MMTE";
+/* Valeurs par défaut : elles servent tant que l'administrateur n'a pas ses propres listes (écran Admin > Listes) */
 const MODULES = ["MAD roulant","Hydrocarbures","Entrepôts fictifs","Entrepôts industriels","Vrac","Dépôt","Magasins et aires d'exportation","Terminaux à conteneurs"];
 const CANAUX = ["WhatsApp","Mail","Téléphone","Présentiel","Autre"];
-let LU = [], LA = [];   /* usagers et agents : chargés depuis la base après connexion (table « listes ») */
 const TYPES = ["CVQ NON SYNCHRONISE","MANIFESTE NON SYNCHRONISE","NON SYNCHRONISATION DES CHÂSSIS DU MANIFESTE","NON SYNCHRONISATION D'UNE UNITE DE MANUTENTION","ABSENCE D'UNE UNITE DE MANUTENTION SUR MANIFESTE","DEMANDE DE SUPPRESSION DE COMPTE ET CREATION DE COMPTE"];
-const HEAD = ["DATE","MODULE","USAGER","CANAL","DESCRIPTION DE LA REQUÊTE","AGENT MMTE","DATE ET HEURE DE RESOLUTION","STATUT","OBSERVATION"];
-const STAT_C = "EN COURS", STAT_R = "RESOLUE", MAXL = 300;
+const CATEGORIES = ["Synchronisation CVQ","Synchronisation manifeste","Unités de manutention / châssis","Gestion des comptes","Anomalie de la plateforme","Information / assistance","Autre"];
+const MOTIFS = ["En attente de l'usager","En attente de la douane","En attente de l'équipe technique","En attente d'informations complémentaires","Autre"];
+/* Catégorie proposée d'office selon la description (l'application apprend aussi des saisies précédentes) */
+const TYPE_CAT = { "CVQ NON SYNCHRONISE":"Synchronisation CVQ", "MANIFESTE NON SYNCHRONISE":"Synchronisation manifeste", "NON SYNCHRONISATION DES CHÂSSIS DU MANIFESTE":"Unités de manutention / châssis",
+  "NON SYNCHRONISATION D'UNE UNITE DE MANUTENTION":"Unités de manutention / châssis", "ABSENCE D'UNE UNITE DE MANUTENTION SUR MANIFESTE":"Unités de manutention / châssis", "DEMANDE DE SUPPRESSION DE COMPTE ET CREATION DE COMPTE":"Gestion des comptes" };
+const HEAD = ["N°","DATE","MODULE","USAGER","CANAL","DESCRIPTION DE LA REQUÊTE","CATÉGORIE","AGENT MMTE","DATE ET HEURE DE RESOLUTION","STATUT","OBSERVATION"];
+const COL_STAT = 9, COL_OBS = 10;
+const STAT_C = "EN COURS", STAT_R = "RESOLUE", MAXL = 300, PJ_MAX = 5, PJ_TAILLE = 5 * 1024 * 1024, SEUIL_H = 48;
 const LOGO = "data:image/png;base64,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", LOGO_R = 1.3131;
 /* =========================================== */
 
-const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)], DAY = 864e5, pad = n => String(n).padStart(2,"0");
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)], DAY = 864e5, HOUR = 36e5, pad = n => String(n).padStart(2,"0");
 const fd = (d,h) => d ? `${pad(d.getDate())}/${pad(d.getMonth()+1)}/${d.getFullYear()}` + (h ? ` ${pad(d.getHours())}:${pad(d.getMinutes())}` : "") : "";
 const iso = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 const hm = d => `${pad(d.getHours())}:${pad(d.getMinutes())}`;
 const mk = (j,h) => j ? new Date(j + "T" + (h || "00:00")) : null;
 const lundi = d => { const x = new Date(d.getFullYear(),d.getMonth(),d.getDate()); x.setDate(x.getDate() - (x.getDay()+6)%7); return x; };
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => "&#" + c.charCodeAt(0) + ";");
-const norm = s => String(s ?? "").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/\s+/g," ").trim();
+const norm = s => String(s ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/\s+/g," ").trim();
 const uniq = a => [...new Set(a.filter(Boolean))];
 const uniqN = a => { const m = new Map(); a.forEach(x => { x = String(x || "").trim().replace(/\s+/g," "); if (x && !m.has(norm(x))) m.set(norm(x),x); }); return [...m.values()]; };
 const sortFr = a => a.sort((x,y) => x.localeCompare(y,"fr",{ sensitivity:"base" }));
 const canon = (v,l) => { const n = norm(v); return l.find(x => norm(x) === n) || String(v).trim().replace(/\s+/g," "); };
+const nf = new Intl.NumberFormat("fr-FR", { maximumFractionDigits:1 });
+const med = a => { if (!a.length) return null; const s = [...a].sort((x,y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m-1] + s[m]) / 2; };
+const moy = a => a.length ? a.reduce((x,y) => x + y, 0) / a.length : null;
+const dur = h => h == null ? "-" : h < 48 ? nf.format(h) + " h" : nf.format(h / 24) + " j";           // durée lisible : heures puis jours
+const ls = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k,v) => { try { localStorage.setItem(k,v); } catch (e) { /* stockage indisponible : sans conséquence */ } } };
 $$("img.lg").forEach(i => i.src = LOGO);
 const toast = t => { const e = $("#toast"); e.textContent = t; e.classList.add("on"); setTimeout(() => e.classList.remove("on"), 2600); };
-const ligne = r => [fd(r.date,r.avecHeure), r.module, r.usager, r.canal, r.description, r.agent, fd(r.resolution,r.avecHeureRes), r.statut, r.observation || ""];
+const ligne = r => [r.ref, fd(r.date,r.avecHeure), r.module, r.usager, r.canal, r.description, r.categorie, r.agent, fd(r.resolution,r.avecHeureRes), r.statut, r.observation || ""];
 const avant = (r,d,h,hh) => iso(r) < iso(d) || (h && hh && r < d);
+const age = r => (Date.now() - r.date) / HOUR;                                                       // ancienneté d'une requête, en heures
+const jourFin = s => s ? new Date(s + "T23:59:59") : null;                                           // une échéance court jusqu'à la fin de la journée
+const dlg = e => e.showModal && !e.open ? e.showModal() : null;
 
-let store, data = [], WK = [], un, init = false, vue = "saisie", editId = null, editMaj = null, retour = "saisie";
-const F = { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"" };
+
+let store, data = [], WK = [], un, init = false, vue = "saisie", editId = null, editMaj = null, retour = "saisie", ME = null, PROFILS = [];
+let LU = [], LA = [], LM = [], LC = [], LD = [], LK = [], LO = [], LROWS = [];   /* listes (usagers, agents, modules, canaux, descriptions, catégories, motifs) : chargées depuis la base après connexion */
+const F = { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", mes:false };
 
 /* ---------- Données : Supabase (connexion + base partagée) ---------- */
 /* Messages d'erreur en français (aucun message technique brut n'est montré aux collègues) */
 const fr = e => {
-  const m = String((e && e.message) || e || ""), c = (e && (e.code || e.error_code)) || "", st = e && e.status;
+  const m = String((e && e.message) || e || ""), c = (e && (e.code || e.error_code)) || "", st = e && (e.status || e.statusCode);
+  if (c === "SM001") return m;                                                                    // messages écrits en français par la base
   if (c === "invalid_credentials" || /invalid login credentials/i.test(m)) return "Adresse e-mail ou mot de passe incorrect.";
   if (c === "email_not_confirmed" || /not confirmed/i.test(m)) return "Ce compte n'est pas encore activé. Contactez l'administrateur.";
   if (c === "user_banned") return "Ce compte est désactivé. Contactez l'administrateur.";
   if (st === 429 || /rate limit|too many/i.test(m)) return "Trop de tentatives. Réessayez dans quelques minutes.";
   if (c === "same_password") return "Le nouveau mot de passe doit être différent de l'ancien.";
   if (c === "weak_password") return "Mot de passe trop faible : choisissez-en un plus long et moins courant.";
+  if (c === "mfa_verification_failed" || c === "mfa_challenge_expired" || /invalid totp code|invalid.*code/i.test(m)) return "Code incorrect ou expiré. Réessayez avec le code actuellement affiché.";
+  if (/aal2|mfa.*required/i.test(m)) return "Saisissez d'abord votre code de double authentification.";
+  if (c === "PGRST202" || c === "PGRST205" || c === "42883" || c === "42P01" || /could not find the (function|table)|does not exist/i.test(m)) return "La base de données n'est pas à jour. L'administrateur doit appliquer la mise à jour (script SQL v2).";
+  if (/maximum allowed size|payload too large|entity too large|exceeded/i.test(m) || st === 413) return "Fichier trop volumineux (5 Mo maximum).";
+  if (/mime type|not supported|invalid_mime/i.test(m)) return "Type de fichier non accepté (photos et PDF uniquement).";
   if (c === "reauthentication_needed" || c === "session_not_found" || c === "PGRST301" || /jwt|refresh token|session/i.test(m)) return "Votre session a expiré. Reconnectez-vous.";
   if (/failed to fetch|networkerror|network request|load failed|fetch failed/i.test(m)) return "Connexion impossible. Vérifiez votre accès Internet.";
   if (c === "42501" || /row-level security|permission denied/i.test(m)) return "Action non autorisée pour ce compte.";
@@ -233,13 +344,14 @@ const fr = e => {
 async function supa() {
   const { createClient } = await import("./vendor/supabase.js");
   const sb = createClient(CFG.url, CFG.key, { auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:false } });
-  const TB = "requetes", PAGE = 1000, D = x => x ? new Date(x) : null, ko = e => new Error(fr(e));
-  const de = x => ({ id:x.id, date:D(x.date_requete), avecHeure:x.avec_heure, module:x.module, usager:x.usager || "", canal:x.canal, description:x.description, agent:x.agent,
-    resolution:D(x.resolution), avecHeureRes:x.avec_heure_res, statut:x.statut, observation:x.observation || "",
-    saisiPar:x.saisi_par, creeLe:D(x.cree_le), modifiePar:x.modifie_par, modifieLe:D(x.modifie_le), maj:x.maj });
-  const K = { date:"date_requete", avecHeure:"avec_heure", resolution:"resolution", avecHeureRes:"avec_heure_res", module:"module", usager:"usager", canal:"canal",
-    description:"description", agent:"agent", statut:"statut", observation:"observation" };
-  const vers = v => { const o = {}; for (const k in v) if (K[k]) o[K[k]] = v[k] instanceof Date ? v[k].toISOString() : v[k]; return o; };
+  const TB = "requetes", PAGE = 1000, D = x => x ? new Date(x) : null, ko = e => new Error(fr(e)), BK = "pieces";
+  const de = x => ({ id:x.id, ref:x.ref || "", date:D(x.date_requete), avecHeure:x.avec_heure, module:x.module, usager:x.usager || "", canal:x.canal, description:x.description, agent:x.agent,
+    resolution:D(x.resolution), avecHeureRes:x.avec_heure_res, statut:x.statut, observation:x.observation || "", categorie:x.categorie || "", echeance:x.echeance || "", motif:x.motif_attente || "",
+    pieces:Array.isArray(x.pieces) ? x.pieces : [], saisiPar:x.saisi_par, creeLe:D(x.cree_le), modifiePar:x.modifie_par, modifieLe:D(x.modifie_le), supprimePar:x.supprime_par, supprimeLe:D(x.supprime_le), maj:x.maj });
+  const K = { id:"id", date:"date_requete", avecHeure:"avec_heure", resolution:"resolution", avecHeureRes:"avec_heure_res", module:"module", usager:"usager", canal:"canal",
+    description:"description", agent:"agent", statut:"statut", observation:"observation", categorie:"categorie", echeance:"echeance", motif:"motif_attente", pieces:"pieces" };
+  const NUL = ["categorie","echeance","motif"];
+  const vers = v => { const o = {}; for (const k in v) if (K[k]) { let x = v[k]; if (x instanceof Date) x = x.toISOString(); if (x === "" && NUL.includes(k)) x = null; o[K[k]] = x; } return o; };
   /* Lecture par paliers de 1000, dans l'ordre de la colonne « maj » (date du dernier changement, posée par la base) */
   async function lot(filtre, depuis) {
     let tout = [], op = "gte", cur = depuis;
@@ -249,12 +361,14 @@ async function supa() {
       tout = tout.concat(data); if (data.length < PAGE) return tout; cur = data[data.length - 1].maj; op = "gt";
     }
   }
+  const lire1 = async (tb, f) => { const { data, error } = await f(sb.from(tb)); if (error) throw ko(error); return data; };
   let rf = () => {};                                                    // relance immédiate de la lecture (après chaque écriture)
   const ecrit = async (p, garde) => {
     const { data, error } = await p; if (error) throw ko(error);
     if (!data || !data.length) { rf(); throw new Error(garde ? "Cette requête vient d'être modifiée ou supprimée par un collègue. La liste est actualisée : vérifiez, puis recommencez si nécessaire." : "Modification refusée : la requête n'existe plus ou n'est pas modifiable."); }
     rf();
   };
+  const sain = n => String(n || "fichier").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^A-Za-z0-9._-]+/g,"_").replace(/^[._]+/,"").slice(-60) || "fichier";
   return {
     login: async (email, password) => { const { error } = await sb.auth.signInWithPassword({ email, password }); if (error) throw ko(error); },
     logout: () => sb.auth.signOut({ scope:"local" }),
@@ -265,9 +379,38 @@ async function supa() {
       const { data } = await sb.auth.getSession(); emit(data.session ? data.session.user : null);
       sb.auth.onAuthStateChange((ev, s) => setTimeout(() => emit(s ? s.user : null), 0));   // jamais d'appel Supabase directement dans ce rappel
     },
-    listes: async () => {
-      const { data, error } = await sb.from("listes").select("type,valeur").eq("actif", true).order("ordre").order("valeur"); if (error) throw ko(error);
-      const g = t => data.filter(x => x.type === t).map(x => x.valeur); return { usager:g("usager"), agent:g("agent") };
+    /* double authentification (code à 6 chiffres) */
+    niveau: async () => { const { data, error } = await sb.auth.mfa.getAuthenticatorAssuranceLevel(); if (error) throw ko(error); return data; },
+    facteurs: async () => { const { data, error } = await sb.auth.mfa.listFactors(); if (error) throw ko(error); return { actifs:data.totp || [], tous:data.all || [] }; },
+    mfaCode: async code => {
+      const { data, error } = await sb.auth.mfa.listFactors(); if (error) throw ko(error);
+      const f = (data.totp || [])[0]; if (!f) throw new Error("Aucun appareil enregistré pour ce compte.");
+      const r = await sb.auth.mfa.challengeAndVerify({ factorId:f.id, code }); if (r.error) throw ko(r.error);
+    },
+    mfaEnroler: async () => {
+      const l = await sb.auth.mfa.listFactors(); for (const f of ((l.data && l.data.all) || [])) if (f.status !== "verified") await sb.auth.mfa.unenroll({ factorId:f.id });   // tentatives inachevées
+      const { data, error } = await sb.auth.mfa.enroll({ factorType:"totp", friendlyName:"SISR-" + Date.now().toString(36) }); if (error) throw ko(error);
+      const q = String(data.totp.qr_code || ""), m = /^data:image\/svg\+xml;(?:charset=)?utf-8,(<svg[\s\S]*)$/i.exec(q);   // SVG brut : le « # » d'une couleur couperait l'adresse de l'image, on l'encode
+      return { id:data.id, qr:m ? "data:image/svg+xml;charset=utf-8," + encodeURIComponent(m[1]) : q, secret:data.totp.secret };
+    },
+    mfaConfirmer: async (id, code) => { const { error } = await sb.auth.mfa.challengeAndVerify({ factorId:id, code }); if (error) throw ko(error); },
+    mfaRetirer: async id => { const { error } = await sb.auth.mfa.unenroll({ factorId:id }); if (error) throw ko(error); },
+    /* profil, comptes, listes */
+    profil: async () => { const { data, error } = await sb.rpc("mon_profil"); if (error) throw ko(error); return Array.isArray(data) ? data[0] : data; },
+    profils: () => lire1("profils", t => t.select("*").order("cree_le")),
+    majProfil: async (id, patch) => { const { data, error } = await sb.from("profils").update(patch).eq("id", id).select("id"); if (error) throw ko(error); if (!data || !data.length) throw new Error("Modification refusée."); },
+    listes: () => lire1("listes", t => t.select("id,type,valeur,ordre,actif").order("type").order("ordre").order("valeur")),
+    addListe: async (type, valeur, ordre) => { const { error } = await sb.from("listes").insert({ type, valeur, ordre:ordre || 0 }); if (error) throw (error.code === "23505" ? new Error("Cette valeur existe déjà dans la liste.") : ko(error)); },
+    majListe: async (id, patch) => { const { data, error } = await sb.from("listes").update(patch).eq("id", id).select("id"); if (error) throw ko(error); if (!data || !data.length) throw new Error("Modification refusée."); },
+    delListe: async id => { const { error } = await sb.from("listes").delete().eq("id", id); if (error) throw ko(error); },
+    admin: async body => {                                              // fonction serveur « admin-users » (création de compte, mot de passe, 2FA)
+      const { data, error } = await sb.functions.invoke("admin-users", { body });
+      if (error) {
+        let m = ""; try { const st = error.context && error.context.status; if (st === 404) m = "La fonction de gestion des comptes n'est pas installée. Créez le compte dans Supabase (Authentication > Users)."; else m = (await error.context.json()).error || ""; } catch (x) { /* illisible */ }
+        throw new Error(m || fr(error));
+      }
+      if (data && data.error) throw new Error(data.error);
+      return data;
     },
     sub: f => {
       /* 1re lecture : toutes les requêtes. Ensuite : seulement ce qui a changé depuis (quelques octets quand rien ne bouge). */
@@ -293,13 +436,46 @@ async function supa() {
       try { ch = sb.channel("requetes-live").on("postgres_changes", { event:"*", schema:"public", table:TB }, () => { clearTimeout(deb); deb = setTimeout(lire, 400); }).subscribe(); } catch (e) { /* temps réel facultatif : le sondage prend le relais */ }
       return () => { stop = true; clearInterval(poll); clearTimeout(deb); document.removeEventListener("visibilitychange", vis); rf = () => {}; if (ch) sb.removeChannel(ch); };
     },
-    add: async v => { const { error } = await sb.from(TB).insert(vers(v)); if (error) throw ko(error); rf(); },
+    add: async v => { const { data, error } = await sb.from(TB).insert(vers(v)).select("ref"); if (error) throw ko(error); rf(); return data && data[0] ? data[0].ref : ""; },
+    inserer: async rows => { const { error } = await sb.from(TB).insert(rows.map(vers)); if (error) throw ko(error); rf(); },
     /* maj = version de la requête que la personne avait sous les yeux : si un collègue l'a modifiée entre-temps, rien n'est écrasé */
     upd: (id, v, maj) => { let q = sb.from(TB).update(vers(v)).eq("id", id); if (maj) q = q.eq("maj", maj); return ecrit(q.select("id"), !!maj); },
-    /* « Supprimer » = retrait logique : la requête disparaît de l'appli mais reste en base (traçabilité) */
-    del: (id, maj) => { let q = sb.from(TB).update({ supprime:true }).eq("id", id); if (maj) q = q.eq("maj", maj); return ecrit(q.select("id"), !!maj); }
+    /* « Supprimer » = retrait logique : la requête disparaît de l'appli mais reste en base (traçabilité) ; l'administrateur peut la restaurer */
+    del: (id, maj) => { let q = sb.from(TB).update({ supprime:true }).eq("id", id); if (maj) q = q.eq("maj", maj); return ecrit(q.select("id"), !!maj); },
+    restaurer: id => ecrit(sb.from(TB).update({ supprime:false }).eq("id", id).select("id"), false),
+    corbeille: async () => (await lire1(TB, t => t.select("*").eq("supprime", true).order("maj", { ascending:false }).limit(200))).map(de),
+    journal: id => lire1("journal", t => t.select("*").eq("requete_id", id).order("le", { ascending:false }).limit(100)),
+    journalTous: n => lire1("journal", t => t.select("*").order("le", { ascending:false }).limit(n)),
+    /* pièces jointes (espace de stockage privé) */
+    envoyer: async (id, fichiers) => {
+      const ok = [];
+      try {
+        for (const f of fichiers) {
+          const p = `${id}/${Date.now().toString(36)}${Math.random().toString(36).slice(2,6)}-${sain(f.nom)}`;
+          const { error } = await sb.storage.from(BK).upload(p, f.blob, { contentType:f.type, upsert:false }); if (error) throw ko(error);
+          ok.push({ p, n:f.nom, t:f.type, s:f.blob.size });
+        }
+      } catch (e) { if (ok.length) { try { await sb.storage.from(BK).remove(ok.map(x => x.p)); } catch (x) { /* ignoré */ } } throw e; }
+      return ok;
+    },
+    urls: async chemins => {
+      if (!chemins.length) return {};
+      const { data, error } = await sb.storage.from(BK).createSignedUrls(chemins, 3600); if (error) throw ko(error);
+      const m = {}; (data || []).forEach(x => { if (x.signedUrl) m[x.path] = x.signedUrl; }); return m;
+    },
+    effacer: async chemins => { if (chemins.length) { try { await sb.storage.from(BK).remove(chemins); } catch (e) { /* le fichier restera orphelin : sans conséquence */ } } },
+    /* paramètres partagés, sauvegarde complète */
+    param: async cle => { const { data, error } = await sb.from("parametres").select("valeur").eq("cle", cle).maybeSingle(); if (error) throw ko(error); return data ? data.valeur : null; },
+    setParam: async (cle, valeur) => { const { error } = await sb.from("parametres").upsert({ cle, valeur, maj:new Date().toISOString() }); if (error) throw ko(error); },
+    tout: async () => {
+      const requetes = await lot(q => q, null); let journal = [], dernier = 0;
+      for (;;) { const { data, error } = await sb.from("journal").select("*").gt("id", dernier).order("id").limit(PAGE); if (error) throw ko(error); journal = journal.concat(data); if (data.length < PAGE) break; dernier = data[data.length - 1].id; }
+      const [listes, profils] = await Promise.all([lire1("listes", t => t.select("*").order("type").order("ordre").order("valeur")), lire1("profils", t => t.select("*").order("cree_le"))]);
+      return { requetes, journal, listes, profils };
+    }
   };
 }
+
 
 /* ---------- Liste déroulante avec recherche (saisie libre possible) ---------- */
 function combo(input, items, o = {}) {
@@ -353,86 +529,252 @@ function combo(input, items, o = {}) {
   sync();
 }
 
+
+
+/* ---------- Droits (le serveur applique les mêmes règles ; ici on masque seulement ce qui serait refusé) ---------- */
+const estAdmin = () => !!ME && ME.role === "admin";
+const mien = r => !!ME && (r.saisiPar === ME.email || (!!ME.agent && r.agent === ME.agent));
+const peutModifier = r => estAdmin() || mien(r);
+const peutSupprimer = r => estAdmin() || (!!ME && r.saisiPar === ME.email && !!r.creeLe && Date.now() - r.creeLe < DAY);
+const nomDe = e => { const p = PROFILS.find(x => x.email === e); return p ? (p.nom && p.nom !== e.split("@")[0] ? p.nom : (p.agent || e)) : (e || ""); };
+
 /* ---------- Listes ---------- */
+const modules = () => LM.length ? LM : MODULES, canaux = () => LC.length ? LC : CANAUX, categories = () => LK.length ? LK : CATEGORIES, motifs = () => LO.length ? LO : MOTIFS;
 const usagers = () => sortFr(uniqN([...LU,...data.map(r => r.usager)]));
 const agentsTous = () => sortFr(uniqN([...LA,...data.map(r => r.agent)]));
-const types = () => uniqN([...TYPES,...data.map(r => r.description)]);
+const types = () => uniqN([...(LD.length ? LD : TYPES),...data.map(r => r.description)]);
+const modulesTous = () => uniqN([...modules(),...data.map(r => r.module)]);
+const canauxTous = () => uniqN([...canaux(),...data.map(r => r.canal)]);
+const categoriesTous = () => uniqN([...categories(),...data.map(r => r.categorie)]);
+function appliquerListes(rows) {
+  LROWS = rows; const g = t => rows.filter(x => x.type === t && x.actif).map(x => x.valeur);
+  LU = g("usager"); LA = g("agent"); LM = g("module"); LC = g("canal"); LD = g("description"); LK = g("categorie"); LO = g("motif");
+}
 function opts(id, premier, liste, val) {
   const e = $(id); e.innerHTML = `<option value="">${premier}</option>` + liste.map(x => `<option>${esc(x)}</option>`).join("");
   if (val && !liste.includes(val)) e.insertAdjacentHTML("beforeend",`<option>${esc(val)}</option>`);
   e.value = val || "";
 }
+let cleCanaux = "";
+function chipsCanaux() {
+  const l = canaux(), k = l.join("|"); if (k === cleCanaux) return; cleCanaux = k;
+  const cur = ($("input[name=c]:checked") || {}).value;
+  $("#cn").innerHTML = l.map((c,i) => `<input type="radio" name="c" id="c${i}" value="${esc(c)}"><label for="c${i}">${esc(c)}</label>`).join("");
+  const r = $$("input[name=c]").find(x => x.value === cur); if (r) r.checked = true;
+}
 function listes() {
+  chipsCanaux();
+  opts("#m","— choisir un module —",modules(),$("#m").value);
   opts("#a","— choisir un agent —",LA,$("#a").value);
+  opts("#k","— aucune —",categories(),$("#k").value);
+  opts("#mo","— aucun —",motifs(),$("#mo").value);
   WK = uniq(data.map(r => iso(lundi(r.date)))).sort().reverse();
   if (!init && WK.length) { F.sem = WK[0]; init = true; }
   $("#fs").innerHTML = `<option value="">Toutes les semaines</option>` + WK.map(w => `<option value="${w}">Semaine du ${fd(new Date(w + "T00:00"))}</option>`).join(""); $("#fs").value = F.sem;
-  opts("#fm","Tous les modules",MODULES,F.mod); opts("#fc","Tous les canaux",CANAUX,F.can); opts("#fa","Tous les agents",agentsTous(),F.age);
+  opts("#fm","Tous les modules",modulesTous(),F.mod); opts("#fc","Tous les canaux",canauxTous(),F.can); opts("#fa","Tous les agents",agentsTous(),F.age); opts("#fg","Toutes les catégories",categoriesTous(),F.cat);
 }
 
 /* ---------- Navigation ---------- */
-function go(v) { vue = v; $$("nav [data-v]").forEach(b => b.classList.toggle("on",b.dataset.v === v)); ["saisie","ec","bord"].forEach(s => $("#" + s).hidden = s !== v); }
+const VUES = ["saisie","ec","bord","adm"];
+function go(v) {
+  if (v === "adm" && !estAdmin()) v = "saisie";
+  vue = v; $$("nav [data-v]").forEach(b => b.classList.toggle("on",b.dataset.v === v)); VUES.forEach(s => $("#" + s).hidden = s !== v);
+  if (v === "adm") renderAdmin();
+  if (v === "bord") renderTrend();
+}
 $$("nav [data-v]").forEach(b => b.onclick = () => go(b.dataset.v));
 
 /* ---------- Nouvelle requête / modification ---------- */
 const g = i => $("#" + i).value.trim(), err = t => { $("#er").textContent = t; };
 const jour = n => iso(new Date(Date.now() - n * DAY));
+let kManuel = false;                                                    // la catégorie a été choisie à la main : on ne la change plus d'office
 $$(".sc [data-j]").forEach(b => b.onclick = () => { $(b.dataset.r ? "#rd" : "#d").value = jour(+b.dataset.j); });
 $("#rs").onchange = e => { $("#rb").hidden = !e.target.checked; };
+$("#k").onchange = () => { kManuel = true; };
+
+/* pièces jointes : photos réduites avant envoi (1600 px, JPEG), PDF tels quels ; 5 fichiers de 5 Mo au plus */
+const PJ = { neufs:[], garde:[], retire:[] };
+const taille = n => n < 1024 * 1024 ? Math.max(1, Math.round(n / 1024)) + " Ko" : nf.format(n / 1048576) + " Mo";
+async function comprimer(f) {
+  const t = (f.type || "").toLowerCase();
+  if (t === "application/pdf") { if (f.size > PJ_TAILLE) throw new Error(`« ${f.name} » dépasse 5 Mo.`); return { blob:f, nom:f.name, type:t }; }
+  if (!/^image\/(jpeg|png|webp)$/.test(t)) throw new Error(`« ${f.name} » : format non pris en charge (photos JPEG, PNG ou WebP, ou PDF).`);
+  try {
+    const bmp = await createImageBitmap(f), k = Math.min(1, 1600 / Math.max(bmp.width, bmp.height)), c = document.createElement("canvas");
+    c.width = Math.max(1, Math.round(bmp.width * k)); c.height = Math.max(1, Math.round(bmp.height * k));
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height); if (bmp.close) bmp.close();
+    const b = await new Promise(r => c.toBlob(r, "image/jpeg", .82));
+    if (b && (b.size < f.size || f.size > PJ_TAILLE)) return { blob:b, nom:f.name.replace(/\.\w+$/, "") + ".jpg", type:"image/jpeg" };
+  } catch (e) { /* lecture impossible : on garde le fichier d'origine s'il est assez petit */ }
+  if (f.size > PJ_TAILLE) throw new Error(`« ${f.name} » dépasse 5 Mo.`);
+  return { blob:f, nom:f.name, type:t };
+}
+function pjRender() {
+  const total = PJ.garde.length + PJ.neufs.length;
+  $("#pjl").innerHTML = PJ.garde.map((p,i) => `<li><div class="ic">${/pdf/.test(p.t) ? "PDF" : "IMG"}</div><span>${esc(p.n)} · ${taille(p.s || 0)}</span><button type="button" data-rg="${i}" aria-label="Retirer ${esc(p.n)}">×</button></li>`).join("")
+    + PJ.neufs.map((p,i) => `<li>${p.type === "application/pdf" ? `<div class="ic">PDF</div>` : `<img alt="" src="${p.url}">`}<span>${esc(p.nom)} · ${taille(p.blob.size)}</span><button type="button" data-rn="${i}" aria-label="Retirer ${esc(p.nom)}">×</button></li>`).join("");
+  $("#pjb").hidden = total >= PJ_MAX;
+}
+function pjVider() { PJ.neufs.forEach(p => p.url && URL.revokeObjectURL(p.url)); PJ.neufs = []; PJ.garde = []; PJ.retire = []; pjRender(); }
+$("#pjb").onclick = () => $("#pj").click();
+$("#pj").onchange = async e => {
+  const fs = [...e.target.files]; e.target.value = ""; err("");
+  for (const f of fs) {
+    if (PJ.garde.length + PJ.neufs.length >= PJ_MAX) { err(`${PJ_MAX} pièces jointes au maximum par requête.`); break; }
+    try { const p = await comprimer(f); p.url = p.type === "application/pdf" ? "" : URL.createObjectURL(p.blob); PJ.neufs.push(p); } catch (x) { err(x.message); }
+  }
+  pjRender();
+};
+$("#pjl").onclick = e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.rg !== undefined) { const [p] = PJ.garde.splice(+b.dataset.rg, 1); PJ.retire.push(p.p); }
+  if (b.dataset.rn !== undefined) { const [p] = PJ.neufs.splice(+b.dataset.rn, 1); if (p.url) URL.revokeObjectURL(p.url); }
+  pjRender();
+};
+
 function viderForm(tout) {
-  ["h","u","ds","ob","rd","rh"].forEach(i => $("#" + i).value = ""); $$("input[name=c]").forEach(x => x.checked = false); $("#rs").checked = false; $("#rb").hidden = true;
-  if (tout) { $("#d").value = ""; $("#m").value = ""; $("#a").value = ""; }
+  ["h","u","ds","ob","rd","rh","ech"].forEach(i => $("#" + i).value = ""); $$("input[name=c]").forEach(x => x.checked = false); $("#rs").checked = false; $("#rb").hidden = true;
+  $("#k").value = ""; $("#mo").value = ""; $("#suivi").open = false; kManuel = false; pjVider();
+  if (tout) { $("#d").value = ""; $("#m").value = ""; $("#a").value = ME && ME.agent && LA.includes(ME.agent) ? ME.agent : ""; }   // l'agent proposé est la personne connectée
 }
 function finEdition() { editId = null; editMaj = null; $("#eb").hidden = true; $("#ok").textContent = "Enregistrer la requête"; viderForm(true); err(""); go(retour); }
 $("#ann").onclick = finEdition;
 function editer(id) {
   const r = data.find(x => x.id === id); if (!r) return toast("Requête introuvable");
+  if (!peutModifier(r)) return toast("Vous ne pouvez modifier que vos requêtes (saisies par vous ou confiées à vous).");
   editId = id; editMaj = r.maj; retour = vue; viderForm(true); err("");
   $("#d").value = iso(r.date); $("#h").value = r.avecHeure ? hm(r.date) : "";
-  opts("#m","— choisir un module —",MODULES,r.module); opts("#a","— choisir un agent —",LA,r.agent);
-  $("#u").value = r.usager || ""; $("#ds").value = r.description; $("#ob").value = r.observation || "";
+  opts("#m","— choisir un module —",modules(),r.module); opts("#a","— choisir un agent —",LA,r.agent); opts("#k","— aucune —",categories(),r.categorie); opts("#mo","— aucun —",motifs(),r.motif);
+  $("#u").value = r.usager || ""; $("#ds").value = r.description; $("#ob").value = r.observation || ""; $("#ech").value = r.echeance || ""; kManuel = true;
+  if (r.echeance || r.motif) $("#suivi").open = true;
+  PJ.garde = r.pieces.map(p => ({ ...p })); pjRender();
   const rd = $$("input[name=c]").find(x => x.value === r.canal); if (rd) rd.checked = true;
   if (r.resolution) { $("#rs").checked = true; $("#rb").hidden = false; $("#rd").value = iso(r.resolution); $("#rh").value = r.avecHeureRes ? hm(r.resolution) : ""; }
-  $("#ebt").textContent = `Modification de la requête du ${fd(r.date)} · ${r.usager || "sans usager"}`; $("#eb").hidden = false; $("#ok").textContent = "Enregistrer les modifications";
+  $("#ebt").textContent = `Modification de ${r.ref ? r.ref + " · " : ""}la requête du ${fd(r.date)} · ${r.usager || "sans usager"}`; $("#eb").hidden = false; $("#ok").textContent = "Enregistrer les modifications";
   go("saisie"); window.scrollTo({ top:0 });
 }
+function dupliquer(id) {                                                // nouvelle requête préremplie à partir d'une autre (même usager, même sujet)
+  const r = data.find(x => x.id === id); if (!r) return toast("Requête introuvable");
+  editId = null; editMaj = null; retour = vue; viderForm(true); err("");
+  $("#d").value = iso(new Date()); opts("#m","— choisir un module —",modules(),r.module); opts("#a","— choisir un agent —",LA,ME && ME.agent && LA.includes(ME.agent) ? ME.agent : r.agent); opts("#k","— aucune —",categories(),r.categorie);
+  $("#u").value = r.usager || ""; $("#ds").value = r.description; kManuel = true;
+  const rd = $$("input[name=c]").find(x => x.value === r.canal); if (rd) rd.checked = true;
+  $("#ebt").textContent = `Nouvelle requête préremplie à partir de ${r.ref || "la requête sélectionnée"}`; $("#eb").hidden = false; $("#ok").textContent = "Enregistrer la requête";
+  go("saisie"); window.scrollTo({ top:0 });
+}
+/* catégorie proposée d'office d'après la description (ce qui s'est déjà fait pour la même description, sinon la table de base) */
+function suggCat(desc) {
+  const n = norm(desc); if (!n) return "";
+  const cnt = {}; data.forEach(r => { if (r.categorie && norm(r.description) === n) cnt[r.categorie] = (cnt[r.categorie] || 0) + 1; });
+  const best = Object.entries(cnt).sort((a,b) => b[1] - a[1])[0], c = best ? best[0] : (TYPE_CAT[String(desc).trim().toUpperCase()] || "");
+  return c && categories().some(x => norm(x) === norm(c)) ? canon(c, categories()) : "";
+}
+/* doublons : même usager, description proche (mots communs), à moins de 48 h d'écart */
+const mots = s => new Set(norm(s).split(/[^a-z0-9]+/).filter(w => w.length > 2));
+const sim = (a,b) => { const A = mots(a), B = mots(b); if (!A.size || !B.size) return 0; let i = 0; A.forEach(w => B.has(w) && i++); return i / (A.size + B.size - i); };
+function doublons(v) {
+  const u = norm(v.usager); if (!u) return [];
+  return data.filter(r => norm(r.usager) === u && Math.abs(r.date - v.date) <= 2 * DAY && sim(r.description, v.description) >= .6).sort((a,b) => b.date - a.date).slice(0,3);
+}
+function confirmerDoublon(l) {
+  return new Promise(res => {
+    const d = $("#dd"); let fini = false; const fin = v => { if (fini) return; fini = true; if (d.open) d.close(); res(v); };
+    $("#ddl").innerHTML = l.map(r => `<li><b>${esc(r.ref)} · ${esc(r.description)}</b><small>${esc(fd(r.date,r.avecHeure))} · ${esc(r.usager)} · ${esc(r.agent)} · ${esc(r.statut)}</small></li>`).join("");
+    $("#ddo").onclick = () => fin(true); $("#dda").onclick = () => fin(false); d.onclose = () => fin(false); d.showModal();
+  });
+}
+$("#dd").addEventListener("click", e => { if (e.target === $("#dd") || e.target.closest("[data-x]")) $("#dd").close(); });
+
 $("#ok").onclick = async () => {
   const v = { date:mk(g("d"),g("h")), avecHeure:!!g("h"), module:g("m"), usager:canon(g("u"),usagers()), canal:($("input[name=c]:checked") || {}).value || "",
-    description:g("ds").toUpperCase(), agent:g("a"), observation:g("ob") };
+    description:g("ds").toUpperCase(), agent:g("a"), observation:g("ob"), categorie:g("k"), echeance:g("ech"), motif:g("mo") };
   if (!v.date) return err("Choisis la date de la requête.");
   if (!v.module || !v.canal || !v.description || !v.agent) return err("Module, canal, description et agent sont obligatoires.");
+  if (v.echeance && v.echeance < iso(v.date)) return err("L'échéance précède la date de la requête.");
   if ($("#rs").checked) {
     const r = mk(g("rd"),g("rh")); if (!r) return err("Choisis la date de résolution.");
     if (avant(r,v.date,v.avecHeure,g("rh"))) return err("La date de résolution précède celle de la requête.");
-    Object.assign(v,{ resolution:r, avecHeureRes:!!g("rh"), statut:STAT_R });
+    Object.assign(v,{ resolution:r, avecHeureRes:!!g("rh"), statut:STAT_R, motif:"" });
   } else Object.assign(v,{ resolution:null, avecHeureRes:false, statut:STAT_C });
   err(""); $("#ok").disabled = true;
+  let envoyes = [];
   try {
-    if (editId) { await store.upd(editId,v,editMaj); toast("Requête modifiée"); finEdition(); }
-    else { await store.add(v); toast("Requête enregistrée"); viderForm(false); }
-  } catch (e) { err(e.message); }
+    if (!editId) { const s = doublons(v); if (s.length && !(await confirmerDoublon(s))) { $("#ok").disabled = false; return; } }
+    const id = editId || crypto.randomUUID();
+    if (PJ.neufs.length) { envoyes = await store.envoyer(id, PJ.neufs); }
+    if (PJ.neufs.length || PJ.retire.length) v.pieces = [...PJ.garde.map(p => ({ p:p.p, n:p.n, t:p.t, s:p.s })), ...envoyes];
+    if (editId) { await store.upd(editId,v,editMaj); if (PJ.retire.length) store.effacer(PJ.retire); toast("Requête modifiée"); finEdition(); }
+    else { v.id = id; const ref = await store.add(v); toast(ref ? `Requête enregistrée : ${ref}` : "Requête enregistrée"); viderForm(false); $("#eb").hidden = true; }
+  } catch (e) { if (envoyes.length) store.effacer(envoyes.map(x => x.p)); err(e.message); }
   $("#ok").disabled = false;
 };
 
+
+/* ---------- Historique : mise en forme d'une ligne du journal ---------- */
+const CH = { date_requete:"Date", module:"Module", usager:"Usager", canal:"Canal", description:"Description", agent:"Agent", resolution:"Résolution", statut:"Statut", observation:"Observation", categorie:"Catégorie", echeance:"Échéance", motif_attente:"Motif d'attente", pieces:"Pièces jointes" };
+const fdt = d => (d.getHours() || d.getMinutes()) ? fd(d, true) : fd(d);
+function valJ(k, v) {
+  if (v === null || v === undefined || v === "") return "—";
+  if (k === "date_requete" || k === "resolution") return fdt(new Date(v));
+  if (k === "echeance") return fd(new Date(v + "T00:00"));
+  if (k === "pieces") return (Array.isArray(v) ? v.length : 0) + " fichier(s)";
+  const s = String(v); return s.length > 90 ? s.slice(0, 90) + "…" : s;
+}
+const ACT_J = { creation:"Créée", modification:"Modifiée", suppression:"Supprimée", restauration:"Restaurée" };
+function entreeJ(e, avecRef) {
+  const ch = e.changes ? Object.entries(e.changes).filter(([k]) => CH[k]).map(([k, x]) => `${esc(CH[k])} : ${esc(valJ(k, x.de))} → ${esc(valJ(k, x.a))}`) : [];
+  return `<b>${esc(ACT_J[e.action] || e.action)}</b>${avecRef && e.ref ? " · " + esc(e.ref) : ""} par ${esc(nomDe(e.par))}<small>${esc(fd(new Date(e.le), true))}</small>${ch.length ? `<div>${ch.join("<br>")}</div>` : ""}`;
+}
+
 /* ---------- Fenêtre de détail : voir, clôturer, supprimer ---------- */
 const dg = $("#dg");
+function echeanceTxt(r) {
+  if (!r.echeance) return "";
+  if (r.resolution) return fd(new Date(r.echeance + "T00:00"));
+  const e = jourFin(r.echeance), n = Math.ceil((Date.now() - e) / DAY);
+  return fd(new Date(r.echeance + "T00:00")) + (Date.now() > e ? ` (en retard de ${n} j)` : "");
+}
 function ouvrir(id, mode = "voir") {
   const r = data.find(x => x.id === id); if (!r) { if (dg.open) dg.close(); return toast("Requête introuvable"); }
   dg.dataset.id = id; dg.dataset.maj = r.maj || "";
-  const trace = [r.saisiPar && `Saisi par ${r.saisiPar}` + (r.creeLe ? " le " + fd(r.creeLe,true) : ""), r.modifiePar && `Modifié par ${r.modifiePar}` + (r.modifieLe ? " le " + fd(r.modifieLe,true) : "")].filter(Boolean).join(" · ");
-  let h = `<div class="dgh"><div><span class="pill ${r.resolution ? "" : "en"}">${esc(r.statut)}</span><h2 id="dgt">${esc(r.description)}</h2></div><button type="button" class="x" data-x aria-label="Fermer">×</button></div>
-    <dl class="dl">` + [["Date de la requête",fd(r.date,r.avecHeure)],["Module",r.module],["Usager",r.usager || "—"],["Canal",r.canal],["Agent MMTE",r.agent],["Résolution",r.resolution ? fd(r.resolution,r.avecHeureRes) : "—"]]
-      .map(([a,b]) => `<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join("") + `</dl>
-    ` + (mode === "clore" ? "" : `<div class="ob"><b>Observation</b><p>${r.observation ? esc(r.observation) : "<i>Aucune observation</i>"}</p></div>`) + (trace ? `<p class="tr">${esc(trace)}</p>` : "");
-  if (mode === "voir") h += `<div class="act">` + (r.resolution ? "" : `<button type="button" class="ok" data-a="clore">Marquer comme résolue</button>`) +
-    `<button type="button" class="ghost" data-a="mod">Modifier</button><button type="button" class="ghost" data-a="sup">Supprimer</button></div>`;
+  const trace = [r.saisiPar && `Saisi par ${nomDe(r.saisiPar)}` + (r.creeLe ? " le " + fd(r.creeLe,true) : ""), r.modifiePar && `Modifié par ${nomDe(r.modifiePar)}` + (r.modifieLe ? " le " + fd(r.modifieLe,true) : "")].filter(Boolean).join(" · ");
+  const info = [["Date de la requête",fd(r.date,r.avecHeure)],["Module",r.module],["Usager",r.usager || "—"],["Canal",r.canal],["Agent MMTE",r.agent],["Résolution",r.resolution ? fd(r.resolution,r.avecHeureRes) : "—"]];
+  if (r.categorie) info.push(["Catégorie", r.categorie]);
+  if (r.echeance) info.push(["À traiter avant le", echeanceTxt(r)]);
+  if (r.motif && !r.resolution) info.push(["Motif d'attente", r.motif]);
+  let h = `<div class="dgh"><div><span class="pill ${r.resolution ? "" : "en"}">${esc(r.statut)}</span>${r.ref ? ` <span class="pill rf">${esc(r.ref)}</span>` : ""}<h2 id="dgt">${esc(r.description)}</h2></div><button type="button" class="x" data-x aria-label="Fermer">×</button></div>
+    <dl class="dl">` + info.map(([a,b]) => `<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join("") + `</dl>
+    ` + (mode === "clore" ? "" : `<div class="ob"><b>Observation</b><p>${r.observation ? esc(r.observation) : "<i>Aucune observation</i>"}</p></div>`)
+    + (mode === "voir" && r.pieces.length ? `<div class="ob" style="margin-top:10px"><b>Pièces jointes</b><div class="pjg" id="pjv">${r.pieces.map(() => `<a><div class="ic">…</div><span>chargement</span></a>`).join("")}</div></div>` : "")
+    + (trace ? `<p class="tr">${esc(trace)}</p>` : "");
+  const mod = peutModifier(r);
+  if (mode === "voir") h += `<div class="act">` + (mod && !r.resolution ? `<button type="button" class="ok" data-a="clore">Marquer comme résolue</button>` : "")
+    + (mod ? `<button type="button" class="ghost" data-a="mod">Modifier</button>` : "") + `<button type="button" class="ghost" data-a="dup">Dupliquer</button>`
+    + (peutSupprimer(r) ? `<button type="button" class="ghost" data-a="sup">Supprimer</button>` : "") + `</div>`
+    + (mod ? "" : `<p class="tr">Lecture seule : cette requête est suivie par ${esc(r.agent)}. Vous pouvez la dupliquer pour en créer une nouvelle.</p>`)
+    + `<details class="hi" id="hid"><summary>Historique des modifications</summary><ol id="hio"><li>Chargement…</li></ol></details>`;
   if (mode === "clore") h += `<div class="pn"><label>Date de résolution</label><div class="q"><input type="date" id="cd" aria-label="Date de résolution"><input type="time" id="ch" aria-label="Heure de résolution, facultative"></div>
     <div class="sc"><button type="button" data-j="0">Aujourd'hui</button><button type="button" data-j="1">Hier</button><span>Heure facultative</span></div>
     <label for="co">Observation <span class="opt">(facultatif)</span></label><textarea id="co" rows="4" placeholder="Détails de la clôture : traitement effectué, échange avec l'usager…">${esc(r.observation || "")}</textarea>
     <div class="err" id="ce"></div><button type="button" class="ok" data-a="valider">Valider la résolution</button><button type="button" class="ghost" data-a="voir">Annuler</button></div>`;
-  if (mode === "sup") h += `<div class="pn"><p><b>Supprimer cette requête ?</b> Elle ne sera plus visible dans l'application ni dans les exports.</p>
+  if (mode === "sup") h += `<div class="pn"><p><b>Supprimer cette requête ?</b> Elle ne sera plus visible dans l'application ni dans les exports. Un administrateur pourra la restaurer.</p>
     <div class="err" id="ce"></div><button type="button" class="ok noir" data-a="oui">Oui, supprimer</button><button type="button" class="ghost" data-a="voir">Annuler</button></div>`;
   $("#dgb").innerHTML = h; if (!dg.open) dg.showModal();
+  if (mode === "voir" && r.pieces.length) chargerPieces(r);
+  const hid = $("#hid"); if (hid) hid.addEventListener("toggle", () => { if (hid.open && !hid.dataset.ok) { hid.dataset.ok = "1"; chargerHisto(id); } });
+}
+async function chargerPieces(r) {
+  try {
+    const m = await store.urls(r.pieces.map(p => p.p)); if (dg.dataset.id !== r.id || !$("#pjv")) return;
+    $("#pjv").innerHTML = r.pieces.map(p => { const u = m[p.p]; if (!u) return `<a><div class="ic">?</div><span>${esc(p.n)}</span></a>`;
+      return /pdf/.test(p.t) ? `<a href="${esc(u)}" target="_blank" rel="noopener"><div class="ic">PDF</div><span>${esc(p.n)}</span></a>` : `<a href="${esc(u)}" target="_blank" rel="noopener"><img alt="${esc(p.n)}" src="${esc(u)}"><span>${esc(p.n)}</span></a>`; }).join("");
+  } catch (e) { if ($("#pjv")) $("#pjv").innerHTML = `<span class="hint">${esc(e.message)}</span>`; }
+}
+async function chargerHisto(id) {
+  try {
+    const l = await store.journal(id); if (dg.dataset.id !== id || !$("#hio")) return;
+    $("#hio").innerHTML = l.length ? l.map(e => `<li>${entreeJ(e, false)}</li>`).join("") : "<li>Aucun historique.</li>";
+  } catch (e) { if ($("#hio")) $("#hio").innerHTML = `<li>${esc(e.message)}</li>`; }
 }
 dg.addEventListener("input",() => { const m = $("#ce"); if (m) m.textContent = ""; });
 dg.addEventListener("click", async e => {
@@ -445,103 +787,650 @@ dg.addEventListener("click", async e => {
   if (["voir","clore","sup"].includes(a)) return ouvrir(id,a === "voir" ? "voir" : a);
   if (!r) return dg.close();
   if (a === "mod") { dg.close(); return editer(id); }
+  if (a === "dup") { dg.close(); return dupliquer(id); }
   if (a === "valider") {
     const m = $("#ce"), hh = $("#ch").value, d = mk($("#cd").value,hh);
     if (!d) { m.textContent = "Choisis la date de résolution."; return; }
     if (avant(d,r.date,r.avecHeure,hh)) { m.textContent = "La date de résolution précède celle de la requête."; return; }
     b.disabled = true;
-    try { await store.upd(id,{ resolution:d, avecHeureRes:!!hh, statut:STAT_R, observation:$("#co").value.trim() },dg.dataset.maj); dg.close(); toast("Requête résolue"); }
+    try { await store.upd(id,{ resolution:d, avecHeureRes:!!hh, statut:STAT_R, observation:$("#co").value.trim(), motif:"" },dg.dataset.maj); dg.close(); toast("Requête résolue"); }
     catch (x) { m.textContent = x.message; b.disabled = false; }
   }
   if (a === "oui") { b.disabled = true; try { await store.del(id,dg.dataset.maj); dg.close(); toast("Requête supprimée"); } catch (x) { $("#ce").textContent = x.message; b.disabled = false; } }
 });
 
-/* ---------- En cours ---------- */
+/* ---------- En cours : ancienneté, échéances, tri ---------- */
+const EC = { tri: ls.get("sisr:tri") || "a", mes: ls.get("sisr:mes") === "1" };
+$("#tri").value = EC.tri; $("#mes").checked = EC.mes;
+const urgent = r => !r.resolution && (age(r) >= SEUIL_H || (r.echeance && Date.now() > jourFin(r.echeance)));
+function badges(r) {
+  const b = [];
+  if (r.ref) b.push(`<span class="pill rf">${esc(r.ref)}</span>`);
+  if (r.categorie) b.push(`<span class="pill">${esc(r.categorie)}</span>`);
+  if (r.motif) b.push(`<span class="pill al">${esc(r.motif)}</span>`);
+  if (!r.resolution) {
+    const h = age(r); if (h >= SEUIL_H) b.push(`<span class="pill rt">+48 h</span>`); else if (h >= 24) b.push(`<span class="pill al">+24 h</span>`);
+    if (r.echeance) {
+      const e = jourFin(r.echeance), n = Math.ceil((Date.now() - e) / DAY);
+      if (Date.now() > e) b.push(`<span class="pill rt">En retard de ${n} j</span>`);
+      else if (iso(new Date()) === r.echeance) b.push(`<span class="pill al">Échéance aujourd'hui</span>`);
+      else b.push(`<span class="pill rf">À traiter avant le ${fd(new Date(r.echeance + "T00:00"))}</span>`);
+    }
+  }
+  return b.length ? `<span class="tags">${b.join("")}</span>` : "";
+}
 function renderEC() {
-  const l = data.filter(r => !r.resolution).sort((a,b) => a.date - b.date); $("#nb").textContent = l.length || "";
-  $("#ecl").innerHTML = l.length ? l.map(r => { const n = Math.max(0,Math.floor((Date.now() - r.date) / DAY));
-    return `<div class="ln"><div class="tp ${n > 3 ? "x" : n > 1 ? "m" : ""}">${n}<small>${n > 1 ? "jours" : "jour"}</small></div><div class="bd">
-      <button type="button" class="op" data-open="${esc(r.id)}"><span class="t">${esc(r.description)}</span>
+  const tous = data.filter(r => !r.resolution); $("#nb").textContent = tous.length || ""; $("#nb").classList.toggle("late", tous.some(urgent));
+  const l = tous.filter(r => !EC.mes || mien(r));
+  l.sort(EC.tri === "r" ? (a,b) => b.date - a.date : EC.tri === "e" ? (a,b) => (a.echeance || "9999").localeCompare(b.echeance || "9999") || a.date - b.date : (a,b) => a.date - b.date);
+  $("#ecl").innerHTML = l.length ? l.map(r => { const h = age(r), n = Math.max(0,Math.floor(h / 24)), cl = n > 3 ? "x" : n > 1 ? "m" : "";
+    return `<div class="ln"><div class="tp ${cl}">${h < 24 ? Math.max(0,Math.floor(h)) : n}<small>${h < 24 ? "h" : n > 1 ? "jours" : "jour"}</small></div><div class="bd">
+      <button type="button" class="op" data-open="${esc(r.id)}"><span class="t">${esc(r.description)}</span>${badges(r)}
         <span class="inf"><span>${fd(r.date,r.avecHeure)}</span><span>${esc(r.module)}</span><span>${esc(r.usager)}</span><span>${esc(r.agent)}</span></span>
         ${r.observation ? `<span class="o1"><span>${esc(r.observation)}</span></span>` : ""}</button>
-      <button type="button" class="ghost" data-res="${esc(r.id)}">Marquer comme résolue</button></div></div>`; }).join("")
-    : `<div class="vide"><b>Tout est à jour</b>Aucune requête en attente de résolution.</div>`;
+      ${peutModifier(r) ? `<button type="button" class="ghost" data-res="${esc(r.id)}">Marquer comme résolue</button>` : ""}</div></div>`; }).join("")
+    : `<div class="vide"><b>${tous.length ? "Rien à traiter pour vous" : "Tout est à jour"}</b>${tous.length ? "Décochez « Mes requêtes » pour voir celles de l'équipe." : "Aucune requête en attente de résolution."}</div>`;
 }
 $("#ecl").onclick = e => { const o = e.target.closest("[data-open]"); if (o) return ouvrir(o.dataset.open); const b = e.target.closest("[data-res]"); if (b) ouvrir(b.dataset.res,"clore"); };
+$("#tri").onchange = e => { EC.tri = e.target.value; ls.set("sisr:tri", EC.tri); renderEC(); };
+$("#mes").onchange = e => { EC.mes = e.target.checked; ls.set("sisr:mes", EC.mes ? "1" : "0"); renderEC(); };
+
 
 /* ---------- Tableau de bord ---------- */
-function filtrer() {
-  const s = F.sem ? new Date(F.sem + "T00:00") : null, e = s && new Date(s.getTime() + 7 * DAY), k = norm(F.mot), qu = norm(F.usa), ex = qu && usagers().some(x => norm(x) === qu);
-  return data.filter(r => (!s || (r.date >= s && r.date < e)) && (!F.mod || r.module === F.mod) && (!F.can || r.canal === F.can) && (!F.age || r.agent === F.age) && (!F.sta || (F.sta === "c") === !r.resolution) &&
-    (!qu || (ex ? norm(r.usager) === qu : norm(r.usager).includes(qu))) && (!k || norm(r.description + " " + (r.observation || "")).includes(k))).sort((a,b) => a.date - b.date);
+const addJ = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+const semPrec = () => F.sem ? iso(addJ(new Date(F.sem + "T00:00"), -7)) : null;
+/* o.sem : autre semaine que celle choisie ; o.sansSemaine : toutes les semaines (pour la courbe d'évolution) */
+function filtrer(o = {}) {
+  const sem = o.sansSemaine ? "" : (o.sem !== undefined ? o.sem : F.sem), s = sem ? new Date(sem + "T00:00") : null, e = s && addJ(s, 7);
+  const f = o.libre ? { mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", mes:false } : F;      // « libre » : seule la semaine compte (rapport de direction)
+  const k = norm(f.mot), qu = norm(f.usa), ex = qu && usagers().some(x => norm(x) === qu);
+  return data.filter(r => (!s || (r.date >= s && r.date < e)) && (!f.mod || r.module === f.mod) && (!f.can || r.canal === f.can) && (!f.age || r.agent === f.age) && (!f.sta || (f.sta === "c") === !r.resolution) &&
+    (!f.cat || r.categorie === f.cat) && (!f.mes || mien(r)) && (!qu || (ex ? norm(r.usager) === qu : norm(r.usager).includes(qu))) && (!k || norm(r.ref + " " + r.description + " " + (r.observation || "")).includes(k))).sort((a,b) => a.date - b.date);
 }
 function stats(rows) {
-  const res = rows.filter(r => r.resolution), dl = res.length ? res.reduce((s,r) => s + (r.resolution - r.date),0) / res.length / 36e5 : null;
-  const rep = k => { const m = {}; rows.forEach(r => r[k] && (m[r[k]] = (m[r[k]] || 0) + 1)); return Object.entries(m).sort((a,b) => b[1] - a[1]); };
-  return { kpi:[["Requêtes",rows.length],["Résolues",res.length],["En cours",rows.length - res.length],["Taux de résolution",rows.length ? Math.round(res.length / rows.length * 100) + " %" : "-"],["Délai moyen de résolution",dl == null ? "-" : dl.toFixed(1) + " h"]],
-    rep:{ module:rep("module"), canal:rep("canal"), agent:rep("agent") } };
+  const res = rows.filter(r => r.resolution), dls = res.map(r => (r.resolution - r.date) / HOUR).filter(h => h >= 0), enc = rows.filter(r => !r.resolution);
+  const rep = k => { const m = {}; rows.forEach(r => r[k] && (m[r[k]] = (m[r[k]] || 0) + 1)); return Object.entries(m).sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0],"fr")); };
+  const par = k => { const m = {}; res.forEach(r => { const h = (r.resolution - r.date) / HOUR; if (r[k] && h >= 0) (m[r[k]] = m[r[k]] || []).push(h); });
+    return Object.entries(m).map(([n,a]) => [n, a.length, med(a), moy(a)]).sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0],"fr")); };
+  return { n:rows.length, nres:res.length, nenc:enc.length, taux:rows.length ? res.length / rows.length : null, med:med(dls), moy:moy(dls), tard:enc.filter(urgent).length,
+    rep:{ module:rep("module"), canal:rep("canal"), agent:rep("agent"), categorie:rep("categorie"), usager:rep("usager").slice(0,5) }, delais:{ module:par("module"), agent:par("agent") } };
 }
-const periode = () => F.sem ? `Période : du ${fd(new Date(F.sem + "T00:00"))} au ${fd(new Date(new Date(F.sem + "T00:00").getTime() + 6 * DAY))}` : "Période : toutes les semaines";
-const ftxt = () => [F.mod && "Module : " + F.mod, F.can && "Canal : " + F.can, F.usa && "Usager : " + F.usa, F.age && "Agent : " + F.age, F.sta && "Statut : " + (F.sta === "c" ? "En cours" : "Résolues"), F.mot && "Mot-clé : " + F.mot].filter(Boolean).join(" ; ") || "aucun";
+/* indicateurs clés ; p = même période, semaine précédente (comparaison « S-1 ») */
+function kpis(s, p) {
+  const sg = (x, u) => (x > 0 ? "+" : x < 0 ? "-" : "") + nf.format(Math.abs(x)) + (u || "");
+  const dN = p ? (p.n ? `S-1 : ${p.n} (${sg(Math.round((s.n - p.n) / p.n * 100), " %")})` : "S-1 : 0") : "";
+  const dT = p && s.taux != null && p.taux != null ? [`S-1 : ${Math.round(p.taux * 100)} % (${sg(Math.round((s.taux - p.taux) * 100), " pts")})`, s.taux > p.taux ? "up" : s.taux < p.taux ? "dn" : ""] : ["", ""];
+  const dM = p && s.med != null && p.med != null ? [`S-1 : ${dur(p.med)} (${sg(Math.round((s.med - p.med) * 10) / 10, " h")})`, s.med < p.med ? "up" : s.med > p.med ? "dn" : ""] : ["", ""];
+  return [["Requêtes", s.n, dN, ""], ["Résolues", s.nres, "", ""], ["En cours", s.nenc, "", ""],
+    ["Taux de résolution", s.taux == null ? "-" : Math.round(s.taux * 100) + " %", dT[0], dT[1]], ["Délai médian de résolution", dur(s.med), dM[0], dM[1]],
+    ["Délai moyen de résolution", dur(s.moy), "", ""], ["En cours depuis +48 h ou en retard", s.tard, "", ""]];
+}
+const kpiPairs = k => k.map(x => [x[0], x[1]]);
+const periode = () => F.sem ? `Période : du ${fd(new Date(F.sem + "T00:00"))} au ${fd(addJ(new Date(F.sem + "T00:00"), 6))}` : "Période : toutes les semaines";
+const ftxt = () => [F.mod && "Module : " + F.mod, F.can && "Canal : " + F.can, F.usa && "Usager : " + F.usa, F.age && "Agent : " + F.age, F.sta && "Statut : " + (F.sta === "c" ? "En cours" : "Résolues"), F.cat && "Catégorie : " + F.cat, F.mes && "Mes requêtes", F.mot && "Mot-clé : " + F.mot].filter(Boolean).join(" ; ") || "aucun";
+
+/* évolution sur 12 semaines (mêmes filtres, sauf la semaine) */
+let TREND = [];
+function tendance(libre) {
+  const rows = filtrer({ sansSemaine:true, libre }), fin = F.sem ? new Date(F.sem + "T00:00") : lundi(new Date()), sem = [];
+  for (let i = 11; i >= 0; i--) { const d = addJ(fin, -7 * i); sem.push({ w:iso(d), d, res:0, enc:0 }); }
+  const idx = new Map(sem.map((x,i) => [x.w, i]));
+  rows.forEach(r => { const i = idx.get(iso(lundi(r.date))); if (i != null) r.resolution ? sem[i].res++ : sem[i].enc++; });
+  return sem;
+}
+const joli = m => { for (const b of [1,2,4,5,10,20,40,50,100,200,400,500,1000,2000,5000,10000,20000,50000]) if (b >= m) return b; return Math.ceil(m / 1000) * 1000; };
+const hautArrondi = (x, y, w, h, r) => { r = Math.max(0, Math.min(r, h, w / 2)); return `M${x},${y + h}V${y + r}Q${x},${y} ${x + r},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + h}Z`; };
+function renderTrend() {
+  const el = $("#trc"); if (!el || el.offsetParent === null && !el.clientWidth) return;
+  TREND = tendance(); const W = Math.max(280, Math.floor(el.clientWidth || 600)), H = 190, mg = { l:30, r:6, t:16, b:26 };
+  const mx = Math.max(1, ...TREND.map(x => x.res + x.enc)), top = joli(mx), iw = W - mg.l - mg.r, ih = H - mg.t - mg.b, sl = iw / TREND.length, bw = Math.min(24, sl * .62), Y = v => mg.t + ih - v / top * ih;
+  const ticks = top % 2 === 0 && top >= 4 ? [0, top / 2, top] : [0, top], pas = Math.ceil(40 / sl);
+  let o = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Requêtes par semaine sur 12 semaines">`;
+  ticks.forEach(t => { o += `<line class="ax" x1="${mg.l}" x2="${W - mg.r}" y1="${Y(t)}" y2="${Y(t)}"/><text x="${mg.l - 6}" y="${Y(t) + 4}" text-anchor="end">${t}</text>`; });
+  TREND.forEach((x, i) => {
+    const sx = mg.l + sl * i, bx = sx + (sl - bw) / 2, tot = x.res + x.enc, sel = x.w === F.sem || (!F.sem && i === TREND.length - 1);
+    o += `<g class="cl" tabindex="0" data-i="${i}" role="img" aria-label="Semaine du ${fd(x.d)} : ${tot} requêtes, ${x.res} résolues, ${x.enc} en cours">`;
+    if (F.sem && sel) o += `<rect x="${sx}" y="${mg.t - 8}" width="${sl}" height="${ih + 8}" rx="6" fill="#0E2A4712"/>`;
+    o += `<rect class="hit" x="${sx}" y="${mg.t - 8}" width="${sl}" height="${ih + 8}" rx="6" fill="transparent"/>`;
+    if (x.res) o += `<path d="${hautArrondi(bx, Y(x.res), bw, ih * x.res / top, x.enc ? 0 : 4)}" fill="#0E2A47"/>`;
+    if (x.enc) { const hh = ih * x.enc / top - (x.res ? 2 : 0); o += `<path d="${hautArrondi(bx, Y(tot), bw, hh, 4)}" fill="#6da7ec"/>`; }
+    if (F.sem && sel && tot) o += `<text x="${bx + bw / 2}" y="${Y(tot) - 5}" text-anchor="middle" style="fill:#0D0D0D;font-weight:700">${tot}</text>`;
+    if (i % pas === (TREND.length - 1) % pas) o += `<text x="${bx + bw / 2}" y="${H - 8}" text-anchor="middle"${F.sem && sel ? ' style="fill:#0D0D0D;font-weight:700"' : ""}>${pad(x.d.getDate())}/${pad(x.d.getMonth() + 1)}</text>`;
+    o += `</g>`;
+  });
+  el.innerHTML = o + `</svg>`;
+  $("#trs").textContent = F.sem ? `Les 12 semaines jusqu'à celle du ${fd(new Date(F.sem + "T00:00"))}, selon les filtres choisis (la semaine sélectionnée est surlignée).` : "Les 12 dernières semaines, selon les filtres choisis.";
+  $("#trt").innerHTML = `<table><thead><tr><th>Semaine du</th><th>Résolues</th><th>En cours</th><th>Total</th></tr></thead><tbody>` + TREND.map(x => `<tr><td>${fd(x.d)}</td><td>${x.res}</td><td>${x.enc}</td><td>${x.res + x.enc}</td></tr>`).join("") + `</tbody></table>`;
+}
+/* info-bulle (une seule pour tous les graphiques) : au survol, au toucher et au clavier */
+const tip = $("#tip");
+function montrerTip(html, x, y) {
+  tip.innerHTML = html; tip.classList.add("on");
+  const w = tip.offsetWidth, h = tip.offsetHeight; tip.style.left = Math.max(6, Math.min(innerWidth - w - 6, x + 12)) + "px"; tip.style.top = Math.max(6, Math.min(innerHeight - h - 6, y - h - 8)) + "px";
+}
+const cacherTip = () => tip.classList.remove("on");
+function tipTrend(el, x, y) {
+  const t = TREND[+el.dataset.i]; if (!t) return;
+  montrerTip(`<b>${t.res + t.enc} requête${t.res + t.enc > 1 ? "s" : ""}</b><span>Semaine du ${fd(t.d)}</span><span>Résolues : ${t.res} · En cours : ${t.enc}</span>`, x, y);
+}
+$("#trc").addEventListener("pointermove", e => { const g = e.target.closest(".cl"); if (g) tipTrend(g, e.clientX, e.clientY); else cacherTip(); });
+$("#trc").addEventListener("pointerleave", cacherTip);
+$("#trc").addEventListener("focusin", e => { const g = e.target.closest(".cl"); if (g) { const b = g.getBoundingClientRect(); tipTrend(g, b.left + b.width / 2, b.top); } });
+$("#trc").addEventListener("focusout", cacherTip);
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (vue === "bord") renderTrend(); }, 150); });
+
 function renderBord() {
-  const rows = filtrer(), s = stats(rows); $("#per").textContent = periode(); $("#cnt").textContent = `Détail des requêtes (${rows.length})`;
-  $("#kpi").innerHTML = s.kpi.map(([a,b]) => `<div class="k"><small>${a}</small><b>${b}</b></div>`).join("");
-  const blk = (t,k) => { const mx = s.rep[k][0] ? s.rep[k][0][1] : 1; return `<div class="rp"><h4>${t}</h4>` + (s.rep[k].map(([n,c]) => `<div class="br"><span>${esc(n)}</span><i style="width:${c / mx * 100}%"></i><b>${c}</b></div>`).join("") || `<div class="vide">-</div>`) + `</div>`; };
+  const rows = filtrer(), s = stats(rows), p = F.sem ? stats(filtrer({ sem:semPrec() })) : null; $("#per").textContent = periode(); $("#cnt").textContent = `Détail des requêtes (${rows.length})`;
+  $("#kpi").innerHTML = kpis(s, p).map(([a,b,c,d]) => `<div class="k"><small>${a}</small><b>${b}</b>${c ? `<div class="dlt ${d}">${esc(c)}</div>` : ""}</div>`).join("");
+  renderTrend();
+  const blk = (t,k,rs) => { const l = rs || s.rep[k], mx = l[0] ? l[0][1] : 1; return `<div class="rp"><h4>${t}</h4>` + (l.map(([n,c]) => `<div class="br"><span>${esc(n)}</span><i style="width:${c / mx * 100}%"></i><b>${c}</b></div>`).join("") || `<div class="vide">-</div>`) + `</div>`; };
+  const dly = (t, l, nom) => `<div class="rp"><h4>${t}</h4>` + (l.length ? `<div class="tw"><table><thead><tr><th>${nom}</th><th>Résolues</th><th>Médiane</th><th>Moyenne</th></tr></thead><tbody>` + l.map(([n,c,m,a]) => `<tr><td>${esc(n)}</td><td>${c}</td><td>${dur(m)}</td><td>${dur(a)}</td></tr>`).join("") + `</tbody></table></div>` : `<div class="vide">-</div>`) + `</div>`;
   $("#rep").innerHTML = blk("Par module","module") + blk("Par canal","canal") + blk("Par agent","agent");
+  $("#rep2").innerHTML = blk("Par catégorie","categorie") + blk("Usagers les plus fréquents","usager") + dly("Délai de résolution par module", s.delais.module, "Module") + dly("Délai de résolution par agent", s.delais.agent, "Agent");
   $("#tb thead").innerHTML = "<tr>" + HEAD.map(h => `<th>${h}</th>`).join("") + "</tr>";
   const aff = rows.length > MAXL ? rows.slice(-MAXL) : rows;           // à l'écran : les plus récentes ; les exports contiennent tout
   $("#plus").hidden = aff === rows; $("#plus").textContent = `Affichage des ${MAXL} requêtes les plus récentes sur ${rows.length}. Choisissez une semaine ou un filtre pour voir les autres ; les exports Excel et PDF contiennent les ${rows.length} requêtes.`;
-  $("#tb tbody").innerHTML = aff.map(r => `<tr class="rw" tabindex="0" data-open="${esc(r.id)}">` + ligne(r).map((c,i) => i === 7 ? `<td><span class="pill ${r.resolution ? "" : "en"}">${esc(c)}</span></td>` : i === 8 ? `<td class="obc"><div>${esc(c)}</div></td>` : `<td>${esc(c)}</td>`).join("") + "</tr>").join("")
-    || `<tr><td colspan="9">Aucune requête pour ces filtres.</td></tr>`;
+  $("#tb tbody").innerHTML = aff.map(r => `<tr class="rw" tabindex="0" data-open="${esc(r.id)}">` + ligne(r).map((c,i) => i === COL_STAT ? `<td><span class="pill ${r.resolution ? "" : "en"}">${esc(c)}</span></td>` : i === COL_OBS ? `<td class="obc"><div>${esc(c)}</div></td>` : i === 0 ? `<td style="white-space:nowrap;font-size:12px">${esc(c)}</td>` : `<td>${esc(c)}</td>`).join("") + "</tr>").join("")
+    || `<tr><td colspan="${HEAD.length}">Aucune requête pour ces filtres.</td></tr>`;
 }
 $("#tb").onclick = e => { const t = e.target.closest("[data-open]"); if (t) ouvrir(t.dataset.open); };
 $("#tb").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { const t = e.target.closest("[data-open]"); if (t) { e.preventDefault(); ouvrir(t.dataset.open); } } };
-[["fs","sem"],["fm","mod"],["fc","can"],["fa","age"],["ft","sta"],["fk","mot"]].forEach(([i,k]) => $("#" + i).oninput = e => { F[k] = e.target.value; renderBord(); });
+[["fs","sem"],["fm","mod"],["fc","can"],["fa","age"],["ft","sta"],["fg","cat"],["fk","mot"]].forEach(([i,k]) => $("#" + i).oninput = e => { F[k] = e.target.value; renderBord(); });
+$("#fmes").onchange = e => { F.mes = e.target.checked; renderBord(); };
 $("#pv").onclick = () => { const i = WK.indexOf(F.sem), n = i < 0 ? WK[0] : WK[i + 1]; if (n) { F.sem = n; $("#fs").value = n; renderBord(); } };
 $("#nx").onclick = () => { const i = WK.indexOf(F.sem); if (i > 0) { F.sem = WK[i - 1]; $("#fs").value = F.sem; renderBord(); } };
 
+
 /* ---------- Exports Excel et PDF (selon la semaine et les filtres affichés) ---------- */
 const nomFichier = () => "Rapport_requetes_" + (F.sem ? F.sem.split("-").reverse().join("") : "toutes_semaines");
+const heures = h => h == null ? "-" : Math.round(h * 10) / 10;
 $("#xl").onclick = () => {
   const rows = filtrer(), s = stats(rows); if (!rows.length) return toast("Aucune requête à exporter");
-  const A = [[NOM + " - Rapport des requêtes"],[periode()],["Filtres : " + ftxt()],[],["Indicateurs clés"],...s.kpi];
-  [["Par module","module"],["Par canal","canal"],["Par agent","agent"]].forEach(([t,k]) => A.push([],[t,"Requêtes"],...s.rep[k]));
+  const A = [[NOM + " - Rapport des requêtes"],[periode()],["Filtres : " + ftxt()],[],["Indicateurs clés"],...kpiPairs(kpis(s, null))];
+  [["Par module","module"],["Par canal","canal"],["Par agent","agent"],["Par catégorie","categorie"]].forEach(([t,k]) => A.push([],[t,"Requêtes"],...s.rep[k]));
+  [["Délai de résolution par module","module"],["Délai de résolution par agent","agent"]].forEach(([t,k]) => A.push([],[t,"Résolues","Médiane (h)","Moyenne (h)"],...s.delais[k].map(x => [x[0], x[1], heures(x[2]), heures(x[3])])));
   const w1 = XLSX.utils.aoa_to_sheet(A), w2 = XLSX.utils.aoa_to_sheet([HEAD,...rows.map(ligne)]), wb = XLSX.utils.book_new();
-  w1["!cols"] = [{ wch:44 },{ wch:14 }]; w2["!cols"] = [16,30,36,14,50,28,24,12,60].map(wch => ({ wch }));
+  w1["!cols"] = [{ wch:44 },{ wch:14 },{ wch:14 },{ wch:14 }]; w2["!cols"] = [16,12,28,34,13,50,28,26,22,12,60].map(wch => ({ wch }));
   XLSX.utils.book_append_sheet(wb,w1,"Synthèse"); XLSX.utils.book_append_sheet(wb,w2,"Tableau"); XLSX.writeFile(wb,nomFichier() + ".xlsx");
 };
+const NAVY = [14,42,71], BLEU = [109,167,236], GRIS = [85,97,110];
+function entetePdf(d, titre) {
+  const W = d.internal.pageSize.getWidth(), lh = 12, lw = lh * LOGO_R;
+  d.setFillColor(...NAVY); d.rect(0,0,W,24,"F"); d.setFillColor(255,255,255); d.roundedRect(8,5,lw + 6,lh + 2,2,2,"F"); d.addImage(LOGO,"PNG",11,6,lw,lh);
+  d.setTextColor(255); d.setFontSize(16); d.text(titre,11 + lw + 8,15);
+}
 $("#pdf").onclick = () => {
   const rows = filtrer(), s = stats(rows); if (!rows.length) return toast("Aucune requête à exporter");
-  const d = new window.jspdf.jsPDF({ orientation:"landscape", unit:"mm", format:"a4" }), W = d.internal.pageSize.getWidth(), hs = { fillColor:[14,42,71] };
-  const lh = 12, lw = lh * LOGO_R;
-  d.setFillColor(14,42,71); d.rect(0,0,W,24,"F"); d.setFillColor(255,255,255); d.roundedRect(8,5,lw + 6,lh + 2,2,2,"F"); d.addImage(LOGO,"PNG",11,6,lw,lh);
-  d.setTextColor(255); d.setFontSize(16); d.text(NOM + " - Rapport des requêtes",11 + lw + 8,15);
-  d.setFontSize(10); d.setTextColor(14,42,71); d.text(periode(),10,32); d.setTextColor(85,97,110); d.text("Filtres : " + ftxt(),10,38);
-  d.autoTable({ startY:42, head:[s.kpi.map(k => k[0])], body:[s.kpi.map(k => String(k[1]))], headStyles:hs, styles:{ fontSize:10, halign:"center" } });
+  const d = new window.jspdf.jsPDF({ orientation:"landscape", unit:"mm", format:"a4" }), hs = { fillColor:NAVY };
+  entetePdf(d, NOM + " - Rapport des requêtes");
+  d.setFontSize(10); d.setTextColor(...NAVY); d.text(periode(),10,32); d.setTextColor(...GRIS); d.text("Filtres : " + ftxt(),10,38);
+  const kp = kpiPairs(kpis(s, null));
+  d.autoTable({ startY:42, margin:{ left:10, right:10 }, head:[kp.map(k => k[0])], body:[kp.map(k => String(k[1]))], headStyles:hs, styles:{ fontSize:9, halign:"center" } });
   const y = d.lastAutoTable.finalY + 6; let m = y;
-  [["Module","module"],["Canal","canal"],["Agent","agent"]].forEach(([t,k],i) => { d.autoTable({ startY:y, margin:{ left:10 + i * 92 }, tableWidth:86, head:[[t,"Requêtes"]], body:s.rep[k].map(x => [x[0],String(x[1])]), headStyles:hs, styles:{ fontSize:8 } }); m = Math.max(m,d.lastAutoTable.finalY); });
-  const cs = {}; [22,26,32,18,50,28,24,16,61].forEach((w,i) => cs[i] = { cellWidth:w });
-  d.autoTable({ startY:m + 8, head:[HEAD], body:rows.map(ligne), headStyles:hs, styles:{ fontSize:7, cellPadding:1.5 }, columnStyles:cs });
+  [["Module","module"],["Canal","canal"],["Agent","agent"],["Catégorie","categorie"]].forEach(([t,k],i) => { d.autoTable({ startY:y, margin:{ left:10 + i * 68 }, tableWidth:64, head:[[t,"Requêtes"]], body:s.rep[k].map(x => [x[0],String(x[1])]), headStyles:hs, styles:{ fontSize:8 } }); m = Math.max(m,d.lastAutoTable.finalY); });
+  const cs = {}; [21,17,22,28,15,44,26,24,20,14,46].forEach((w,i) => cs[i] = { cellWidth:w });
+  d.autoTable({ startY:m + 8, margin:{ left:10, right:10 }, head:[HEAD], body:rows.map(ligne), headStyles:hs, styles:{ fontSize:7, cellPadding:1.5 }, columnStyles:cs });
   d.save(nomFichier() + ".pdf");
 };
 
+/* ---------- Rapport de direction : 2 pages, la semaine choisie (ou toutes) sans les autres filtres ---------- */
+function rapportDirection() {
+  const rows = filtrer({ libre:true }); if (!rows.length) return toast("Aucune requête sur cette période");
+  const s = stats(rows), p = F.sem ? stats(filtrer({ libre:true, sem:semPrec() })) : null, K = kpis(s, p), tr = tendance(true);
+  const d = new window.jspdf.jsPDF({ orientation:"portrait", unit:"mm", format:"a4" }), W = 210, M = 12, hs = { fillColor:NAVY };
+  entetePdf(d, "Rapport de direction");
+  d.setFontSize(10); d.setTextColor(255); d.text(periode().replace("Période : ", "") + "  ·  édité le " + fd(new Date(), true), W - M, 15, { align:"right" });
+  let y = 32;
+  /* indicateurs clés : 4 puis 3 tuiles */
+  const tuile = (x, y0, w, k) => {
+    d.setDrawColor(213,219,226); d.setFillColor(238,242,247); d.roundedRect(x, y0, w, 23, 2, 2, "FD");
+    d.setTextColor(...GRIS); d.setFontSize(7.5); d.text(String(k[0]), x + 3, y0 + 5.5, { maxWidth:w - 6 });
+    d.setTextColor(...NAVY); d.setFontSize(17); d.setFont("helvetica", "bold"); d.text(String(k[1]), x + 3, y0 + 14.5); d.setFont("helvetica", "normal");
+    if (k[2]) { d.setFontSize(7); d.setTextColor(k[3] === "dn" ? 180 : k[3] === "up" ? 27 : 85, k[3] === "dn" ? 35 : k[3] === "up" ? 107 : 97, k[3] === "dn" ? 24 : k[3] === "up" ? 58 : 110); d.text(String(k[2]), x + 3, y0 + 20.5, { maxWidth:w - 6 }); }
+  };
+  const w4 = (W - 2 * M - 9) / 4; K.slice(0,4).forEach((k,i) => tuile(M + i * (w4 + 3), y, w4, k));
+  const w3 = (W - 2 * M - 6) / 3; K.slice(4).forEach((k,i) => tuile(M + i * (w3 + 3), y + 26, w3, k));
+  y += 58;
+  /* évolution sur 12 semaines : colonnes empilées (résolues en bleu marine, en cours en bleu clair) */
+  d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text("Évolution sur 12 semaines", M, y); d.setFont("helvetica", "normal");
+  d.setFillColor(...NAVY); d.rect(W - M - 52, y - 3, 3, 3, "F"); d.setFontSize(8); d.setTextColor(...GRIS); d.text("Résolues", W - M - 48, y - 0.4);
+  d.setFillColor(...BLEU); d.rect(W - M - 28, y - 3, 3, 3, "F"); d.text("En cours", W - M - 24, y - 0.4);
+  const cx = M + 8, cy = y + 4, cw = W - 2 * M - 8, ch = 42, mx = joli(Math.max(1, ...tr.map(x => x.res + x.enc))), sl = cw / tr.length, bw = Math.min(10, sl * .62);
+  d.setDrawColor(213,219,226); d.setLineWidth(.2);
+  [0, mx / 2, mx].forEach(t => { const yy = cy + ch - t / mx * ch; d.line(cx, yy, cx + cw, yy); d.setFontSize(7); d.setTextColor(...GRIS); d.text(nf.format(t), cx - 1.5, yy + 1, { align:"right" }); });
+  tr.forEach((x,i) => {
+    const bx = cx + sl * i + (sl - bw) / 2, hr = ch * x.res / mx, he = ch * x.enc / mx;
+    if (x.res) { d.setFillColor(...NAVY); d.rect(bx, cy + ch - hr, bw, hr, "F"); }
+    if (x.enc) { d.setFillColor(...BLEU); d.rect(bx, cy + ch - hr - he - (x.res ? .6 : 0), bw, he, "F"); }
+    d.setFontSize(7); d.setTextColor(...GRIS); d.text(`${pad(x.d.getDate())}/${pad(x.d.getMonth() + 1)}`, bx + bw / 2, cy + ch + 4, { align:"center" });
+    if (x.w === F.sem || (!F.sem && i === tr.length - 1)) { d.setTextColor(...NAVY); d.setFont("helvetica", "bold"); d.text(String(x.res + x.enc), bx + bw / 2, cy + ch - hr - he - 1.5, { align:"center" }); d.setFont("helvetica", "normal"); }
+  });
+  y = cy + ch + 11;
+  /* répartitions : barres horizontales */
+  const barres = (titre, liste, x, y0, w) => {
+    d.setTextColor(...NAVY); d.setFontSize(10); d.setFont("helvetica", "bold"); d.text(titre, x, y0); d.setFont("helvetica", "normal");
+    const l = liste.slice(0, 6), mx2 = l[0] ? l[0][1] : 1; let yy = y0 + 5;
+    if (!l.length) { d.setFontSize(8); d.setTextColor(...GRIS); d.text("-", x, yy + 2); return yy + 6; }
+    l.forEach(([n,c]) => { d.setFontSize(8); d.setTextColor(40,40,40); d.text(d.splitTextToSize(String(n), 40)[0], x, yy + 2.6);
+      d.setFillColor(...NAVY); d.rect(x + 42, yy, Math.max(1, (w - 54) * c / mx2), 3.4, "F"); d.setTextColor(...NAVY); d.text(String(c), x + 42 + Math.max(1, (w - 54) * c / mx2) + 1.5, yy + 2.8); yy += 5.6; });
+    return yy;
+  };
+  const wc = (W - 2 * M - 8) / 2;
+  const y1 = barres("Par module", s.rep.module, M, y, wc), y2 = barres("Par catégorie", s.rep.categorie, M + wc + 8, y, wc); y = Math.max(y1, y2) + 3;
+  const y3 = barres("Par canal", s.rep.canal, M, y, wc), y4 = barres("Par agent", s.rep.agent, M + wc + 8, y, wc); y = Math.max(y3, y4) + 4;
+  /* délais */
+  d.addPage(); entetePdf(d, "Rapport de direction"); y = 32;
+  d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text("Délais de résolution", M, y); d.setFont("helvetica", "normal"); y += 3;
+  const dl = (nom, l, i) => d.autoTable({ startY:y, margin:{ left:M + i * (wc + 8) }, tableWidth:wc, head:[[nom,"Résolues","Médiane","Moyenne"]], body:l.map(x => [x[0], String(x[1]), dur(x[2]), dur(x[3])]).concat(l.length ? [] : [["-","","",""]]), headStyles:hs, styles:{ fontSize:8 } });
+  dl("Module", s.delais.module, 0); const ya = d.lastAutoTable.finalY; dl("Agent", s.delais.agent, 1); y = Math.max(ya, d.lastAutoTable.finalY) + 8;
+  d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text("Usagers les plus fréquents", M, y); d.setFont("helvetica", "normal"); y += 3;
+  d.autoTable({ startY:y, margin:{ left:M, right:M }, head:[["Usager","Requêtes"]], body:s.rep.usager.map(x => [x[0], String(x[1])]), headStyles:hs, styles:{ fontSize:8 }, columnStyles:{ 1:{ cellWidth:25 } } }); y = d.lastAutoTable.finalY + 8;
+  const surv = rows.filter(urgent).sort((a,b) => a.date - b.date);
+  d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text(`Requêtes à surveiller (${surv.length}) : en cours depuis plus de 48 h ou en retard`, M, y); d.setFont("helvetica", "normal");
+  if (surv.length) d.autoTable({ startY:y + 3, margin:{ left:M, right:M }, head:[["N°","Date","Usager","Description","Agent","Ancienneté"]],
+    body:surv.slice(0, 20).map(r => [r.ref, fd(r.date), r.usager, r.description, r.agent, dur(age(r))]), headStyles:hs, styles:{ fontSize:7.5, cellPadding:1.5 }, columnStyles:{ 0:{ cellWidth:24 }, 1:{ cellWidth:20 }, 5:{ cellWidth:20 } } });
+  else { d.setFontSize(9); d.setTextColor(...GRIS); d.text("Aucune : tout est à jour.", M, y + 8); }
+  if (surv.length > 20) { d.setFontSize(8); d.setTextColor(...GRIS); d.text(`… et ${surv.length - 20} autre(s), voir l'application.`, M, d.lastAutoTable.finalY + 5); }
+  const n = d.getNumberOfPages(); for (let i = 1; i <= n; i++) { d.setPage(i); d.setFontSize(8); d.setTextColor(...GRIS); d.text(`${NOM} · Rapport de direction · page ${i} / ${n}`, W / 2, 291, { align:"center" }); }
+  d.save("Rapport_direction_" + (F.sem ? F.sem.split("-").reverse().join("") : "toutes_semaines") + ".pdf");
+}
+$("#rdr").onclick = rapportDirection;
+
+
+/* ---------- Administration (réservée au rôle « admin ») ---------- */
+const ADM = { s:"cpt", type:"usager", filtre:"" };
+const SOUS = { cpt:() => admComptes(), lst:() => admListes(), cor:() => admCorbeille(), jrn:() => admJournal(), don:() => admDonnees() };
+function renderAdmin() {
+  $$("#sbn [data-s]").forEach(b => b.classList.toggle("on", b.dataset.s === ADM.s)); Object.keys(SOUS).forEach(x => $("#adm-" + x).hidden = x !== ADM.s);
+  SOUS[ADM.s]();
+}
+$("#sbn").onclick = e => { const b = e.target.closest("[data-s]"); if (b) { ADM.s = b.dataset.s; renderAdmin(); } };
+const note = (el, t, bon) => { el.textContent = t || ""; el.style.borderLeftColor = bon ? "#1B6B3A" : ""; };
+
+/* --- Comptes --- */
+async function admComptes() {
+  const el = $("#adm-cpt");
+  try { PROFILS = await store.profils(); } catch (e) { el.innerHTML = `<div class="msg">${esc(e.message)}</div>`; return; }
+  const agentsOpt = v => `<option value="">— aucun —</option>` + LA.map(a => `<option${a === v ? " selected" : ""}>${esc(a)}</option>`).join("");
+  const att = PROFILS.filter(p => !p.actif).length;
+  el.innerHTML = `<details class="sv" style="margin:0 0 12px"><summary>+ Créer un compte</summary>
+      <form id="nc" novalidate><label for="nce">Adresse e-mail</label><input id="nce" type="email" autocomplete="off" inputmode="email">
+      <label for="ncn">Nom affiché <span class="opt">(facultatif)</span></label><input id="ncn" autocomplete="off">
+      <div class="fl" style="margin-top:6px"><div><label for="ncr">Rôle</label><select id="ncr"><option value="agent">Agent</option><option value="admin">Administrateur</option></select></div>
+      <div><label for="nca">Agent correspondant</label><select id="nca">${agentsOpt("")}</select></div></div>
+      <label for="ncp">Mot de passe provisoire <span class="opt">(vide = généré automatiquement)</span></label><input id="ncp" type="text" autocomplete="off">
+      <div class="msg" id="ncm" role="alert"></div><button class="ok" id="ncb" style="margin-bottom:12px">Créer le compte</button></form></details>`
+    + (att ? `<div class="rap"><span>${att} compte(s) en attente d'activation : vérifiez qu'il s'agit bien d'un collègue, puis activez-le.</span></div>` : "")
+    + PROFILS.slice().sort((a,b) => (a.actif - b.actif) || (a.nom || a.email).localeCompare(b.nom || b.email, "fr")).map(p => {
+      const moi = ME && p.id === ME.id;
+      return `<div class="cpt ${p.actif ? "" : "att"}" data-id="${esc(p.id)}"><h4>${esc(p.nom || p.email)}${moi ? " (vous)" : ""} <span class="pill ${p.role === "admin" ? "en" : ""}">${p.role === "admin" ? "Administrateur" : "Agent"}</span> <span class="pill ${p.actif ? "" : "al"}">${p.actif ? "Actif" : "En attente d'activation"}</span></h4><small>${esc(p.email)}</small>
+        <div class="g2"><div><label>Nom affiché</label><input data-f="nom" value="${esc(p.nom || "")}"></div>
+        <div><label>Rôle</label><select data-f="role"><option value="agent"${p.role === "agent" ? " selected" : ""}>Agent</option><option value="admin"${p.role === "admin" ? " selected" : ""}>Administrateur</option></select></div>
+        <div><label>Agent correspondant</label><select data-f="agent">${agentsOpt(p.agent || "")}</select></div></div>
+        <div class="act">${moi ? "" : `<button type="button" class="ghost" data-act="actif">${p.actif ? "Désactiver" : "Activer"}</button>`}<button type="button" class="ghost" data-act="mdp">Nouveau mot de passe</button><button type="button" class="ghost" data-act="2fa">Réinitialiser la 2FA</button></div>
+        <div class="msg" data-m role="alert"></div></div>`; }).join("");
+}
+$("#adm-cpt").addEventListener("submit", async e => {
+  if (e.target.id !== "nc") return; e.preventDefault();
+  const m = $("#ncm"), b = $("#ncb"), body = { action:"creer", email:$("#nce").value.trim(), nom:$("#ncn").value.trim(), role:$("#ncr").value, agent:$("#nca").value, motdepasse:$("#ncp").value.trim() };
+  note(m, ""); if (!body.email) return note(m, "Saisissez l'adresse e-mail du collègue.");
+  b.disabled = true;
+  try { const r = await store.admin(body); note(m, `Compte créé pour ${r.email}.` + (r.motdepasse ? ` Mot de passe provisoire : ${r.motdepasse} (à lui communiquer ; il pourra le changer dans « Mon compte »).` : ""), true); toast("Compte créé"); PROFILS = await store.profils(); setTimeout(() => { if (ADM.s === "cpt") { const t = $("#ncm").textContent; admComptes().then(() => { const mm = $("#ncm"); if (mm) { mm.textContent = t; mm.style.borderLeftColor = "#1B6B3A"; $("#adm-cpt details").open = true; } }); } }, 0); }
+  catch (x) { note(m, x.message); }
+  b.disabled = false;
+});
+$("#adm-cpt").addEventListener("change", async e => {
+  const f = e.target.dataset.f, c = e.target.closest(".cpt"); if (!f || !c) return;
+  const id = c.dataset.id, v = e.target.value.trim(), m = c.querySelector("[data-m]");
+  try { await store.majProfil(id, { [f]: f === "agent" ? (v || null) : v }); note(m, "Enregistré.", true);
+    const p = PROFILS.find(x => x.id === id); if (p) p[f] = f === "agent" ? (v || null) : v; if (ME && id === ME.id) Object.assign(ME, { [f]: p[f] });
+    if (f === "role" || f === "nom") admComptes(); }
+  catch (x) { note(m, x.message); admComptes(); }
+});
+$("#adm-cpt").addEventListener("click", async e => {
+  const b = e.target.closest("[data-act]"), c = e.target.closest(".cpt"); if (!b || !c) return;
+  const id = c.dataset.id, m = c.querySelector("[data-m]"), p = PROFILS.find(x => x.id === id), a = b.dataset.act;
+  if (a === "actif") { b.disabled = true; try { await store.majProfil(id, { actif:!p.actif }); toast(p.actif ? "Compte désactivé" : "Compte activé"); admComptes(); } catch (x) { note(m, x.message); b.disabled = false; } }
+  if (a === "2fa") { if (!confirm(`Retirer la double authentification de ${p.email} ? Son téléphone ne sera plus demandé à la connexion.`)) return; b.disabled = true;
+    try { const r = await store.admin({ action:"reset2fa", id }); note(m, r.retires ? "Double authentification retirée." : "Ce compte n'avait pas de double authentification.", true); } catch (x) { note(m, x.message); } b.disabled = false; }
+  if (a === "mdp") { c.querySelector(".act").innerHTML = `<div class="add" style="margin:0;width:100%"><input data-pw placeholder="Nouveau mot de passe (vide = généré)" autocomplete="off" aria-label="Nouveau mot de passe"><button type="button" class="ok" data-act="mdp-ok">Valider</button><button type="button" class="ghost" data-act="mdp-x">Annuler</button></div>`; c.querySelector("[data-pw]").focus(); }
+  if (a === "mdp-x") admComptes();
+  if (a === "mdp-ok") {
+    b.disabled = true;
+    try {
+      const r = await store.admin({ action:"mdp", id, motdepasse:c.querySelector("[data-pw]").value.trim() }), t = "Mot de passe changé." + (r.motdepasse ? ` Nouveau mot de passe : ${r.motdepasse} (à communiquer au collègue).` : "");
+      toast("Mot de passe changé"); await admComptes(); const m2 = document.querySelector(`#adm-cpt .cpt[data-id="${id}"] [data-m]`); if (m2) note(m2, t, true);
+    } catch (x) { note(m, x.message); b.disabled = false; }
+  }
+});
+
+/* --- Listes --- */
+const TYPES_L = [["usager","Usagers"],["agent","Agents"],["module","Modules"],["canal","Canaux"],["description","Requêtes types"],["categorie","Catégories"],["motif","Motifs d'attente"]];
+function admListes() {
+  const el = $("#adm-lst"), rows = LROWS.filter(x => x.type === ADM.type), q = norm(ADM.filtre), vis = rows.filter(x => !q || norm(x.valeur).includes(q));
+  el.innerHTML = `<div class="sbn">${TYPES_L.map(([t,n]) => `<button data-t="${t}" class="${t === ADM.type ? "on" : ""}">${n}</button>`).join("")}</div>
+    <p class="hint">${ADM.type === "agent" ? "Pensez à lier ensuite chaque agent à son compte (onglet Comptes). " : ""}Désactiver une valeur la retire des listes de choix sans toucher aux requêtes déjà saisies.</p>
+    <form class="add" id="la2" novalidate><input id="lav" placeholder="Nouvelle valeur" autocomplete="off" aria-label="Nouvelle valeur"><button class="ok">Ajouter</button></form><div class="msg" id="lam" role="alert" style="margin:-4px 0 10px"></div>
+    ${rows.length > 12 ? `<input id="laf" placeholder="Filtrer la liste" value="${esc(ADM.filtre)}" style="margin-bottom:10px" aria-label="Filtrer la liste">` : ""}
+    <div class="gl">${vis.map(x => `<div class="row ${x.actif ? "" : "off"}" data-id="${x.id}"><span>${esc(x.valeur)}</span><button data-act="${x.actif ? "off" : "on"}">${x.actif ? "Désactiver" : "Réactiver"}</button><button data-act="del">Supprimer</button></div>`).join("") || `<div class="vide">Liste vide.</div>`}</div>`;
+}
+const rechargerListes = async () => { appliquerListes(await store.listes()); listes(); renderBord(); if (vue === "adm" && ADM.s === "lst") admListes(); };
+$("#adm-lst").addEventListener("click", async e => {
+  const t = e.target.closest("[data-t]"); if (t) { ADM.type = t.dataset.t; ADM.filtre = ""; return admListes(); }
+  const b = e.target.closest("[data-act]"), r = e.target.closest(".row"); if (!b || !r) return;
+  const id = +r.dataset.id, x = LROWS.find(y => y.id === id); if (!x) return;
+  try {
+    if (b.dataset.act === "del") { if (!confirm(`Supprimer « ${x.valeur} » de la liste ? Les requêtes déjà saisies ne changent pas.`)) return; await store.delListe(id); }
+    else await store.majListe(id, { actif:b.dataset.act === "on" });
+    await rechargerListes();
+  } catch (err) { note($("#lam"), err.message); }
+});
+$("#adm-lst").addEventListener("submit", async e => {
+  if (e.target.id !== "la2") return; e.preventDefault();
+  const v = $("#lav").value.trim().replace(/\s+/g, " "), m = $("#lam"); note(m, ""); if (!v) return note(m, "Saisissez une valeur.");
+  if (LROWS.some(x => x.type === ADM.type && norm(x.valeur) === norm(v))) return note(m, "Cette valeur existe déjà dans la liste.");
+  const mx = Math.max(0, ...LROWS.filter(x => x.type === ADM.type).map(x => x.ordre || 0));
+  try { await store.addListe(ADM.type, ADM.type === "description" ? v.toUpperCase() : v, ADM.type === "usager" ? 0 : mx + 1); await rechargerListes(); toast("Valeur ajoutée"); const i = $("#lav"); if (i) i.focus(); }
+  catch (err) { note(m, err.message); }
+});
+$("#adm-lst").addEventListener("input", e => { if (e.target.id === "laf") { ADM.filtre = e.target.value; const p = e.target.selectionStart; admListes(); const i = $("#laf"); i.focus(); i.setSelectionRange(p, p); } });
+
+/* --- Corbeille --- */
+async function admCorbeille() {
+  const el = $("#adm-cor"); el.innerHTML = `<p class="hint">Chargement…</p>`;
+  try {
+    const l = await store.corbeille();
+    el.innerHTML = `<p class="hint">Requêtes supprimées (les 200 plus récentes). Restaurer une requête la remet dans l'application, avec son historique.</p>` + (l.length ? l.map(r => `<div class="cpt" data-id="${esc(r.id)}"><h4>${esc(r.ref)} · ${esc(r.description)}</h4><small>${esc(fd(r.date, r.avecHeure))} · ${esc(r.usager || "sans usager")} · ${esc(r.agent)} · ${esc(r.statut)}<br>Supprimée par ${esc(nomDe(r.supprimePar))}${r.supprimeLe ? " le " + fd(r.supprimeLe, true) : ""}</small>
+      <div class="act"><button type="button" class="ghost" data-act="rest">Restaurer</button></div><div class="msg" data-m role="alert"></div></div>`).join("") : `<div class="vide"><b>Corbeille vide</b>Aucune requête supprimée.</div>`);
+  } catch (x) { el.innerHTML = `<div class="msg">${esc(x.message)}</div>`; }
+}
+$("#adm-cor").addEventListener("click", async e => {
+  const b = e.target.closest("[data-act]"), c = e.target.closest(".cpt"); if (!b || !c) return; b.disabled = true;
+  try { await store.restaurer(c.dataset.id); toast("Requête restaurée"); admCorbeille(); } catch (x) { note(c.querySelector("[data-m]"), x.message); b.disabled = false; }
+});
+
+/* --- Journal général --- */
+let JR = [];
+function admJournal() {
+  const el = $("#adm-jrn");
+  el.innerHTML = `<div class="add"><input id="jrf" placeholder="Filtrer : n°, personne, action…" aria-label="Filtrer le journal"><button class="ghost" id="jrr" type="button">Actualiser</button></div><div class="jr" id="jrl"><p class="hint">Chargement…</p></div>`;
+  const aff = () => { const q = norm($("#jrf").value); const l = JR.filter(e => !q || norm(`${e.ref} ${e.par} ${nomDe(e.par)} ${ACT_J[e.action]} ${JSON.stringify(e.changes || "")}`).includes(q));
+    $("#jrl").innerHTML = l.length ? l.map(e => `<div class="e">${entreeJ(e, true)}</div>`).join("") : `<div class="vide">Aucune entrée.</div>`; };
+  const charger = async () => { try { JR = await store.journalTous(300); aff(); } catch (x) { $("#jrl").innerHTML = `<div class="msg">${esc(x.message)}</div>`; } };
+  $("#jrf").oninput = aff; $("#jrr").onclick = charger; charger();
+}
+
+/* --- Données : sauvegarde complète, import Excel --- */
+const joursDepuis = iso => iso ? Math.floor((Date.now() - new Date(iso)) / DAY) : null;
+let SAUV = null;                                                        // date de la dernière sauvegarde (texte ISO) ou "" si jamais
+async function admDonnees() {
+  const el = $("#adm-don");
+  try { SAUV = (await store.param("derniere_sauvegarde")) || ""; } catch (x) { SAUV = SAUV || ""; }
+  const n = joursDepuis(SAUV);
+  el.innerHTML = `<div class="card"><h3 style="margin:14px 0 4px;color:var(--n)">Sauvegarde complète</h3>
+      <p class="hint">Un fichier Excel avec toutes les requêtes (même supprimées), l'historique des modifications, les listes et les comptes. À faire chaque mois et à ranger hors de l'application.</p>
+      <p style="margin:6px 0"><b>${SAUV ? `Dernière sauvegarde : ${fd(new Date(SAUV), true)} (${n === 0 ? "aujourd'hui" : "il y a " + n + " jour" + (n > 1 ? "s" : "")})` : "Aucune sauvegarde enregistrée."}</b></p>
+      <button class="ok" id="sv" type="button" style="max-width:360px">Télécharger la sauvegarde</button><div class="msg" id="svm" role="alert"></div></div>
+    <div class="card"><h3 style="margin:14px 0 4px;color:var(--n)">Importer un fichier Excel</h3>
+      <p class="hint">Pour reprendre l'historique des semaines passées. Colonnes attendues : DATE, MODULE, USAGER, CANAL, DESCRIPTION DE LA REQUÊTE, AGENT MMTE, DATE ET HEURE DE RESOLUTION, STATUT, OBSERVATION (et CATÉGORIE si vous l'avez). Un export de cette application convient aussi.</p>
+      <div class="act" style="margin-top:6px"><button type="button" class="ghost" id="modl">Télécharger le modèle Excel</button><button type="button" class="ghost" id="imb">Choisir un fichier…</button></div>
+      <input type="file" id="imf" accept=".xlsx,.xls,.csv" hidden><div id="imp"></div></div>`;
+}
+function majRappel() {
+  const n = joursDepuis(SAUV), bt = !estAdmin() || rapMasque || SAUV === null ? "" : (SAUV === "" ? (data.length ? "Aucune sauvegarde n'a encore été faite." : "") : (n >= 30 ? `La dernière sauvegarde date de ${n} jours.` : ""));
+  $("#rap").hidden = !bt; $("#rapt").textContent = bt;
+}
+let rapMasque = false;
+$("#rapb").onclick = () => { ADM.s = "don"; go("adm"); };
+$("#rapx").onclick = () => { rapMasque = true; majRappel(); };
+async function sauvegarder() {
+  const b = $("#sv"), m = $("#svm"); note(m, ""); b.disabled = true; b.textContent = "Préparation…";
+  try {
+    const t = await store.tout(), D = x => x ? fd(new Date(x), true) : "", oui = x => x ? "oui" : "non";
+    const H1 = ["N°","Date","Heure renseignée","Module","Usager","Canal","Description","Catégorie","Agent","Résolution","Statut","Observation","À traiter avant le","Motif d'attente","Pièces jointes","Supprimée","Saisi par","Créé le","Modifié par","Modifié le","Supprimé par","Supprimé le","Identifiant"];
+    const R = t.requetes.map(x => [x.ref, D(x.date_requete), oui(x.avec_heure), x.module, x.usager, x.canal, x.description, x.categorie, x.agent, D(x.resolution), x.statut, x.observation, x.echeance, x.motif_attente,
+      (Array.isArray(x.pieces) ? x.pieces : []).map(p => p.n).join(" ; "), oui(x.supprime), x.saisi_par, D(x.cree_le), x.modifie_par, D(x.modifie_le), x.supprime_par, D(x.supprime_le), x.id]);
+    const J = t.journal.map(e => [D(e.le), e.ref, ACT_J[e.action] || e.action, e.par, e.changes ? Object.entries(e.changes).filter(([k]) => CH[k]).map(([k,v]) => `${CH[k]} : ${valJ(k, v.de)} → ${valJ(k, v.a)}`).join(" | ") : ""]);
+    const wb = XLSX.utils.book_new(), add = (n, h, l, w) => { const s = XLSX.utils.aoa_to_sheet([h, ...l]); s["!cols"] = w.map(wch => ({ wch })); XLSX.utils.book_append_sheet(wb, s, n); };
+    add("Requêtes", H1, R, [16,17,9,26,32,13,48,26,26,17,11,50,12,26,30,10,30,17,30,17,30,17,38]);
+    add("Journal", ["Date","N°","Action","Par","Détail"], J, [17,16,12,32,100]);
+    add("Listes", ["Type","Valeur","Ordre","Actif"], t.listes.map(x => [x.type, x.valeur, x.ordre, oui(x.actif)]), [14,50,8,8]);
+    add("Comptes", ["E-mail","Nom","Rôle","Agent","Actif"], t.profils.map(x => [x.email, x.nom, x.role, x.agent, oui(x.actif)]), [36,28,14,28,8]);
+    XLSX.writeFile(wb, `Sauvegarde_${NOM}_${iso(new Date())}.xlsx`);
+    SAUV = new Date().toISOString(); try { await store.setParam("derniere_sauvegarde", SAUV); } catch (x) { /* la date n'a pas pu être mémorisée : sans conséquence pour le fichier */ }
+    majRappel(); if (vue === "adm" && ADM.s === "don") admDonnees();
+    toast(`Sauvegarde téléchargée (${t.requetes.length} requêtes)`);
+  } catch (x) { note(m, x.message); b.disabled = false; b.textContent = "Télécharger la sauvegarde"; }
+}
+/* import */
+function dateXl(v) {                                                    // cellule Excel (nombre ou texte) -> { d, h } ; h = une heure était indiquée
+  if (v === "" || v == null) return null;
+  const ok = (y, mo, j, H, M, h) => { const d = new Date(y, mo - 1, j, H || 0, M || 0); return d.getFullYear() === y && d.getMonth() === mo - 1 && d.getDate() === j && y > 1999 && y < 2100 ? { d, h } : null; };
+  if (typeof v === "number") { const o = XLSX.SSF.parse_date_code(v); return o ? ok(o.y, o.m, o.d, o.H, o.M, !!(o.H || o.M)) : null; }
+  const s = String(v).trim(); let m;
+  if ((m = s.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{2,4})(?:[ T]+(\d{1,2})[:hH](\d{2}))?/))) return ok(+m[3] < 100 ? 2000 + +m[3] : +m[3], +m[2], +m[1], +m[4], +m[5], m[4] != null);
+  if ((m = s.match(/^(\d{4})-(\d{2})-(\d{2})(?:[ T]+(\d{1,2}):(\d{2}))?/))) return ok(+m[1], +m[2], +m[3], +m[4], +m[5], m[4] != null);
+  return null;
+}
+let IMP = null;
+function analyserImport(A) {
+  const hi = A.findIndex(r => { const n = r.map(norm); return n.some(x => x === "date" || x.startsWith("date de la requete")) && n.some(x => x.startsWith("module")); });
+  if (hi < 0) throw new Error("En-têtes introuvables : la première ligne doit contenir au moins DATE et MODULE.");
+  const col = {}; A[hi].forEach((h, j) => { const n = norm(h);
+    if (n.includes("resolution")) col.res = j; else if (n === "date" || n.startsWith("date de la requete") || n === "date requete") col.date = j; else if (n.startsWith("module")) col.module = j;
+    else if (n.startsWith("usager")) col.usager = j; else if (n.startsWith("canal")) col.canal = j; else if (n.startsWith("description")) col.desc = j; else if (n.startsWith("categorie")) col.cat = j;
+    else if (n.startsWith("agent")) col.agent = j; else if (n.startsWith("statut")) col.statut = j; else if (n.startsWith("observation")) col.obs = j; });
+  for (const k of ["date","module","canal","desc","agent"]) if (col[k] === undefined) throw new Error("Colonne manquante : " + ({ date:"DATE", module:"MODULE", canal:"CANAL", desc:"DESCRIPTION DE LA REQUÊTE", agent:"AGENT MMTE" })[k] + ".");
+  const cell = (r, k) => col[k] === undefined ? "" : r[col[k]], txt = (r, k) => String(cell(r, k) ?? "").trim().replace(/\s+/g, " ");
+  const existe = new Set(data.map(r => iso(r.date) + "|" + norm(r.usager) + "|" + norm(r.description))), vus = new Set();
+  const ml = modules(), cl = canaux(), al = LA, kl = categories(), ul = usagers(), out = { pretes:[], erreurs:[], doublons:0, lues:0 };
+  A.slice(hi + 1).forEach((r, i) => {
+    if (r.every(c => c === "" || c == null)) return; out.lues++;
+    const ligne = hi + i + 2, e = [], dd = dateXl(cell(r, "date")); if (!dd) e.push("date invalide ou absente");
+    const find = (v, l) => l.find(x => norm(x) === norm(v));
+    const mod = find(txt(r, "module"), ml), can = find(txt(r, "canal"), cl), age = find(txt(r, "agent"), al), desc = txt(r, "desc").toUpperCase();
+    if (!mod) e.push(`module inconnu « ${txt(r, "module")} »`); if (!can) e.push(`canal inconnu « ${txt(r, "canal")} »`); if (!age) e.push(`agent inconnu « ${txt(r, "agent")} »`); if (!desc) e.push("description absente");
+    const rs = cell(r, "res") === "" ? null : dateXl(cell(r, "res")); if (cell(r, "res") !== "" && !rs) e.push("date de résolution invalide");
+    const st = norm(txt(r, "statut")); if (st && !/^(en cours|resolue|resolu)$/.test(st)) e.push(`statut inconnu « ${txt(r, "statut")} »`);
+    if (st.startsWith("resolu") && !rs) e.push("statut RESOLUE sans date de résolution");
+    if (dd && rs && avant(rs.d, dd.d, dd.h, rs.h)) e.push("résolution antérieure à la date de la requête");
+    if (e.length) return out.erreurs.push({ ligne, e });
+    const v = { date:dd.d, avecHeure:dd.h, module:mod, usager:canon(txt(r, "usager"), ul), canal:can, description:desc, agent:age, observation:String(cell(r, "obs") ?? "").trim(), categorie:find(txt(r, "cat"), kl) || "",
+      resolution:rs ? rs.d : null, avecHeureRes:rs ? rs.h : false, statut:rs ? STAT_R : STAT_C };
+    const cle = iso(v.date) + "|" + norm(v.usager) + "|" + norm(v.description);
+    v.doublon = existe.has(cle) || vus.has(cle); if (v.doublon) out.doublons++; vus.add(cle); out.pretes.push(v);
+  });
+  return out;
+}
+function afficherImport() {
+  const el = $("#imp"); if (!IMP) { el.innerHTML = ""; return; }
+  const ign = $("#imi") ? $("#imi").checked : true, n = IMP.pretes.filter(v => !(ign && v.doublon)).length;
+  el.innerHTML = `<div class="prev"><p><b>${IMP.lues} ligne(s) lue(s)</b> : ${IMP.pretes.length} valide(s), ${IMP.erreurs.length} en erreur${IMP.doublons ? `, dont ${IMP.doublons} qui ressemble(nt) à une requête déjà présente (même jour, usager et description)` : ""}.</p>
+    ${IMP.doublons ? `<label class="tg" style="margin:6px 0"><input type="checkbox" id="imi"${ign ? " checked" : ""}> Ignorer les requêtes déjà présentes</label>` : ""}
+    ${IMP.erreurs.length ? `<ul class="bad">${IMP.erreurs.slice(0, 30).map(x => `<li>Ligne ${x.ligne} : ${esc(x.e.join(", "))}</li>`).join("")}${IMP.erreurs.length > 30 ? `<li>… et ${IMP.erreurs.length - 30} autre(s)</li>` : ""}</ul><p class="hint">Les lignes en erreur ne seront pas importées. Corrigez-les dans le fichier (ou ajoutez la valeur manquante dans Listes) puis recommencez.</p>` : ""}
+    ${n ? `<div class="tw"><table><thead><tr><th>Date</th><th>Module</th><th>Usager</th><th>Description</th><th>Agent</th><th>Statut</th></tr></thead><tbody>${IMP.pretes.filter(v => !(ign && v.doublon)).slice(0, 6).map(v => `<tr><td>${fd(v.date, v.avecHeure)}</td><td>${esc(v.module)}</td><td>${esc(v.usager)}</td><td>${esc(v.description)}</td><td>${esc(v.agent)}</td><td>${esc(v.statut)}</td></tr>`).join("")}</tbody></table></div><p class="hint">Aperçu : ${Math.min(6, n)} ligne${Math.min(6, n) > 1 ? "s" : ""} sur ${n}.</p>
+    <button class="ok" id="imgo" type="button" style="max-width:360px">Importer ${n} requête${n > 1 ? "s" : ""}</button>` : ""}<div class="msg" id="imm" role="alert"></div></div>`;
+}
+async function lancerImport() {
+  const ign = $("#imi") ? $("#imi").checked : true, l = IMP.pretes.filter(v => !(ign && v.doublon)).sort((a,b) => a.date - b.date), b = $("#imgo"), m = $("#imm");
+  if (!confirm(`Importer ${l.length} requête(s) ? Chaque requête recevra un numéro de référence.`)) return;
+  b.disabled = true; let fait = 0;
+  try { for (let i = 0; i < l.length; i += 100) { const lot = l.slice(i, i + 100).map(v => { const { doublon, ...x } = v; return x; }); await store.inserer(lot); fait += lot.length; note(m, `Import en cours… ${fait} / ${l.length}`); }
+    IMP = null; $("#imp").innerHTML = `<div class="msg" style="border-left-color:#1B6B3A">${fait} requête(s) importée(s).</div>`; toast(`${fait} requêtes importées`); }
+  catch (x) { note(m, `${x.message} — ${fait} requête(s) déjà importée(s) sur ${l.length}.`); b.disabled = false; }
+}
+$("#adm-don").addEventListener("click", async e => {
+  const id = e.target.id;
+  if (id === "sv") sauvegarder();
+  if (id === "imb") $("#imf").click();
+  if (id === "imgo") lancerImport();
+  if (id === "modl") {
+    const ex = [HEAD.filter((h,i) => i !== 0), [fd(new Date()), modules()[0], "NOM DE L'USAGER", canaux()[0], "CVQ NON SYNCHRONISE", categories()[0], LA[0] || "", "", "EN COURS", "Observation éventuelle"]];
+    const s = XLSX.utils.aoa_to_sheet(ex); s["!cols"] = [12,28,34,13,50,28,26,22,12,60].map(wch => ({ wch })); const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, s, "Tableau"); XLSX.writeFile(wb, "Modele_import_SISR-MMTE.xlsx");
+  }
+});
+$("#adm-don").addEventListener("change", async e => {
+  if (e.target.id === "imi") return afficherImport();
+  if (e.target.id !== "imf") return;
+  const f = e.target.files[0]; e.target.value = ""; if (!f) return; const el = $("#imp"); el.innerHTML = `<p class="hint">Lecture du fichier…</p>`;
+  try {
+    const wb = XLSX.read(await f.arrayBuffer(), { type:"array" }), nom = wb.SheetNames.includes("Tableau") ? "Tableau" : wb.SheetNames[0];
+    IMP = analyserImport(XLSX.utils.sheet_to_json(wb.Sheets[nom], { header:1, raw:true, defval:"", blankrows:false })); afficherImport();
+  } catch (x) { IMP = null; el.innerHTML = `<div class="msg">${esc(x.message)}</div>`; }
+});
+
+
+/* ---------- Notifications : requêtes attribuées à l'agent lié au compte ---------- */
+/* Calculées dans l'appareil à partir des requêtes déjà lues (aucune donnée de plus ne circule).
+   Limite assumée : elles n'arrivent que lorsque l'application est ouverte (même réduite) ; sans serveur d'envoi, rien ne peut réveiller un téléphone où l'application est fermée. */
+const NT = { cle:"", base:0, vu:{}, connus:new Set(), premier:true, liste:[] };
+const ntCharger = () => {
+  NT.cle = "sisr:n:" + (ME ? ME.id : ""); NT.connus = new Set(); NT.premier = true; NT.liste = [];
+  let o = null; try { o = JSON.parse(ls.get(NT.cle) || "null"); } catch (e) { /* illisible : on repart de zéro */ }
+  if (o && typeof o.base === "number") { NT.base = o.base; NT.vu = o.vu && typeof o.vu === "object" ? o.vu : {}; } else { NT.base = Date.now(); NT.vu = {}; ntSauver(); }   // 1re connexion sur cet appareil : on n'inonde pas d'anciennes requêtes
+};
+const ntSauver = () => ls.set(NT.cle, JSON.stringify({ base:NT.base, vu:NT.vu }));
+const msMaj = r => Date.parse(r.maj) || 0;
+function ntCalculer() {
+  if (!ME || !ME.agent) return [];
+  return data.filter(r => r.agent === ME.agent && (r.modifiePar || r.saisiPar) !== ME.email && msMaj(r) > NT.base && NT.vu[r.id] !== r.maj)
+    .sort((a, b) => msMaj(b) - msMaj(a));
+}
+const ntMotif = r => !r.modifiePar ? "Requête qui vous est attribuée" : (r.resolution ? "Requête résolue" : "Requête modifiée");   // sans modification : c'est une création par un collègue
+function ntSysteme(titre, corps, id) {                                  // notification du système (si autorisée par la personne)
+  try {
+    if (!("Notification" in window) || Notification.permission !== "granted" || !document.hidden) return;   // si l'appli est à l'écran, la pastille et le message suffisent
+    const o = { body:corps, tag:"sisr-" + (id || "x"), icon:"icon-192.png", badge:"icon-192.png", data:{ id } };
+    if (navigator.serviceWorker && navigator.serviceWorker.ready) navigator.serviceWorker.ready.then(reg => reg.showNotification(titre, o)).catch(() => { try { new Notification(titre, o); } catch (e) { /* ignoré */ } });
+    else new Notification(titre, o);
+  } catch (e) { /* notifications indisponibles : sans conséquence */ }
+}
+function ntMaj() {
+  const b = $("#bell"); b.hidden = !ME || !ME.agent;
+  if (b.hidden) return;
+  const l = NT.liste = ntCalculer(), n = l.length;
+  $("#bn").textContent = n ? (n > 99 ? "99+" : String(n)) : ""; $("#bn").hidden = !n;
+  b.setAttribute("aria-label", n ? `Notifications : ${n} non lue${n > 1 ? "s" : ""}` : "Notifications");
+  try { if (navigator.setAppBadge) { n ? navigator.setAppBadge(n).catch(() => {}) : navigator.clearAppBadge().catch(() => {}); } } catch (e) { /* ignoré */ }
+  const neufs = l.filter(r => !NT.connus.has(r.id + "|" + r.maj)); l.forEach(r => NT.connus.add(r.id + "|" + r.maj));
+  if (neufs.length) {
+    const r = neufs[0], txt = neufs.length === 1 ? `${ntMotif(r)} : ${r.ref} · ${r.description}` : `${neufs.length} requêtes vous concernent`;
+    if (NT.premier) { if (!$("#dn").open) toast(`${n} notification${n > 1 ? "s" : ""} non lue${n > 1 ? "s" : ""}`); }
+    else { if (!$("#dn").open) toast(txt); ntSysteme("SISR-MMTE", txt, neufs.length === 1 ? r.id : ""); }
+  }
+  NT.premier = false;
+  if ($("#dn").open) ntListe();
+}
+function ntListe() {
+  const l = NT.liste;
+  $("#dnl").innerHTML = l.length ? l.map(r => `<button type="button" class="ni" data-id="${esc(r.id)}"><b>${esc(ntMotif(r))}</b> · ${esc(r.ref)}<span>${esc(r.description)}</span><small>${esc(r.usager || "sans usager")} · par ${esc(nomDe(r.modifiePar || r.saisiPar))} · ${esc(fd(r.modifieLe || r.creeLe, true))}</small></button>`).join("")
+    : `<div class="vide"><b>Rien de nouveau</b>Vous serez prévenu ici lorsqu'une requête vous est attribuée ou modifiée par un collègue.</div>`;
+  $("#dnv").hidden = !l.length;
+}
+$("#bell").onclick = () => { ntListe(); dlg($("#dn")); };
+$("#dn").addEventListener("click", e => {
+  const dn = $("#dn"); if (e.target === dn || e.target.closest("[data-x]")) return dn.close();
+  const b = e.target.closest(".ni"); if (!b) return;
+  const r = data.find(x => x.id === b.dataset.id); if (r) { NT.vu[r.id] = r.maj; ntSauver(); }
+  dn.close(); ntMaj(); ouvrir(b.dataset.id);
+});
+$("#dnv").onclick = () => { NT.liste.forEach(r => { NT.vu[r.id] = r.maj; }); const ids = new Set(data.map(r => r.id)); Object.keys(NT.vu).forEach(k => { if (!ids.has(k)) delete NT.vu[k]; }); ntSauver(); ntMaj(); };
+/* un clic sur une notification du système ouvre la requête concernée */
+if (navigator.serviceWorker) navigator.serviceWorker.addEventListener("message", e => { const m = e.data; if (m && m.type === "ouvrir" && m.id && ME && data.some(r => r.id === m.id)) { go("ec"); ouvrir(m.id); } });
+/* autorisation des notifications du système (bloc « Mon compte ») */
+function ntBloc() {
+  const bl = $("#ntf"), ok = "Notification" in window && !!ME && !!ME.agent; bl.hidden = !ok; if (!ok) return;
+  const p = Notification.permission, t = $("#ntft"), b = $("#ntfb");
+  const lim = " Elles n'arrivent que lorsque l'application est ouverte (même en arrière-plan) : application fermée, aucune alerte ne peut être envoyée.";
+  if (p === "granted") { t.textContent = "Alertes du système activées sur cet appareil : vous êtes averti d'une requête qui vous est attribuée." + lim; b.hidden = true; }
+  else if (p === "denied") { t.textContent = "Les alertes sont bloquées pour cette application. Autorisez-les dans les paramètres de votre navigateur (cadenas de la barre d'adresse)."; b.hidden = true; }
+  else { t.textContent = "La pastille de la cloche fonctionne déjà. Vous pouvez en plus recevoir une alerte du système pour les requêtes qui vous sont attribuées." + lim; b.hidden = false; }
+}
+$("#ntfb").onclick = async () => { try { await Notification.requestPermission(); } catch (e) { /* ignoré */ } ntBloc(); };
+
+/* ---------- Double authentification (application d'authentification : code à 6 chiffres) ---------- */
+let MFA_ID = null;
+async function mfaBloc() {
+  const t = $("#mfat"), z = $("#mfab"); MFA_ID = null; z.innerHTML = "";
+  if (!store) return;
+  try {
+    const f = await store.facteurs();
+    if (f.actifs.length) {
+      t.textContent = "Activée : un code à 6 chiffres est demandé à chaque connexion.";
+      z.innerHTML = `<div class="act" style="margin-top:6px"><button type="button" class="ghost" data-mfa="off">Désactiver la double authentification</button></div><div class="msg" id="mfam" role="alert"></div>`;
+      z.dataset.fid = f.actifs[0].id;
+    } else {
+      t.textContent = estAdmin() ? "Désactivée. Recommandé pour votre compte administrateur : même si le mot de passe était découvert, le compte resterait protégé." : "Désactivée. Elle protège votre compte par un code à 6 chiffres en plus du mot de passe.";
+      z.innerHTML = `<div class="act" style="margin-top:6px"><button type="button" class="ghost" data-mfa="on">Activer la double authentification</button></div><div class="msg" id="mfam" role="alert"></div>`;
+    }
+  } catch (x) { t.textContent = ""; z.innerHTML = `<div class="msg">${esc(x.message)}</div>`; }
+}
+$("#mfab").addEventListener("click", async e => {
+  const b = e.target.closest("[data-mfa]"); if (!b) return; const a = b.dataset.mfa, m = () => $("#mfam");
+  if (a === "off") {
+    if (!confirm("Désactiver la double authentification de votre compte ?")) return; b.disabled = true;
+    try { await store.mfaRetirer($("#mfab").dataset.fid); toast("Double authentification désactivée"); } catch (x) { note(m(), x.message); }
+    return mfaBloc();
+  }
+  if (a === "on") {
+    b.disabled = true;
+    try {
+      const r = await store.mfaEnroler(); MFA_ID = r.id;
+      $("#mfat").textContent = "1. Dans une application d'authentification (Google Authenticator, Microsoft Authenticator, Authy…), scannez ce code. 2. Saisissez le code à 6 chiffres affiché pour confirmer.";
+      $("#mfab").innerHTML = `<div style="text-align:center;margin:8px 0"><img alt="Code QR à scanner" width="168" height="168" style="background:#fff;padding:6px;border-radius:8px;border:1px solid var(--l)"></div>
+        <p class="hint" style="margin:0 0 6px">Si le scan est impossible, saisissez cette clé dans l'application : <b id="mfas" style="word-break:break-all;user-select:all"></b></p>
+        <div class="add" style="margin:0"><input id="mfac" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="Code à 6 chiffres" aria-label="Code à 6 chiffres"><button type="button" class="ok" data-mfa="ok">Confirmer</button></div><div class="msg" id="mfam" role="alert"></div>`;
+      $("#mfab img").src = r.qr; $("#mfas").textContent = r.secret; $("#mfac").focus();
+    } catch (x) { note(m(), x.message); b.disabled = false; }
+  }
+  if (a === "ok") {
+    const c = $("#mfac").value.replace(/\s/g, ""); if (!/^\d{6}$/.test(c)) return note(m(), "Saisissez les 6 chiffres affichés par l'application.");
+    b.disabled = true;
+    try { await store.mfaConfirmer(MFA_ID, c); toast("Double authentification activée"); mfaBloc(); } catch (x) { note(m(), x.message); b.disabled = false; }
+  }
+});
+
+
 /* ---------- Démarrage et connexion ---------- */
-const render = () => { listes(); renderEC(); renderBord(); };
-let uid = null, quitter = false;
-function ecran(nom) { $("#splash").hidden = nom !== "splash"; $("#login").hidden = nom !== "login"; $("#hd").hidden = $("#mn").hidden = nom !== "app"; }
+const render = () => { listes(); renderEC(); renderBord(); ntMaj(); majRappel(); };
+let uid = null, quitter = false, refus = "", UC = null;
+function ecran(nom) {
+  $("#splash").hidden = nom !== "splash"; $("#login").hidden = nom !== "login" && nom !== "code"; $("#lf").hidden = nom === "code"; $("#cf").hidden = nom !== "code"; $("#lai").hidden = nom === "code";
+  $("#hd").hidden = $("#mn").hidden = nom !== "app";
+}
 async function start(u) {
-  if (uid === u.id) return; uid = u.id;
-  $("#dct").textContent = u.email || ""; go("saisie"); ecran("app");
-  try { const l = await store.listes(); LU = l.usager; LA = l.agent; } catch (e) { toast(e.message); }
-  if (uid !== u.id) return;                                            // déconnecté pendant le chargement
-  render(); un = store.sub(l => { data = l; render(); });
+  if (uid === u.id) return; uid = u.id; UC = u; ecran("splash");
+  try { const n = await store.niveau(); if (n && n.nextLevel === "aal2" && n.currentLevel !== "aal2") { if (uid !== u.id) return; $("#cd6").value = ""; $("#ce6").textContent = ""; ecran("code"); if (matchMedia("(pointer:fine)").matches) $("#cd6").focus(); return; } }
+  catch (e) { /* niveau indisponible : la base refusera elle-même l'accès si le code est exigé */ }
+  charger(u);
+}
+async function refuser(m) { refus = m; quitter = true; try { await store.logout(); } catch (x) { quitter = false; refus = ""; login(m); } }
+async function charger(u) {
+  let p;
+  try { p = await store.profil(); } catch (e) { if (uid === u.id) refuser(e.message); return; }
+  if (uid !== u.id) return;                                             // déconnecté pendant le chargement
+  if (!p) return refuser("Compte introuvable. Contactez l'administrateur.");
+  if (!p.actif) return refuser("Votre compte est créé mais pas encore activé. Prévenez l'administrateur : il doit l'activer avant votre première connexion.");
+  ME = { id:u.id, email:u.email || p.email, nom:p.nom || "", role:p.role, agent:p.agent || "" };
+  $("#dct").textContent = (ME.nom && ME.nom !== ME.email.split("@")[0] ? ME.nom : ME.agent) || ME.nom || ME.email; $("#dcr").textContent = (ME.role === "admin" ? "Administrateur" : "Agent") + (ME.agent ? " · " + ME.agent : "") + " · " + ME.email;
+  $("#nadm").hidden = !estAdmin(); ntCharger(); go("saisie"); ecran("app");
+  try { appliquerListes(await store.listes()); } catch (e) { toast(e.message); }
+  try { PROFILS = await store.profils(); } catch (e) { PROFILS = []; }
+  $("#dct").textContent = nomDe(ME.email) || ME.email;
+  if (estAdmin()) { try { SAUV = (await store.param("derniere_sauvegarde")) || ""; } catch (e) { SAUV = null; } }
+  if (uid !== u.id) return;
+  render(); if (!editId) viderForm(true);                                                                  // saisie : l'agent proposé est la personne connectée
+  un = store.sub(l => { data = l; render(); });
 }
 function login(msg) {                                                   // remet l'appli à zéro : le collègue suivant ne voit ni filtres ni brouillon du précédent
-  uid = null; un && un(); un = null; data = []; WK = []; init = false; editId = null; LU = []; LA = [];
-  Object.assign(F, { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"" });
-  ["fs","fm","fc","fa","ft","fk","fu"].forEach(i => $("#" + i).value = "");
-  if (dg.open) dg.close(); if ($("#dc").open) $("#dc").close();
-  $("#eb").hidden = true; $("#ok").textContent = "Enregistrer la requête"; viderForm(true); err(""); go("saisie");
+  uid = null; un && un(); un = null; data = []; WK = []; init = false; editId = null; editMaj = null; ME = null; PROFILS = [];
+  LU = []; LA = []; LM = []; LC = []; LD = []; LK = []; LO = []; LROWS = []; SAUV = null; rapMasque = false; IMP = null; JR = []; Object.assign(ADM, { s:"cpt", type:"usager", filtre:"" });
+  NT.liste = []; NT.connus = new Set(); NT.premier = true; try { navigator.clearAppBadge && navigator.clearAppBadge().catch(() => {}); } catch (e) { /* ignoré */ }
+  Object.assign(F, { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", mes:false });
+  ["fs","fm","fc","fa","ft","fk","fu","fg"].forEach(i => $("#" + i).value = ""); $("#fmes").checked = false;
+  $$("dialog[open]").forEach(d => d.close());
+  $("#eb").hidden = true; $("#ok").textContent = "Enregistrer la requête"; pjVider(); viderForm(true); err(""); go("saisie");
+  $("#bell").hidden = true; $("#bn").textContent = ""; $("#nadm").hidden = true; $("#rap").hidden = true;
   $("#pw").value = ""; $("#pw").type = "password"; $("#vu").textContent = "Afficher"; $("#vu").setAttribute("aria-pressed","false"); $("#vu").setAttribute("aria-label","Afficher le mot de passe");
   $("#le").textContent = msg || ""; $("#lb").disabled = !store; $("#lb").textContent = "Se connecter"; ecran("login");
   if (matchMedia("(pointer:fine)").matches) ($("#em").value ? $("#pw") : $("#em")).focus();
@@ -553,13 +1442,22 @@ $("#lf").onsubmit = async e => {
   try { await store.login(em, pw); } catch (x) { m.textContent = x.message; $("#pw").select(); }
   b.disabled = false; b.textContent = "Se connecter";
 };
+$("#cf").onsubmit = async e => {
+  e.preventDefault(); const m = $("#ce6"), c = $("#cd6").value.replace(/\s/g, ""), b = $("#cb"); m.textContent = "";
+  if (!/^\d{6}$/.test(c)) { m.textContent = "Saisissez les 6 chiffres affichés par l'application d'authentification."; return; }
+  b.disabled = true; b.textContent = "Vérification…";
+  try { await store.mfaCode(c); ecran("splash"); b.disabled = false; b.textContent = "Vérifier"; return charger(UC); }
+  catch (x) { m.textContent = x.message; $("#cd6").select(); }
+  b.disabled = false; b.textContent = "Vérifier";
+};
+$("#cx").onclick = async () => { quitter = true; try { await store.logout(); } catch (x) { quitter = false; $("#ce6").textContent = x.message; } };
 $("#vu").onclick = () => {
   const i = $("#pw"), v = i.type === "password", b = $("#vu"); i.type = v ? "text" : "password"; b.textContent = v ? "Masquer" : "Afficher";
   b.setAttribute("aria-pressed",String(v)); b.setAttribute("aria-label",v ? "Masquer le mot de passe" : "Afficher le mot de passe");
 };
-/* compte : changement de mot de passe, déconnexion */
+/* compte : mot de passe, double authentification, notifications, déconnexion */
 const dc = $("#dc");
-$("#cpt").onclick = () => { $("#mdp").reset(); $("#me").textContent = ""; dc.showModal(); };
+$("#cpt").onclick = () => { $("#mdp").reset(); $("#me").textContent = ""; ntBloc(); mfaBloc(); dlg(dc); };
 dc.addEventListener("click", e => { if (e.target === dc || e.target.closest("[data-x]")) dc.close(); });
 $("#mdp").onsubmit = async e => {
   e.preventDefault(); const a = $("#n1").value, m = $("#me"), b = $("#mb"); m.textContent = "";
@@ -578,8 +1476,6 @@ if ("serviceWorker" in navigator) addEventListener("load", () => navigator.servi
 $("#out").onclick = async () => { quitter = true; try { await store.logout(); } catch (x) { quitter = false; toast(x.message); } };
 
 $("#nom").textContent = $("#ln").textContent = NOM; $("#acc").textContent = $("#la").textContent = ACC;
-$("#cn").innerHTML = CANAUX.map((c,i) => `<input type="radio" name="c" id="c${i}" value="${c}"><label for="c${i}">${c}</label>`).join("");
-opts("#m","— choisir un module —",MODULES);
 combo($("#u"),usagers,{ free:true, neu:v => `Ajouter « ${v} » comme nouvel usager` });
 combo($("#ds"),types,{ free:true });
 combo($("#fu"),usagers,{ clear:true, onChange:v => { F.usa = v; renderBord(); } });
@@ -588,9 +1484,10 @@ combo($("#fu"),usagers,{ clear:true, onChange:v => { F.usa = v; renderBord(); } 
   store = await supa();
   await store.onAuth(u => {
     if (u) return start(u);
-    const fin = uid && !quitter; quitter = false; login(fin ? "Votre session a pris fin. Reconnectez-vous." : "");
+    const m = refus || (uid && !quitter ? "Votre session a pris fin. Reconnectez-vous." : ""); refus = ""; quitter = false; login(m);
   });
 })().catch(e => { store = null; login("Impossible de démarrer l'application. Vérifiez votre connexion Internet puis rechargez la page."); console.error(e); });
+
 </script>
 </body>
 </html>

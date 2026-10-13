@@ -2,7 +2,7 @@
    - Les bibliothèques (dossier vendor) et les icônes sont gardées sur l'appareil : l'application s'ouvre plus vite.
    - L'application elle-même (index.html, config.js…) est toujours relue en ligne d'abord : une mise à jour publiée sur GitHub arrive sans manipulation.
    - Les données (Supabase) ne passent JAMAIS par le cache : rien de confidentiel n'est stocké par ce fichier. */
-const V = "sisr-v1";
+const V = "sisr-v2";
 const FIXES = ["vendor/supabase.js", "vendor/xlsx.full.min.js", "vendor/jspdf.umd.min.js", "vendor/jspdf.plugin.autotable.min.js", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", e => e.waitUntil(caches.open(V).then(c => c.addAll(FIXES)).then(() => self.skipWaiting())));
@@ -13,4 +13,15 @@ self.addEventListener("fetch", e => {
   const garde = x => { if (x && x.ok) { const c = x.clone(); caches.open(V).then(ch => ch.put(r, c)); } return x; };
   if (FIXES.some(f => u.pathname.endsWith("/" + f))) { e.respondWith(caches.match(r).then(m => m || fetch(r).then(garde))); return; }   // bibliothèques : cache d'abord
   e.respondWith(fetch(r).then(garde).catch(() => caches.match(r).then(m => m || caches.match(new URL("index.html", self.registration.scope).href))));   // reste : en ligne d'abord
+});
+
+/* Un clic sur une alerte « requête attribuée » rouvre l'application et affiche la requête concernée. */
+self.addEventListener("notificationclick", e => {
+  e.notification.close();
+  const id = e.notification.data && e.notification.data.id;
+  e.waitUntil(self.clients.matchAll({ type:"window", includeUncontrolled:true }).then(l => {
+    const c = l.find(x => x.url.startsWith(self.registration.scope)) || l[0];
+    if (c) { if (id) c.postMessage({ type:"ouvrir", id }); return c.focus(); }
+    return self.clients.openWindow(self.registration.scope);
+  }));
 });
