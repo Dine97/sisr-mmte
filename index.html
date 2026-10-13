@@ -1291,9 +1291,12 @@ const ntCharger = () => {
 };
 const ntSauver = () => ls.set(NT.cle, JSON.stringify({ base:NT.base, vu:NT.vu }));
 const msMaj = r => Date.parse(r.maj) || 0;
+/* Saisie rétroactive : requête créée déjà résolue, ou enregistrée plus de 14 jours après sa date (import de l'historique Excel…).
+   Il n'y a rien à traiter : elle ne doit pas inonder la cloche de chaque agent. Une modification ultérieure, elle, notifie normalement. */
+const ntRetro = r => !r.modifiePar && (!!r.resolution || (!!r.creeLe && !!r.date && r.creeLe - r.date > 14 * DAY));
 function ntCalculer() {
   if (!ME || !ME.agent) return [];
-  return data.filter(r => r.agent === ME.agent && (r.modifiePar || r.saisiPar) !== ME.email && msMaj(r) > NT.base && NT.vu[r.id] !== r.maj)
+  return data.filter(r => r.agent === ME.agent && (r.modifiePar || r.saisiPar) !== ME.email && msMaj(r) > NT.base && NT.vu[r.id] !== r.maj && !ntRetro(r))
     .sort((a, b) => msMaj(b) - msMaj(a));
 }
 const ntMotif = r => !r.modifiePar ? "Requête qui vous est attribuée" : (r.resolution ? "Requête résolue" : "Requête modifiée");   // sans modification : c'est une création par un collègue
