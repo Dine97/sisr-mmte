@@ -154,6 +154,34 @@ details.sv .q{grid-template-columns:1fr}
 @media (max-width:520px){nav button{font-size:12px;padding:10px 2px}.add{flex-direction:column}.add button{padding:12px}}
 @media (max-width:480px){header{padding:10px 12px;gap:8px}header h1{font-size:18px;white-space:nowrap}header .acc{display:none}header button{white-space:nowrap;font-size:13px;padding:6px 8px}.logo{padding:4px 6px}.logo img{height:32px}}
 @media (max-width:340px){header h1{font-size:15px}.logo img{height:28px}header{gap:6px;padding:10px 8px}}
+/* v3 : priorités (P1 rouge, P2 orange, P3 bleu, sans priorité gris) et délais de résolution. L'étiquette « P1/P2/P3 » accompagne toujours la couleur. */
+:root{--p1:#B42318;--p2:#D97706;--p3:#1D6FB8;--p0:#55616E;--p2t:#1F1300}
+.pill.pr1{background:var(--p1);color:#fff}.pill.pr2{background:var(--p2);color:var(--p2t)}.pill.pr3{background:var(--p3);color:#fff}.pill.pr0{background:#fff;border:1px solid var(--l);color:var(--p0);font-weight:600}
+.chips.prc label{display:inline-flex;align-items:center;gap:7px}.chips.prc label::before{content:"";width:12px;height:12px;border-radius:3px;background:var(--pc)}
+.chips.prc small{font-weight:600;opacity:.85}
+.chips.prc .p0{--pc:var(--p0)}.chips.prc .p1{--pc:var(--p1);border-color:var(--p1)}.chips.prc .p2{--pc:var(--p2);border-color:var(--p2)}.chips.prc .p3{--pc:var(--p3);border-color:var(--p3)}
+.chips.prc input:checked+label::before{background:currentColor}
+.chips.prc input:checked+label.p0{background:var(--p0);border-color:var(--p0);color:#fff}
+.chips.prc input:checked+label.p1{background:var(--p1);border-color:var(--p1);color:#fff}
+.chips.prc input:checked+label.p2{background:var(--p2);border-color:var(--p2);color:var(--p2t)}
+.chips.prc input:checked+label.p3{background:var(--p3);border-color:var(--p3);color:#fff}
+.hint.prh{margin:8px 0 0}.hint.prh.warn{color:var(--w);font-weight:600}
+.ln{border-left:6px solid transparent}.ln.p1{border-left-color:var(--p1)}.ln.p2{border-left-color:var(--p2)}.ln.p3{border-left-color:var(--p3)}
+.ln.late{background:var(--rb);box-shadow:0 0 0 2px var(--r)}
+.pill.sl{background:#fff;border:1px solid var(--l);color:var(--g);font-weight:600}.pill.sl.near{background:var(--wb);border-color:#E8C48A;color:var(--w)}
+.pill.sl.late{background:var(--r);border-color:var(--r);color:#fff;animation:clg 1.6s ease-in-out infinite}
+@keyframes clg{50%{opacity:.6}}
+@media (prefers-reduced-motion:reduce){.pill.sl.late{animation:none}}
+.sla{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:10px 0 0;padding:10px 12px;border-radius:10px;background:var(--f);border-left:6px solid var(--pc,var(--p0));font-size:14px}
+.sla.late{background:var(--rb)}.sla.ok b{color:#1B6B3A}.sla.late b{color:var(--r)}
+.fch{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}.fch button{display:inline-flex;gap:7px;align-items:center;border:1.5px solid var(--l);background:#fff;border-radius:999px;padding:6px 12px;font:600 13px/1.2 inherit;font-family:inherit;color:var(--t);cursor:pointer}
+.fch button i{width:10px;height:10px;border-radius:3px;background:var(--pc,var(--p0))}.fch button em{font-style:normal;color:var(--g);font-weight:700}
+.fch button[aria-pressed=true]{background:var(--n);border-color:var(--n);color:#fff}.fch button[aria-pressed=true] em{color:#fff}
+.fch button.rd[data-n]:not([data-n="0"]){border-color:var(--r);color:var(--r)}.fch button.rd[aria-pressed=true]{background:var(--r);border-color:var(--r);color:#fff}
+.k.rd b{color:var(--r)}.k.ok b{color:#1B6B3A}.k small em{display:block;font-style:normal;font-weight:500;font-size:12px}
+.pr-b i{background:var(--pc)!important}.rp.wide{grid-column:1/-1}.q>input{min-width:0}@media (max-width:380px){nav button{white-space:normal;font-size:12px;line-height:1.15;padding:8px 2px}.chips.prc label{padding:8px 11px}}.br i[style*="width:0%"]{min-width:0}.kpi{grid-template-columns:repeat(auto-fit,minmax(128px,1fr))}tr.rw.late td{background:var(--rb)}
+.nt .ni.late{border-left:5px solid var(--r);background:var(--rb)}.bell.alerte{border-color:#ff9c91!important;animation:clg 1.6s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.bell.alerte{animation:none}}
 </style>
 </head>
 <body>
@@ -196,6 +224,14 @@ details.sv .q{grid-template-columns:1fr}
   <label for="u">Usager</label><div class="cb"><input id="u" placeholder="Rechercher ou saisir un usager"></div>
   <div class="lb">Canal</div><div class="chips" id="cn"></div>
   <label for="ds">Description de la requête</label><div class="cb"><input id="ds" placeholder="Choisir une requête type ou écrire"></div>
+  <div class="lb">Priorité <span class="opt">(facultatif : fixe le délai de résolution)</span></div>
+  <div class="chips prc" id="prc" role="radiogroup" aria-label="Priorité">
+    <input type="radio" name="pr" id="pr0" value="" checked><label for="pr0" class="p0">Sans priorité</label>
+    <input type="radio" name="pr" id="pr1" value="1"><label for="pr1" class="p1"><b>P1</b> Critique / Élevée <small>2 h</small></label>
+    <input type="radio" name="pr" id="pr2" value="2"><label for="pr2" class="p2"><b>P2</b> Moyenne <small>24 h</small></label>
+    <input type="radio" name="pr" id="pr3" value="3"><label for="pr3" class="p3"><b>P3</b> Basse <small>72 h</small></label>
+  </div>
+  <p class="hint prh" id="prh" aria-live="polite"></p>
   <label for="k">Catégorie <span class="opt">(facultatif)</span></label><select id="k"></select>
   <label for="a">Agent MMTE</label><select id="a"></select>
   <label for="ob">Observation <span class="opt">(facultatif)</span></label><textarea id="ob" rows="3" placeholder="Détails utiles : numéro de châssis, échange avec l'usager, précisions de traitement…"></textarea>
@@ -214,7 +250,8 @@ details.sv .q{grid-template-columns:1fr}
 </section>
 
 <section id="ec" hidden>
-  <div class="ctl"><label class="tg"><input type="checkbox" id="mes"> Mes requêtes</label><select id="tri" aria-label="Tri"><option value="a">Plus anciennes d'abord</option><option value="e">Échéance la plus proche</option><option value="r">Plus récentes d'abord</option></select></div>
+  <div class="ctl"><label class="tg"><input type="checkbox" id="mes"> Mes requêtes</label><select id="tri" aria-label="Tri"><option value="u">Délai le plus proche d'abord</option><option value="a">Plus anciennes d'abord</option><option value="e">Échéance la plus proche</option><option value="r">Plus récentes d'abord</option></select></div>
+  <div class="fch" id="ecf" role="group" aria-label="Filtrer par priorité"></div>
   <p class="hint">Touche une requête pour voir son détail et son observation.</p><div id="ecl"></div></section>
 
 <section id="bord" hidden>
@@ -224,6 +261,7 @@ details.sv .q{grid-template-columns:1fr}
       <select id="fa" aria-label="Agent"></select>
       <select id="ft" aria-label="Statut"><option value="">Tous les statuts</option><option value="c">En cours</option><option value="r">Résolues</option></select>
       <select id="fg" aria-label="Catégorie"></select>
+      <select id="fp" aria-label="Priorité"></select>
       <input id="fk" placeholder="Mot-clé ou n° (REQ-…)" aria-label="Mot-clé ou numéro de référence"></div>
     <label class="tg" style="margin-top:10px"><input type="checkbox" id="fmes"> Mes requêtes seulement</label>
     <p class="per" id="per"></p></div>
@@ -266,6 +304,9 @@ details.sv .q{grid-template-columns:1fr}
     <p class="hint" id="mfat" style="margin:6px 0 0"></p><div id="mfab"></div></div>
   <div class="pn" id="ntf" hidden><b>Notifications</b>
     <p class="hint" id="ntft" style="margin:6px 0 0"></p><div class="act" style="margin-top:6px"><button type="button" class="ghost" id="ntfb">Activer les notifications</button></div></div>
+  <div class="pn" id="snd"><b>Signal sonore</b>
+    <p class="hint" style="margin:6px 0 0">Un bip discret quand le délai de résolution d'une requête est dépassé (application ouverte, y compris en arrière-plan).</p>
+    <label class="tg" style="margin-top:8px"><input type="checkbox" id="sndc"> Activer le signal sonore sur cet appareil</label></div>
   <div class="act"><button type="button" class="ghost" id="inst" hidden>Installer l'application</button><button type="button" class="ghost" id="out">Se déconnecter</button></div>
 </div></dialog>
 <div id="tip" role="tooltip"></div>
@@ -284,9 +325,12 @@ const MOTIFS = ["En attente de l'usager","En attente de la douane","En attente d
 /* Catégorie proposée d'office selon la description (l'application apprend aussi des saisies précédentes) */
 const TYPE_CAT = { "CVQ NON SYNCHRONISE":"Synchronisation CVQ", "MANIFESTE NON SYNCHRONISE":"Synchronisation manifeste", "NON SYNCHRONISATION DES CHÂSSIS DU MANIFESTE":"Unités de manutention / châssis",
   "NON SYNCHRONISATION D'UNE UNITE DE MANUTENTION":"Unités de manutention / châssis", "ABSENCE D'UNE UNITE DE MANUTENTION SUR MANIFESTE":"Unités de manutention / châssis", "DEMANDE DE SUPPRESSION DE COMPTE ET CREATION DE COMPTE":"Gestion des comptes" };
-const HEAD = ["N°","DATE","MODULE","USAGER","CANAL","DESCRIPTION DE LA REQUÊTE","CATÉGORIE","AGENT MMTE","DATE ET HEURE DE RESOLUTION","STATUT","OBSERVATION"];
-const COL_STAT = 9, COL_OBS = 10;
-const STAT_C = "EN COURS", STAT_R = "RESOLUE", MAXL = 300, PJ_MAX = 5, PJ_TAILLE = 5 * 1024 * 1024, SEUIL_H = 48;
+const HEAD = ["N°","DATE","MODULE","USAGER","CANAL","DESCRIPTION DE LA REQUÊTE","CATÉGORIE","PRIORITÉ","AGENT MMTE","DATE ET HEURE DE RESOLUTION","STATUT","DÉLAI","OBSERVATION"];
+const COL_PRIO = 7, COL_STAT = 10, COL_DEL = 11, COL_OBS = 12;
+const STAT_C = "EN COURS", STAT_R = "RESOLUE", MAXL = 300, PJ_MAX = 5, PJ_TAILLE = 5 * 1024 * 1024;
+/* Priorités : P1 critique ou élevée (2 h), P2 moyenne (24 h), P3 basse (72 h). Vide = sans priorité, donc sans délai de résolution ni alerte. */
+const PRIO = { 1:{ n:"P1", nom:"Critique / Élevée", h:2 }, 2:{ n:"P2", nom:"Moyenne", h:24 }, 3:{ n:"P3", nom:"Basse", h:72 } };
+const PRIO_COUL = { 0:"#55616E", 1:"#B42318", 2:"#D97706", 3:"#1D6FB8" };           // gris, rouge, orange, bleu : validés (écart de teinte, daltonisme, contraste)
 const LOGO = "data:image/png;base64,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", LOGO_R = 1.3131;
 /* =========================================== */
 
@@ -309,16 +353,40 @@ const dur = h => h == null ? "-" : h < 48 ? nf.format(h) + " h" : nf.format(h / 
 const ls = { get: k => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k,v) => { try { localStorage.setItem(k,v); } catch (e) { /* stockage indisponible : sans conséquence */ } } };
 $$("img.lg").forEach(i => i.src = LOGO);
 const toast = t => { const e = $("#toast"); e.textContent = t; e.classList.add("on"); setTimeout(() => e.classList.remove("on"), 2600); };
-const ligne = r => [r.ref, fd(r.date,r.avecHeure), r.module, r.usager, r.canal, r.description, r.categorie, r.agent, fd(r.resolution,r.avecHeureRes), r.statut, r.observation || ""];
+const ligne = r => [r.ref, fd(r.date,r.avecHeure), r.module, r.usager, r.canal, r.description, r.categorie, PRIO[r.priorite] ? PRIO[r.priorite].n : "", r.agent, fd(r.resolution,r.avecHeureRes), r.statut, delaiTxt(r), r.observation || ""];
 const avant = (r,d,h,hh) => iso(r) < iso(d) || (h && hh && r < d);
 const age = r => (Date.now() - r.date) / HOUR;                                                       // ancienneté d'une requête, en heures
 const jourFin = s => s ? new Date(s + "T23:59:59") : null;                                           // une échéance court jusqu'à la fin de la journée
 const dlg = e => e.showModal && !e.open ? e.showModal() : null;
 
+/* ---------- Priorités et délais de résolution ---------- */
+const slaFin = r => PRIO[r.priorite] && r.date ? new Date(+r.date + PRIO[r.priorite].h * HOUR) : null;     // fin du délai (null : sans priorité, donc sans délai)
+const dm = ms => { const m = Math.max(0, Math.round(ms / 60000)); if (m < 1) return "moins d'1 min"; if (m < 60) return m + " min"; const h = Math.floor(m / 60);
+  if (h < 48) return h + " h" + (m % 60 ? " " + pad(m % 60) : ""); return Math.floor(h / 24) + " j" + (h % 24 ? " " + (h % 24) + " h" : ""); };   // durée lisible : 35 min, 1 h 05, 2 j 5 h
+/* requête en cours : n = "r" (délai dépassé), "p" (dernier quart du délai) ou "o" (dans les temps) ; null si sans priorité ou déjà résolue */
+function suivi(r) {
+  const f = !r.resolution && slaFin(r); if (!f) return null;
+  const reste = f - Date.now(), tot = PRIO[r.priorite].h * HOUR;
+  return reste <= 0 ? { n:"r", t:"Délai dépassé de " + dm(-reste), ms:reste } : { n: reste <= tot / 4 ? "p" : "o", t:"Reste " + dm(reste), ms:reste };
+}
+/* requête résolue avec priorité : { ok, ecart } (ecart en ms, positif = dépassement) */
+function bilan(r) { const f = r.resolution && slaFin(r); return f ? { ok: r.resolution <= f, ecart: r.resolution - f } : null; }
+const enRetard = r => { const s = suivi(r); return !!s && s.n === "r"; };
+/* situation d'une requête vis-à-vis de son délai : "rok" résolue dans le délai, "rko" résolue hors délai, "cok" en cours dans le délai, "cko" en cours et en retard, "" sans priorité */
+const slaEtat = r => { if (!PRIO[r.priorite]) return ""; if (r.resolution) return bilan(r).ok ? "rok" : "rko"; return enRetard(r) ? "cko" : "cok"; };
+const horsDelai = r => { const e = slaEtat(r); return e === "rko" || e === "cko"; };
+const PRI_LIB = { 1:"P1 · Critique / Élevée (2 h)", 2:"P2 · Moyenne (24 h)", 3:"P3 · Basse (72 h)", 0:"Sans priorité", late:"Délai dépassé" };
+function delaiTxt(r) {                                                                               // colonne « DÉLAI » des exports
+  if (!PRIO[r.priorite]) return "";
+  if (r.resolution) { const b = bilan(r); return b.ok ? "Respecté" : "Dépassé de " + dm(b.ecart); }
+  const s = suivi(r); return s.n === "r" ? s.t : "Dans les temps";
+}
+const puce = (p, long) => PRIO[p] ? `<span class="pill pr${p}" title="${esc(PRIO[p].n + " · " + PRIO[p].nom + " · " + PRIO[p].h + " h")}">${PRIO[p].n}${long ? " · " + esc(PRIO[p].nom) : ""}</span>` : "";
+
 
 let store, data = [], WK = [], un, init = false, vue = "saisie", editId = null, editMaj = null, retour = "saisie", ME = null, PROFILS = [];
 let LU = [], LA = [], LM = [], LC = [], LD = [], LK = [], LO = [], LROWS = [];   /* listes (usagers, agents, modules, canaux, descriptions, catégories, motifs) : chargées depuis la base après connexion */
-const F = { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", mes:false };
+const F = { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", pri:"", mes:false };
 
 /* ---------- Données : Supabase (connexion + base partagée) ---------- */
 /* Messages d'erreur en français (aucun message technique brut n'est montré aux collègues) */
@@ -333,7 +401,11 @@ const fr = e => {
   if (c === "weak_password") return "Mot de passe trop faible : choisissez-en un plus long et moins courant.";
   if (c === "mfa_verification_failed" || c === "mfa_challenge_expired" || /invalid totp code|invalid.*code/i.test(m)) return "Code incorrect ou expiré. Réessayez avec le code actuellement affiché.";
   if (/aal2|mfa.*required/i.test(m)) return "Saisissez d'abord votre code de double authentification.";
-  if (c === "PGRST202" || c === "PGRST205" || c === "42883" || c === "42P01" || /could not find the (function|table)|does not exist/i.test(m)) return "La base de données n'est pas à jour. L'administrateur doit appliquer la mise à jour (script SQL v2).";
+  if (c === "23514" && /requetes_priorite_heure_ck/.test(m)) return "Une requête avec priorité doit avoir une date ET une heure : le délai de résolution se calcule à partir de l'heure.";
+  if (c === "23514" && /requetes_priorite_res_ck/.test(m)) return "Une requête avec priorité doit avoir une date ET une heure de résolution.";
+  if (c === "23514" && /requetes_priorite_ck/.test(m)) return "Priorité invalide : choisissez P1, P2, P3 ou laissez vide.";
+  if (c === "PGRST204" || c === "42703" || /could not find the 'priorite'|column .*priorite/i.test(m)) return "La base de données n'est pas à jour (priorités). L'administrateur doit appliquer le script SQL v3.";
+  if (c === "PGRST202" || c === "PGRST205" || c === "42883" || c === "42P01" || /could not find the (function|table)|does not exist/i.test(m)) return "La base de données n'est pas à jour. L'administrateur doit appliquer la mise à jour de la base (scripts SQL v2 puis v3).";
   if (/maximum allowed size|payload too large|entity too large|exceeded/i.test(m) || st === 413) return "Fichier trop volumineux (5 Mo maximum).";
   if (/mime type|not supported|invalid_mime/i.test(m)) return "Type de fichier non accepté (photos et PDF uniquement).";
   if (c === "reauthentication_needed" || c === "session_not_found" || c === "PGRST301" || /jwt|refresh token|session/i.test(m)) return "Votre session a expiré. Reconnectez-vous.";
@@ -346,12 +418,12 @@ async function supa() {
   const sb = createClient(CFG.url, CFG.key, { auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:false } });
   const TB = "requetes", PAGE = 1000, D = x => x ? new Date(x) : null, ko = e => new Error(fr(e)), BK = "pieces";
   const de = x => ({ id:x.id, ref:x.ref || "", date:D(x.date_requete), avecHeure:x.avec_heure, module:x.module, usager:x.usager || "", canal:x.canal, description:x.description, agent:x.agent,
-    resolution:D(x.resolution), avecHeureRes:x.avec_heure_res, statut:x.statut, observation:x.observation || "", categorie:x.categorie || "", echeance:x.echeance || "", motif:x.motif_attente || "",
+    resolution:D(x.resolution), avecHeureRes:x.avec_heure_res, statut:x.statut, observation:x.observation || "", categorie:x.categorie || "", priorite:x.priorite || 0, echeance:x.echeance || "", motif:x.motif_attente || "",
     pieces:Array.isArray(x.pieces) ? x.pieces : [], saisiPar:x.saisi_par, creeLe:D(x.cree_le), modifiePar:x.modifie_par, modifieLe:D(x.modifie_le), supprimePar:x.supprime_par, supprimeLe:D(x.supprime_le), maj:x.maj });
   const K = { id:"id", date:"date_requete", avecHeure:"avec_heure", resolution:"resolution", avecHeureRes:"avec_heure_res", module:"module", usager:"usager", canal:"canal",
-    description:"description", agent:"agent", statut:"statut", observation:"observation", categorie:"categorie", echeance:"echeance", motif:"motif_attente", pieces:"pieces" };
-  const NUL = ["categorie","echeance","motif"];
-  const vers = v => { const o = {}; for (const k in v) if (K[k]) { let x = v[k]; if (x instanceof Date) x = x.toISOString(); if (x === "" && NUL.includes(k)) x = null; o[K[k]] = x; } return o; };
+    description:"description", agent:"agent", statut:"statut", observation:"observation", categorie:"categorie", priorite:"priorite", echeance:"echeance", motif:"motif_attente", pieces:"pieces" };
+  const NUL = ["categorie","echeance","motif","priorite"];
+  const vers = (v, neuf) => { const o = {}; for (const k in v) if (K[k]) { let x = v[k]; if (x instanceof Date) x = x.toISOString(); if ((x === "" || x === 0) && NUL.includes(k)) x = null; if (neuf && k === "priorite" && x === null) continue; o[K[k]] = x; } return o; };   // à la création, « sans priorité » n'envoie rien : compatible avec une base pas encore mise à jour
   /* Lecture par paliers de 1000, dans l'ordre de la colonne « maj » (date du dernier changement, posée par la base) */
   async function lot(filtre, depuis) {
     let tout = [], op = "gte", cur = depuis;
@@ -436,8 +508,8 @@ async function supa() {
       try { ch = sb.channel("requetes-live").on("postgres_changes", { event:"*", schema:"public", table:TB }, () => { clearTimeout(deb); deb = setTimeout(lire, 400); }).subscribe(); } catch (e) { /* temps réel facultatif : le sondage prend le relais */ }
       return () => { stop = true; clearInterval(poll); clearTimeout(deb); document.removeEventListener("visibilitychange", vis); rf = () => {}; if (ch) sb.removeChannel(ch); };
     },
-    add: async v => { const { data, error } = await sb.from(TB).insert(vers(v)).select("ref"); if (error) throw ko(error); rf(); return data && data[0] ? data[0].ref : ""; },
-    inserer: async rows => { const { error } = await sb.from(TB).insert(rows.map(vers)); if (error) throw ko(error); rf(); },
+    add: async v => { const { data, error } = await sb.from(TB).insert(vers(v, true)).select("ref"); if (error) throw ko(error); rf(); return data && data[0] ? data[0].ref : ""; },
+    inserer: async rows => { const { error } = await sb.from(TB).insert(rows.map(x => vers(x, true))); if (error) throw ko(error); rf(); },
     /* maj = version de la requête que la personne avait sous les yeux : si un collègue l'a modifiée entre-temps, rien n'est écrasé */
     upd: (id, v, maj) => { let q = sb.from(TB).update(vers(v)).eq("id", id); if (maj) q = q.eq("maj", maj); return ecrit(q.select("id"), !!maj); },
     /* « Supprimer » = retrait logique : la requête disparaît de l'appli mais reste en base (traçabilité) ; l'administrateur peut la restaurer */
@@ -571,7 +643,7 @@ function listes() {
   WK = uniq(data.map(r => iso(lundi(r.date)))).sort().reverse();
   if (!init && WK.length) { F.sem = WK[0]; init = true; }
   $("#fs").innerHTML = `<option value="">Toutes les semaines</option>` + WK.map(w => `<option value="${w}">Semaine du ${fd(new Date(w + "T00:00"))}</option>`).join(""); $("#fs").value = F.sem;
-  opts("#fm","Tous les modules",modulesTous(),F.mod); opts("#fc","Tous les canaux",canauxTous(),F.can); opts("#fa","Tous les agents",agentsTous(),F.age); opts("#fg","Toutes les catégories",categoriesTous(),F.cat);
+  opts("#fm","Tous les modules",modulesTous(),F.mod); opts("#fc","Tous les canaux",canauxTous(),F.can); opts("#fa","Tous les agents",agentsTous(),F.age); opts("#fg","Toutes les catégories",categoriesTous(),F.cat); optsPri();
 }
 
 /* ---------- Navigation ---------- */
@@ -588,8 +660,24 @@ $$("nav [data-v]").forEach(b => b.onclick = () => go(b.dataset.v));
 const g = i => $("#" + i).value.trim(), err = t => { $("#er").textContent = t; };
 const jour = n => iso(new Date(Date.now() - n * DAY));
 let kManuel = false;                                                    // la catégorie a été choisie à la main : on ne la change plus d'office
-$$(".sc [data-j]").forEach(b => b.onclick = () => { $(b.dataset.r ? "#rd" : "#d").value = jour(+b.dataset.j); });
-$("#rs").onchange = e => { $("#rb").hidden = !e.target.checked; };
+/* priorité : le délai (2 h, 24 h, 72 h) se calcule d'après la date et l'heure de la requête ; avec une priorité, l'heure est donc proposée d'office (heure actuelle si la requête date d'aujourd'hui) */
+const prSel = () => +(($("input[name=pr]:checked") || {}).value) || 0;
+function heureAuto() {
+  if (!prSel()) return;
+  if (!g("d")) $("#d").value = jour(0);
+  if (!g("h") && g("d") === jour(0)) $("#h").value = hm(new Date());
+  if ($("#rs").checked && !g("rh") && g("rd") === jour(0)) $("#rh").value = hm(new Date());
+}
+function prMaj() {
+  const p = prSel(), h = $("#prh"); h.classList.remove("warn");
+  if (!p) { h.textContent = "Sans priorité : pas de délai de résolution, donc pas d'alerte de retard."; return; }
+  if (!g("d") || !g("h")) { h.textContent = `Délai de résolution : ${PRIO[p].h} h. Indiquez la date et l'heure de la requête pour le calculer.`; h.classList.add("warn"); return; }
+  h.textContent = `Délai de résolution : ${PRIO[p].h} h, soit avant le ${fd(new Date(+mk(g("d"), g("h")) + PRIO[p].h * HOUR), true)}.`;
+}
+$$(".sc [data-j]").forEach(b => b.onclick = () => { $(b.dataset.r ? "#rd" : "#d").value = jour(+b.dataset.j); heureAuto(); prMaj(); });
+$("#rs").onchange = e => { $("#rb").hidden = !e.target.checked; heureAuto(); };
+$("#prc").addEventListener("change", () => { heureAuto(); prMaj(); });
+["#d","#h"].forEach(i => $(i).addEventListener("change", () => { heureAuto(); prMaj(); }));
 $("#k").onchange = () => { kManuel = true; };
 
 /* pièces jointes : photos réduites avant envoi (1600 px, JPEG), PDF tels quels ; 5 fichiers de 5 Mo au plus */
@@ -634,7 +722,7 @@ $("#pjl").onclick = e => {
 
 function viderForm(tout) {
   ["h","u","ds","ob","rd","rh","ech"].forEach(i => $("#" + i).value = ""); $$("input[name=c]").forEach(x => x.checked = false); $("#rs").checked = false; $("#rb").hidden = true;
-  $("#k").value = ""; $("#mo").value = ""; $("#suivi").open = false; kManuel = false; pjVider();
+  $("#k").value = ""; $("#mo").value = ""; $("#suivi").open = false; kManuel = false; pjVider(); $("#pr0").checked = true; prMaj();
   if (tout) { $("#d").value = ""; $("#m").value = ""; $("#a").value = ME && ME.agent && LA.includes(ME.agent) ? ME.agent : ""; }   // l'agent proposé est la personne connectée
 }
 function finEdition() { editId = null; editMaj = null; $("#eb").hidden = true; $("#ok").textContent = "Enregistrer la requête"; viderForm(true); err(""); go(retour); }
@@ -649,9 +737,10 @@ function editer(id) {
   if (r.echeance || r.motif) $("#suivi").open = true;
   PJ.garde = r.pieces.map(p => ({ ...p })); pjRender();
   const rd = $$("input[name=c]").find(x => x.value === r.canal); if (rd) rd.checked = true;
+  $("#pr" + (PRIO[r.priorite] ? r.priorite : 0)).checked = true; prMaj();
   if (r.resolution) { $("#rs").checked = true; $("#rb").hidden = false; $("#rd").value = iso(r.resolution); $("#rh").value = r.avecHeureRes ? hm(r.resolution) : ""; }
   $("#ebt").textContent = `Modification de ${r.ref ? r.ref + " · " : ""}la requête du ${fd(r.date)} · ${r.usager || "sans usager"}`; $("#eb").hidden = false; $("#ok").textContent = "Enregistrer les modifications";
-  go("saisie"); window.scrollTo({ top:0 });
+  prMaj(); go("saisie"); window.scrollTo({ top:0 });
 }
 function dupliquer(id) {                                                // nouvelle requête préremplie à partir d'une autre (même usager, même sujet)
   const r = data.find(x => x.id === id); if (!r) return toast("Requête introuvable");
@@ -659,6 +748,7 @@ function dupliquer(id) {                                                // nouve
   $("#d").value = iso(new Date()); opts("#m","— choisir un module —",modules(),r.module); opts("#a","— choisir un agent —",LA,ME && ME.agent && LA.includes(ME.agent) ? ME.agent : r.agent); opts("#k","— aucune —",categories(),r.categorie);
   $("#u").value = r.usager || ""; $("#ds").value = r.description; kManuel = true;
   const rd = $$("input[name=c]").find(x => x.value === r.canal); if (rd) rd.checked = true;
+  $("#pr" + (PRIO[r.priorite] ? r.priorite : 0)).checked = true; heureAuto(); prMaj();
   $("#ebt").textContent = `Nouvelle requête préremplie à partir de ${r.ref || "la requête sélectionnée"}`; $("#eb").hidden = false; $("#ok").textContent = "Enregistrer la requête";
   go("saisie"); window.scrollTo({ top:0 });
 }
@@ -687,13 +777,15 @@ $("#dd").addEventListener("click", e => { if (e.target === $("#dd") || e.target.
 
 $("#ok").onclick = async () => {
   const v = { date:mk(g("d"),g("h")), avecHeure:!!g("h"), module:g("m"), usager:canon(g("u"),usagers()), canal:($("input[name=c]:checked") || {}).value || "",
-    description:g("ds").toUpperCase(), agent:g("a"), observation:g("ob"), categorie:g("k"), echeance:g("ech"), motif:g("mo") };
+    description:g("ds").toUpperCase(), agent:g("a"), observation:g("ob"), categorie:g("k"), priorite:prSel(), echeance:g("ech"), motif:g("mo") };
   if (!v.date) return err("Choisis la date de la requête.");
   if (!v.module || !v.canal || !v.description || !v.agent) return err("Module, canal, description et agent sont obligatoires.");
   if (v.echeance && v.echeance < iso(v.date)) return err("L'échéance précède la date de la requête.");
+  if (v.priorite && !v.avecHeure) { $("#h").focus(); return err(`Indiquez l'heure de la requête : le délai de résolution (${PRIO[v.priorite].h} h pour ${PRIO[v.priorite].n}) se calcule à partir de l'heure.`); }
   if ($("#rs").checked) {
     const r = mk(g("rd"),g("rh")); if (!r) return err("Choisis la date de résolution.");
     if (avant(r,v.date,v.avecHeure,g("rh"))) return err("La date de résolution précède celle de la requête.");
+    if (v.priorite && !g("rh")) { $("#rh").focus(); return err("Indiquez aussi l'heure de résolution : elle sert à contrôler le respect du délai."); }
     Object.assign(v,{ resolution:r, avecHeureRes:!!g("rh"), statut:STAT_R, motif:"" });
   } else Object.assign(v,{ resolution:null, avecHeureRes:false, statut:STAT_C });
   err(""); $("#ok").disabled = true;
@@ -711,12 +803,13 @@ $("#ok").onclick = async () => {
 
 
 /* ---------- Historique : mise en forme d'une ligne du journal ---------- */
-const CH = { date_requete:"Date", module:"Module", usager:"Usager", canal:"Canal", description:"Description", agent:"Agent", resolution:"Résolution", statut:"Statut", observation:"Observation", categorie:"Catégorie", echeance:"Échéance", motif_attente:"Motif d'attente", pieces:"Pièces jointes" };
+const CH = { date_requete:"Date", module:"Module", usager:"Usager", canal:"Canal", description:"Description", agent:"Agent", resolution:"Résolution", statut:"Statut", observation:"Observation", categorie:"Catégorie", priorite:"Priorité", echeance:"Échéance", motif_attente:"Motif d'attente", pieces:"Pièces jointes" };
 const fdt = d => (d.getHours() || d.getMinutes()) ? fd(d, true) : fd(d);
 function valJ(k, v) {
   if (v === null || v === undefined || v === "") return "—";
   if (k === "date_requete" || k === "resolution") return fdt(new Date(v));
   if (k === "echeance") return fd(new Date(v + "T00:00"));
+  if (k === "priorite") return PRIO[v] ? `${PRIO[v].n} · ${PRIO[v].nom} (${PRIO[v].h} h)` : "—";
   if (k === "pieces") return (Array.isArray(v) ? v.length : 0) + " fichier(s)";
   const s = String(v); return s.length > 90 ? s.slice(0, 90) + "…" : s;
 }
@@ -734,6 +827,14 @@ function echeanceTxt(r) {
   const e = jourFin(r.echeance), n = Math.ceil((Date.now() - e) / DAY);
   return fd(new Date(r.echeance + "T00:00")) + (Date.now() > e ? ` (en retard de ${n} j)` : "");
 }
+/* encadré « délai de résolution » du détail : fin du délai, reste ou dépassement, respect une fois résolue */
+function slaBloc(r) {
+  const p = PRIO[r.priorite]; if (!p) return "";
+  const f = slaFin(r), b = bilan(r), s = suivi(r); let etat, cl = "";
+  if (b) { cl = b.ok ? "ok" : "late"; etat = b.ok ? `<b>Délai respecté</b> <span>(résolue avec ${dm(-b.ecart)} d'avance)</span>` : `<b>Délai dépassé de ${esc(dm(b.ecart))}</b>`; }
+  else { cl = s.n === "r" ? "late" : ""; etat = `<b>${esc(s.t)}</b>`; }
+  return `<div class="sla ${cl}" style="--pc:${PRIO_COUL[r.priorite]}">${puce(r.priorite, true)}<span>Délai de résolution : ${p.h} h, soit avant le ${esc(fd(f, true))}</span>${etat}</div>`;
+}
 function ouvrir(id, mode = "voir") {
   const r = data.find(x => x.id === id); if (!r) { if (dg.open) dg.close(); return toast("Requête introuvable"); }
   dg.dataset.id = id; dg.dataset.maj = r.maj || "";
@@ -742,8 +843,9 @@ function ouvrir(id, mode = "voir") {
   if (r.categorie) info.push(["Catégorie", r.categorie]);
   if (r.echeance) info.push(["À traiter avant le", echeanceTxt(r)]);
   if (r.motif && !r.resolution) info.push(["Motif d'attente", r.motif]);
-  let h = `<div class="dgh"><div><span class="pill ${r.resolution ? "" : "en"}">${esc(r.statut)}</span>${r.ref ? ` <span class="pill rf">${esc(r.ref)}</span>` : ""}<h2 id="dgt">${esc(r.description)}</h2></div><button type="button" class="x" data-x aria-label="Fermer">×</button></div>
+  let h = `<div class="dgh"><div><span class="pill ${r.resolution ? "" : "en"}">${esc(r.statut)}</span>${r.priorite ? " " + puce(r.priorite) : ""}${r.ref ? ` <span class="pill rf">${esc(r.ref)}</span>` : ""}<h2 id="dgt">${esc(r.description)}</h2></div><button type="button" class="x" data-x aria-label="Fermer">×</button></div>
     <dl class="dl">` + info.map(([a,b]) => `<div><dt>${a}</dt><dd>${esc(b)}</dd></div>`).join("") + `</dl>
+    ` + slaBloc(r) + `
     ` + (mode === "clore" ? "" : `<div class="ob"><b>Observation</b><p>${r.observation ? esc(r.observation) : "<i>Aucune observation</i>"}</p></div>`)
     + (mode === "voir" && r.pieces.length ? `<div class="ob" style="margin-top:10px"><b>Pièces jointes</b><div class="pjg" id="pjv">${r.pieces.map(() => `<a><div class="ic">…</div><span>chargement</span></a>`).join("")}</div></div>` : "")
     + (trace ? `<p class="tr">${esc(trace)}</p>` : "");
@@ -753,8 +855,8 @@ function ouvrir(id, mode = "voir") {
     + (peutSupprimer(r) ? `<button type="button" class="ghost" data-a="sup">Supprimer</button>` : "") + `</div>`
     + (mod ? "" : `<p class="tr">Lecture seule : cette requête est suivie par ${esc(r.agent)}. Vous pouvez la dupliquer pour en créer une nouvelle.</p>`)
     + `<details class="hi" id="hid"><summary>Historique des modifications</summary><ol id="hio"><li>Chargement…</li></ol></details>`;
-  if (mode === "clore") h += `<div class="pn"><label>Date de résolution</label><div class="q"><input type="date" id="cd" aria-label="Date de résolution"><input type="time" id="ch" aria-label="Heure de résolution, facultative"></div>
-    <div class="sc"><button type="button" data-j="0">Aujourd'hui</button><button type="button" data-j="1">Hier</button><span>Heure facultative</span></div>
+  if (mode === "clore") h += `<div class="pn"><label>Date de résolution</label><div class="q"><input type="date" id="cd" aria-label="Date de résolution"${r.priorite ? ` value="${jour(0)}"` : ""}><input type="time" id="ch" aria-label="Heure de résolution${r.priorite ? "" : ", facultative"}"${r.priorite ? ` value="${hm(new Date())}" required` : ""}></div>
+    <div class="sc"><button type="button" data-j="0">Aujourd'hui</button><button type="button" data-j="1">Hier</button><span>${r.priorite ? "Heure obligatoire (contrôle du délai " + PRIO[r.priorite].n + ")" : "Heure facultative"}</span></div>
     <label for="co">Observation <span class="opt">(facultatif)</span></label><textarea id="co" rows="4" placeholder="Détails de la clôture : traitement effectué, échange avec l'usager…">${esc(r.observation || "")}</textarea>
     <div class="err" id="ce"></div><button type="button" class="ok" data-a="valider">Valider la résolution</button><button type="button" class="ghost" data-a="voir">Annuler</button></div>`;
   if (mode === "sup") h += `<div class="pn"><p><b>Supprimer cette requête ?</b> Elle ne sera plus visible dans l'application ni dans les exports. Un administrateur pourra la restaurer.</p>
@@ -781,7 +883,11 @@ dg.addEventListener("click", async e => {
   if (e.target === dg) return dg.close();
   const b = e.target.closest("button"); if (!b) return;
   if (b.hasAttribute("data-x")) return dg.close();
-  if (b.dataset.j !== undefined) { $("#cd").value = jour(+b.dataset.j); $("#ce").textContent = ""; return; }
+  if (b.dataset.j !== undefined) {
+    $("#cd").value = jour(+b.dataset.j); $("#ce").textContent = "";
+    const r0 = data.find(x => x.id === dg.dataset.id); if (r0 && r0.priorite && +b.dataset.j === 0 && !$("#ch").value) $("#ch").value = hm(new Date());
+    return;
+  }
   const a = b.dataset.a, id = dg.dataset.id, r = data.find(x => x.id === id);
   if (!a) return;
   if (["voir","clore","sup"].includes(a)) return ouvrir(id,a === "voir" ? "voir" : a);
@@ -792,46 +898,63 @@ dg.addEventListener("click", async e => {
     const m = $("#ce"), hh = $("#ch").value, d = mk($("#cd").value,hh);
     if (!d) { m.textContent = "Choisis la date de résolution."; return; }
     if (avant(d,r.date,r.avecHeure,hh)) { m.textContent = "La date de résolution précède celle de la requête."; return; }
+    if (r.priorite && !hh) { m.textContent = `Indiquez l'heure de résolution : elle sert à contrôler le délai ${PRIO[r.priorite].n} (${PRIO[r.priorite].h} h).`; $("#ch").focus(); return; }
     b.disabled = true;
-    try { await store.upd(id,{ resolution:d, avecHeureRes:!!hh, statut:STAT_R, observation:$("#co").value.trim(), motif:"" },dg.dataset.maj); dg.close(); toast("Requête résolue"); }
+    try {
+      await store.upd(id,{ resolution:d, avecHeureRes:!!hh, statut:STAT_R, observation:$("#co").value.trim(), motif:"" },dg.dataset.maj); dg.close();
+      const f = slaFin(r); toast(f ? (d <= f ? `Requête résolue · délai ${PRIO[r.priorite].n} respecté` : `Requête résolue · délai ${PRIO[r.priorite].n} dépassé de ${dm(d - f)}`) : "Requête résolue");
+    }
     catch (x) { m.textContent = x.message; b.disabled = false; }
   }
   if (a === "oui") { b.disabled = true; try { await store.del(id,dg.dataset.maj); dg.close(); toast("Requête supprimée"); } catch (x) { $("#ce").textContent = x.message; b.disabled = false; } }
 });
 
-/* ---------- En cours : ancienneté, échéances, tri ---------- */
-const EC = { tri: ls.get("sisr:tri") || "a", mes: ls.get("sisr:mes") === "1" };
+/* ---------- En cours : priorités, délais de résolution, échéances, tri ---------- */
+const PF = ["all","1","2","3","0","late"];
+const EC = { tri: ls.get("sisr:tri") || "u", mes: ls.get("sisr:mes") === "1", pri: PF.includes(ls.get("sisr:pri")) ? ls.get("sisr:pri") : "all" };
 $("#tri").value = EC.tri; $("#mes").checked = EC.mes;
-const urgent = r => !r.resolution && (age(r) >= SEUIL_H || (r.echeance && Date.now() > jourFin(r.echeance)));
+/* une requête « urge » quand son délai de résolution est dépassé ou que son échéance est passée (sans priorité : seule l'échéance compte) */
+const urgent = r => !r.resolution && (enRetard(r) || (!!r.echeance && Date.now() > jourFin(r.echeance)));
 function badges(r) {
   const b = [];
   if (r.ref) b.push(`<span class="pill rf">${esc(r.ref)}</span>`);
+  if (r.priorite) b.push(puce(r.priorite, true));
+  if (!r.resolution) { const s = suivi(r); if (s) b.push(`<span class="pill sl ${s.n === "r" ? "late" : s.n === "p" ? "near" : ""}">${esc(s.t)}</span>`); }
   if (r.categorie) b.push(`<span class="pill">${esc(r.categorie)}</span>`);
   if (r.motif) b.push(`<span class="pill al">${esc(r.motif)}</span>`);
-  if (!r.resolution) {
-    const h = age(r); if (h >= SEUIL_H) b.push(`<span class="pill rt">+48 h</span>`); else if (h >= 24) b.push(`<span class="pill al">+24 h</span>`);
-    if (r.echeance) {
-      const e = jourFin(r.echeance), n = Math.ceil((Date.now() - e) / DAY);
-      if (Date.now() > e) b.push(`<span class="pill rt">En retard de ${n} j</span>`);
-      else if (iso(new Date()) === r.echeance) b.push(`<span class="pill al">Échéance aujourd'hui</span>`);
-      else b.push(`<span class="pill rf">À traiter avant le ${fd(new Date(r.echeance + "T00:00"))}</span>`);
-    }
+  if (!r.resolution && r.echeance) {
+    const e = jourFin(r.echeance), n = Math.ceil((Date.now() - e) / DAY);
+    if (Date.now() > e) b.push(`<span class="pill rt">Échéance dépassée de ${n} j</span>`);
+    else if (iso(new Date()) === r.echeance) b.push(`<span class="pill al">Échéance aujourd'hui</span>`);
+    else b.push(`<span class="pill rf">À traiter avant le ${fd(new Date(r.echeance + "T00:00"))}</span>`);
   }
   return b.length ? `<span class="tags">${b.join("")}</span>` : "";
 }
+const clePri = r => { const s = suivi(r); return s ? s.ms : Infinity; };       // temps restant avant la fin du délai (négatif : dépassé) ; sans priorité : en dernier
+const filtrePri = (r, f) => f === "all" || (f === "late" ? enRetard(r) : f === "0" ? !PRIO[r.priorite] : String(r.priorite) === f);
+function renderFiltresEC(base) {
+  const nb = f => base.filter(r => filtrePri(r, f)).length;
+  const defs = [["all","Toutes",""],["1","P1","--pc:" + PRIO_COUL[1]],["2","P2","--pc:" + PRIO_COUL[2]],["3","P3","--pc:" + PRIO_COUL[3]],["0","Sans priorité","--pc:" + PRIO_COUL[0]],["late","Délai dépassé",""]];
+  $("#ecf").innerHTML = defs.map(([k, t, st]) => { const n = nb(k);
+    return `<button type="button" data-pf="${k}" aria-pressed="${EC.pri === k}" class="${k === "late" ? "rd" : ""}" data-n="${n}"${st ? ` style="${st}"` : ""}>${k !== "all" && k !== "late" ? "<i></i>" : ""}${t} <em>${n}</em></button>`; }).join("");
+}
 function renderEC() {
-  const tous = data.filter(r => !r.resolution); $("#nb").textContent = tous.length || ""; $("#nb").classList.toggle("late", tous.some(urgent));
-  const l = tous.filter(r => !EC.mes || mien(r));
-  l.sort(EC.tri === "r" ? (a,b) => b.date - a.date : EC.tri === "e" ? (a,b) => (a.echeance || "9999").localeCompare(b.echeance || "9999") || a.date - b.date : (a,b) => a.date - b.date);
-  $("#ecl").innerHTML = l.length ? l.map(r => { const h = age(r), n = Math.max(0,Math.floor(h / 24)), cl = n > 3 ? "x" : n > 1 ? "m" : "";
-    return `<div class="ln"><div class="tp ${cl}">${h < 24 ? Math.max(0,Math.floor(h)) : n}<small>${h < 24 ? "h" : n > 1 ? "jours" : "jour"}</small></div><div class="bd">
+  const tous = data.filter(r => !r.resolution), nr = tous.filter(enRetard).length;
+  $("#nb").textContent = tous.length || ""; $("#nb").classList.toggle("late", tous.some(urgent)); $("#nb").title = nr ? `${nr} requête${nr > 1 ? "s" : ""} hors délai` : "";
+  const base = tous.filter(r => !EC.mes || mien(r)); renderFiltresEC(base);
+  const l = base.filter(r => filtrePri(r, EC.pri));
+  l.sort(EC.tri === "r" ? (a,b) => b.date - a.date : EC.tri === "e" ? (a,b) => (a.echeance || "9999").localeCompare(b.echeance || "9999") || a.date - b.date
+    : EC.tri === "a" ? (a,b) => a.date - b.date : (a,b) => { const x = clePri(a), y = clePri(b); return x === y ? a.date - b.date : x < y ? -1 : 1; });
+  $("#ecl").innerHTML = l.length ? l.map(r => { const h = age(r), n = Math.max(0,Math.floor(h / 24)), cl = n > 3 ? "x" : n > 1 ? "m" : "", late = enRetard(r);
+    return `<div class="ln${r.priorite ? " p" + r.priorite : ""}${late ? " late" : ""}"><div class="tp ${cl}">${h < 24 ? Math.max(0,Math.floor(h)) : n}<small>${h < 24 ? "h" : n > 1 ? "jours" : "jour"}</small></div><div class="bd">
       <button type="button" class="op" data-open="${esc(r.id)}"><span class="t">${esc(r.description)}</span>${badges(r)}
         <span class="inf"><span>${fd(r.date,r.avecHeure)}</span><span>${esc(r.module)}</span><span>${esc(r.usager)}</span><span>${esc(r.agent)}</span></span>
         ${r.observation ? `<span class="o1"><span>${esc(r.observation)}</span></span>` : ""}</button>
       ${peutModifier(r) ? `<button type="button" class="ghost" data-res="${esc(r.id)}">Marquer comme résolue</button>` : ""}</div></div>`; }).join("")
-    : `<div class="vide"><b>${tous.length ? "Rien à traiter pour vous" : "Tout est à jour"}</b>${tous.length ? "Décochez « Mes requêtes » pour voir celles de l'équipe." : "Aucune requête en attente de résolution."}</div>`;
+    : `<div class="vide"><b>${tous.length ? (base.length ? "Aucune requête dans ce filtre" : "Rien à traiter pour vous") : "Tout est à jour"}</b>${tous.length ? (base.length ? "Choisissez « Toutes » pour revoir l'ensemble." : "Décochez « Mes requêtes » pour voir celles de l'équipe.") : "Aucune requête en attente de résolution."}</div>`;
 }
 $("#ecl").onclick = e => { const o = e.target.closest("[data-open]"); if (o) return ouvrir(o.dataset.open); const b = e.target.closest("[data-res]"); if (b) ouvrir(b.dataset.res,"clore"); };
+$("#ecf").onclick = e => { const b = e.target.closest("[data-pf]"); if (!b) return; EC.pri = b.dataset.pf; ls.set("sisr:pri", EC.pri); renderEC(); };
 $("#tri").onchange = e => { EC.tri = e.target.value; ls.set("sisr:tri", EC.tri); renderEC(); };
 $("#mes").onchange = e => { EC.mes = e.target.checked; ls.set("sisr:mes", EC.mes ? "1" : "0"); renderEC(); };
 
@@ -842,17 +965,25 @@ const semPrec = () => F.sem ? iso(addJ(new Date(F.sem + "T00:00"), -7)) : null;
 /* o.sem : autre semaine que celle choisie ; o.sansSemaine : toutes les semaines (pour la courbe d'évolution) */
 function filtrer(o = {}) {
   const sem = o.sansSemaine ? "" : (o.sem !== undefined ? o.sem : F.sem), s = sem ? new Date(sem + "T00:00") : null, e = s && addJ(s, 7);
-  const f = o.libre ? { mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", mes:false } : F;      // « libre » : seule la semaine compte (rapport de direction)
+  const f = o.libre ? { mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", pri:"", mes:false } : F;      // « libre » : seule la semaine compte (rapport de direction)
   const k = norm(f.mot), qu = norm(f.usa), ex = qu && usagers().some(x => norm(x) === qu);
   return data.filter(r => (!s || (r.date >= s && r.date < e)) && (!f.mod || r.module === f.mod) && (!f.can || r.canal === f.can) && (!f.age || r.agent === f.age) && (!f.sta || (f.sta === "c") === !r.resolution) &&
-    (!f.cat || r.categorie === f.cat) && (!f.mes || mien(r)) && (!qu || (ex ? norm(r.usager) === qu : norm(r.usager).includes(qu))) && (!k || norm(r.ref + " " + r.description + " " + (r.observation || "")).includes(k))).sort((a,b) => a.date - b.date);
+    (!f.cat || r.categorie === f.cat) && (!f.pri || (f.pri === "0" ? !PRIO[r.priorite] : f.pri === "late" ? horsDelai(r) : String(r.priorite) === f.pri)) && (!f.mes || mien(r)) && (!qu || (ex ? norm(r.usager) === qu : norm(r.usager).includes(qu))) && (!k || norm(r.ref + " " + r.description + " " + (r.observation || "")).includes(k))).sort((a,b) => a.date - b.date);
+}
+/* respect des délais : par priorité et au total (taux = résolues dans le délai / résolues avec priorité) */
+function slaStats(rows) {
+  const ligneP = rr => { const e = k => rr.filter(r => slaEtat(r) === k).length, rok = e("rok"), rko = e("rko"), cok = e("cok"), cko = e("cko");
+    return { n:rr.length, rok, rko, cok, cko, nres:rok + rko, taux:rok + rko ? rok / (rok + rko) : null, med:med(rr.filter(r => r.resolution).map(r => (r.resolution - r.date) / HOUR).filter(h => h >= 0)) }; };
+  const avec = rows.filter(r => PRIO[r.priorite]);
+  return { sans:rows.length - avec.length, tot:ligneP(avec), par:[1, 2, 3].map(p => ({ p, ...ligneP(rows.filter(r => r.priorite === p)) })) };
 }
 function stats(rows) {
   const res = rows.filter(r => r.resolution), dls = res.map(r => (r.resolution - r.date) / HOUR).filter(h => h >= 0), enc = rows.filter(r => !r.resolution);
   const rep = k => { const m = {}; rows.forEach(r => r[k] && (m[r[k]] = (m[r[k]] || 0) + 1)); return Object.entries(m).sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0],"fr")); };
   const par = k => { const m = {}; res.forEach(r => { const h = (r.resolution - r.date) / HOUR; if (r[k] && h >= 0) (m[r[k]] = m[r[k]] || []).push(h); });
     return Object.entries(m).map(([n,a]) => [n, a.length, med(a), moy(a)]).sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0],"fr")); };
-  return { n:rows.length, nres:res.length, nenc:enc.length, taux:rows.length ? res.length / rows.length : null, med:med(dls), moy:moy(dls), tard:enc.filter(urgent).length,
+  const sla = slaStats(rows);
+  return { sla, n:rows.length, nres:res.length, nenc:enc.length, taux:rows.length ? res.length / rows.length : null, med:med(dls), moy:moy(dls), tard:enc.filter(urgent).length,
     rep:{ module:rep("module"), canal:rep("canal"), agent:rep("agent"), categorie:rep("categorie"), usager:rep("usager").slice(0,5) }, delais:{ module:par("module"), agent:par("agent") } };
 }
 /* indicateurs clés ; p = même période, semaine précédente (comparaison « S-1 ») */
@@ -863,11 +994,14 @@ function kpis(s, p) {
   const dM = p && s.med != null && p.med != null ? [`S-1 : ${dur(p.med)} (${sg(Math.round((s.med - p.med) * 10) / 10, " h")})`, s.med < p.med ? "up" : s.med > p.med ? "dn" : ""] : ["", ""];
   return [["Requêtes", s.n, dN, ""], ["Résolues", s.nres, "", ""], ["En cours", s.nenc, "", ""],
     ["Taux de résolution", s.taux == null ? "-" : Math.round(s.taux * 100) + " %", dT[0], dT[1]], ["Délai médian de résolution", dur(s.med), dM[0], dM[1]],
-    ["Délai moyen de résolution", dur(s.moy), "", ""], ["En cours depuis +48 h ou en retard", s.tard, "", ""]];
+    ["Délai moyen de résolution", dur(s.moy), "", ""],
+    ["Respect des délais (P1 à P3)", s.sla.tot.taux == null ? "-" : Math.round(s.sla.tot.taux * 100) + " %", s.sla.tot.nres ? `${s.sla.tot.rok} sur ${s.sla.tot.nres} résolues dans le délai` : "Aucune résolue avec priorité", "", ""],
+    ["En retard (délai ou échéance dépassés)", s.tard, s.sla.tot.cko ? `dont ${s.sla.tot.cko} hors délai de priorité` : "", "", s.tard ? "rd" : ""]];
 }
 const kpiPairs = k => k.map(x => [x[0], x[1]]);
+const optsPri = () => { $("#fp").innerHTML = `<option value="">Toutes les priorités</option>` + ["1","2","3","0","late"].map(k => `<option value="${k}">${esc(PRI_LIB[k])}</option>`).join(""); $("#fp").value = F.pri; };
 const periode = () => F.sem ? `Période : du ${fd(new Date(F.sem + "T00:00"))} au ${fd(addJ(new Date(F.sem + "T00:00"), 6))}` : "Période : toutes les semaines";
-const ftxt = () => [F.mod && "Module : " + F.mod, F.can && "Canal : " + F.can, F.usa && "Usager : " + F.usa, F.age && "Agent : " + F.age, F.sta && "Statut : " + (F.sta === "c" ? "En cours" : "Résolues"), F.cat && "Catégorie : " + F.cat, F.mes && "Mes requêtes", F.mot && "Mot-clé : " + F.mot].filter(Boolean).join(" ; ") || "aucun";
+const ftxt = () => [F.mod && "Module : " + F.mod, F.can && "Canal : " + F.can, F.usa && "Usager : " + F.usa, F.age && "Agent : " + F.age, F.sta && "Statut : " + (F.sta === "c" ? "En cours" : "Résolues"), F.cat && "Catégorie : " + F.cat, F.pri && "Priorité : " + PRI_LIB[F.pri], F.mes && "Mes requêtes", F.mot && "Mot-clé : " + F.mot].filter(Boolean).join(" ; ") || "aucun";
 
 /* évolution sur 12 semaines (mêmes filtres, sauf la semaine) */
 let TREND = [];
@@ -921,21 +1055,28 @@ let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() 
 
 function renderBord() {
   const rows = filtrer(), s = stats(rows), p = F.sem ? stats(filtrer({ sem:semPrec() })) : null; $("#per").textContent = periode(); $("#cnt").textContent = `Détail des requêtes (${rows.length})`;
-  $("#kpi").innerHTML = kpis(s, p).map(([a,b,c,d]) => `<div class="k"><small>${a}</small><b>${b}</b>${c ? `<div class="dlt ${d}">${esc(c)}</div>` : ""}</div>`).join("");
+  $("#kpi").innerHTML = kpis(s, p).map(([a,b,c,d,e]) => `<div class="k ${e || ""}"><small>${a}</small><b>${b}</b>${c ? `<div class="dlt ${d}">${esc(c)}</div>` : ""}</div>`).join("");
   renderTrend();
   const blk = (t,k,rs) => { const l = rs || s.rep[k], mx = l[0] ? l[0][1] : 1; return `<div class="rp"><h4>${t}</h4>` + (l.map(([n,c]) => `<div class="br"><span>${esc(n)}</span><i style="width:${c / mx * 100}%"></i><b>${c}</b></div>`).join("") || `<div class="vide">-</div>`) + `</div>`; };
   const dly = (t, l, nom) => `<div class="rp"><h4>${t}</h4>` + (l.length ? `<div class="tw"><table><thead><tr><th>${nom}</th><th>Résolues</th><th>Médiane</th><th>Moyenne</th></tr></thead><tbody>` + l.map(([n,c,m,a]) => `<tr><td>${esc(n)}</td><td>${c}</td><td>${dur(m)}</td><td>${dur(a)}</td></tr>`).join("") + `</tbody></table></div>` : `<div class="vide">-</div>`) + `</div>`;
-  $("#rep").innerHTML = blk("Par module","module") + blk("Par canal","canal") + blk("Par agent","agent");
-  $("#rep2").innerHTML = blk("Par catégorie","categorie") + blk("Usagers les plus fréquents","usager") + dly("Délai de résolution par module", s.delais.module, "Module") + dly("Délai de résolution par agent", s.delais.agent, "Agent");
+  const nbP = [1, 2, 3, 0].map(q => [q, rows.filter(r => (r.priorite || 0) === q).length]), mxP = Math.max(1, ...nbP.map(x => x[1]));
+  const blkP = `<div class="rp"><h4>Par priorité</h4>` + nbP.map(([q, c]) => `<div class="br pr-b" style="--pc:${PRIO_COUL[q]}"><span>${q ? `<b>${PRIO[q].n}</b> ${esc(PRIO[q].nom)}` : "Sans priorité"}</span><i style="width:${c / mxP * 100}%"></i><b>${c}</b></div>`).join("") + `</div>`;
+  const pc = x => x == null ? "-" : Math.round(x * 100) + " %";
+  const tabSla = `<div class="rp wide"><h4>Respect des délais de résolution par priorité</h4><div class="tw"><table><thead><tr><th>Priorité</th><th>Délai</th><th>Requêtes</th><th>Résolues</th><th>Dans le délai</th><th>Hors délai</th><th>Taux</th><th>En cours en retard</th><th>Délai médian</th></tr></thead><tbody>`
+    + s.sla.par.map(x => `<tr><td>${puce(x.p, true)}</td><td>${PRIO[x.p].h} h</td><td>${x.n}</td><td>${x.nres}</td><td>${x.rok}</td><td>${x.rko}</td><td><b>${pc(x.taux)}</b></td><td${x.cko ? ' style="color:var(--r);font-weight:700"' : ""}>${x.cko}</td><td>${dur(x.med)}</td></tr>`).join("")
+    + `<tr><td><b>Total avec priorité</b></td><td></td><td>${s.sla.tot.n}</td><td>${s.sla.tot.nres}</td><td>${s.sla.tot.rok}</td><td>${s.sla.tot.rko}</td><td><b>${pc(s.sla.tot.taux)}</b></td><td${s.sla.tot.cko ? ' style="color:var(--r);font-weight:700"' : ""}>${s.sla.tot.cko}</td><td></td></tr>`
+    + `</tbody></table></div>${s.sla.sans ? `<p class="hint" style="margin:8px 0 0">${s.sla.sans} requête${s.sla.sans > 1 ? "s" : ""} sans priorité : aucun délai de résolution, donc hors de ce tableau.</p>` : ""}</div>`;
+  $("#rep").innerHTML = blkP + blk("Par module","module") + blk("Par canal","canal") + blk("Par agent","agent");
+  $("#rep2").innerHTML = tabSla + blk("Par catégorie","categorie") + blk("Usagers les plus fréquents","usager") + dly("Délai de résolution par module", s.delais.module, "Module") + dly("Délai de résolution par agent", s.delais.agent, "Agent");
   $("#tb thead").innerHTML = "<tr>" + HEAD.map(h => `<th>${h}</th>`).join("") + "</tr>";
   const aff = rows.length > MAXL ? rows.slice(-MAXL) : rows;           // à l'écran : les plus récentes ; les exports contiennent tout
   $("#plus").hidden = aff === rows; $("#plus").textContent = `Affichage des ${MAXL} requêtes les plus récentes sur ${rows.length}. Choisissez une semaine ou un filtre pour voir les autres ; les exports Excel et PDF contiennent les ${rows.length} requêtes.`;
-  $("#tb tbody").innerHTML = aff.map(r => `<tr class="rw" tabindex="0" data-open="${esc(r.id)}">` + ligne(r).map((c,i) => i === COL_STAT ? `<td><span class="pill ${r.resolution ? "" : "en"}">${esc(c)}</span></td>` : i === COL_OBS ? `<td class="obc"><div>${esc(c)}</div></td>` : i === 0 ? `<td style="white-space:nowrap;font-size:12px">${esc(c)}</td>` : `<td>${esc(c)}</td>`).join("") + "</tr>").join("")
+  $("#tb tbody").innerHTML = aff.map(r => `<tr class="rw${slaEtat(r) === "cko" ? " late" : ""}" tabindex="0" data-open="${esc(r.id)}">` + ligne(r).map((c,i) => i === COL_STAT ? `<td><span class="pill ${r.resolution ? "" : "en"}">${esc(c)}</span></td>` : i === COL_PRIO ? `<td>${puce(r.priorite)}</td>` : i === COL_DEL ? `<td style="white-space:nowrap${horsDelai(r) ? ";color:var(--r);font-weight:700" : ""}">${esc(c)}</td>` : i === COL_OBS ? `<td class="obc"><div>${esc(c)}</div></td>` : i === 0 ? `<td style="white-space:nowrap;font-size:12px">${esc(c)}</td>` : `<td>${esc(c)}</td>`).join("") + "</tr>").join("")
     || `<tr><td colspan="${HEAD.length}">Aucune requête pour ces filtres.</td></tr>`;
 }
 $("#tb").onclick = e => { const t = e.target.closest("[data-open]"); if (t) ouvrir(t.dataset.open); };
 $("#tb").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { const t = e.target.closest("[data-open]"); if (t) { e.preventDefault(); ouvrir(t.dataset.open); } } };
-[["fs","sem"],["fm","mod"],["fc","can"],["fa","age"],["ft","sta"],["fg","cat"],["fk","mot"]].forEach(([i,k]) => $("#" + i).oninput = e => { F[k] = e.target.value; renderBord(); });
+[["fs","sem"],["fm","mod"],["fc","can"],["fa","age"],["ft","sta"],["fg","cat"],["fp","pri"],["fk","mot"]].forEach(([i,k]) => $("#" + i).oninput = e => { F[k] = e.target.value; renderBord(); });
 $("#fmes").onchange = e => { F.mes = e.target.checked; renderBord(); };
 $("#pv").onclick = () => { const i = WK.indexOf(F.sem), n = i < 0 ? WK[0] : WK[i + 1]; if (n) { F.sem = n; $("#fs").value = n; renderBord(); } };
 $("#nx").onclick = () => { const i = WK.indexOf(F.sem); if (i > 0) { F.sem = WK[i - 1]; $("#fs").value = F.sem; renderBord(); } };
@@ -949,11 +1090,14 @@ $("#xl").onclick = () => {
   const A = [[NOM + " - Rapport des requêtes"],[periode()],["Filtres : " + ftxt()],[],["Indicateurs clés"],...kpiPairs(kpis(s, null))];
   [["Par module","module"],["Par canal","canal"],["Par agent","agent"],["Par catégorie","categorie"]].forEach(([t,k]) => A.push([],[t,"Requêtes"],...s.rep[k]));
   [["Délai de résolution par module","module"],["Délai de résolution par agent","agent"]].forEach(([t,k]) => A.push([],[t,"Résolues","Médiane (h)","Moyenne (h)"],...s.delais[k].map(x => [x[0], x[1], heures(x[2]), heures(x[3])])));
+  const pct = x => x == null ? "-" : Math.round(x * 100) + " %", lp = (nom, h, x) => [nom, h, x.n, x.nres, x.rok, x.rko, pct(x.taux), x.cko, heures(x.med)];
+  A.push([],["Respect des délais de résolution par priorité","Délai (h)","Requêtes","Résolues","Dans le délai","Hors délai","Taux de respect","En cours en retard","Délai médian (h)"],
+    ...s.sla.par.map(x => lp(PRIO[x.p].n + " · " + PRIO[x.p].nom, PRIO[x.p].h, x)), lp("Total avec priorité", "", s.sla.tot), ["Sans priorité (aucun délai)", "", s.sla.sans]);
   const w1 = XLSX.utils.aoa_to_sheet(A), w2 = XLSX.utils.aoa_to_sheet([HEAD,...rows.map(ligne)]), wb = XLSX.utils.book_new();
-  w1["!cols"] = [{ wch:44 },{ wch:14 },{ wch:14 },{ wch:14 }]; w2["!cols"] = [16,12,28,34,13,50,28,26,22,12,60].map(wch => ({ wch }));
+  w1["!cols"] = [44,14,14,14,14,14,16,18,16].map(wch => ({ wch })); w2["!cols"] = [16,12,28,34,13,50,28,11,26,22,12,26,60].map(wch => ({ wch }));
   XLSX.utils.book_append_sheet(wb,w1,"Synthèse"); XLSX.utils.book_append_sheet(wb,w2,"Tableau"); XLSX.writeFile(wb,nomFichier() + ".xlsx");
 };
-const NAVY = [14,42,71], BLEU = [109,167,236], GRIS = [85,97,110];
+const NAVY = [14,42,71], BLEU = [109,167,236], GRIS = [85,97,110], ROUGE = [180,35,24], rgb = h => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
 function entetePdf(d, titre) {
   const W = d.internal.pageSize.getWidth(), lh = 12, lw = lh * LOGO_R;
   d.setFillColor(...NAVY); d.rect(0,0,W,24,"F"); d.setFillColor(255,255,255); d.roundedRect(8,5,lw + 6,lh + 2,2,2,"F"); d.addImage(LOGO,"PNG",11,6,lw,lh);
@@ -968,8 +1112,13 @@ $("#pdf").onclick = () => {
   d.autoTable({ startY:42, margin:{ left:10, right:10 }, head:[kp.map(k => k[0])], body:[kp.map(k => String(k[1]))], headStyles:hs, styles:{ fontSize:9, halign:"center" } });
   const y = d.lastAutoTable.finalY + 6; let m = y;
   [["Module","module"],["Canal","canal"],["Agent","agent"],["Catégorie","categorie"]].forEach(([t,k],i) => { d.autoTable({ startY:y, margin:{ left:10 + i * 68 }, tableWidth:64, head:[[t,"Requêtes"]], body:s.rep[k].map(x => [x[0],String(x[1])]), headStyles:hs, styles:{ fontSize:8 } }); m = Math.max(m,d.lastAutoTable.finalY); });
-  const cs = {}; [21,17,22,28,15,44,26,24,20,14,46].forEach((w,i) => cs[i] = { cellWidth:w });
-  d.autoTable({ startY:m + 8, margin:{ left:10, right:10 }, head:[HEAD], body:rows.map(ligne), headStyles:hs, styles:{ fontSize:7, cellPadding:1.5 }, columnStyles:cs });
+  const cs = {}; [22,17,19,22,16,38,20,16,19,19,16,19,34].forEach((w,i) => cs[i] = { cellWidth:w });
+  d.autoTable({ startY:m + 8, margin:{ left:10, right:10 }, head:[HEAD], body:rows.map(ligne), headStyles:hs, styles:{ fontSize:7, cellPadding:1.5 }, columnStyles:cs,
+    didParseCell: h => {                                                // priorité en couleur (avec son étiquette P1/P2/P3) ; délai dépassé en rouge
+      if (h.section !== "body") return; const r = rows[h.row.index]; if (!r) return;
+      if (h.column.index === COL_PRIO && PRIO[r.priorite]) { h.cell.styles.fillColor = rgb(PRIO_COUL[r.priorite]); h.cell.styles.textColor = r.priorite === 2 ? [31,19,0] : [255,255,255]; h.cell.styles.fontStyle = "bold"; h.cell.styles.halign = "center"; }
+      if (h.column.index === COL_DEL && horsDelai(r)) { h.cell.styles.textColor = [180,35,24]; h.cell.styles.fontStyle = "bold"; }
+    } });
   d.save(nomFichier() + ".pdf");
 };
 
@@ -981,15 +1130,15 @@ function rapportDirection() {
   entetePdf(d, "Rapport de direction");
   d.setFontSize(10); d.setTextColor(255); d.text(periode().replace("Période : ", "") + "  ·  édité le " + fd(new Date(), true), W - M, 15, { align:"right" });
   let y = 32;
-  /* indicateurs clés : 4 puis 3 tuiles */
+  /* indicateurs clés : 4 puis 4 tuiles */
   const tuile = (x, y0, w, k) => {
     d.setDrawColor(213,219,226); d.setFillColor(238,242,247); d.roundedRect(x, y0, w, 23, 2, 2, "FD");
     d.setTextColor(...GRIS); d.setFontSize(7.5); d.text(String(k[0]), x + 3, y0 + 5.5, { maxWidth:w - 6 });
-    d.setTextColor(...NAVY); d.setFontSize(17); d.setFont("helvetica", "bold"); d.text(String(k[1]), x + 3, y0 + 14.5); d.setFont("helvetica", "normal");
+    d.setTextColor(...(k[4] === "rd" ? ROUGE : NAVY)); d.setFontSize(17); d.setFont("helvetica", "bold"); d.text(String(k[1]), x + 3, y0 + 14.5); d.setFont("helvetica", "normal");
     if (k[2]) { d.setFontSize(7); d.setTextColor(k[3] === "dn" ? 180 : k[3] === "up" ? 27 : 85, k[3] === "dn" ? 35 : k[3] === "up" ? 107 : 97, k[3] === "dn" ? 24 : k[3] === "up" ? 58 : 110); d.text(String(k[2]), x + 3, y0 + 20.5, { maxWidth:w - 6 }); }
   };
   const w4 = (W - 2 * M - 9) / 4; K.slice(0,4).forEach((k,i) => tuile(M + i * (w4 + 3), y, w4, k));
-  const w3 = (W - 2 * M - 6) / 3; K.slice(4).forEach((k,i) => tuile(M + i * (w3 + 3), y + 26, w3, k));
+  K.slice(4).forEach((k,i) => tuile(M + i * (w4 + 3), y + 26, w4, k));
   y += 58;
   /* évolution sur 12 semaines : colonnes empilées (résolues en bleu marine, en cours en bleu clair) */
   d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text("Évolution sur 12 semaines", M, y); d.setFont("helvetica", "normal");
@@ -1009,26 +1158,38 @@ function rapportDirection() {
   /* répartitions : barres horizontales */
   const barres = (titre, liste, x, y0, w) => {
     d.setTextColor(...NAVY); d.setFontSize(10); d.setFont("helvetica", "bold"); d.text(titre, x, y0); d.setFont("helvetica", "normal");
-    const l = liste.slice(0, 6), mx2 = l[0] ? l[0][1] : 1; let yy = y0 + 5;
+    const l = liste.slice(0, 6), mx2 = Math.max(1, ...l.map(x => x[1])); let yy = y0 + 5;
     if (!l.length) { d.setFontSize(8); d.setTextColor(...GRIS); d.text("-", x, yy + 2); return yy + 6; }
-    l.forEach(([n,c]) => { d.setFontSize(8); d.setTextColor(40,40,40); d.text(d.splitTextToSize(String(n), 40)[0], x, yy + 2.6);
-      d.setFillColor(...NAVY); d.rect(x + 42, yy, Math.max(1, (w - 54) * c / mx2), 3.4, "F"); d.setTextColor(...NAVY); d.text(String(c), x + 42 + Math.max(1, (w - 54) * c / mx2) + 1.5, yy + 2.8); yy += 5.6; });
+    l.forEach(([n,c,col]) => { d.setFontSize(8); d.setTextColor(40,40,40); d.text(d.splitTextToSize(String(n), 40)[0], x, yy + 2.6);
+      d.setFillColor(...(col || NAVY)); d.rect(x + 42, yy, Math.max(1, (w - 54) * c / mx2), 3.4, "F"); d.setTextColor(...NAVY); d.text(String(c), x + 42 + Math.max(1, (w - 54) * c / mx2) + 1.5, yy + 2.8); yy += 5.6; });
     return yy;
   };
   const wc = (W - 2 * M - 8) / 2;
   const y1 = barres("Par module", s.rep.module, M, y, wc), y2 = barres("Par catégorie", s.rep.categorie, M + wc + 8, y, wc); y = Math.max(y1, y2) + 3;
-  const y3 = barres("Par canal", s.rep.canal, M, y, wc), y4 = barres("Par agent", s.rep.agent, M + wc + 8, y, wc); y = Math.max(y3, y4) + 4;
+  const y3 = barres("Par canal", s.rep.canal, M, y, wc), y4 = barres("Par agent", s.rep.agent, M + wc + 8, y, wc); y = Math.max(y3, y4) + 3;
+  barres("Par priorité", [1, 2, 3, 0].map(q => [q ? `${PRIO[q].n} · ${PRIO[q].nom}` : "Sans priorité", rows.filter(r => (r.priorite || 0) === q).length, rgb(PRIO_COUL[q])]), M, y, wc);
   /* délais */
   d.addPage(); entetePdf(d, "Rapport de direction"); y = 32;
+  d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text("Respect des délais de résolution par priorité", M, y); d.setFont("helvetica", "normal");
+  const pc = x => x == null ? "-" : Math.round(x * 100) + " %", ls1 = (nom, h, x) => [nom, h, String(x.n), String(x.nres), String(x.rok), String(x.rko), pc(x.taux), String(x.cko)];
+  d.autoTable({ startY:y + 3, margin:{ left:M, right:M }, head:[["Priorité","Délai","Requêtes","Résolues","Dans le délai","Hors délai","Taux","En cours en retard"]],
+    body:[...s.sla.par.map(x => ls1(`${PRIO[x.p].n} · ${PRIO[x.p].nom}`, PRIO[x.p].h + " h", x)), ls1("Total avec priorité", "", s.sla.tot)], headStyles:hs, styles:{ fontSize:8 }, columnStyles:{ 0:{ cellWidth:46 } },
+    didParseCell: h => { if (h.section === "body" && h.column.index === 0 && h.row.index < 3) { h.cell.styles.fillColor = rgb(PRIO_COUL[h.row.index + 1]); h.cell.styles.textColor = h.row.index === 1 ? [31,19,0] : [255,255,255]; h.cell.styles.fontStyle = "bold"; }
+      if (h.section === "body" && h.column.index === 7 && h.cell.raw !== "0") h.cell.styles.textColor = ROUGE; } });
+  y = d.lastAutoTable.finalY + 2;
+  if (s.sla.sans) { d.setFontSize(7.5); d.setTextColor(...GRIS); d.text(`${s.sla.sans} requête${s.sla.sans > 1 ? "s" : ""} sans priorité : aucun délai de résolution, donc hors de ce tableau.`, M, y + 3); y += 4; }
+  y += 8;
   d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text("Délais de résolution", M, y); d.setFont("helvetica", "normal"); y += 3;
   const dl = (nom, l, i) => d.autoTable({ startY:y, margin:{ left:M + i * (wc + 8) }, tableWidth:wc, head:[[nom,"Résolues","Médiane","Moyenne"]], body:l.map(x => [x[0], String(x[1]), dur(x[2]), dur(x[3])]).concat(l.length ? [] : [["-","","",""]]), headStyles:hs, styles:{ fontSize:8 } });
   dl("Module", s.delais.module, 0); const ya = d.lastAutoTable.finalY; dl("Agent", s.delais.agent, 1); y = Math.max(ya, d.lastAutoTable.finalY) + 8;
   d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text("Usagers les plus fréquents", M, y); d.setFont("helvetica", "normal"); y += 3;
   d.autoTable({ startY:y, margin:{ left:M, right:M }, head:[["Usager","Requêtes"]], body:s.rep.usager.map(x => [x[0], String(x[1])]), headStyles:hs, styles:{ fontSize:8 }, columnStyles:{ 1:{ cellWidth:25 } } }); y = d.lastAutoTable.finalY + 8;
-  const surv = rows.filter(urgent).sort((a,b) => a.date - b.date);
-  d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text(`Requêtes à surveiller (${surv.length}) : en cours depuis plus de 48 h ou en retard`, M, y); d.setFont("helvetica", "normal");
-  if (surv.length) d.autoTable({ startY:y + 3, margin:{ left:M, right:M }, head:[["N°","Date","Usager","Description","Agent","Ancienneté"]],
-    body:surv.slice(0, 20).map(r => [r.ref, fd(r.date), r.usager, r.description, r.agent, dur(age(r))]), headStyles:hs, styles:{ fontSize:7.5, cellPadding:1.5 }, columnStyles:{ 0:{ cellWidth:24 }, 1:{ cellWidth:20 }, 5:{ cellWidth:20 } } });
+  const surv = rows.filter(urgent).sort((a,b) => clePri(a) - clePri(b) || a.date - b.date);        // d'abord les délais les plus dépassés
+  d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text(`Requêtes à surveiller (${surv.length}) : délai de résolution ou échéance dépassés`, M, y); d.setFont("helvetica", "normal");
+  if (surv.length) d.autoTable({ startY:y + 3, margin:{ left:M, right:M }, head:[["N°","Prio.","Date","Usager","Description","Agent","Retard"]],
+    body:surv.slice(0, 20).map(r => [r.ref, PRIO[r.priorite] ? PRIO[r.priorite].n : "-", fd(r.date), r.usager, r.description, r.agent, enRetard(r) ? suivi(r).t.replace("Délai dépassé de ", "+") : "Échéance dépassée"]),
+    headStyles:hs, styles:{ fontSize:7.5, cellPadding:1.5 }, columnStyles:{ 0:{ cellWidth:24 }, 1:{ cellWidth:11, halign:"center" }, 2:{ cellWidth:20 }, 6:{ cellWidth:26 } },
+    didParseCell: h => { if (h.section === "body" && h.column.index === 1 && PRIO[surv[h.row.index].priorite]) { const q = surv[h.row.index].priorite; h.cell.styles.fillColor = rgb(PRIO_COUL[q]); h.cell.styles.textColor = q === 2 ? [31,19,0] : [255,255,255]; h.cell.styles.fontStyle = "bold"; } } });
   else { d.setFontSize(9); d.setTextColor(...GRIS); d.text("Aucune : tout est à jour.", M, y + 8); }
   if (surv.length > 20) { d.setFontSize(8); d.setTextColor(...GRIS); d.text(`… et ${surv.length - 20} autre(s), voir l'application.`, M, d.lastAutoTable.finalY + 5); }
   const n = d.getNumberOfPages(); for (let i = 1; i <= n; i++) { d.setPage(i); d.setFontSize(8); d.setTextColor(...GRIS); d.text(`${NOM} · Rapport de direction · page ${i} / ${n}`, W / 2, 291, { align:"center" }); }
@@ -1172,7 +1333,7 @@ async function admDonnees() {
       <p style="margin:6px 0"><b>${SAUV ? `Dernière sauvegarde : ${fd(new Date(SAUV), true)} (${n === 0 ? "aujourd'hui" : "il y a " + n + " jour" + (n > 1 ? "s" : "")})` : "Aucune sauvegarde enregistrée."}</b></p>
       <button class="ok" id="sv" type="button" style="max-width:360px">Télécharger la sauvegarde</button><div class="msg" id="svm" role="alert"></div></div>
     <div class="card"><h3 style="margin:14px 0 4px;color:var(--n)">Importer un fichier Excel</h3>
-      <p class="hint">Pour reprendre l'historique des semaines passées. Colonnes attendues : DATE, MODULE, USAGER, CANAL, DESCRIPTION DE LA REQUÊTE, AGENT MMTE, DATE ET HEURE DE RESOLUTION, STATUT, OBSERVATION (et CATÉGORIE si vous l'avez). Un export de cette application convient aussi.</p>
+      <p class="hint">Pour reprendre l'historique des semaines passées. Colonnes attendues : DATE, MODULE, USAGER, CANAL, DESCRIPTION DE LA REQUÊTE, AGENT MMTE, DATE ET HEURE DE RESOLUTION, STATUT, OBSERVATION (et CATÉGORIE si vous l'avez). Colonne facultative PRIORITÉ : P1, P2 ou P3 (ou Critique, Moyenne, Basse) ; une requête avec priorité doit avoir une date ET une heure. Un export de cette application convient aussi.</p>
       <div class="act" style="margin-top:6px"><button type="button" class="ghost" id="modl">Télécharger le modèle Excel</button><button type="button" class="ghost" id="imb">Choisir un fichier…</button></div>
       <input type="file" id="imf" accept=".xlsx,.xls,.csv" hidden><div id="imp"></div></div>`;
 }
@@ -1187,12 +1348,12 @@ async function sauvegarder() {
   const b = $("#sv"), m = $("#svm"); note(m, ""); b.disabled = true; b.textContent = "Préparation…";
   try {
     const t = await store.tout(), D = x => x ? fd(new Date(x), true) : "", oui = x => x ? "oui" : "non";
-    const H1 = ["N°","Date","Heure renseignée","Module","Usager","Canal","Description","Catégorie","Agent","Résolution","Statut","Observation","À traiter avant le","Motif d'attente","Pièces jointes","Supprimée","Saisi par","Créé le","Modifié par","Modifié le","Supprimé par","Supprimé le","Identifiant"];
-    const R = t.requetes.map(x => [x.ref, D(x.date_requete), oui(x.avec_heure), x.module, x.usager, x.canal, x.description, x.categorie, x.agent, D(x.resolution), x.statut, x.observation, x.echeance, x.motif_attente,
+    const H1 = ["N°","Date","Heure renseignée","Module","Usager","Canal","Description","Catégorie","Priorité","Agent","Résolution","Statut","Observation","À traiter avant le","Motif d'attente","Pièces jointes","Supprimée","Saisi par","Créé le","Modifié par","Modifié le","Supprimé par","Supprimé le","Identifiant"];
+    const R = t.requetes.map(x => [x.ref, D(x.date_requete), oui(x.avec_heure), x.module, x.usager, x.canal, x.description, x.categorie, PRIO[x.priorite] ? PRIO[x.priorite].n : "", x.agent, D(x.resolution), x.statut, x.observation, x.echeance, x.motif_attente,
       (Array.isArray(x.pieces) ? x.pieces : []).map(p => p.n).join(" ; "), oui(x.supprime), x.saisi_par, D(x.cree_le), x.modifie_par, D(x.modifie_le), x.supprime_par, D(x.supprime_le), x.id]);
     const J = t.journal.map(e => [D(e.le), e.ref, ACT_J[e.action] || e.action, e.par, e.changes ? Object.entries(e.changes).filter(([k]) => CH[k]).map(([k,v]) => `${CH[k]} : ${valJ(k, v.de)} → ${valJ(k, v.a)}`).join(" | ") : ""]);
     const wb = XLSX.utils.book_new(), add = (n, h, l, w) => { const s = XLSX.utils.aoa_to_sheet([h, ...l]); s["!cols"] = w.map(wch => ({ wch })); XLSX.utils.book_append_sheet(wb, s, n); };
-    add("Requêtes", H1, R, [16,17,9,26,32,13,48,26,26,17,11,50,12,26,30,10,30,17,30,17,30,17,38]);
+    add("Requêtes", H1, R, [16,17,9,26,32,13,48,26,10,26,17,11,50,12,26,30,10,30,17,30,17,30,17,38]);
     add("Journal", ["Date","N°","Action","Par","Détail"], J, [17,16,12,32,100]);
     add("Listes", ["Type","Valeur","Ordre","Actif"], t.listes.map(x => [x.type, x.valeur, x.ordre, oui(x.actif)]), [14,50,8,8]);
     add("Comptes", ["E-mail","Nom","Rôle","Agent","Actif"], t.profils.map(x => [x.email, x.nom, x.role, x.agent, oui(x.actif)]), [36,28,14,28,8]);
@@ -1219,7 +1380,7 @@ function analyserImport(A) {
   const col = {}; A[hi].forEach((h, j) => { const n = norm(h);
     if (n.includes("resolution")) col.res = j; else if (n === "date" || n.startsWith("date de la requete") || n === "date requete") col.date = j; else if (n.startsWith("module")) col.module = j;
     else if (n.startsWith("usager")) col.usager = j; else if (n.startsWith("canal")) col.canal = j; else if (n.startsWith("description")) col.desc = j; else if (n.startsWith("categorie")) col.cat = j;
-    else if (n.startsWith("agent")) col.agent = j; else if (n.startsWith("statut")) col.statut = j; else if (n.startsWith("observation")) col.obs = j; });
+    else if (n.startsWith("priorite") || n.startsWith("criticite")) col.pri = j; else if (n.startsWith("agent")) col.agent = j; else if (n.startsWith("statut")) col.statut = j; else if (n.startsWith("observation")) col.obs = j; });
   for (const k of ["date","module","canal","desc","agent"]) if (col[k] === undefined) throw new Error("Colonne manquante : " + ({ date:"DATE", module:"MODULE", canal:"CANAL", desc:"DESCRIPTION DE LA REQUÊTE", agent:"AGENT MMTE" })[k] + ".");
   const cell = (r, k) => col[k] === undefined ? "" : r[col[k]], txt = (r, k) => String(cell(r, k) ?? "").trim().replace(/\s+/g, " ");
   const existe = new Set(data.map(r => iso(r.date) + "|" + norm(r.usager) + "|" + norm(r.description))), vus = new Set();
@@ -1230,12 +1391,17 @@ function analyserImport(A) {
     const find = (v, l) => l.find(x => norm(x) === norm(v));
     const mod = find(txt(r, "module"), ml), can = find(txt(r, "canal"), cl), age = find(txt(r, "agent"), al), desc = txt(r, "desc").toUpperCase();
     if (!mod) e.push(`module inconnu « ${txt(r, "module")} »`); if (!can) e.push(`canal inconnu « ${txt(r, "canal")} »`); if (!age) e.push(`agent inconnu « ${txt(r, "agent")} »`); if (!desc) e.push("description absente");
+    /* priorité : P1/P2/P3, 1/2/3 ou critique/élevée (1), moyenne (2), basse (3) ; vide = sans priorité */
+    let pri = 0; const pt = norm(txt(r, "pri"));
+    if (pt) { const m = pt.match(/^p?\s*([123])(?:\D|$)/); pri = m ? +m[1] : /^(critique|eleve|haut|urgent)/.test(pt) ? 1 : /^moyen/.test(pt) ? 2 : /^(bas|faible|mineur)/.test(pt) ? 3 : -1; if (pri < 0) { e.push(`priorité inconnue « ${txt(r, "pri")} »`); pri = 0; } }
     const rs = cell(r, "res") === "" ? null : dateXl(cell(r, "res")); if (cell(r, "res") !== "" && !rs) e.push("date de résolution invalide");
     const st = norm(txt(r, "statut")); if (st && !/^(en cours|resolue|resolu)$/.test(st)) e.push(`statut inconnu « ${txt(r, "statut")} »`);
     if (st.startsWith("resolu") && !rs) e.push("statut RESOLUE sans date de résolution");
     if (dd && rs && avant(rs.d, dd.d, dd.h, rs.h)) e.push("résolution antérieure à la date de la requête");
+    if (pri && dd && !dd.h) e.push("priorité sans heure : indiquez la date ET l'heure de la requête");
+    if (pri && rs && !rs.h) e.push("priorité sans heure de résolution : indiquez la date ET l'heure de résolution");
     if (e.length) return out.erreurs.push({ ligne, e });
-    const v = { date:dd.d, avecHeure:dd.h, module:mod, usager:canon(txt(r, "usager"), ul), canal:can, description:desc, agent:age, observation:String(cell(r, "obs") ?? "").trim(), categorie:find(txt(r, "cat"), kl) || "",
+    const v = { date:dd.d, avecHeure:dd.h, module:mod, usager:canon(txt(r, "usager"), ul), canal:can, description:desc, agent:age, observation:String(cell(r, "obs") ?? "").trim(), categorie:find(txt(r, "cat"), kl) || "", priorite:pri,
       resolution:rs ? rs.d : null, avecHeureRes:rs ? rs.h : false, statut:rs ? STAT_R : STAT_C };
     const cle = iso(v.date) + "|" + norm(v.usager) + "|" + norm(v.description);
     v.doublon = existe.has(cle) || vus.has(cle); if (v.doublon) out.doublons++; vus.add(cle); out.pretes.push(v);
@@ -1248,7 +1414,7 @@ function afficherImport() {
   el.innerHTML = `<div class="prev"><p><b>${IMP.lues} ligne(s) lue(s)</b> : ${IMP.pretes.length} valide(s), ${IMP.erreurs.length} en erreur${IMP.doublons ? `, dont ${IMP.doublons} qui ressemble(nt) à une requête déjà présente (même jour, usager et description)` : ""}.</p>
     ${IMP.doublons ? `<label class="tg" style="margin:6px 0"><input type="checkbox" id="imi"${ign ? " checked" : ""}> Ignorer les requêtes déjà présentes</label>` : ""}
     ${IMP.erreurs.length ? `<ul class="bad">${IMP.erreurs.slice(0, 30).map(x => `<li>Ligne ${x.ligne} : ${esc(x.e.join(", "))}</li>`).join("")}${IMP.erreurs.length > 30 ? `<li>… et ${IMP.erreurs.length - 30} autre(s)</li>` : ""}</ul><p class="hint">Les lignes en erreur ne seront pas importées. Corrigez-les dans le fichier (ou ajoutez la valeur manquante dans Listes) puis recommencez.</p>` : ""}
-    ${n ? `<div class="tw"><table><thead><tr><th>Date</th><th>Module</th><th>Usager</th><th>Description</th><th>Agent</th><th>Statut</th></tr></thead><tbody>${IMP.pretes.filter(v => !(ign && v.doublon)).slice(0, 6).map(v => `<tr><td>${fd(v.date, v.avecHeure)}</td><td>${esc(v.module)}</td><td>${esc(v.usager)}</td><td>${esc(v.description)}</td><td>${esc(v.agent)}</td><td>${esc(v.statut)}</td></tr>`).join("")}</tbody></table></div><p class="hint">Aperçu : ${Math.min(6, n)} ligne${Math.min(6, n) > 1 ? "s" : ""} sur ${n}.</p>
+    ${n ? `<div class="tw"><table><thead><tr><th>Date</th><th>Module</th><th>Usager</th><th>Description</th><th>Priorité</th><th>Agent</th><th>Statut</th></tr></thead><tbody>${IMP.pretes.filter(v => !(ign && v.doublon)).slice(0, 6).map(v => `<tr><td>${fd(v.date, v.avecHeure)}</td><td>${esc(v.module)}</td><td>${esc(v.usager)}</td><td>${esc(v.description)}</td><td>${puce(v.priorite) || "-"}</td><td>${esc(v.agent)}</td><td>${esc(v.statut)}</td></tr>`).join("")}</tbody></table></div><p class="hint">Aperçu : ${Math.min(6, n)} ligne${Math.min(6, n) > 1 ? "s" : ""} sur ${n}.</p>
     <button class="ok" id="imgo" type="button" style="max-width:360px">Importer ${n} requête${n > 1 ? "s" : ""}</button>` : ""}<div class="msg" id="imm" role="alert"></div></div>`;
 }
 async function lancerImport() {
@@ -1265,8 +1431,8 @@ $("#adm-don").addEventListener("click", async e => {
   if (id === "imb") $("#imf").click();
   if (id === "imgo") lancerImport();
   if (id === "modl") {
-    const ex = [HEAD.filter((h,i) => i !== 0), [fd(new Date()), modules()[0], "NOM DE L'USAGER", canaux()[0], "CVQ NON SYNCHRONISE", categories()[0], LA[0] || "", "", "EN COURS", "Observation éventuelle"]];
-    const s = XLSX.utils.aoa_to_sheet(ex); s["!cols"] = [12,28,34,13,50,28,26,22,12,60].map(wch => ({ wch })); const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, s, "Tableau"); XLSX.writeFile(wb, "Modele_import_SISR-MMTE.xlsx");
+    const ex = [HEAD.filter((h,i) => i !== 0 && i !== COL_DEL), [fd(new Date(), true), modules()[0], "NOM DE L'USAGER", canaux()[0], "CVQ NON SYNCHRONISE", categories()[0], "P2", LA[0] || "", "", "EN COURS", "Observation éventuelle"]];
+    const s = XLSX.utils.aoa_to_sheet(ex); s["!cols"] = [17,28,34,13,50,28,11,26,22,12,60].map(wch => ({ wch })); const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, s, "Tableau"); XLSX.writeFile(wb, "Modele_import_SISR-MMTE.xlsx");
   }
 });
 $("#adm-don").addEventListener("change", async e => {
@@ -1294,12 +1460,31 @@ const msMaj = r => Date.parse(r.maj) || 0;
 /* Saisie rétroactive : requête créée déjà résolue, ou enregistrée plus de 14 jours après sa date (import de l'historique Excel…).
    Il n'y a rien à traiter : elle ne doit pas inonder la cloche de chaque agent. Une modification ultérieure, elle, notifie normalement. */
 const ntRetro = r => !r.modifiePar && (!!r.resolution || (!!r.creeLe && !!r.date && r.creeLe - r.date > 14 * DAY));
+/* Deux sortes de notifications : « m » = requête attribuée ou modifiée par un collègue ; « r » = délai de résolution dépassé (agent concerné et administrateurs). */
+const ntConcerne = r => !!ME && (estAdmin() || (!!ME.agent && r.agent === ME.agent));
 function ntCalculer() {
-  if (!ME || !ME.agent) return [];
-  return data.filter(r => r.agent === ME.agent && (r.modifiePar || r.saisiPar) !== ME.email && msMaj(r) > NT.base && NT.vu[r.id] !== r.maj && !ntRetro(r))
-    .sort((a, b) => msMaj(b) - msMaj(a));
+  if (!ME) return [];
+  const l = [];
+  if (ME.agent) data.forEach(r => { if (r.agent === ME.agent && (r.modifiePar || r.saisiPar) !== ME.email && msMaj(r) > NT.base && NT.vu[r.id] !== r.maj && !ntRetro(r)) l.push({ r, k:"m", cle:r.id + "|" + r.maj, t:msMaj(r) }); });
+  data.forEach(r => {                                                    // la fin du délai identifie l'alerte : si la priorité ou l'heure change, une nouvelle alerte peut naître
+    if (r.resolution || !ntConcerne(r) || !enRetard(r) || ntRetro(r)) return;
+    const f = +slaFin(r); if (f > NT.base && NT.vu[r.id + "|r"] !== f) l.push({ r, k:"r", cle:r.id + "|r|" + f, t:f });
+  });
+  return l.sort((a, b) => (a.k === b.k ? 0 : a.k === "r" ? -1 : 1) || b.t - a.t);
 }
-const ntMotif = r => !r.modifiePar ? "Requête qui vous est attribuée" : (r.resolution ? "Requête résolue" : "Requête modifiée");   // sans modification : c'est une création par un collègue
+const ntMotif = it => it.k === "r" ? `Délai ${PRIO[it.r.priorite].n} dépassé` : !it.r.modifiePar ? "Requête qui vous est attribuée" : (it.r.resolution ? "Requête résolue" : "Requête modifiée");   // sans modification : c'est une création par un collègue
+const ntVu = it => { if (it.k === "r") NT.vu[it.r.id + "|r"] = +slaFin(it.r); else NT.vu[it.r.id] = it.r.maj; };
+function bip(force) {                                                    // deux notes brèves ; seulement si la personne l'a activé sur cet appareil (les navigateurs exigent un clic préalable dans l'application)
+  try {
+    if (!force && ls.get("sisr:son") !== "1") return;
+    const C = window.AudioContext || window.webkitAudioContext; if (!C) return;
+    const a = NT.ac = NT.ac || new C(); if (a.state === "suspended") a.resume();
+    const t = a.currentTime;
+    [0, .24].forEach(dt => { const o = a.createOscillator(), g = a.createGain(); o.type = "sine"; o.frequency.value = dt ? 660 : 880;
+      g.gain.setValueAtTime(.0001, t + dt); g.gain.exponentialRampToValueAtTime(.22, t + dt + .02); g.gain.exponentialRampToValueAtTime(.0001, t + dt + .2);
+      o.connect(g); g.connect(a.destination); o.start(t + dt); o.stop(t + dt + .22); });
+  } catch (e) { /* son indisponible : sans conséquence */ }
+}
 function ntSysteme(titre, corps, id) {                                  // notification du système (si autorisée par la personne)
   try {
     if (!("Notification" in window) || Notification.permission !== "granted" || !document.hidden) return;   // si l'appli est à l'écran, la pastille et le message suffisent
@@ -1309,46 +1494,50 @@ function ntSysteme(titre, corps, id) {                                  // notif
   } catch (e) { /* notifications indisponibles : sans conséquence */ }
 }
 function ntMaj() {
-  const b = $("#bell"); b.hidden = !ME || !ME.agent;
+  const b = $("#bell"); b.hidden = !ME || (!ME.agent && !estAdmin());
   if (b.hidden) return;
-  const l = NT.liste = ntCalculer(), n = l.length;
+  const l = NT.liste = ntCalculer(), n = l.length, nr = l.filter(it => it.k === "r").length;
   $("#bn").textContent = n ? (n > 99 ? "99+" : String(n)) : ""; $("#bn").hidden = !n;
-  b.setAttribute("aria-label", n ? `Notifications : ${n} non lue${n > 1 ? "s" : ""}` : "Notifications");
+  b.setAttribute("aria-label", n ? `Notifications : ${n} non lue${n > 1 ? "s" : ""}${nr ? `, dont ${nr} délai${nr > 1 ? "s" : ""} dépassé${nr > 1 ? "s" : ""}` : ""}` : "Notifications");
+  b.classList.toggle("alerte", nr > 0);
   try { if (navigator.setAppBadge) { n ? navigator.setAppBadge(n).catch(() => {}) : navigator.clearAppBadge().catch(() => {}); } } catch (e) { /* ignoré */ }
-  const neufs = l.filter(r => !NT.connus.has(r.id + "|" + r.maj)); l.forEach(r => NT.connus.add(r.id + "|" + r.maj));
+  const neufs = l.filter(it => !NT.connus.has(it.cle)); l.forEach(it => NT.connus.add(it.cle));
   if (neufs.length) {
-    const r = neufs[0], txt = neufs.length === 1 ? `${ntMotif(r)} : ${r.ref} · ${r.description}` : `${neufs.length} requêtes vous concernent`;
+    const it = neufs[0], r = it.r, txt = neufs.length === 1 ? `${ntMotif(it)} : ${r.ref} · ${r.description}` : `${neufs.length} nouvelles notifications (${neufs.filter(x => x.k === "r").length ? "dont délai dépassé" : "requêtes"})`;
     if (NT.premier) { if (!$("#dn").open) toast(`${n} notification${n > 1 ? "s" : ""} non lue${n > 1 ? "s" : ""}`); }
-    else { if (!$("#dn").open) toast(txt); ntSysteme("SISR-MMTE", txt, neufs.length === 1 ? r.id : ""); }
+    else { if (!$("#dn").open) toast(txt); ntSysteme("SISR-MMTE", txt, neufs.length === 1 ? r.id : ""); if (neufs.some(x => x.k === "r")) bip(); }
   }
   NT.premier = false;
   if ($("#dn").open) ntListe();
 }
 function ntListe() {
   const l = NT.liste;
-  $("#dnl").innerHTML = l.length ? l.map(r => `<button type="button" class="ni" data-id="${esc(r.id)}"><b>${esc(ntMotif(r))}</b> · ${esc(r.ref)}<span>${esc(r.description)}</span><small>${esc(r.usager || "sans usager")} · par ${esc(nomDe(r.modifiePar || r.saisiPar))} · ${esc(fd(r.modifieLe || r.creeLe, true))}</small></button>`).join("")
-    : `<div class="vide"><b>Rien de nouveau</b>Vous serez prévenu ici lorsqu'une requête vous est attribuée ou modifiée par un collègue.</div>`;
+  $("#dnl").innerHTML = l.length ? l.map(it => { const r = it.r;
+    return `<button type="button" class="ni${it.k === "r" ? " late" : ""}" data-cle="${esc(it.cle)}" data-id="${esc(r.id)}"><b>${esc(ntMotif(it))}</b> · ${esc(r.ref)}<span>${esc(r.description)}</span><small>${it.k === "r" ? `${esc(PRIO[r.priorite].n)} · limite ${esc(fd(slaFin(r), true))} · ${esc(r.agent)}` : `${esc(r.usager || "sans usager")} · par ${esc(nomDe(r.modifiePar || r.saisiPar))} · ${esc(fd(r.modifieLe || r.creeLe, true))}`}</small></button>`; }).join("")
+    : `<div class="vide"><b>Rien de nouveau</b>Vous serez prévenu ici lorsqu'une requête vous est attribuée ou modifiée par un collègue, ou lorsque son délai de résolution est dépassé.</div>`;
   $("#dnv").hidden = !l.length;
 }
 $("#bell").onclick = () => { ntListe(); dlg($("#dn")); };
 $("#dn").addEventListener("click", e => {
   const dn = $("#dn"); if (e.target === dn || e.target.closest("[data-x]")) return dn.close();
   const b = e.target.closest(".ni"); if (!b) return;
-  const r = data.find(x => x.id === b.dataset.id); if (r) { NT.vu[r.id] = r.maj; ntSauver(); }
+  const it = NT.liste.find(x => x.cle === b.dataset.cle); if (it) { ntVu(it); ntSauver(); }
   dn.close(); ntMaj(); ouvrir(b.dataset.id);
 });
-$("#dnv").onclick = () => { NT.liste.forEach(r => { NT.vu[r.id] = r.maj; }); const ids = new Set(data.map(r => r.id)); Object.keys(NT.vu).forEach(k => { if (!ids.has(k)) delete NT.vu[k]; }); ntSauver(); ntMaj(); };
+$("#dnv").onclick = () => { NT.liste.forEach(ntVu); const ids = new Set(data.map(r => r.id)); Object.keys(NT.vu).forEach(k => { if (!ids.has(k.split("|")[0])) delete NT.vu[k]; }); ntSauver(); ntMaj(); };
 /* un clic sur une notification du système ouvre la requête concernée */
 if (navigator.serviceWorker) navigator.serviceWorker.addEventListener("message", e => { const m = e.data; if (m && m.type === "ouvrir" && m.id && ME && data.some(r => r.id === m.id)) { go("ec"); ouvrir(m.id); } });
 /* autorisation des notifications du système (bloc « Mon compte ») */
 function ntBloc() {
-  const bl = $("#ntf"), ok = "Notification" in window && !!ME && !!ME.agent; bl.hidden = !ok; if (!ok) return;
+  $("#sndc").checked = ls.get("sisr:son") === "1";
+  const bl = $("#ntf"), ok = "Notification" in window && !!ME && (!!ME.agent || estAdmin()); bl.hidden = !ok; if (!ok) return;
   const p = Notification.permission, t = $("#ntft"), b = $("#ntfb");
   const lim = " Elles n'arrivent que lorsque l'application est ouverte (même en arrière-plan) : application fermée, aucune alerte ne peut être envoyée.";
-  if (p === "granted") { t.textContent = "Alertes du système activées sur cet appareil : vous êtes averti d'une requête qui vous est attribuée." + lim; b.hidden = true; }
+  if (p === "granted") { t.textContent = "Alertes du système activées sur cet appareil : vous êtes averti d'une requête qui vous est attribuée et des délais de résolution dépassés." + lim; b.hidden = true; }
   else if (p === "denied") { t.textContent = "Les alertes sont bloquées pour cette application. Autorisez-les dans les paramètres de votre navigateur (cadenas de la barre d'adresse)."; b.hidden = true; }
-  else { t.textContent = "La pastille de la cloche fonctionne déjà. Vous pouvez en plus recevoir une alerte du système pour les requêtes qui vous sont attribuées." + lim; b.hidden = false; }
+  else { t.textContent = "La pastille de la cloche fonctionne déjà. Vous pouvez en plus recevoir une alerte du système pour les requêtes qui vous sont attribuées et les délais dépassés." + lim; b.hidden = false; }
 }
+$("#sndc").onchange = e => { ls.set("sisr:son", e.target.checked ? "1" : "0"); if (e.target.checked) bip(true); };
 $("#ntfb").onclick = async () => { try { await Notification.requestPermission(); } catch (e) { /* ignoré */ } ntBloc(); };
 
 /* ---------- Double authentification (application d'authentification : code à 6 chiffres) ---------- */
@@ -1395,7 +1584,22 @@ $("#mfab").addEventListener("click", async e => {
 
 
 /* ---------- Démarrage et connexion ---------- */
-const render = () => { listes(); renderEC(); renderBord(); ntMaj(); majRappel(); };
+const TITRE = document.title;
+function titre() {                                                      // onglet : « (2) Délai dépassé · SISR-MMTE » pour être vu même quand l'application est réduite
+  const n = ME ? data.filter(enRetard).length : 0; document.title = n ? `(${n}) Délai dépassé · ${TITRE}` : TITRE;
+}
+const render = () => { listes(); renderEC(); renderBord(); ntMaj(); majRappel(); titre(); tl = cleRetards(); };
+/* Horloge des délais : toutes les 30 s, détecte qu'un délai de résolution vient d'être dépassé (ligne rouge, cloche, message, bip) et fait avancer les comptes à rebours */
+let tl = "";
+const cleRetards = () => data.filter(enRetard).map(r => r.id).sort().join(",");
+function tic() {
+  if (!ME || !store) return;
+  const k = cleRetards();
+  if (k !== tl) { tl = k; renderEC(); renderBord(); ntMaj(); titre(); }
+  else if (vue === "ec" && !document.hidden) renderEC();
+}
+setInterval(tic, (CFG.tic || 30) * 1000);
+document.addEventListener("visibilitychange", () => { if (!document.hidden) tic(); });
 let uid = null, quitter = false, refus = "", UC = null;
 function ecran(nom) {
   $("#splash").hidden = nom !== "splash"; $("#login").hidden = nom !== "login" && nom !== "code"; $("#lf").hidden = nom === "code"; $("#cf").hidden = nom !== "code"; $("#lai").hidden = nom === "code";
@@ -1426,11 +1630,11 @@ async function charger(u) {
   un = store.sub(l => { data = l; render(); });
 }
 function login(msg) {                                                   // remet l'appli à zéro : le collègue suivant ne voit ni filtres ni brouillon du précédent
-  uid = null; un && un(); un = null; data = []; WK = []; init = false; editId = null; editMaj = null; ME = null; PROFILS = [];
+  uid = null; un && un(); un = null; data = []; tl = ""; document.title = TITRE; WK = []; init = false; editId = null; editMaj = null; ME = null; PROFILS = [];
   LU = []; LA = []; LM = []; LC = []; LD = []; LK = []; LO = []; LROWS = []; SAUV = null; rapMasque = false; IMP = null; JR = []; Object.assign(ADM, { s:"cpt", type:"usager", filtre:"" });
   NT.liste = []; NT.connus = new Set(); NT.premier = true; try { navigator.clearAppBadge && navigator.clearAppBadge().catch(() => {}); } catch (e) { /* ignoré */ }
-  Object.assign(F, { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", mes:false });
-  ["fs","fm","fc","fa","ft","fk","fu","fg"].forEach(i => $("#" + i).value = ""); $("#fmes").checked = false;
+  Object.assign(F, { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", pri:"", mes:false });
+  ["fs","fm","fc","fa","ft","fk","fu","fg","fp"].forEach(i => $("#" + i).value = ""); $("#fmes").checked = false;
   $$("dialog[open]").forEach(d => d.close());
   $("#eb").hidden = true; $("#ok").textContent = "Enregistrer la requête"; pjVider(); viderForm(true); err(""); go("saisie");
   $("#bell").hidden = true; $("#bn").textContent = ""; $("#nadm").hidden = true; $("#rap").hidden = true;

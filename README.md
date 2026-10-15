@@ -16,13 +16,13 @@ tableau de bord, exports Excel et PDF, rapport de direction. L'accès est réser
 
 ## Fonctions
 
-- **Saisie** : n° de référence automatique (REQ-AAAA-NNNN), catégorie proposée, échéance et motif d'attente, alerte de doublon, duplication d'une requête, pièces jointes (photos réduites, PDF).
-- **En cours** : ancienneté (+24 h / +48 h), échéances, tri, filtre « Mes requêtes », notifications dans l'application pour les requêtes attribuées.
-- **Tableau de bord** : indicateurs avec comparaison à la semaine précédente, délai médian, évolution sur 12 semaines, répartitions et délais par module / agent / catégorie, exports Excel et PDF, **rapport de direction** en un clic.
-- **Administration** (rôle administrateur) : comptes, listes (usagers, agents, modules, canaux, requêtes types, catégories, motifs), corbeille, journal des modifications, sauvegarde complète en Excel (rappel mensuel), import de l'historique Excel.
+- **Saisie** : n° de référence automatique (REQ-AAAA-NNNN), **priorité facultative P1 / P2 / P3** (délai de résolution 2 h / 24 h / 72 h calculé automatiquement), catégorie proposée, échéance et motif d'attente, alerte de doublon, duplication d'une requête, pièces jointes (photos réduites, PDF).
+- **En cours** : couleur par priorité (P1 rouge, P2 orange, P3 bleu), compte à rebours du délai, **ligne rouge + cloche + message + titre de l'onglet (+ bip facultatif) quand un délai est dépassé**, filtres par priorité, tri par délai, échéances, filtre « Mes requêtes », notifications dans l'application.
+- **Tableau de bord** : filtre par priorité, respect des délais (global et par priorité), requêtes en retard, indicateurs avec comparaison à la semaine précédente, délai médian, évolution sur 12 semaines, répartitions et délais par module / agent / catégorie, exports Excel et PDF, **rapport de direction** en un clic.
+- **Administration** (rôle administrateur) : comptes, listes (usagers, agents, modules, canaux, requêtes types, catégories, motifs), corbeille, journal des modifications, sauvegarde complète en Excel (rappel mensuel), import de l'historique Excel (colonne PRIORITÉ facultative).
 - **Sécurité** : rôles administrateur / agent appliqués par la base, journal de toute modification, double authentification facultative (application d'authentification).
 
 ## Mise à jour de l'application
 
 Remplacer les fichiers concernés dans ce dépôt (Add file > Upload files) : GitHub Pages republie en 1 à 3 minutes.
-**Si la base de données change** (fichier SQL fourni à part), exécuter d'abord le SQL, puis déposer les fichiers.
+**Si la base de données change** (fichier SQL fourni à part, par exemple `mise-a-jour-v3.sql` pour les priorités), exécuter d'abord le SQL, puis déposer les fichiers.

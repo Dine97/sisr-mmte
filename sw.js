@@ -2,7 +2,7 @@
    - Les bibliothèques (dossier vendor) et les icônes sont gardées sur l'appareil : l'application s'ouvre plus vite.
    - L'application elle-même (index.html, config.js…) est toujours relue en ligne d'abord : une mise à jour publiée sur GitHub arrive sans manipulation.
    - Les données (Supabase) ne passent JAMAIS par le cache : rien de confidentiel n'est stocké par ce fichier. */
-const V = "sisr-v2";
+const V = "sisr-v3";
 const FIXES = ["vendor/supabase.js", "vendor/xlsx.full.min.js", "vendor/jspdf.umd.min.js", "vendor/jspdf.plugin.autotable.min.js", "icon-192.png", "icon-512.png"];
 
 self.addEventListener("install", e => e.waitUntil(caches.open(V).then(c => c.addAll(FIXES)).then(() => self.skipWaiting())));
