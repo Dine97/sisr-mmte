@@ -187,6 +187,15 @@ header .omb{font-weight:700;border-color:#8fa6c2;white-space:nowrap}
 .omx{position:fixed;inset:0;z-index:1000;background:var(--f);display:flex;flex-direction:column}
 .omx-b{background:var(--n);color:#fff;display:flex;align-items:center;gap:12px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
 .omx-b strong{font-size:17px}.omx-b button{background:#fff;color:var(--n);border:0;border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer;font-family:inherit}
+.omx-b button.omg{background:none;color:#fff;border:1px solid #8fa6c2}
+.hw{width:min(520px,100%)}
+.hubs{display:grid;gap:12px;text-align:left}
+.hubc{display:flex;gap:14px;align-items:center;width:100%;border:1px solid var(--l);background:#fff;border-radius:14px;padding:16px;cursor:pointer;font-family:inherit;color:var(--t);text-align:left;transition:border-color .15s,box-shadow .15s}
+.hubc:hover,.hubc:focus-visible{border-color:var(--n);box-shadow:0 6px 18px #0E2A4726}
+.hubc .hi{flex:none;width:48px;height:48px;border-radius:12px;background:var(--n);color:#fff;display:grid;place-items:center}
+.hubc .ht{flex:1;min-width:0}.hubc b{display:block;font-size:17px;color:var(--n)}.hubc small{display:block;color:var(--g);font-size:13px;margin-top:2px;line-height:1.35}
+.hubc .hch{flex:none;color:var(--g)}
+@media (max-width:520px){header #hhome{padding:6px 8px;font-size:13px}}
 .omx iframe{flex:1;width:100%;border:0;background:var(--f)}
 @media (max-width:520px){header .omb{padding:6px 8px;font-size:13px}}
 </style>
@@ -213,13 +222,25 @@ header .omb{font-weight:700;border-color:#8fa6c2;white-space:nowrap}
   </div>
   <p class="lp">Accès réservé au personnel autorisé · Bénin Control SA</p>
 </div></div>
+<div class="ecran" id="hub" hidden><div class="lw hw">
+  <div class="lc">
+    <img class="lg" alt="Bénin Control">
+    <h1 id="hbj">Bonjour</h1><p class="sub">Quel outil voulez-vous utiliser ?</p>
+    <div class="hubs">
+      <button type="button" class="hubc" id="hsisr"><span class="hi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></span><span class="ht"><b>SISR-MMTE</b><small>Suivi des requêtes : saisie, requêtes en cours, tableau de bord</small></span><svg class="hch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button type="button" class="hubc" id="hom"><span class="hi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 17l2-4 2 2 2-4 2 6"/></svg></span><span class="ht"><b>Ordres de mission</b><small>Établir, imprimer et suivre les ordres de mission</small></span><svg class="hch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+    <p class="aide"><button type="button" class="ghost" id="hout">Se déconnecter</button></p>
+  </div>
+  <p class="lp">Accès réservé au personnel autorisé · Bénin Control SA</p>
+</div></div>
 <header id="hd" hidden>
   <div class="logo"><img class="lg" alt="Bénin Control"></div>
   <div><h1 id="nom"></h1><div class="acc" id="acc"></div></div>
-  <span class="sp"></span><button id="omb" type="button" class="omb">Ordre de mission</button><button id="bell" class="bell" aria-label="Notifications" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><b id="bn"></b></button><button id="cpt">Mon compte</button>
+  <span class="sp"></span><button id="hhome" type="button" title="Revenir au choix de l'outil">Accueil</button><button id="omb" type="button" class="omb">Ordre de mission</button><button id="bell" class="bell" aria-label="Notifications" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><b id="bn"></b></button><button id="cpt">Mon compte</button>
 </header>
 <div id="omx" class="omx" hidden role="dialog" aria-modal="true" aria-label="Ordres de mission">
-  <div class="omx-b"><strong>Ordres de mission</strong><span class="sp"></span><button type="button" id="omf">Fermer ✕</button></div>
+  <div class="omx-b"><strong>Ordres de mission</strong><span class="sp"></span><button type="button" id="oms" class="omg">Aller à SISR-MMTE</button><button type="button" id="omf">Accueil</button></div>
   <iframe id="omi" title="Ordres de mission"></iframe>
 </div>
 <main id="mn" hidden>
@@ -1615,7 +1636,7 @@ document.addEventListener("visibilitychange", () => { if (!document.hidden) tic(
 let uid = null, quitter = false, refus = "", UC = null;
 function ecran(nom) {
   $("#splash").hidden = nom !== "splash"; $("#login").hidden = nom !== "login" && nom !== "code"; $("#lf").hidden = nom === "code"; $("#cf").hidden = nom !== "code"; $("#lai").hidden = nom === "code";
-  $("#hd").hidden = $("#mn").hidden = nom !== "app";
+  $("#hd").hidden = $("#mn").hidden = nom !== "app"; $("#hub").hidden = nom !== "hub";
 }
 async function start(u) {
   if (uid === u.id) return; uid = u.id; UC = u; ecran("splash");
@@ -1632,10 +1653,10 @@ async function charger(u) {
   if (!p.actif) return refuser("Votre compte est créé mais pas encore activé. Prévenez l'administrateur : il doit l'activer avant votre première connexion.");
   ME = { id:u.id, email:u.email || p.email, nom:p.nom || "", role:p.role, agent:p.agent || "" };
   $("#dct").textContent = (ME.nom && ME.nom !== ME.email.split("@")[0] ? ME.nom : ME.agent) || ME.nom || ME.email; $("#dcr").textContent = (ME.role === "admin" ? "Administrateur" : "Agent") + (ME.agent ? " · " + ME.agent : "") + " · " + ME.email;
-  $("#nadm").hidden = !estAdmin(); ntCharger(); go("saisie"); ecran("app");
+  $("#nadm").hidden = !estAdmin(); ntCharger(); go("saisie"); $("#hbj").textContent = "Bonjour " + (ME.nom || ME.email.split("@")[0]); ecran("hub");
   try { appliquerListes(await store.listes()); } catch (e) { toast(e.message); }
   try { PROFILS = await store.profils(); } catch (e) { PROFILS = []; }
-  $("#dct").textContent = nomDe(ME.email) || ME.email;
+  $("#dct").textContent = nomDe(ME.email) || ME.email; $("#hbj").textContent = "Bonjour " + (nomDe(ME.email) || ME.nom || ME.email.split("@")[0]);
   if (estAdmin()) { try { SAUV = (await store.param("derniere_sauvegarde")) || ""; } catch (e) { SAUV = null; } }
   if (uid !== u.id) return;
   render(); if (!editId) viderForm(true);                                                                  // saisie : l'agent proposé est la personne connectée
@@ -1696,7 +1717,13 @@ if ("serviceWorker" in navigator) addEventListener("load", () => navigator.servi
 const omx = $("#omx"), omi = $("#omi");
 $("#omb").onclick = () => { if (!omi.getAttribute("src")) omi.src = "om.html"; omx.hidden = false; document.body.style.overflow = "hidden"; $("#omf").focus(); };
 window.omFermer = reset => { omx.hidden = true; document.body.style.overflow = ""; if (reset) omi.removeAttribute("src"); };
-$("#omf").onclick = () => window.omFermer(false);
+$("#omf").onclick = () => { window.omFermer(false); ecran("hub"); };
+$("#oms").onclick = () => { window.omFermer(false); ecran("app"); };
+/* Accueil : choix entre SISR-MMTE et Ordres de mission, affiché après chaque connexion */
+$("#hsisr").onclick = () => ecran("app");
+$("#hom").onclick = () => $("#omb").click();
+$("#hhome").onclick = () => ecran("hub");
+$("#hout").onclick = () => $("#out").click();
 addEventListener("keydown", e => { if (e.key === "Escape" && !omx.hidden) window.omFermer(false); });
 $("#out").onclick = async () => { quitter = true; try { await store.logout(); } catch (x) { quitter = false; toast(x.message); } };
 
