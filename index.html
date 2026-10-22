@@ -182,6 +182,13 @@ details.sv .q{grid-template-columns:1fr}
 .pr-b i{background:var(--pc)!important}.rp.wide{grid-column:1/-1}.q>input{min-width:0}@media (max-width:380px){nav button{white-space:normal;font-size:12px;line-height:1.15;padding:8px 2px}.chips.prc label{padding:8px 11px}}.br i[style*="width:0%"]{min-width:0}.kpi{grid-template-columns:repeat(auto-fit,minmax(128px,1fr))}tr.rw.late td{background:var(--rb)}
 .nt .ni.late{border-left:5px solid var(--r);background:var(--rb)}.bell.alerte{border-color:#ff9c91!important;animation:clg 1.6s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.bell.alerte{animation:none}}
+/* Ordres de mission (outil intégré) */
+header .omb{font-weight:700;border-color:#8fa6c2;white-space:nowrap}
+.omx{position:fixed;inset:0;z-index:1000;background:var(--f);display:flex;flex-direction:column}
+.omx-b{background:var(--n);color:#fff;display:flex;align-items:center;gap:12px;padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.omx-b strong{font-size:17px}.omx-b button{background:#fff;color:var(--n);border:0;border-radius:8px;padding:8px 14px;font-weight:700;cursor:pointer;font-family:inherit}
+.omx iframe{flex:1;width:100%;border:0;background:var(--f)}
+@media (max-width:520px){header .omb{padding:6px 8px;font-size:13px}}
 </style>
 </head>
 <body>
@@ -209,8 +216,12 @@ details.sv .q{grid-template-columns:1fr}
 <header id="hd" hidden>
   <div class="logo"><img class="lg" alt="Bénin Control"></div>
   <div><h1 id="nom"></h1><div class="acc" id="acc"></div></div>
-  <span class="sp"></span><button id="bell" class="bell" aria-label="Notifications" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><b id="bn"></b></button><button id="cpt">Mon compte</button>
+  <span class="sp"></span><button id="omb" type="button" class="omb">Ordre de mission</button><button id="bell" class="bell" aria-label="Notifications" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><b id="bn"></b></button><button id="cpt">Mon compte</button>
 </header>
+<div id="omx" class="omx" hidden role="dialog" aria-modal="true" aria-label="Ordres de mission">
+  <div class="omx-b"><strong>Ordres de mission</strong><span class="sp"></span><button type="button" id="omf">Fermer ✕</button></div>
+  <iframe id="omi" title="Ordres de mission"></iframe>
+</div>
 <main id="mn" hidden>
 <div id="app">
 <div class="rap" id="rap" hidden><span id="rapt"></span><button type="button" class="ghost" id="rapb">Faire la sauvegarde</button><button type="button" class="ghost" id="rapx" aria-label="Masquer">×</button></div>
@@ -416,6 +427,7 @@ const fr = e => {
 async function supa() {
   const { createClient } = await import("./vendor/supabase.js");
   const sb = createClient(CFG.url, CFG.key, { auth: { persistSession:true, autoRefreshToken:true, detectSessionInUrl:false } });
+  window.SISR_SB = sb;   // partagé avec l'outil Ordres de mission (om.html), qui s'ouvre dans SISR avec la même session
   const TB = "requetes", PAGE = 1000, D = x => x ? new Date(x) : null, ko = e => new Error(fr(e)), BK = "pieces";
   const de = x => ({ id:x.id, ref:x.ref || "", date:D(x.date_requete), avecHeure:x.avec_heure, module:x.module, usager:x.usager || "", canal:x.canal, description:x.description, agent:x.agent,
     resolution:D(x.resolution), avecHeureRes:x.avec_heure_res, statut:x.statut, observation:x.observation || "", categorie:x.categorie || "", priorite:x.priorite || 0, echeance:x.echeance || "", motif:x.motif_attente || "",
@@ -1680,6 +1692,12 @@ addEventListener("beforeinstallprompt", e => { e.preventDefault(); inst = e; $("
 addEventListener("appinstalled", () => { inst = null; $("#inst").hidden = true; dc.close(); toast("Application installée"); });
 $("#inst").onclick = async () => { if (!inst) return; const p = inst; inst = null; $("#inst").hidden = true; p.prompt(); try { await p.userChoice; } catch (x) { /* ignoré */ } };
 if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+/* Ordres de mission : l'outil s'ouvre dans SISR (même compte, même base) ; « Fermer » revient à SISR */
+const omx = $("#omx"), omi = $("#omi");
+$("#omb").onclick = () => { if (!omi.getAttribute("src")) omi.src = "om.html"; omx.hidden = false; document.body.style.overflow = "hidden"; $("#omf").focus(); };
+window.omFermer = reset => { omx.hidden = true; document.body.style.overflow = ""; if (reset) omi.removeAttribute("src"); };
+$("#omf").onclick = () => window.omFermer(false);
+addEventListener("keydown", e => { if (e.key === "Escape" && !omx.hidden) window.omFermer(false); });
 $("#out").onclick = async () => { quitter = true; try { await store.logout(); } catch (x) { quitter = false; toast(x.message); } };
 
 $("#nom").textContent = $("#ln").textContent = NOM; $("#acc").textContent = $("#la").textContent = ACC;
@@ -1691,6 +1709,7 @@ combo($("#fu"),usagers,{ clear:true, onChange:v => { F.usa = v; renderBord(); } 
   store = await supa();
   await store.onAuth(u => {
     if (u) return start(u);
+    if (window.omFermer) window.omFermer(true);   // déconnexion : l'outil Ordres de mission est refermé et vidé
     const m = refus || (uid && !quitter ? "Votre session a pris fin. Reconnectez-vous." : ""); refus = ""; quitter = false; login(m);
   });
 })().catch(e => { store = null; login("Impossible de démarrer l'application. Vérifiez votre connexion Internet puis rechargez la page."); console.error(e); });
