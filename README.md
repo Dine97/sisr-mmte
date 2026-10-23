@@ -13,6 +13,7 @@ tableau de bord, exports Excel et PDF, rapport de direction. L'accès est réser
 - `config.js` : adresse du projet Supabase et clé publique (publiques par conception ; seuls les mots de passe donnent accès aux données)
 - `sw.js`, `manifest.json`, `icon-*.png` : installation sur téléphone et ordinateur (PWA)
 - `vendor/` : bibliothèques tierces embarquées (Supabase JS 2.117.1 — MIT, SheetJS 0.18.5 — Apache-2.0, jsPDF 2.5.1 — MIT, jsPDF-AutoTable 3.5.31 — MIT)
+- `vendor/fonts/` : polices Newsreader (titres et chiffres), Hanken Grotesk (texte) et JetBrains Mono (références et comptes à rebours), licence SIL OFL 1.1, hébergées ici : aucune requête vers un service de polices externe
 - `.github/workflows/keepalive.yml` : appel léger, deux fois par semaine, pour que la base gratuite ne soit pas mise en pause
 
 ## Fonctions
@@ -24,6 +25,15 @@ tableau de bord, exports Excel et PDF, rapport de direction. L'accès est réser
 - **Accueil** : après la connexion, choix entre SISR-MMTE et Ordres de mission (bouton « Accueil » pour y revenir).
 - **Ordres de mission** (bouton dans l'en-tête) : saisie avec propositions mémorisées, numéro unique NNN/AAAA attribué par la base, PDF au modèle Bénin Control, ordre vierge, registre partagé paginé et filtrable, tableau de bord, corbeille (suppression définitive réservée aux administrateurs), journal automatique, sauvegarde et restauration. Tables `om_ordres`, `om_journal`, `om_suggestions`, `om_compteurs`.
 - **Sécurité** : rôles administrateur / agent appliqués par la base, journal de toute modification, double authentification facultative (application d'authentification).
+
+## Présentation
+
+Habillage « Marine et laiton » : bleu marine, laiton et ivoire, typographie à empattements pour les titres. Trois dispositions, sans aucune différence de fonctionnement :
+- **ordinateur (à partir de 1100 px)** : menu latéral fixe, lignes de requêtes sur une seule rangée, formulaire en deux colonnes ;
+- **tablette (700 à 1099 px)** : menu réduit à une barre d'icônes sur le côté ;
+- **téléphone (moins de 700 px)** : barre de navigation en bas de l'écran, requêtes en cartes, boutons et champs agrandis pour le pouce.
+
+L'écran d'accueil (choix de l'outil) et les boutons « Accueil » et « Ordre de mission » suivent la même présentation ; l'outil Ordres de mission (`om.html`) garde sa propre présentation dans sa fenêtre.
 
 ## Mise à jour de l'application
 

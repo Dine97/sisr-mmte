@@ -2,10 +2,11 @@
    - Les bibliothèques (dossier vendor) et les icônes sont gardées sur l'appareil : l'application s'ouvre plus vite.
    - L'application elle-même (index.html, config.js…) est toujours relue en ligne d'abord : une mise à jour publiée sur GitHub arrive sans manipulation.
    - Les données (Supabase) ne passent JAMAIS par le cache : rien de confidentiel n'est stocké par ce fichier. */
-const V = "sisr-v3";
-const FIXES = ["vendor/supabase.js", "vendor/xlsx.full.min.js", "vendor/jspdf.umd.min.js", "vendor/jspdf.plugin.autotable.min.js", "icon-192.png", "icon-512.png"];
+const V = "sisr-v4";
+const FIXES = ["vendor/supabase.js", "vendor/xlsx.full.min.js", "vendor/jspdf.umd.min.js", "vendor/jspdf.plugin.autotable.min.js", "icon-192.png", "icon-512.png",
+  "vendor/fonts/newsreader-latin-wght-normal.woff2", "vendor/fonts/hanken-grotesk-latin-wght-normal.woff2", "vendor/fonts/jetbrains-mono-latin-wght-normal.woff2"];
 
-self.addEventListener("install", e => e.waitUntil(caches.open(V).then(c => c.addAll(FIXES)).then(() => self.skipWaiting())));
+self.addEventListener("install", e => e.waitUntil(caches.open(V).then(c => Promise.all(FIXES.map(f => c.add(f).catch(() => {})))).then(() => self.skipWaiting())));
 self.addEventListener("activate", e => e.waitUntil(caches.keys().then(k => Promise.all(k.filter(x => x !== V).map(x => caches.delete(x)))).then(() => self.clients.claim())));
 self.addEventListener("fetch", e => {
   const r = e.request, u = new URL(r.url);
