@@ -33,7 +33,7 @@ Habillage « Marine et laiton » : bleu marine, laiton et ivoire, typographie à
 - **tablette (700 à 1099 px)** : menu réduit à une barre d'icônes sur le côté ;
 - **téléphone (moins de 700 px)** : barre de navigation en bas de l'écran, requêtes en cartes, boutons et champs agrandis pour le pouce.
 
-L'écran d'accueil (choix de l'outil) et les boutons « Accueil » et « Ordre de mission » suivent la même présentation ; l'outil Ordres de mission (`om.html`) garde sa propre présentation dans sa fenêtre.
+L'écran d'accueil (choix de l'outil) et les boutons « Accueil » et « Ordre de mission » suivent la même présentation ; l'outil Ordres de mission (`om.html`) reprend le même habillage (onglets en haut sur ordinateur et tablette, barre de navigation en bas sur téléphone). Le document généré (PDF) et l'aperçu A4 du document restent strictement identiques : ils ne suivent pas l'habillage.
 
 ## Mise à jour de l'application
 
