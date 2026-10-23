@@ -142,6 +142,7 @@ select{appearance:none;-webkit-appearance:none;background-image:var(--chev);back
 /* ---------- vues ---------- */
 .view-h{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:18px}
 .view-h h2{margin:0;font-family:var(--f-head);font-size:40px;font-weight:500;letter-spacing:-.01em;line-height:1.1;color:var(--navy);text-wrap:balance}
+.view-h .jour{display:block;margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-d)}
 .view-h h2::after{content:"";display:block;width:44px;height:2px;background:var(--brass);margin:14px 0 10px}
 .view-h p{margin:0;color:var(--g2);max-width:60ch}
 .filters{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px 20px;display:grid;grid-template-columns:minmax(0,2fr) repeat(4,minmax(0,1fr)) auto;gap:12px 14px;align-items:end;box-shadow:var(--sh)}
@@ -306,7 +307,7 @@ select{appearance:none;-webkit-appearance:none;background-image:var(--chev);back
 <main>
 <!-- ============ NOUVEL ORDRE ============ -->
 <section id="view-form">
- <div class="view-h"><div><h2>Nouvel ordre de mission</h2><p>Le numéro est attribué à l&#39;enregistrement.</p></div></div>
+ <div class="view-h"><div><span class="jour"></span><h2>Nouvel ordre de mission</h2><p>Le numéro est attribué à l&#39;enregistrement.</p></div></div>
  <div class="grid">
   <form class="card" id="f" novalidate>
     <div class="banner" id="editBanner" hidden><span id="editTxt">Modification</span><button type="button" class="btn sm" id="btnCancelEdit">Annuler la modification</button></div>
@@ -389,7 +390,7 @@ select{appearance:none;-webkit-appearance:none;background-image:var(--chev);back
 
 <!-- ============ REGISTRE ============ -->
 <section id="view-reg" hidden>
-  <div class="view-h"><div><h2>Registre des ordres de mission</h2><p>Tous les ordres enregistrés. Filtrez, retrouvez, modifiez, mettez à la corbeille ou téléchargez-les en PDF.</p></div>
+  <div class="view-h"><div><span class="jour"></span><h2>Registre des ordres de mission</h2><p>Tous les ordres enregistrés. Filtrez, retrouvez, modifiez, mettez à la corbeille ou téléchargez-les en PDF.</p></div>
     <div class="row"><button type="button" class="btn" id="btnBlank2">Ordre vierge (PDF)</button><button type="button" class="btn pri" id="btnNew2">+ Nouvel ordre</button></div></div>
   <div class="filters">
     <label class="wide">Recherche<input type="search" id="fq" placeholder="N°, nom, trajet, motif, véhicule…"></label>
@@ -406,7 +407,7 @@ select{appearance:none;-webkit-appearance:none;background-image:var(--chev);back
 
 <!-- ============ TABLEAU DE BORD ============ -->
 <section id="view-dash" hidden>
-  <div class="view-h"><div><h2>Tableau de bord</h2><p>Activité des missions selon la période, l'agent et le trajet choisis.</p></div></div>
+  <div class="view-h"><div><span class="jour"></span><h2>Tableau de bord</h2><p>Activité des missions selon la période, l'agent et le trajet choisis.</p></div></div>
   <div class="filters dash">
     <label>Période<select id="dPer">
       <option value="mois">Ce mois</option><option value="moisprec">Mois dernier</option><option value="3mois">3 derniers mois</option>
@@ -434,7 +435,7 @@ select{appearance:none;-webkit-appearance:none;background-image:var(--chev);back
 
 <!-- ============ ADMINISTRATION ============ -->
 <section id="view-adm" hidden>
-  <div class="view-h"><div><h2>Administration</h2><p>Corbeille, journal des actions et sauvegarde complète du registre.</p></div></div>
+  <div class="view-h"><div><span class="jour"></span><h2>Administration</h2><p>Corbeille, journal des actions et sauvegarde complète du registre.</p></div></div>
   <div class="admin">
     <div class="panel">
       <h3><span>Corbeille <span class="pill dng" id="trashCount">0</span></span><button type="button" class="btn sm dng" id="btnEmpty">Vider la corbeille</button></h3>
@@ -1053,5 +1054,8 @@ Store.init().then(()=>{
   $("mode").querySelector("span").textContent="Non connecté";
 });
 })();
+</script>
+<script>/* date du jour affichée en tête de chaque page ; mise à jour toutes les minutes */
+(function(){function m(){var s=new Date().toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long",year:"numeric"});s=s.charAt(0).toUpperCase()+s.slice(1);var l=document.querySelectorAll(".jour");for(var i=0;i<l.length;i++)l[i].textContent=s}m();setInterval(m,60000)})();
 </script>
 </body></html>

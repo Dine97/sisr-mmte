@@ -370,6 +370,8 @@ dialog::backdrop{background:rgba(11,32,56,.62)}
 .lc h1{margin:0;font:500 32px/1.1 var(--serif);letter-spacing:-.01em;color:var(--n)}
 .lc h1::after{content:"";display:block;width:44px;height:2px;margin:14px auto 10px;background:var(--br)}
 .lc .sub{margin:0 0 20px;color:var(--g2);font-size:13.5px;text-wrap:balance}
+.lc .hbe{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brd)}
+.lc .hbd{margin:0 0 4px;font-size:14px;font-weight:600;color:var(--brd)}
 .lc form{text-align:left}.lc form label:first-child{margin-top:0}
 .pw{position:relative}.pw input{padding-right:96px}
 .vu{position:absolute;right:6px;top:50%;transform:translateY(-50%);padding:8px 10px;border:0;border-radius:8px;background:none;color:var(--n);font:700 13px var(--sans);cursor:pointer}
@@ -537,7 +539,7 @@ dialog::backdrop{background:rgba(11,32,56,.62)}
 <div class="ecran" id="hub" hidden><div class="lw hw">
   <div class="lc">
     <img class="lg" alt="Bénin Control">
-    <h1 id="hbj">Bonjour</h1><p class="sub">Quel outil voulez-vous utiliser ?</p>
+    <p class="hbe">Bienvenue</p><h1 id="hbj">Bonjour</h1><p class="hbd" id="hbd"></p><p class="sub">Quel outil voulez-vous utiliser ?</p>
     <div class="hubs">
       <button type="button" class="hubc" id="hsisr"><span class="hi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/></svg></span><span class="ht"><b>SISR-MMTE</b><small>Suivi des requêtes : saisie, requêtes en cours, tableau de bord</small></span><svg class="hch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
       <button type="button" class="hubc" id="hom"><span class="hi"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 17l2-4 2 2 2-4 2 6"/></svg></span><span class="ht"><b>Ordres de mission</b><small>Établir, imprimer et suivre les ordres de mission</small></span><svg class="hch" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
@@ -1021,6 +1023,13 @@ function listes() {
 const VUES = ["saisie","ec","bord","adm"];
 /* en-tête de page : titre, sous-titre et date du jour, qui suivent l'onglet affiché */
 let ecSous = "";
+const salut = () => new Date().getHours() < 12 ? "Bonjour" : "Bonsoir";
+const majus = w => w.length > 1 && w === w.toUpperCase() && w !== w.toLowerCase();
+const prenomDe = n => { const m = String(n || "").trim().split(/\s+/); let i = 0, j = m.length; while (i < j && majus(m[i])) i++; if (i === 0) while (j > 0 && majus(m[j - 1])) j--; return i < j ? m.slice(i, j).join(" ") : m.join(" "); };
+function saluer() {                                                     // accueil : « Bonjour, Nourou Dine » + date du jour, recalculé à chaque affichage
+  if (!ME) return; const d = nomDe(ME.email), n = d && d.indexOf("@") < 0 ? d : (ME.nom || ME.email.split("@")[0]);
+  $("#hbj").textContent = salut() + ", " + prenomDe(n); $("#hbd").textContent = dateLongue();
+}
 const dateLongue = () => { const s = new Date().toLocaleDateString("fr-FR", { weekday:"long", day:"numeric", month:"long", year:"numeric" }); return s.charAt(0).toUpperCase() + s.slice(1); };
 function phMaj() {
   const t = { saisie: editId ? "Modifier la requête" : "Nouvelle requête", ec:"Requêtes en cours", bord:"Tableau de bord", adm:"Administration" }[vue];
@@ -2003,6 +2012,7 @@ let tl = "";
 const cleRetards = () => data.filter(enRetard).map(r => r.id).sort().join(",");
 function tic() {
   if (!ME || !store) return;
+  if (!$("#hub").hidden) saluer();                                      // accueil laissé ouvert : la salutation et la date suivent l'heure
   const k = cleRetards();
   if (k !== tl) { tl = k; renderEC(); renderBord(); ntMaj(); titre(); }
   else if (vue === "ec" && !document.hidden) renderEC();
@@ -2012,7 +2022,7 @@ document.addEventListener("visibilitychange", () => { if (!document.hidden) tic(
 let uid = null, quitter = false, refus = "", UC = null;
 function ecran(nom) {
   $("#splash").hidden = nom !== "splash"; $("#login").hidden = nom !== "login" && nom !== "code"; $("#lf").hidden = nom === "code"; $("#cf").hidden = nom !== "code"; $("#lai").hidden = nom === "code";
-  $("#hd").hidden = $("#mn").hidden = nom !== "app"; $("#hub").hidden = nom !== "hub";
+  $("#hd").hidden = $("#mn").hidden = nom !== "app"; $("#hub").hidden = nom !== "hub"; if (nom === "hub") saluer();
 }
 async function start(u) {
   if (uid === u.id) return; uid = u.id; UC = u; ecran("splash");
@@ -2029,10 +2039,10 @@ async function charger(u) {
   if (!p.actif) return refuser("Votre compte est créé mais pas encore activé. Prévenez l'administrateur : il doit l'activer avant votre première connexion.");
   ME = { id:u.id, email:u.email || p.email, nom:p.nom || "", role:p.role, agent:p.agent || "" };
   $("#dct").textContent = (ME.nom && ME.nom !== ME.email.split("@")[0] ? ME.nom : ME.agent) || ME.nom || ME.email; enteteCompte($("#dct").textContent); $("#dcr").textContent = (ME.role === "admin" ? "Administrateur" : "Agent") + (ME.agent ? " · " + ME.agent : "") + " · " + ME.email;
-  $("#nadm").hidden = !estAdmin(); ntCharger(); go("saisie"); $("#hbj").textContent = "Bonjour " + (ME.nom || ME.email.split("@")[0]); ecran("hub");
+  $("#nadm").hidden = !estAdmin(); ntCharger(); go("saisie"); ecran("hub");
   try { appliquerListes(await store.listes()); } catch (e) { toast(e.message); }
   try { PROFILS = await store.profils(); } catch (e) { PROFILS = []; }
-  $("#dct").textContent = nomDe(ME.email) || ME.email; enteteCompte($("#dct").textContent); $("#hbj").textContent = "Bonjour " + (nomDe(ME.email) || ME.nom || ME.email.split("@")[0]);
+  $("#dct").textContent = nomDe(ME.email) || ME.email; enteteCompte($("#dct").textContent); saluer();
   if (estAdmin()) { try { SAUV = (await store.param("derniere_sauvegarde")) || ""; } catch (e) { SAUV = null; } }
   if (uid !== u.id) return;
   render(); if (!editId) viderForm(true);                                                                  // saisie : l'agent proposé est la personne connectée
