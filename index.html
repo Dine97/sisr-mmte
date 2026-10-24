@@ -116,6 +116,7 @@ input:disabled,select:disabled,textarea:disabled{background:#F1EFE9;color:var(--
 .sc{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center;font-size:13px;color:var(--g)}
 .ghost,.sc button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:0 16px;border:1px solid #B5AFA0;border-radius:999px;background:#fff;color:var(--n);font:600 13.5px/1.2 var(--sans);cursor:pointer}
 .ghost:hover,.sc button:hover{background:#F8F6F0;border-color:var(--n)}
+.ghost.dng{border-color:var(--rbd);color:var(--r)}.ghost.dng:hover{background:var(--rb);border-color:var(--r)}
 .sc button{min-height:44px;color:var(--t)}
 button.ok{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;margin-top:20px;padding:0 24px;border:0;border-radius:999px;background:var(--n);color:#fff;font:600 16px/1.2 var(--sans);cursor:pointer;box-shadow:0 6px 16px rgba(11,32,56,.22)}
 button.ok:hover{background:var(--n2)}button.ok:disabled{opacity:.55;cursor:default}
@@ -1645,7 +1646,7 @@ async function admComptes() {
         <div class="g2"><div><label>Nom affiché</label><input data-f="nom" value="${esc(p.nom || "")}"></div>
         <div><label>Rôle</label><select data-f="role"><option value="agent"${p.role === "agent" ? " selected" : ""}>Agent</option><option value="admin"${p.role === "admin" ? " selected" : ""}>Administrateur</option></select></div>
         <div><label>Agent correspondant</label><select data-f="agent">${agentsOpt(p.agent || "")}</select></div></div>
-        <div class="act">${moi ? "" : `<button type="button" class="ghost" data-act="actif">${p.actif ? "Désactiver" : "Activer"}</button>`}<button type="button" class="ghost" data-act="mdp">Nouveau mot de passe</button><button type="button" class="ghost" data-act="2fa">Réinitialiser la 2FA</button></div>
+        <div class="act">${moi ? "" : `<button type="button" class="ghost" data-act="actif">${p.actif ? "Désactiver" : "Activer"}</button>`}<button type="button" class="ghost" data-act="mdp">Nouveau mot de passe</button><button type="button" class="ghost" data-act="2fa">Réinitialiser la 2FA</button>${moi ? "" : `<button type="button" class="ghost dng" data-act="suppr">Supprimer le compte</button>`}</div>
         <div class="msg" data-m role="alert"></div></div>`; }).join("");
 }
 $("#adm-cpt").addEventListener("submit", async e => {
@@ -1671,6 +1672,11 @@ $("#adm-cpt").addEventListener("click", async e => {
   if (a === "actif") { b.disabled = true; try { await store.majProfil(id, { actif:!p.actif }); toast(p.actif ? "Compte désactivé" : "Compte activé"); admComptes(); } catch (x) { note(m, x.message); b.disabled = false; } }
   if (a === "2fa") { if (!confirm(`Retirer la double authentification de ${p.email} ? Son téléphone ne sera plus demandé à la connexion.`)) return; b.disabled = true;
     try { const r = await store.admin({ action:"reset2fa", id }); note(m, r.retires ? "Double authentification retirée." : "Ce compte n'avait pas de double authentification.", true); } catch (x) { note(m, x.message); } b.disabled = false; }
+  if (a === "suppr") {
+    if (!confirm(`Supprimer définitivement le compte de ${p.nom || p.email} (${p.email}) ?\n\nCette personne ne pourra plus se connecter, et sa double authentification est effacée.\nSes requêtes et ses ordres de mission restent dans l'historique, au nom de son adresse e-mail.\n\nCette action est irréversible. Pour une absence temporaire, utilisez plutôt « Désactiver ».`)) return;
+    b.disabled = true;
+    try { await store.admin({ action:"supprimer", id }); toast("Compte supprimé"); PROFILS = await store.profils(); admComptes(); } catch (x) { note(m, x.message); b.disabled = false; }
+  }
   if (a === "mdp") { c.querySelector(".act").innerHTML = `<div class="add" style="margin:0;width:100%"><input data-pw placeholder="Nouveau mot de passe (vide = généré)" autocomplete="off" aria-label="Nouveau mot de passe"><button type="button" class="ok" data-act="mdp-ok">Valider</button><button type="button" class="ghost" data-act="mdp-x">Annuler</button></div>`; c.querySelector("[data-pw]").focus(); }
   if (a === "mdp-x") admComptes();
   if (a === "mdp-ok") {
