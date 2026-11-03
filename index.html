@@ -356,6 +356,67 @@ dialog::backdrop{background:rgba(11,32,56,.62)}
 .hi li{padding:9px 12px;border-radius:12px;background:var(--f);overflow-wrap:anywhere}.hi li b{color:var(--n)}.hi li small{display:block;color:var(--g)}
 .sim{display:grid;gap:8px;margin:12px 0;padding:0;list-style:none}.sim li{padding:10px 12px;border-radius:12px;background:var(--f);font-size:13.5px}.sim li b{display:block}.sim li small{color:var(--g)}
 .nt{display:grid;gap:8px;margin:14px 0 0}
+.cfm{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px;padding:10px 12px 10px 18px;border-left:5px solid var(--br);border-radius:14px;background:#fff;box-shadow:var(--sh)}
+.cfm span{flex:1 1 220px;font-weight:600}.cfm .mbt{min-height:44px;padding:0 20px;font-size:14px}
+#dm label{margin-top:12px}
+.mg{display:grid;grid-template-columns:1.35fr 1fr;gap:0 12px}.mg>div{min-width:0}.mg input{font-size:15px}
+.mlab{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-top:12px}.mlab label{margin:0}.mlab .ghost{min-height:34px;padding:0 12px;font-size:12.5px}
+details.sg{margin:12px 0 0}.sg summary{cursor:pointer;font-size:13.5px;color:var(--g2)}.sg summary b{color:var(--t)}.sg summary i{margin-left:8px;color:var(--n);font-style:normal;font-weight:700;text-decoration:underline}
+.mnote{margin:10px 0 0;padding:9px 14px;border-left:4px solid var(--br);border-radius:10px;background:var(--f);font-size:13.5px;line-height:1.45}
+.mv{display:flex;gap:4px;margin:12px 0 4px;padding:4px;background:#fff;border:1px solid var(--l);border-radius:999px}
+.mv button{flex:1 1 0;min-width:0;min-height:48px;padding:2px 8px;border:0;border-radius:999px;background:none;color:var(--t);font:600 14px/1.2 var(--sans);cursor:pointer}
+.mv button[hidden],.mbt[hidden]{display:none}
+.mv button:hover{background:#F8F6F0}
+.mv button[aria-pressed=true]{background:var(--n);color:#fff}
+.mv button i{display:block;min-height:12px;font:700 10px/1.2 var(--sans);font-style:normal;letter-spacing:.06em;text-transform:uppercase;color:var(--brd)}
+.mv button[aria-pressed=true] i{color:var(--brl)}
+.mph{margin:8px 0 0;padding:10px 14px 2px;border:1px solid var(--l);border-radius:16px;background:var(--f)}
+.mpt{display:block;font-size:13px;color:var(--n)}
+.mpr{display:grid;grid-template-columns:1fr auto;gap:3px 12px;align-items:center;padding:7px 0;border-top:1px solid var(--l)}
+.mpl{grid-column:1/3;font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--g)}
+.mps{font-size:14px;line-height:1.4;overflow-wrap:anywhere}
+.mpr .ghost{min-height:36px;padding:0 12px;font-size:12.5px;white-space:nowrap}
+.mpk{grid-column:1/3;display:flex;flex-wrap:wrap;gap:8px}.mpk .tg{margin:0;min-height:40px;font-size:13px;padding:0 14px}.mpk .tg:has(input:disabled){opacity:.5;cursor:default}
+#dm{width:min(1080px,calc(100% - 24px))}
+.mcols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"top msg" "phr msg";grid-template-rows:auto 1fr;gap:0 28px}
+.mtop{grid-area:top}.mphr{grid-area:phr}.mmsg{grid-area:msg;display:flex;flex-direction:column}.mmsg #dmb{flex:1;min-height:360px}
+#dmb{font:14.5px/1.55 var(--sans)}
+@media (max-width:980px){.mcols{grid-template-columns:minmax(0,1fr);grid-template-areas:"top" "msg" "phr";grid-template-rows:none}.mmsg #dmb{flex:none;min-height:270px}}
+.cfm{scroll-margin-top:12px}
+.mfoot{position:sticky;bottom:0;z-index:1;margin:14px -24px -26px;padding:10px 24px 14px;background:#fff;border-top:1px solid var(--l)}
+.mfoot .mbt{min-height:48px}
+.mact{display:grid;grid-template-columns:1fr 1fr;gap:10px}.mact.t3{grid-template-columns:repeat(3,1fr)}
+.mfin{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}.mfin .hint{margin:0;min-width:0;overflow-wrap:anywhere}.mfin .ghost{flex:none}
+.mbt{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 10px;border:1.5px solid var(--n);border-radius:999px;background:var(--n);color:#fff;font:600 15px/1.15 var(--sans);text-align:center;text-decoration:none;cursor:pointer;box-shadow:0 6px 16px rgba(11,32,56,.22)}
+.mbt:hover{background:var(--n2)}
+.mbt.alt{background:#fff;color:var(--n);box-shadow:none}.mbt.alt:hover{background:#F3F6FA}
+.mrz{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:8px}
+#adm-mel .g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:4px 14px}
+.mac{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;margin:0 0 16px;padding:14px 18px;border:1px solid var(--l);border-radius:16px;background:#fff}
+.mac>div{flex:1 1 320px}.mac select{flex:0 1 300px;font-weight:600}
+.mlh{margin:18px 0 8px;font:600 15px var(--sans);color:var(--n)}
+.mpa{margin:0 0 12px;padding:14px 16px;border:1px solid var(--l);border-radius:16px;background:#fff}
+.mpa .mmod{display:flex;flex-wrap:wrap;gap:6px 8px;margin:10px 0 0}.mpa .mmod .tg{margin:0;min-height:38px;font-size:13px;padding:0 12px}
+.mpa .act{margin-top:10px}
+.mtab{display:grid;gap:6px;margin:0 0 6px}
+.mtr1{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:8px 14px;border:1px solid var(--l);border-radius:14px;background:#fff}
+.mtr1 .mn{flex:1 1 220px;min-width:0;display:flex;flex-direction:column}.mtr1 .mn small{color:var(--g2);overflow-wrap:anywhere}
+.mtr1 select{flex:0 1 250px;min-height:44px}
+.mst{flex:none;min-width:70px;text-align:center;white-space:nowrap;padding:5px 10px;border-radius:999px;font:700 12px var(--sans)}
+.mst.on{background:#E3F4E7;color:#1B6B34}.mst.off{background:#F1EFEA;color:var(--g2)}
+details.mad{margin:16px 0 0;padding:0 16px;border:1px solid var(--l);border-radius:16px;background:#fff}
+.mad>summary{cursor:pointer;padding:14px 0;font:600 15px var(--sans);color:var(--n)}
+.mad[open]>summary{border-bottom:1px solid var(--l);margin-bottom:6px}
+.mad form,.mad>div{padding-bottom:14px}
+.mgh{margin:14px 0 6px;font:700 12px var(--sans);letter-spacing:.05em;text-transform:uppercase;color:var(--g)}
+.mfg{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.mhl{display:grid;border:1px solid var(--l);border-radius:12px;overflow:hidden}
+.mhr{display:grid;grid-template-columns:150px 120px 200px minmax(0,1fr) auto;gap:6px 12px;align-items:center;padding:8px 12px;border-top:1px solid var(--l);font-size:13.5px}
+.mhr:first-child{border-top:0}
+.mhp{display:flex;flex-direction:column;min-width:0}.mhp small{color:var(--g2)}
+.mho{min-width:0;overflow-wrap:anywhere;color:var(--g2)}
+.mhr .ghost{min-height:36px;padding:0 12px;font-size:12.5px}
+@media (max-width:760px){.mhr{grid-template-columns:minmax(0,1fr) auto}.mhd,.mhq,.mhp,.mho{grid-column:1}.mhr .ghost{grid-column:2;grid-row:1}}
 .nt .ni{display:block;width:100%;padding:11px 14px;border:0;border-radius:14px;background:var(--f);color:inherit;font:inherit;font-size:14px;text-align:left;cursor:pointer}
 .nt .ni:hover{background:#ECE8DE}.nt .ni b{color:var(--n)}
 .nt .ni span{display:block;margin-top:3px;font-weight:600;overflow-wrap:anywhere}.nt .ni small{display:block;margin-top:2px;font-size:12.5px;color:var(--g)}
@@ -463,6 +524,7 @@ dialog::backdrop{background:rgba(11,32,56,.62)}
   dialog{width:calc(100% - 16px);max-height:calc(100% - 16px);border-radius:22px}
   .dgi{padding:18px 18px 22px}
   .dgh h2{font-size:22px}
+  .mg{grid-template-columns:1fr}.mmsg #dmb{min-height:240px}.mfoot{margin:14px -18px -22px;padding:10px 18px 14px}.mpr{grid-template-columns:1fr}.mpr .ghost{justify-self:start}.mpl,.mpk{grid-column:1}.mact.t3{grid-template-columns:1fr 1fr}.mact.t3 #dmcp{grid-column:1/3;order:3}
   .gp{padding:18px 18px 20px}
   .card{padding:18px 18px 20px}
   .rsm{grid-template-columns:repeat(3,minmax(0,1fr));border-radius:16px}.rsm>div:nth-child(4){display:none}
@@ -602,6 +664,7 @@ dialog::backdrop{background:rgba(11,32,56,.62)}
 <div class="rap" id="rap" hidden><span id="rapt"></span><button type="button" class="ghost" id="rapb">Faire la sauvegarde</button><button type="button" class="ghost" id="rapx" aria-label="Masquer">×</button></div>
 
 <section id="saisie">
+  <div class="cfm" id="cfm" hidden role="status"><span id="cfmt"></span><button type="button" class="mbt" id="cfmb">Écrire à un partenaire</button><button type="button" class="x" id="cfmx" aria-label="Masquer">×</button></div>
   <div class="eb" id="eb" hidden><span id="ebt"></span><button type="button" class="ghost" id="ann">Annuler la modification</button></div>
   <div class="gps">
   <div class="gp"><h3 class="gh">Quand</h3>
@@ -677,8 +740,8 @@ dialog::backdrop{background:rgba(11,32,56,.62)}
 </section>
 
 <section id="adm" hidden>
-  <div class="sbn" id="sbn"><button data-s="cpt" class="on">Comptes</button><button data-s="lst">Listes</button><button data-s="cor">Corbeille</button><button data-s="jrn">Journal</button><button data-s="don">Données</button></div>
-  <div id="adm-cpt"></div><div id="adm-lst" hidden></div><div id="adm-cor" hidden></div><div id="adm-jrn" hidden></div><div id="adm-don" hidden></div>
+  <div class="sbn" id="sbn"><button data-s="cpt" class="on">Comptes</button><button data-s="lst">Listes</button><button data-s="cor">Corbeille</button><button data-s="jrn">Journal</button><button data-s="don">Données</button><button data-s="mel">Courriels</button></div>
+  <div id="adm-cpt"></div><div id="adm-lst" hidden></div><div id="adm-cor" hidden></div><div id="adm-jrn" hidden></div><div id="adm-don" hidden></div><div id="adm-mel" hidden></div>
 </section>
 </div>
 </div>
@@ -711,6 +774,29 @@ dialog::backdrop{background:rgba(11,32,56,.62)}
     <p class="hint" style="margin:6px 0 0">Un bip discret quand le délai de résolution d'une requête est dépassé (application ouverte, y compris en arrière-plan).</p>
     <label class="tg" style="margin-top:8px"><input type="checkbox" id="sndc"> Activer le signal sonore sur cet appareil</label></div>
   <div class="act"><button type="button" class="ghost" id="inst" hidden>Installer l'application</button><button type="button" class="ghost" id="out">Se déconnecter</button></div>
+</div></dialog>
+<dialog id="dm" aria-labelledby="dmt"><div class="dgi">
+  <div class="dgh"><div><span class="pill" id="dmp">Mail pour résoudre cette requête</span> <span id="dmq"></span><h2 id="dmt">Écrire à un partenaire</h2></div><button type="button" class="x" data-x aria-label="Fermer">×</button></div>
+  <p class="hint" id="dmr" style="margin:8px 0 0"></p>
+  <p class="mnote" id="dmh" hidden></p>
+  <div class="mcols"><div class="mtop">
+  <label for="dmd">Destinataire</label><select id="dmd"></select>
+  <div class="mg" id="dmz" hidden><div><label for="dmza">Nom pour la salutation</label><input id="dmza" autocomplete="off" placeholder="ex. M. Dupont"></div><div><label for="dmzb">Adresse e-mail</label><input id="dmzb" type="email" inputmode="email" autocomplete="off"></div></div>
+  <details class="sg" id="dmg"><summary>Signature : <b id="dmgs"></b><i>modifier</i></summary>
+    <div class="mg"><div><label for="dmn">Signé par</label><input id="dmn" list="dmnl" autocomplete="off"><datalist id="dmnl"></datalist></div><div><label for="dmf">Fonction</label><input id="dmf" autocomplete="off"></div></div></details>
+  <div class="mg"><div><label for="dmx">Châssis ou manifestes concernés <span class="opt">(facultatif)</span></label><input id="dmx" autocomplete="off" placeholder="ex. M260000857, JTEAACAJ70K051067"></div>
+  <div><label for="dmc">Pour permettre… <span class="opt">(facultatif)</span></label><input id="dmc" autocomplete="off" placeholder="ex. le transfert prévu ce soir"></div></div>
+  <div class="mv" id="dmv" role="group" aria-label="Style du message"><button type="button" data-v="std" aria-pressed="true">Standard<i></i></button><button type="button" data-v="frm" aria-pressed="false">Formel<i></i></button><button type="button" data-v="crt" aria-pressed="false">Court<i></i></button><button type="button" data-v="rel" aria-pressed="false" hidden>Relance<i></i></button></div></div>
+  <div class="mphr"><div class="mph"><b class="mpt">Phrases proposées pour cette requête</b><p class="hint" id="dmk" style="margin:2px 0 4px"></p>
+    <div class="mpr"><span class="mpl">Constat</span><span class="mps" id="dmcs"></span><button type="button" class="ghost" id="dmcb">Autre formulation <span id="dmcn"></span></button></div>
+    <div class="mpr"><span class="mpl">Demande</span><span class="mps" id="dmds"></span><button type="button" class="ghost" id="dmdb">Autre formulation <span id="dmdn"></span></button></div>
+    <div class="mpr"><span class="mpl">À ajouter</span><span class="mpk"><label class="tg"><input type="checkbox" id="dmfo"> Origine du signalement</label><label class="tg"><input type="checkbox" id="dmfb"> Observation</label><label class="tg"><input type="checkbox" id="dmfp"> Priorité et délai</label></span></div></div></div>
+  <div class="mmsg"><div class="mlab"><label for="dmo">Objet</label><button type="button" class="ghost" id="dmco">Copier l'objet</button></div><input id="dmo" autocomplete="off">
+  <label for="dmb">Message <span class="opt">(modifiable avant de copier ou d'envoyer)</span></label><textarea id="dmb" rows="13"></textarea>
+  <div class="mrz"><button type="button" class="ghost" id="dmrz" hidden>Rétablir le texte proposé</button><span class="hint" id="dmm" style="margin:0" hidden>Ce message a été modifié à la main : il ne suit plus les phrases et champs ci-dessus.</span></div></div></div>
+  <div class="mfoot"><p class="msg" id="dmw" hidden>Message long : si votre messagerie ne s'ouvre pas, utilisez « Copier le message ».</p>
+    <div class="mact"><button type="button" class="mbt alt" id="dmcp">Copier le message</button><a class="mbt" id="dms" href="#">Ouvrir dans Outlook</a><a class="mbt alt" id="dmw2" href="#" target="_blank" rel="noopener">Outlook web</a></div>
+    <div class="mfin"><p class="hint" id="dma"></p><button type="button" class="ghost" data-x>Fermer</button></div></div>
 </div></dialog>
 <div id="tip" role="tooltip"></div>
 <div id="toast" role="status"></div>
@@ -943,6 +1029,10 @@ async function supa() {
     /* paramètres partagés, sauvegarde complète */
     param: async cle => { const { data, error } = await sb.from("parametres").select("valeur").eq("cle", cle).maybeSingle(); if (error) throw ko(error); return data ? data.valeur : null; },
     setParam: async (cle, valeur) => { const { error } = await sb.from("parametres").upsert({ cle, valeur, maj:new Date().toISOString() }); if (error) throw ko(error); },
+    courriels: async () => { const { data, error } = await sb.from("courriels").select("*").order("le", { ascending:false }).limit(500); if (error) throw ko(error); return data || []; },
+    courrielAdd: async row => { const { error } = await sb.from("courriels").insert(row); if (error) throw ko(error); },
+    courrielDel: async id => { const { error } = await sb.from("courriels").delete().eq("id", id); if (error) throw ko(error); },
+    courrielsVider: async () => { const { error } = await sb.from("courriels").delete().gt("id", 0); if (error) throw ko(error); },
     tout: async () => {
       const requetes = await lot(q => q, null); let journal = [], dernier = 0;
       for (;;) { const { data, error } = await sb.from("journal").select("*").gt("id", dernier).order("id").limit(PAGE); if (error) throw ko(error); journal = journal.concat(data); if (data.length < PAGE) break; dernier = data[data.length - 1].id; }
@@ -1072,7 +1162,7 @@ function phMaj() {
 function go(v) {
   if (v === "adm" && !estAdmin()) v = "saisie";
   vue = v; $$("nav [data-v]").forEach(b => { const on = b.dataset.v === v; b.classList.toggle("on", on); if (on) b.setAttribute("aria-current", "page"); else b.removeAttribute("aria-current"); }); VUES.forEach(s => $("#" + s).hidden = s !== v);
-  phMaj();
+  phMaj(); melCfm(null);
   if (v === "adm") renderAdmin();
   if (v === "bord") renderTrend();
 }
@@ -1218,7 +1308,7 @@ $("#ok").onclick = async () => {
     if (PJ.neufs.length) { envoyes = await store.envoyer(id, PJ.neufs); }
     if (PJ.neufs.length || PJ.retire.length) v.pieces = [...PJ.garde.map(p => ({ p:p.p, n:p.n, t:p.t, s:p.s })), ...envoyes];
     if (editId) { await store.upd(editId,v,editMaj); if (PJ.retire.length) store.effacer(PJ.retire); toast("Requête modifiée"); finEdition(); }
-    else { v.id = id; const ref = await store.add(v); toast(ref ? `Requête enregistrée : ${ref}` : "Requête enregistrée"); viderForm(false); $("#eb").hidden = true; }
+    else { v.id = id; const ref = await store.add(v); toast(ref ? `Requête enregistrée : ${ref}` : "Requête enregistrée"); viderForm(false); $("#eb").hidden = true; melCfm({ ...v, ref:ref || "", saisiPar:ME.email }); }
   } catch (e) { if (envoyes.length) store.effacer(envoyes.map(x => x.p)); err(e.message); }
   $("#ok").disabled = false;
 };
@@ -1270,10 +1360,10 @@ function ouvrir(id, mode = "voir") {
     ` + slaBloc(r) + `
     ` + (mode === "clore" ? "" : `<div class="ob"><b>Observation</b><p>${r.observation ? esc(r.observation) : "<i>Aucune observation</i>"}</p></div>`)
     + (mode === "voir" && r.pieces.length ? `<div class="ob" style="margin-top:10px"><b>Pièces jointes</b><div class="pjg" id="pjv">${r.pieces.map(() => `<a><div class="ic">…</div><span>chargement</span></a>`).join("")}</div></div>` : "")
-    + (trace ? `<p class="tr">${esc(trace)}</p>` : "");
+    + (trace ? `<p class="tr">${esc(trace)}</p>` : "") + (mode === "voir" ? melDetail(r) : "");
   const mod = peutModifier(r);
   if (mode === "voir") h += `<div class="act">` + (mod && !r.resolution ? `<button type="button" class="ok" data-a="clore">Marquer comme résolue</button>` : "")
-    + (mod ? `<button type="button" class="ghost" data-a="mod">Modifier</button>` : "") + `<button type="button" class="ghost" data-a="dup">Dupliquer</button>`
+    + (mod ? `<button type="button" class="ghost" data-a="mod">Modifier</button>` : "") + `<button type="button" class="ghost" data-a="dup">Dupliquer</button>${melActif() ? `<button type="button" class="ghost" data-a="mail">Écrire à un partenaire</button>` : ""}`
     + (peutSupprimer(r) ? `<button type="button" class="ghost" data-a="sup">Supprimer</button>` : "") + `</div>`
     + (mod ? "" : `<p class="tr">Lecture seule : cette requête est suivie par ${esc(r.agent)}. Vous pouvez la dupliquer pour en créer une nouvelle.</p>`)
     + `<details class="hi" id="hid"><summary>Historique des modifications</summary><ol id="hio"><li>Chargement…</li></ol></details>`;
@@ -1316,6 +1406,7 @@ dg.addEventListener("click", async e => {
   if (!r) return dg.close();
   if (a === "mod") { dg.close(); return editer(id); }
   if (a === "dup") { dg.close(); return dupliquer(id); }
+  if (a === "mail") { dg.close(); return melOuvrir(r, false); }
   if (a === "valider") {
     const m = $("#ce"), hh = $("#ch").value, d = mk($("#cd").value,hh);
     if (!d) { m.textContent = "Choisis la date de résolution."; return; }
@@ -1329,6 +1420,342 @@ dg.addEventListener("click", async e => {
     catch (x) { m.textContent = x.message; b.disabled = false; }
   }
   if (a === "oui") { b.disabled = true; try { await store.del(id,dg.dataset.maj); dg.close(); toast("Requête supprimée"); } catch (x) { $("#ce").textContent = x.message; b.disabled = false; } }
+});
+
+/* ---------- « Écrire à un partenaire » : e-mail préparé à partir de la requête (tout se règle dans Administration > Courriels) ---------- */
+const MEL_FORM = {                                                     // formules d'origine (modifiables dans l'administration)
+  std_intro:"Je souhaite porter à votre connaissance", std_demande:"Je vous saurais gré de bien vouloir", std_merci:"Je vous remercie par avance pour votre diligence.", std_clot:"Bien cordialement,",
+  frm_polit:"J'espère que vous vous portez bien,", frm_intro:"Nous souhaitons porter à votre attention", frm_demande:"Nous vous saurions gré de bien vouloir", frm_clot:"Cordialement,",
+  crt_ecrire:"Je vous écris à propos de", crt_demande:"Pourriez-vous", crt_merci:"Merci d'avance.", crt_clot:"Cordialement,",
+  rel_intro:"Je me permets de revenir vers vous suite à mon précédent message", rel_demande:"Je vous remercierais de bien vouloir", rel_suite:"et de nous indiquer où en est le traitement de cette requête.", rel_merci:"Je vous remercie par avance pour votre retour.", rel_clot:"Cordialement,",
+  delai:"dans les meilleurs délais"
+};
+const MEL_GROUPES = [
+  ["Message Standard", [["std_intro","Début du constat"], ["std_demande","Début de la demande"], ["std_merci","Remerciement"], ["std_clot","Formule de politesse finale"]]],
+  ["Message Formel", [["frm_polit","Formule d'accueil (premier mail du jour au partenaire)"], ["frm_intro","Début du constat"], ["frm_demande","Début de la demande"], ["frm_clot","Formule de politesse finale"]]],
+  ["Message Court", [["crt_ecrire","Début du constat (demande ou difficulté)"], ["crt_demande","Début de la demande"], ["crt_merci","Remerciement"], ["crt_clot","Formule de politesse finale"]]],
+  ["Relance", [["rel_intro","Début (suivi de la date du premier message)"], ["rel_demande","Début de la demande"], ["rel_suite","Fin de la demande"], ["rel_merci","Remerciement"], ["rel_clot","Formule de politesse finale"]]],
+  ["Tous les messages", [["delai","Délai demandé"]]]
+];
+const MEL_DEF = { mode:"off", fonction:"Agent MMTE", partenaires:[{ id:"p1", appel:"M. Rachad", mail:"", cc:"", modules:[] }], comptes:{}, messagerie:"both", webBase:"https://outlook.office.com/mail/deeplink/compose", prioDefaut:true, formules:{} };
+let MEL = melNorm(null), MEL_T = 0, MC = [], MC_OK = true;
+function melNorm(o) {                                                   // réglages enregistrés, nettoyés ; absents ou illisibles : fonction désactivée
+  const d = JSON.parse(JSON.stringify(MEL_DEF)); if (!o || typeof o !== "object" || Array.isArray(o)) return d;
+  const ps = Array.isArray(o.partenaires) ? o.partenaires.filter(p => p && typeof p === "object" && String(p.appel || "").trim()).map((p, i) => ({ id:String(p.id || "p" + (i + 1)), appel:String(p.appel).trim(), mail:String(p.mail || "").trim(), cc:String(p.cc || "").trim(), modules:Array.isArray(p.modules) ? p.modules.map(String) : [] })) : d.partenaires;
+  const comptes = {}; if (o.comptes && typeof o.comptes === "object") Object.entries(o.comptes).forEach(([k, v]) => { if (v === "oui" || v === "non") comptes[k] = v; });
+  const formules = {}; if (o.formules && typeof o.formules === "object") Object.keys(MEL_FORM).forEach(k => { const v = typeof o.formules[k] === "string" ? o.formules[k].trim() : ""; if (v && v !== MEL_FORM[k]) formules[k] = v; });
+  const wb = String(o.webBase || "").trim();
+  return { mode:["off","admin","all"].includes(o.mode) ? o.mode : "off", fonction:String(o.fonction || "").trim() || d.fonction, partenaires:ps, comptes, messagerie:["both","app","web"].includes(o.messagerie) ? o.messagerie : "both", webBase:/^https:\/\/\S+$/.test(wb) ? wb : d.webBase, prioDefaut:o.prioDefaut !== false, formules };
+}
+const FM = k => MEL.formules[k] || MEL_FORM[k];
+/* qui voit la fonction : interrupteur général (désactivée / essai administrateurs / tous), puis réglage propre à chaque compte (oui / non) */
+const melActifPour = (id, adm) => { if (MEL.mode === "off") return false; const c = MEL.comptes[id]; if (c === "non") return false; if (c === "oui") return true; return MEL.mode === "all" || (MEL.mode === "admin" && !!adm); };
+const melActif = () => !!ME && melActifPour(ME.id, estAdmin());
+async function melCourriels() { try { MC = await store.courriels(); MC_OK = true; } catch (e) { MC = []; MC_OK = false; } }   // historique : facultatif (table absente = pas d'historique, tout le reste fonctionne)
+async function melCharger() {
+  MEL_T = Date.now(); try { const v = await store.param("mail_partenaire"); MEL = melNorm(v ? JSON.parse(v) : null); } catch (e) { /* réglages indisponibles : on garde ce qui est en mémoire */ }
+  if (melActif() || estAdmin()) await melCourriels();
+}
+document.addEventListener("visibilitychange", () => { if (!document.hidden && ME && Date.now() - MEL_T > 120000) melCharger(); });   // un changement de l'administrateur arrive sans qu'il faille se reconnecter
+const MEL_VIN = /\b(?=[A-Z0-9]*\d)(?=[A-Z0-9]*[A-Z])[A-HJ-NPR-Z0-9]{17}\b/g, MEL_MAN = /\bM\d{9}\b/g;
+const MEL_SIGLES = new Set(["CVQ","GUCE","MMTE","MAD","VPN","BM","HOVAS","DGDDI","TVA"]);
+const MEL_NB = { un:1, une:1, deux:2, trois:3, quatre:4, cinq:5, six:6, sept:7, huit:8, neuf:9, dix:10 };
+const MEL_CANAL = { "WhatsApp":"par WhatsApp", "Mail":"par mail", "Téléphone":"par téléphone", "Présentiel":"en présentiel" };
+const MEL_STYLE = { std:"Standard", frm:"Formel", crt:"Court", rel:"Relance" }, MEL_VOIE = { copie:"copié", app:"Outlook", web:"Outlook web" };
+const listeFr = a => a.length < 2 ? (a[0] || "") : a.slice(0, -1).join(", ") + " et " + a[a.length - 1];
+const maj1 = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+const phraseDe = s => String(s || "").trim().replace(/[\s:;.,]+$/, "").split(/\s+/).map(w => /\d/.test(w) || MEL_SIGLES.has(w.replace(/[^A-ZÀ-ÖØ-Þ0-9]/g, "")) ? w : w.toLowerCase()).join(" ");
+const melUniq = a => [...new Set(a)];
+/* n° de manifeste (M + 9 chiffres) et de châssis (17 caractères) repérés dans la description et l'observation */
+function melIds(r) { const t = (String(r.description || "") + " " + String(r.observation || "")).toUpperCase(); return { man:melUniq(t.match(MEL_MAN) || []), vin:melUniq(t.match(MEL_VIN) || []) }; }
+function melIdsDe(txt) {                                                 // saisie libre dans la fenêtre : tout ce qui n'est pas un manifeste est pris pour un châssis
+  const man = [], vin = []; String(txt || "").toUpperCase().split(/[\s,;]+/).map(x => x.replace(/[^A-Z0-9]/g, "")).filter(x => x.length >= 5).forEach(x => (/^M\d{9}$/.test(x) ? man : vin).push(x));
+  return { man:melUniq(man), vin:melUniq(vin) };
+}
+const melIdsTxt = i => [...i.man, ...i.vin].join(", ");
+/* Analyse d'une requête : motif reconnu, objets concernés, puis plusieurs formulations du constat et de la demande.
+   Chaque phrase n'utilise que ce que contient la requête (description, observation, usager, n°) : rien n'est affirmé en plus. */
+function melAnalyse(r, ids) {
+  const n = norm(r.description), u = String(r.usager || "").trim(), man = ids.man, vin = ids.vin, mp = man.length > 1;
+  const mot = (/\b(une?|deux|trois|quatre|cinq|six|sept|huit|neuf|dix)\b(?=\s+(unites?|chassis))/.exec(n) || [])[1], nU = vin.length || MEL_NB[mot] || 1, pu = nU > 1;
+  const dU = u ? ` de l'usager ${u}` : "", ph = phraseDe(r.description);
+  const uni = vin.length ? (pu ? `les unités de manutention ${listeFr(vin)}` : `l'unité de manutention ${vin[0]}`) : `${MEL_NB[mot] > 1 ? mot : "une"} unité${pu ? "s" : ""} de manutention${dU}`;
+  const uniDe = vin.length ? (pu ? `des unités de manutention ${listeFr(vin)}` : `de l'unité de manutention ${vin[0]}`) : (pu ? "des unités de manutention concernées" : "de l'unité de manutention concernée");
+  const att = man.length ? ` ${pu ? "attachées" : "attachée"} ${mp ? "aux manifestes" : "au manifeste"} ${listeFr(man)}` : "";
+  const manNom = man.length ? `${mp ? "les manifestes" : "le manifeste"} ${listeFr(man)}` : `un manifeste${dU}`;
+  const manDe = man.length ? `${mp ? "des manifestes" : "du manifeste"} ${listeFr(man)}` : `d'un manifeste${dU}`;
+  const verbatim = { t:`la situation suivante${u ? ` concernant l'usager ${u}` : ""} : ${ph}`, nom:true };
+  const dem = spec => melUniq([ spec, "prendre les dispositions nécessaires afin que cette situation soit résolue", "examiner cette situation et nous indiquer la suite qui lui sera donnée" ].filter(Boolean));
+  const A = { motif:"", court:"", constats:[], demandes:dem("") };
+  if (/\b(cvq|vu a quai|vue a quai)\b/.test(n) && /non synchronis|non vu|sans cvq|ne dispose|absent du/.test(n)) {
+    const cible = vin.length ? `${uniDe}${att}` : (man.length ? manDe : (u ? `de l'usager ${u}` : "")), pl = pu || mp;
+    Object.assign(A, { motif:"CVQ non synchronisé", court:"CVQ non synchronisé", demandes:dem("procéder à la synchronisation " + (pl ? "des constats" : "du constat") + " de vue à quai" + (cible ? " " + cible : "")),
+      constats:(() => { const sy = { t:`${pl ? "les constats de vue à quai (CVQ)" : "le constat de vue à quai (CVQ)"}${cible ? " " + cible : ""} ${pl ? "ne sont pas synchronisés" : "n'est pas synchronisé"} dans MMTE` },
+        di = vin.length ? { t:`${uni}${att} ${pu ? "ne disposent pas" : "ne dispose pas"} de constat de vue à quai dans MMTE` } : man.length ? { t:`${manNom} ${mp ? "ne présentent" : "ne présente"} aucun constat de vue à quai dans MMTE` } : { t:`des unités de manutention${dU} ne disposent pas de constat de vue à quai dans MMTE` };
+        return /non synchronis/.test(n) ? [sy, di, verbatim] : [di, sy, verbatim]; })() });
+  } else if (/unites? de manutention/.test(n) && /absence|absent/.test(n)) {
+    Object.assign(A, { motif:"Unité de manutention absente du manifeste", court:"Unité de manutention absente du manifeste", demandes:dem(`vérifier la présence ${uniDe} sur le manifeste${man.length ? " " + listeFr(man) : ""}`),
+      constats:[ { t:`${uni} ${pu ? "sont absentes" : "est absente"} du manifeste${man.length ? " " + listeFr(man) : ""}` }, { t:`${uni} ${pu ? "n'apparaissent pas" : "n'apparaît pas"} sur le manifeste${man.length ? " " + listeFr(man) : ""}` }, verbatim ] });
+  } else if (/unites? de manutention/.test(n) && /non synchronis/.test(n)) {
+    Object.assign(A, { motif:"Unité de manutention non synchronisée", court:"Unité de manutention non synchronisée", demandes:dem(`procéder à la synchronisation ${uniDe}`),
+      constats:[ { t:`${uni}${att} ${pu ? "ne sont pas synchronisées" : "n'est pas synchronisée"} dans MMTE` }, { t:`une anomalie de synchronisation affecte ${uni}${att} dans MMTE` }, verbatim ] });
+  } else if (/chassis/.test(n) && /manifeste/.test(n) && /non synchronis/.test(n)) {
+    Object.assign(A, { motif:"Châssis du manifeste non synchronisés", court:"Châssis du manifeste non synchronisés", demandes:dem(`procéder à la synchronisation des châssis ${manDe}`),
+      constats:[ { t:`les châssis ${manDe} ne sont pas synchronisés dans MMTE` }, { t:`une anomalie de synchronisation affecte les châssis ${manDe} dans MMTE` }, verbatim ] });
+  } else if (/manifeste/.test(n) && /non synchronis/.test(n)) {
+    Object.assign(A, { motif:"Manifeste non synchronisé", court:"Manifeste non synchronisé", demandes:dem(`procéder à la synchronisation ${mp ? "des manifestes" : "du manifeste"}${man.length ? " " + listeFr(man) : ""}`),
+      constats:[ { t:`${manNom} ${mp ? "ne sont pas synchronisés" : "n'est pas synchronisé"} dans MMTE` }, { t:`une anomalie de synchronisation affecte ${manNom} dans MMTE` }, verbatim ] });
+  } else if (/^(creation|suppression|modification|activation|reinitialisation|demande|assistance)\b/.test(n)) {
+    Object.assign(A, { motif:"Demande", court:maj1(ph).slice(0, 60), demandes:dem("donner suite à cette demande"),
+      constats:[ { t:`la demande suivante${u ? ` de l'usager ${u}` : ""} : ${ph}`, nom:true }, { t:`${u ? `l'usager ${u} nous a adressé` : "nous avons reçu"} la demande suivante : ${ph}` } ] });
+  } else if (/^(impossibilite|difficulte|blocage|erreur|anomalie|probleme|echec)\b/.test(n)) {
+    Object.assign(A, { motif:"Difficulté signalée", court:maj1(ph).slice(0, 60), demandes:dem("examiner cette difficulté et nous indiquer la suite qui lui sera donnée"),
+      constats:[ { t:`la difficulté suivante${u ? ` signalée par l'usager ${u}` : ""} : ${ph}`, nom:true }, { t:`${u ? `l'usager ${u} nous a signalé` : "nous avons été saisis de"} la difficulté suivante : ${ph}` } ] });
+  } else {
+    Object.assign(A, { court:maj1(ph).length > 60 ? maj1(ph).slice(0, 59) + "…" : maj1(ph),
+      constats:[ verbatim, { t:`${u ? `l'usager ${u} nous a signalé` : "nous avons été saisis de"} la situation suivante : ${ph}` } ] });
+  }
+  return A;
+}
+/* phrases tirées des données de la requête (rien d'ajouté) */
+function melOrigine(r, c) {
+  const u = String(r.usager || "").trim(), dedans = u && norm(c.t).includes(norm(u)), cn = MEL_CANAL[r.canal] || "", quand = r.date ? ` le ${fd(r.date)}${r.avecHeure ? " à " + hm(r.date) : ""}` : "";
+  return `Cette requête a été reçue${quand}${cn ? " " + cn : ""}${u && !dedans ? `, de la part de l'usager ${u}` : ""}.`;
+}
+function melObs(r) { const o = String(r.observation || "").replace(/\s+/g, " ").trim(); return o ? `Précision : ${o.length > 300 ? o.slice(0, 299) + "…" : o}` + (/[.!?…]$/.test(o) ? "" : ".") : ""; }
+function melPrio(r, court) {
+  const p = PRIO[r.priorite]; if (!p) return ""; const f = slaFin(r), nom = { 1:"critique", 2:"moyenne", 3:"basse" }[r.priorite], lim = f ? `, soit avant le ${fd(f)} à ${hm(f)}` : "";
+  return court ? `Priorité ${p.n} (${nom}) : traitement attendu sous ${p.h} h${lim}.` : `Cette requête est classée en priorité ${p.n} (${nom}) : le délai de traitement attendu est de ${p.h} heures${lim}.`;
+}
+const melCle = () => "sisr:ml:j:" + (ME ? ME.id : "");
+const melDeja = pid => { try { return !!pid && (JSON.parse(ls.get(melCle()) || "{}")[pid] === iso(new Date())); } catch (e) { return false; } };   // un mail déjà préparé aujourd'hui pour ce partenaire, sur cet appareil
+function melUtilise(pid) { if (!pid) return; let o = {}; try { o = JSON.parse(ls.get(melCle()) || "{}"); } catch (e) { o = {}; } o[pid] = iso(new Date()); ls.set(melCle(), JSON.stringify(o)); }
+function melNomPers(x) {                                                // « LOKA Nourou Dine » devient « Nourou Dine LOKA » (prénom puis nom)
+  const pre = String(x || "").split("@")[0], d = nomDe(x), moi = ME && x === ME.email;
+  const n = String(d && d.indexOf("@") < 0 ? d : (moi ? (ME.nom && ME.nom !== pre ? ME.nom : (ME.agent || pre)) : pre)).trim(), w = n.split(/\s+/); let i = 0;
+  while (i < w.length && majus(w[i])) i++;
+  return i > 0 && i < w.length ? w.slice(i).join(" ") + " " + w.slice(0, i).join(" ") : n;
+}
+function melObjet(r, A) { const pre = { 1:"[URGENT P1] ", 2:"[P2] ", 3:"[P3] " }[r.priorite] || ""; return `${pre}MMTE – ${A.court}${r.usager ? " – " + r.usager : ""}${r.ref ? ` (${r.ref})` : ""}`; }
+function melCorps(v, r, A, sel, faits, ctx, who) {
+  const c = A.constats[Math.min(sel.c, A.constats.length - 1)], d = A.demandes[Math.min(sel.d, A.demandes.length - 1)], cap = ctx ? ` pour permettre ${ctx}` : "", bloc = a => a.filter(Boolean).join("\n\n"), dl = FM("delai");
+  const sal = `${who.deja ? "Re" + salut().toLowerCase() : salut()} ${who.appel},`, sig = `${who.nom}${who.fonction ? "\n" + who.fonction : ""}`, intro = c.nom ? c.t : "que " + c.t;
+  const orig = faits.orig ? melOrigine(r, c) : "", obs = faits.obs ? melObs(r) : "", pr = faits.prio ? melPrio(r, v === "crt" || v === "rel") : "";
+  if (v === "rel") return bloc([sal, `${FM("rel_intro")}${who.prev ? (iso(who.prev) === iso(new Date()) ? " de ce jour" : " du " + fd(who.prev)) : ""}${r.ref ? " (" + r.ref + ")" : ""}.`, `Pour rappel : ${c.t}.`, pr, `${FM("rel_demande")} ${d} ${dl}${cap}, ${FM("rel_suite")}`, FM("rel_merci"), FM("rel_clot") + "\n\n" + sig]);
+  if (v === "frm") return bloc([sal, who.deja ? "" : FM("frm_polit"), `${FM("frm_intro")} ${intro}.`, orig, obs, pr, `${FM("frm_demande")} ${d} ${dl}${cap}.`, FM("frm_clot") + "\n\n" + sig]);
+  if (v === "crt") return bloc([sal, c.nom ? `${FM("crt_ecrire")} ${c.t}.` : maj1(c.t) + ".", orig, obs, pr, `${FM("crt_demande")} ${d} ${dl}${cap} ? ${FM("crt_merci")}`, FM("crt_clot") + "\n\n" + sig]);
+  return bloc([sal, `${FM("std_intro")} ${intro}.`, orig, obs, pr, `${FM("std_demande")} ${d} ${dl}${cap}.`, FM("std_merci"), FM("std_clot") + "\n\n" + sig]);
+}
+/* historique des mails préparés (facultatif) */
+const melPrec = r => (r && r.id) ? MC.filter(x => x.requete_id === r.id) : [];
+function melNotice() {
+  const p = melPrec(MS.r), el = $("#dmh"), rel = $("#dmv [data-v=rel]");
+  rel.hidden = !p.length; if (!p.length && MS.v === "rel") melChoisir(MS.conseil);
+  if (!p.length) { el.hidden = true; return; }
+  const l = p[0]; el.hidden = false;
+  el.innerHTML = `Déjà préparé pour cette requête : <b>${esc(l.partenaire || "—")}</b>, le ${esc(fd(new Date(l.le), true))}, par ${esc(nomDe(l.par))}${p.length > 1 ? ` (et ${p.length - 1} autre${p.length > 2 ? "s" : ""})` : ""}. Un message de <b>Relance</b> est proposé.`;
+}
+async function melTrace(voie, dest) {
+  const r = MS.r; if (!r || !r.id || !MC_OK) return;
+  const row = { requete_id:r.id, ref:r.ref || null, partenaire:dest.appel, destinataire:mlAdr(dest.mail).join(", ") || null, objet:$("#dmo").value, style:MS.v, voie };
+  try { await store.courrielAdd(row); MC.unshift({ ...row, id:-Date.now(), par:ME.email, le:new Date().toISOString() }); melNotice(); } catch (e) { /* historique indisponible : sans conséquence pour le message */ }
+}
+function melDetail(r) {                                                  // ligne dans le détail d'une requête
+  if (!melActif() || !MC_OK) return ""; const p = melPrec(r); if (!p.length) return "";
+  return `<p class="tr">Courriel${p.length > 1 ? "s" : ""} préparé${p.length > 1 ? "s" : ""} : ` + p.slice(0, 3).map(x => `${esc(x.partenaire || "—")} le ${esc(fd(new Date(x.le), true))} (${esc(nomDe(x.par))})`).join(" · ") + (p.length > 3 ? ` · et ${p.length - 3} autre${p.length > 4 ? "s" : ""}` : "") + `</p>`;
+}
+/* fenêtre */
+const MS = { r:null, v:"std", txt:{}, dirty:{}, objDirty:false, conseil:"std", sel:{ c:0, d:0 }, A:null, cfm:null };
+const mlAdr = s => String(s || "").split(/[;,\s]+/).filter(Boolean);
+function melDest() {
+  const v = $("#dmd").value; if (v === "@autre") return { id:"@autre", appel:$("#dmza").value.trim() || "Madame, Monsieur", mail:$("#dmzb").value.trim(), cc:"" };
+  const p = MEL.partenaires.find(x => x.id === v); return p ? p : { id:"", appel:"Madame, Monsieur", mail:"", cc:"" };
+}
+const melObjetV = () => (MS.v === "rel" ? "Relance – " : "") + melObjet(MS.r, MS.A);
+function melLiens() {
+  const dest = melDest(), e = encodeURIComponent, lst = s => mlAdr(s).map(e).join(",").replace(/%40/g, "@"), to = mlAdr(dest.mail).join(", "), cc = mlAdr(dest.cc).join(", ");
+  const q = [cc ? "cc=" + lst(dest.cc) : "", "subject=" + e($("#dmo").value), "body=" + e($("#dmb").value.replace(/\r?\n/g, "\r\n"))].filter(Boolean).join("&");
+  const href = "mailto:" + lst(dest.mail) + "?" + q, web = MEL.webBase + "?" + [to ? "to=" + lst(dest.mail) : "", q].filter(Boolean).join("&");
+  const app = MEL.messagerie !== "web", wb = MEL.messagerie !== "app", deux = app && wb;
+  $("#dms").href = href; $("#dmw2").href = web; $("#dms").hidden = !app; $("#dmw2").hidden = !wb;
+  $("#dms").textContent = deux ? "Ouvrir dans Outlook" : "Envoyer par Outlook"; $("#dmw2").textContent = deux ? "Outlook web" : "Envoyer par Outlook web"; $("#dmw2").classList.toggle("alt", deux); $(".mact").classList.toggle("t3", deux);
+  $("#dmw").hidden = Math.max(app ? href.length : 0, wb ? web.length : 0) < 1900;
+  $("#dma").innerHTML = !dest.id ? "Choisissez un destinataire." : to ? `À : <b>${esc(to)}</b>${cc ? ` · Cc : <b>${esc(cc)}</b>` : ""}` : `L'adresse de ${esc(dest.appel)} n'est pas renseignée (${estAdmin() ? "Administration > Courriels" : "l'administrateur doit la saisir dans Administration > Courriels"}) : votre messagerie s'ouvrira sans destinataire.`;
+  $("#dmrz").hidden = $("#dmm").hidden = !MS.dirty[MS.v];
+}
+function melRegen() {                                                    // recalcule les messages qui n'ont pas été modifiés à la main
+  const r = MS.r, ids = melIdsDe($("#dmx").value), ctx = $("#dmc").value.trim().replace(/[.\s]+$/, ""), A = melAnalyse(r, ids), dest = melDest(), pv = melPrec(r)[0];
+  MS.A = A; MS.sel.c = Math.min(MS.sel.c, A.constats.length - 1); MS.sel.d = Math.min(MS.sel.d, A.demandes.length - 1);
+  const faits = { orig:$("#dmfo").checked, obs:$("#dmfb").checked, prio:$("#dmfp").checked }, who = { appel:dest.appel, nom:$("#dmn").value.trim(), fonction:$("#dmf").value.trim(), deja:melDeja(dest.id), prev:pv ? new Date(pv.le) : null };
+  ["std","frm","crt","rel"].forEach(v => { if (!MS.dirty[v]) MS.txt[v] = melCorps(v, r, A, MS.sel, faits, ctx, who); });
+  if (!MS.objDirty) $("#dmo").value = melObjetV();
+  $("#dmcs").textContent = "« " + A.constats[MS.sel.c].t + " »"; $("#dmcn").textContent = `${MS.sel.c + 1}/${A.constats.length}`;
+  $("#dmds").textContent = "« " + A.demandes[MS.sel.d] + " »"; $("#dmdn").textContent = `${MS.sel.d + 1}/${A.demandes.length}`;
+  $("#dmk").textContent = (A.motif ? `Motif reconnu : ${A.motif}.` : "Motif non reconnu : phrases fondées sur la description telle que saisie.") + (ids.man.length || ids.vin.length ? " N° repérés : " + melIdsTxt(ids) + "." : "");
+  $("#dmgs").textContent = [who.nom, who.fonction].filter(Boolean).join(" · ") || "à renseigner";
+  $("#dmb").value = MS.txt[MS.v]; melLiens();
+}
+function melChoisir(v) { MS.v = v; $$("#dmv button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v))); if (!MS.objDirty && MS.A) $("#dmo").value = melObjetV(); $("#dmb").value = MS.txt[v]; melLiens(); }
+function melPre(r) {                                                     // destinataire probable : le seul partenaire, ou celui rattaché au module de la requête, sinon le dernier utilisé
+  const ps = MEL.partenaires; if (ps.length === 1) return ps[0].id;
+  const par = ps.filter(p => p.modules.includes(r.module)); if (par.length === 1) return par[0].id;
+  const gen = ps.filter(p => !p.modules.length); if (!par.length && gen.length === 1) return gen[0].id;      // aucun partenaire rattaché à ce module : le seul partenaire « tous modules »
+  const dernier = ls.get("sisr:ml:d:" + (ME ? ME.id : "")); return (par.length ? par : ps).some(p => p.id === dernier) ? dernier : "";
+}
+async function melOuvrir(r, apres) {
+  if (!melActif()) return;
+  await melCourriels();                                                  // historique à jour (un collègue a pu écrire entre-temps)
+  if (!melActif()) return;
+  const prior = melPrec(r);
+  MS.r = r; MS.txt = {}; MS.dirty = {}; MS.objDirty = false; MS.sel = { c:0, d:0 }; MS.conseil = prior.length ? "rel" : (r.priorite === 1 || r.priorite === 2 ? "std" : "crt");
+  const ids = melIds(r), pre = melPre(r), creat = melNomPers(r.saisiPar || ME.email), moi = melNomPers(ME.email), ag = r.agent ? melNomPers(r.agent) : "";
+  $("#dmd").innerHTML = `<option value="">— Choisir le destinataire —</option>` + MEL.partenaires.map(p => `<option value="${esc(p.id)}">${esc(p.appel)}</option>`).join("") + `<option value="@autre">Autre destinataire…</option>`; $("#dmd").value = pre;
+  $("#dmz").hidden = true; $("#dmza").value = ""; $("#dmzb").value = "";
+  $("#dmn").value = creat; $("#dmf").value = MEL.fonction; $("#dmnl").innerHTML = melUniq([creat, moi, ag].filter(Boolean)).map(x => `<option value="${esc(x)}"></option>`).join(""); $("#dmg").open = false;
+  $("#dmx").value = melIdsTxt(ids); $("#dmc").value = "";
+  $("#dmfo").checked = false; $("#dmfb").checked = false; $("#dmfb").disabled = !String(r.observation || "").trim(); $("#dmfp").checked = !!PRIO[r.priorite] && MEL.prioDefaut; $("#dmfp").disabled = !PRIO[r.priorite];
+  $("#dmp").textContent = apres ? "Requête enregistrée" : "Mail pour résoudre cette requête";
+  $("#dmq").innerHTML = (r.ref ? `<span class="pill rf">${esc(r.ref)}</span> ` : "") + (r.priorite ? puce(r.priorite) : "");
+  $("#dmr").textContent = `${r.usager || "Sans usager"} · ${r.description}`;
+  $$("#dmv button").forEach(b => { b.firstElementChild.textContent = b.dataset.v === MS.conseil ? "Conseillé" : ""; });
+  MS.v = MS.conseil; $$("#dmv button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === MS.v)));
+  melRegen(); melNotice(); if (!$("#dm").open) $("#dm").showModal(); $("#dm").scrollTop = 0; $("#dmb").scrollTop = 0;
+}
+function melCfm(r) {                                                     // bandeau après l'enregistrement : le bouton qui ouvre la fenêtre (rien ne s'ouvre tout seul)
+  const b = $("#cfm"); if (!r || !melActif()) { b.hidden = true; MS.cfm = null; return; }
+  MS.cfm = r; $("#cfmt").textContent = `Requête ${r.ref ? r.ref + " " : ""}enregistrée. Un partenaire doit-il intervenir ?`; b.hidden = false; b.scrollIntoView({ block:"nearest", behavior:"smooth" });
+}
+$("#cfmb").onclick = () => { if (MS.cfm) melOuvrir(MS.cfm, true); };
+$("#cfmx").onclick = () => melCfm(null);
+async function copier(t) {
+  try { await navigator.clipboard.writeText(t); return true; } catch (e) { /* repli ci-dessous */ }
+  const a = document.createElement("textarea"); a.value = t; a.setAttribute("readonly", ""); a.style.cssText = "position:fixed;top:0;left:0;opacity:0"; $("#dm").appendChild(a); a.select();
+  let ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; } a.remove(); return ok;
+}
+function melAutre(cle) {                                                 // formulation suivante du constat (« c ») ou de la demande (« d »)
+  const n = cle === "c" ? MS.A.constats.length : MS.A.demandes.length; MS.sel[cle] = (MS.sel[cle] + 1) % n; melRegen();
+  if (MS.dirty[MS.v]) toast("Message modifié à la main : cliquez sur « Rétablir le texte proposé » pour y appliquer cette formulation.");
+}
+$("#dm").addEventListener("click", async e => {
+  if (e.target === $("#dm") || e.target.closest("[data-x]")) return $("#dm").close();
+  const lien = e.target.closest("#dms, #dmw2"); if (lien) { const d = melDest(); melUtilise(d.id); melTrace(lien.id === "dmw2" ? "web" : "app", d); return; }
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.closest("#dmv")) return melChoisir(b.dataset.v);
+  if (b.id === "dmcb") return melAutre("c");
+  if (b.id === "dmdb") return melAutre("d");
+  if (b.id === "dmcp") { const d = melDest(), ok = await copier($("#dmb").value); toast(ok ? "Message copié : collez-le dans votre messagerie" : "Copie impossible : sélectionnez le texte puis Ctrl + C"); if (ok) { melUtilise(d.id); melTrace("copie", d); } }
+  if (b.id === "dmco") { const ok = await copier($("#dmo").value); toast(ok ? "Objet copié" : "Copie impossible : sélectionnez le texte puis Ctrl + C"); }
+  if (b.id === "dmrz") { MS.dirty[MS.v] = false; melRegen(); }
+});
+$("#dmb").addEventListener("input", () => { MS.dirty[MS.v] = true; MS.txt[MS.v] = $("#dmb").value; melLiens(); });
+$("#dmo").addEventListener("input", () => { MS.objDirty = true; melLiens(); });
+["dmx","dmc","dmn","dmf","dmza","dmzb","dmfo","dmfb","dmfp"].forEach(i => $("#" + i).addEventListener(i.startsWith("dmf") && i.length === 4 && i !== "dmf" ? "change" : "input", melRegen));
+$("#dmd").addEventListener("change", () => { $("#dmz").hidden = $("#dmd").value !== "@autre"; if (ME && $("#dmd").value && $("#dmd").value !== "@autre") ls.set("sisr:ml:d:" + ME.id, $("#dmd").value); melRegen(); });
+/* --- Administration > Courriels --- */
+/* enregistre un volet des réglages en repartant de la version la plus récente de la base : deux administrateurs (ou un onglet resté ouvert) ne s'écrasent pas */
+const melSauve = async fn => {
+  let cur = MEL; try { const v = await store.param("mail_partenaire"); cur = melNorm(v ? JSON.parse(v) : null); } catch (e) { /* lecture impossible : on part de ce qui est affiché */ }
+  const n = fn(cur); await store.setParam("mail_partenaire", JSON.stringify(n)); MEL = melNorm(n);
+};
+function mlCarte(p) {
+  const mods = modules();
+  return `<div class="mpa" data-id="${esc(p.id)}"><div class="g3"><div><label>Appellation <span class="opt">(« Bonjour … »)</span></label><input data-f="appel" autocomplete="off" value="${esc(p.appel)}" placeholder="ex. M. Rachad"></div>
+    <div><label>Adresse e-mail</label><input data-f="mail" type="email" inputmode="email" autocomplete="off" value="${esc(p.mail)}" placeholder="prenom.nom@entreprise.com"></div>
+    <div><label>Copie (Cc) <span class="opt">(facultatif)</span></label><input data-f="cc" autocomplete="off" value="${esc(p.cc)}" placeholder="a@exemple.com, b@exemple.com"></div></div>
+    <div class="mmod"><span class="hint" style="margin:0;width:100%">Modules concernés (facultatif : aucun coché = tous les modules ; le partenaire est alors proposé d'office pour ces modules)</span>${mods.map(m => `<label class="tg"><input type="checkbox" data-m="${esc(m)}"${p.modules.includes(m) ? " checked" : ""}> ${esc(m)}</label>`).join("")}</div>
+    <div class="act"><button type="button" class="ghost dng" data-del>Supprimer ce partenaire</button></div></div>`;
+}
+function mlCompte(p) {
+  const adm = p.role === "admin";
+  return `<div class="mtr1"><span class="mn"><b>${esc(nomDe(p.email))}</b><small>${esc(p.email)} · ${adm ? "administrateur" : "agent"}</small></span>
+    <select data-uid="${esc(p.id)}" aria-label="Fonction pour ${esc(p.email)}"><option value="">Selon le réglage général</option><option value="oui">Oui (même en essai)</option><option value="non">Non (masquée)</option></select><span class="mst" data-st="${esc(p.id)}"></span></div>`;
+}
+function mlComptesMaj() {
+  PROFILS.forEach(p => { const s = $(`#mlc select[data-uid="${p.id}"]`), t = $(`#mlc [data-st="${p.id}"]`); if (!s || !t) return; s.value = MEL.comptes[p.id] || ""; const a = p.actif && melActifPour(p.id, p.role === "admin"); t.textContent = !p.actif ? "Compte désactivé" : a ? "Actif" : "Inactif"; t.className = "mst " + (a ? "on" : "off"); });
+}
+function mlHist() {
+  const el = $("#mlh"); if (!el) return; $("#mlhn").textContent = MC_OK ? `(${MC.length})` : "";
+  if (!MC_OK) { el.innerHTML = `<p class="hint">L'historique n'est pas activé : la table « courriels » n'existe pas encore dans la base. La fonction marche sans lui (pas d'historique, pas de relance).</p>`; return; }
+  el.innerHTML = MC.length ? `<div class="mhl">` + MC.slice(0, 200).map(x => `<div class="mhr"><span class="mhd">${esc(fd(new Date(x.le), true))}</span><span class="mhq">${esc(x.ref || "—")}</span><span class="mhp"><b>${esc(x.partenaire || "—")}</b><small>${esc(nomDe(x.par))} · ${esc(MEL_STYLE[x.style] || x.style || "")} · ${esc(MEL_VOIE[x.voie] || x.voie || "")}</small></span><span class="mho">${esc(x.objet || "")}</span><button type="button" class="ghost dng" data-hd="${esc(x.id)}">Supprimer</button></div>`).join("") + `</div>` + (MC.length > 200 ? `<p class="hint">Les 200 plus récents sont affichés.</p>` : "") + `<div class="act"><button type="button" class="ghost dng" id="mlhv">Supprimer tout l'historique</button></div>` : `<p class="hint">Aucun mail préparé pour l'instant.</p>`;
+}
+function admMel() {
+  const el = $("#adm-mel");
+  el.innerHTML = `<div class="mac"><div><b>Fonction « Écrire à un partenaire »</b><p class="hint" style="margin:4px 0 0">Prépare un e-mail (styles Standard, Formel, Court et Relance ; phrases tirées de la requête) à envoyer à un partenaire pour résoudre une requête. Désactivée, l'application fonctionne comme si cette fonction n'existait pas : aucun bouton, aucune fenêtre.</p></div>
+    <select id="mlo" aria-label="État de la fonction"><option value="off">Désactivée</option><option value="admin">Activée pour les administrateurs (essai)</option><option value="all">Activée pour tous</option></select></div>
+    <div class="msg" id="mlr0" role="alert"></div>
+    <h4 class="mlh">Qui peut l'utiliser</h4><p class="hint" style="margin:0 0 8px">« Selon le réglage général » suit l'interrupteur ci-dessus. « Oui » l'autorise pour ce compte même si le réglage général est « essai administrateurs ». « Non » la masque pour ce compte, quoi qu'il arrive. Si le réglage général est « Désactivée », personne ne la voit.</p>
+    <div class="mtab" id="mlc">${PROFILS.map(mlCompte).join("") || `<p class="hint">Aucun compte.</p>`}</div>
+    <form id="ml" novalidate><h4 class="mlh">Partenaires</h4><div id="mlp">${MEL.partenaires.map(mlCarte).join("")}</div>
+    <div class="act" style="margin:0 0 6px"><button type="button" class="ghost" id="mlad">+ Ajouter un partenaire</button></div>
+    <label for="mlf">Fonction proposée sous la signature <span class="opt">(modifiable à chaque mail)</span></label><input id="mlf" autocomplete="off" value="${esc(MEL.fonction)}" style="max-width:360px">
+    <div class="msg" id="mlr" role="alert"></div><button class="ok" id="mlb" style="max-width:320px">Enregistrer les partenaires</button></form>
+    <form id="ml2" novalidate><h4 class="mlh">Ouverture du message et contenu</h4>
+    <div class="g3"><div><label for="mlm">Messagerie</label><select id="mlm"><option value="both">Outlook (application) et Outlook web : au choix de l'agent</option><option value="app">Outlook (application) seulement</option><option value="web">Outlook web seulement</option></select></div>
+    <div><label for="mlw">Adresse de rédaction Outlook web</label><input id="mlw" autocomplete="off" value="${esc(MEL.webBase)}"></div></div>
+    <p class="hint" style="margin:4px 0 8px">« Application » ouvre la messagerie par défaut de l'appareil (Outlook, s'il est la messagerie par défaut). « Outlook web » ouvre une fenêtre de rédaction dans le navigateur ; l'adresse par défaut convient aux comptes Microsoft 365 professionnels.</p>
+    <label class="tg" style="max-width:520px"><input type="checkbox" id="mlp1"${MEL.prioDefaut ? " checked" : ""}> Cocher d'office « Priorité et délai » quand la requête a une priorité</label>
+    <div class="msg" id="mlr2" role="alert"></div><button class="ok" id="mlb2" style="max-width:320px">Enregistrer</button></form>
+    <details class="mad" id="mlfd"><summary>Formules des messages (modifiables)</summary><form id="ml3" novalidate>
+    <p class="hint" style="margin:0 0 4px">Ces formules complètent les phrases tirées de chaque requête. Un champ vidé reprend la formule d'origine.</p>
+    ${MEL_GROUPES.map(([g, cles]) => `<h5 class="mgh">${esc(g)}</h5><div class="mfg">${cles.map(([k, lib]) => `<div><label for="mf_${k}">${esc(lib)}</label><input id="mf_${k}" data-fk="${k}" autocomplete="off" value="${esc(FM(k))}" placeholder="${esc(MEL_FORM[k])}"></div>`).join("")}</div>`).join("")}
+    <div class="msg" id="mlr3" role="alert"></div><div class="act"><button class="ok" id="mlb3" style="max-width:320px">Enregistrer les formules</button><button type="button" class="ghost" id="mlfr">Remettre les formules d'origine</button></div></form></details>
+    <details class="mad" id="mlhd"><summary>Historique des mails préparés <span id="mlhn"></span></summary><div id="mlh"></div></details>
+    <div class="act" style="margin-top:16px"><button type="button" class="ghost dng" id="mlrz0">Rétablir tous les réglages d'origine</button></div>`;
+  $("#mlo").value = MEL.mode; $("#mlm").value = MEL.messagerie; mlComptesMaj(); mlHist();
+  melCourriels().then(() => mlHist());
+}
+$("#adm-mel").addEventListener("change", async e => {
+  const t = e.target, m = $("#mlr0");
+  if (t.id === "mlo") {
+    const v = t.value, ancien = MEL.mode; note(m, ""); t.disabled = true;
+    try { await melSauve(cur => ({ ...cur, mode:v })); const x = { off:"Fonction désactivée : l'application fonctionne comme si elle n'existait pas.", admin:"Fonction activée pour les administrateurs seulement (essai).", all:"Fonction activée pour tous les comptes." }[v]; note(m, x + " Chaque collègue le voit à sa prochaine ouverture de l'application, ou dès qu'il y revient après quelques minutes d'absence.", true); toast(x); mlComptesMaj(); }
+    catch (x) { t.value = ancien; note(m, x.message); }
+    t.disabled = false;
+  }
+  if (t.dataset && t.dataset.uid !== undefined) {
+    const uid = t.dataset.uid, v = t.value, ancien = MEL.comptes[uid] || ""; note(m, ""); t.disabled = true;
+    try { await melSauve(cur => { const c = { ...cur.comptes }; if (v) c[uid] = v; else delete c[uid]; return { ...cur, comptes:c }; }); const p = PROFILS.find(x => x.id === t.dataset.uid); note(m, `Réglage enregistré pour ${p ? nomDe(p.email) : "ce compte"}.`, true); mlComptesMaj(); }
+    catch (x) { t.value = ancien; note(m, x.message); }
+    t.disabled = false;
+  }
+});
+$("#adm-mel").addEventListener("click", async e => {
+  const t = e.target;
+  if (t.id === "mlad") { const p = { id:"p" + Date.now().toString(36), appel:"", mail:"", cc:"", modules:[] }; $("#mlp").insertAdjacentHTML("beforeend", mlCarte(p)); const c = $("#mlp").lastElementChild; c.scrollIntoView({ block:"center" }); c.querySelector("[data-f=appel]").focus(); }
+  const d = t.closest("[data-del]"); if (d && confirm("Supprimer ce partenaire de la liste ? Les requêtes déjà enregistrées ne changent pas.")) d.closest(".mpa").remove();
+  const h = t.closest("[data-hd]"); if (h && confirm("Supprimer cette ligne de l'historique ?")) { try { await store.courrielDel(h.dataset.hd); MC = MC.filter(x => String(x.id) !== h.dataset.hd); mlHist(); toast("Ligne supprimée"); } catch (x) { toast(x.message); } }
+  if (t.id === "mlhv" && confirm("Supprimer tout l'historique des mails préparés ? Cette action est définitive.")) { try { await store.courrielsVider(); MC = []; mlHist(); toast("Historique supprimé"); } catch (x) { toast(x.message); } }
+  if (t.id === "mlfr") { $$("#ml3 [data-fk]").forEach(i => { i.value = MEL_FORM[i.dataset.fk]; }); note($("#mlr3"), "Formules d'origine remises dans les champs : cliquez sur « Enregistrer les formules » pour les appliquer.", true); }
+  if (t.id === "mlrz0" && confirm("Rétablir tous les réglages d'origine ? La fonction sera désactivée, les partenaires, les réglages par compte et les formules reprendront leur valeur d'origine. L'historique des mails n'est pas touché.")) {
+    try { await melSauve(() => melNorm(null)); admMel(); toast("Réglages d'origine rétablis : fonction désactivée"); } catch (x) { note($("#mlr0"), x.message); }
+  }
+});
+$("#adm-mel").addEventListener("submit", async e => {
+  e.preventDefault(); const ok = s => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(s);
+  if (e.target.id === "ml") {
+    const m = $("#mlr"), b = $("#mlb"); note(m, "");
+    const ps = $$("#mlp .mpa").map(c => ({ id:c.dataset.id, appel:c.querySelector("[data-f=appel]").value.trim(), mail:c.querySelector("[data-f=mail]").value.trim(), cc:c.querySelector("[data-f=cc]").value.trim(), modules:[...c.querySelectorAll("[data-m]")].filter(x => x.checked).map(x => x.dataset.m) }));
+    if (ps.some(p => !p.appel)) return note(m, "Chaque partenaire doit avoir une appellation (ex. « M. Rachad »).");
+    if (new Set(ps.map(p => norm(p.appel))).size < ps.length) return note(m, "Deux partenaires ont la même appellation : distinguez-les (ex. « M. Rachad (MMTE) »).");
+    const mauvais = ps.find(p => (p.mail && !mlAdr(p.mail).every(ok)) || (p.cc && !mlAdr(p.cc).every(ok))); if (mauvais) return note(m, `Une adresse e-mail de « ${mauvais.appel} » n'est pas valide.`);
+    const f = $("#mlf").value.trim(); if (!f) return note(m, "Indiquez la fonction proposée sous la signature (ex. « Agent MMTE »).");
+    b.disabled = true;
+    try { await melSauve(cur => ({ ...cur, partenaires:ps, fonction:f })); note(m, "Partenaires enregistrés.", true); toast("Partenaires enregistrés"); } catch (x) { note(m, x.message); }
+    b.disabled = false;
+  }
+  if (e.target.id === "ml2") {
+    const m = $("#mlr2"), b = $("#mlb2"), w = $("#mlw").value.trim(); note(m, "");
+    if (!/^https:\/\/\S+$/.test(w)) return note(m, "L'adresse de rédaction Outlook web doit commencer par https://");
+    b.disabled = true;
+    try { const mm = $("#mlm").value, pd = $("#mlp1").checked; await melSauve(cur => ({ ...cur, messagerie:mm, webBase:w, prioDefaut:pd })); note(m, "Réglages enregistrés.", true); toast("Réglages enregistrés"); } catch (x) { note(m, x.message); }
+    b.disabled = false;
+  }
+  if (e.target.id === "ml3") {
+    const m = $("#mlr3"), b = $("#mlb3"); note(m, ""); const fo = {}; $$("#ml3 [data-fk]").forEach(i => { const v = i.value.trim(); if (v && v !== MEL_FORM[i.dataset.fk]) fo[i.dataset.fk] = v; });
+    b.disabled = true;
+    try { await melSauve(cur => ({ ...cur, formules:fo })); $$("#ml3 [data-fk]").forEach(i => { i.value = FM(i.dataset.fk); }); note(m, Object.keys(fo).length ? `Formules enregistrées (${Object.keys(fo).length} modifiée${Object.keys(fo).length > 1 ? "s" : ""}).` : "Formules d'origine enregistrées.", true); toast("Formules enregistrées"); } catch (x) { note(m, x.message); }
+    b.disabled = false;
+  }
 });
 
 /* ---------- En cours : priorités, délais de résolution, échéances, tri ---------- */
@@ -1746,7 +2173,7 @@ $("#rdr").onclick = rapportDirection;
 
 /* ---------- Administration (réservée au rôle « admin ») ---------- */
 const ADM = { s:"cpt", type:"usager", filtre:"" };
-const SOUS = { cpt:() => admComptes(), lst:() => admListes(), cor:() => admCorbeille(), jrn:() => admJournal(), don:() => admDonnees() };
+const SOUS = { cpt:() => admComptes(), lst:() => admListes(), cor:() => admCorbeille(), jrn:() => admJournal(), don:() => admDonnees(), mel:() => admMel() };
 function renderAdmin() {
   $$("#sbn [data-s]").forEach(b => b.classList.toggle("on", b.dataset.s === ADM.s)); Object.keys(SOUS).forEach(x => $("#adm-" + x).hidden = x !== ADM.s);
   SOUS[ADM.s]();
@@ -2176,6 +2603,7 @@ async function charger(u) {
   $("#nadm").hidden = !estAdmin(); ntCharger(); go("saisie"); ecran("hub");
   try { appliquerListes(await store.listes()); } catch (e) { toast(e.message); }
   try { PROFILS = await store.profils(); } catch (e) { PROFILS = []; }
+  await melCharger();
   $("#dct").textContent = nomDe(ME.email) || ME.email; enteteCompte($("#dct").textContent); saluer();
   if (estAdmin()) { try { SAUV = (await store.param("derniere_sauvegarde")) || ""; } catch (e) { SAUV = null; } }
   if (uid !== u.id) return;
@@ -2184,7 +2612,7 @@ async function charger(u) {
 }
 function login(msg) {                                                   // remet l'appli à zéro : le collègue suivant ne voit ni filtres ni brouillon du précédent
   uid = null; un && un(); un = null; data = []; tl = ""; document.title = TITRE; WK = []; init = false; editId = null; editMaj = null; ME = null; PROFILS = []; F.mode = "sem"; F.du = ""; F.au = "";
-  LU = []; LA = []; LM = []; LC = []; LD = []; LK = []; LO = []; LROWS = []; SAUV = null; rapMasque = false; IMP = null; JR = []; Object.assign(ADM, { s:"cpt", type:"usager", filtre:"" });
+  LU = []; LA = []; LM = []; LC = []; LD = []; LK = []; LO = []; LROWS = []; SAUV = null; MEL = melNorm(null); MC = []; MC_OK = true; rapMasque = false; IMP = null; JR = []; Object.assign(ADM, { s:"cpt", type:"usager", filtre:"" });
   NT.liste = []; NT.connus = new Set(); NT.premier = true; try { navigator.clearAppBadge && navigator.clearAppBadge().catch(() => {}); } catch (e) { /* ignoré */ }
   Object.assign(F, { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", pri:"", mes:false });
   ["fs","fm","fc","fa","ft","fk","fu","fg","fp"].forEach(i => $("#" + i).value = ""); $("#fmes").checked = false;
