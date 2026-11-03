@@ -259,6 +259,32 @@ details.sv .q{grid-template-columns:1fr}
 .wk button{flex:none;width:48px;min-height:48px;border:1px solid #B5AFA0;border-radius:50%;background:#fff;color:var(--n);font-size:20px;cursor:pointer}
 .wk button:hover{border-color:var(--n);background:#F8F6F0}
 .wk select{flex:1;min-width:0;border-radius:999px;font-weight:600}
+.pm{display:inline-flex;gap:2px;margin:0 0 12px;padding:4px;background:#fff;border:1px solid var(--l);border-radius:999px}
+.pm button{min-height:40px;padding:0 20px;border:0;border-radius:999px;background:none;color:var(--t);font:600 13.5px/1.2 var(--sans);cursor:pointer}
+.pm button:hover{background:#F8F6F0}
+.pm button[aria-pressed=true]{background:var(--n);color:#fff}
+.pd{display:none;align-items:center;gap:6px;min-width:0;min-height:48px;padding:0 6px 0 18px;border:1px solid var(--fld);border-radius:999px;background:#fff}
+.pd:focus-within{outline:3px solid var(--n);outline-offset:2px}
+.pd label{margin:0;font-size:13px;font-weight:700;color:var(--g)}
+.pd input{flex:1;min-width:0;min-height:44px;padding:0 6px 0 8px;border:0;border-radius:999px;background:transparent;text-align:left;-webkit-appearance:none;appearance:none}
+.pd input:focus-visible{outline:0}
+.pre{display:none;flex-wrap:wrap;gap:6px;margin-top:10px}
+.pre button{min-height:40px;padding:0 14px;border:1px solid #B5AFA0;border-radius:999px;background:#fff;color:var(--n);font:600 13.5px/1.2 var(--sans);cursor:pointer}
+.pre button:hover{background:#F8F6F0;border-color:var(--n)}
+.pre button[aria-pressed=true]{background:var(--n);border-color:var(--n);color:#fff}
+#bord.lib .wk{display:grid;grid-template-columns:48px minmax(0,1fr) minmax(0,1fr) 48px;align-items:center}
+#bord.lib .wk select{display:none}
+#bord.lib .pd{display:flex}
+#bord.lib .pre{display:flex}
+@container bd (max-width:600px){
+  #bord.lib .wk{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"d1 d2" "pv nx"}
+  #bord.lib #pdu{grid-area:d1}#bord.lib #pda{grid-area:d2}#bord.lib #pv{grid-area:pv}#bord.lib #nx{grid-area:nx}
+  #bord.lib #pv,#bord.lib #nx{width:auto;border-radius:999px;font-size:14px;font-weight:600}
+  #bord.lib #pv::after{content:" Précédente"}#bord.lib #nx::before{content:"Suivante "}
+}
+@container bd (max-width:400px){
+  #bord.lib .wk{grid-template-areas:"d1 d1" "d2 d2" "pv nx"}
+}
 .fl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:12px}
 .fl select,.fl input{min-height:44px;border-radius:999px;font-size:14px;padding-left:16px}
 .fl select{padding-right:40px}
@@ -627,7 +653,11 @@ dialog::backdrop{background:rgba(11,32,56,.62)}
   <p class="hint">Touche une requête pour voir son détail et son observation.</p><div id="ecl"></div></section>
 
 <section id="bord" hidden>
-  <div class="card"><div class="wk"><button id="pv" aria-label="Semaine précédente">‹</button><select id="fs" aria-label="Semaine"></select><button id="nx" aria-label="Semaine suivante">›</button></div>
+  <div class="card"><div class="pm" role="group" aria-label="Type de période"><button type="button" id="pms" aria-pressed="true">Semaine</button><button type="button" id="pmp" aria-pressed="false">Période</button></div>
+    <div class="wk"><button id="pv" aria-label="Semaine précédente">‹</button><select id="fs" aria-label="Semaine"></select>
+      <div class="pd" id="pdu"><label for="fdu">Du</label><input type="date" id="fdu"></div><div class="pd" id="pda"><label for="fda">Au</label><input type="date" id="fda"></div>
+      <button id="nx" aria-label="Semaine suivante">›</button></div>
+    <div class="pre" id="pre" role="group" aria-label="Raccourcis de période"></div>
     <div class="fl"><select id="fm" aria-label="Module"></select><select id="fc" aria-label="Canal"></select>
       <div class="cb"><input id="fu" placeholder="Tous les usagers" aria-label="Usager"></div>
       <select id="fa" aria-label="Agent"></select>
@@ -638,7 +668,7 @@ dialog::backdrop{background:rgba(11,32,56,.62)}
     <label class="tg" style="margin-top:10px"><input type="checkbox" id="fmes"> Mes requêtes seulement</label>
     <p class="per" id="per"></p></div>
   <div class="kpi" id="kpi"></div>
-  <div class="gr"><h4>Évolution sur 12 semaines</h4><p class="sb" id="trs"></p><div class="lgd"><span><i style="background:var(--res)"></i>Résolues</span><span><i style="background:var(--v2)"></i>En cours</span></div><div id="trc"></div><details><summary>Voir les données</summary><div class="tw" id="trt"></div></details></div>
+  <div class="gr"><h4 id="trh">Évolution sur 12 semaines</h4><p class="sb" id="trs"></p><div class="lgd"><span><i style="background:var(--res)"></i>Résolues</span><span><i style="background:var(--v2)"></i>En cours</span></div><div id="trc"></div><details><summary>Voir les données</summary><div class="tw" id="trt"></div></details></div>
   <div class="reps" id="rep"></div>
   <div class="reps" id="rep2"></div>
   <div class="card"><div class="bar"><b id="cnt">Détail des requêtes</b><span><button class="ghost" id="xl">Exporter en Excel</button><button class="ghost" id="pdf">Exporter en PDF</button><button class="ghost" id="rdr">Rapport de direction</button></span></div>
@@ -759,7 +789,7 @@ const puce = (p, long) => PRIO[p] ? `<span class="pill pr${p}" title="${esc(PRIO
 
 let store, data = [], WK = [], un, init = false, vue = "saisie", editId = null, editMaj = null, retour = "saisie", ME = null, PROFILS = [];
 let LU = [], LA = [], LM = [], LC = [], LD = [], LK = [], LO = [], LROWS = [];   /* listes (usagers, agents, modules, canaux, descriptions, catégories, motifs) : chargées depuis la base après connexion */
-const F = { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", pri:"", mes:false };
+const F = { mode:"sem", sem:"", du:"", au:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", pri:"", mes:false };
 
 /* ---------- Données : Supabase (connexion + base partagée) ---------- */
 /* Messages d'erreur en français (aucun message technique brut n'est montré aux collègues) */
@@ -1035,7 +1065,7 @@ const dateLongue = () => { const s = new Date().toLocaleDateString("fr-FR", { we
 function phMaj() {
   const t = { saisie: editId ? "Modifier la requête" : "Nouvelle requête", ec:"Requêtes en cours", bord:"Tableau de bord", adm:"Administration" }[vue];
   const s = { saisie: editId ? "Corrigez les informations, puis enregistrez les modifications." : "Renseignez la requête reçue : toute l'équipe la voit dès l'enregistrement.", ec:ecSous,
-    bord: F.sem ? `Semaine du ${fd(new Date(F.sem + "T00:00"))} au ${fd(addJ(new Date(F.sem + "T00:00"), 6))}, selon les filtres choisis.` : "Toutes les semaines, selon les filtres choisis.",
+    bord: perLibre() ? `Du ${fd(jourDe(F.du))} au ${fd(jourDe(F.au))} (${libJours()}), selon les filtres choisis.` : F.sem ? `Semaine du ${fd(new Date(F.sem + "T00:00"))} au ${fd(addJ(new Date(F.sem + "T00:00"), 6))}, selon les filtres choisis.` : "Toutes les semaines, selon les filtres choisis.",
     adm:"Comptes, listes de valeurs, corbeille, journal et données." }[vue];
   $("#pht").textContent = t; $("#phs").textContent = s; $("#phd").textContent = dateLongue();
 }
@@ -1379,10 +1409,60 @@ $("#mes").onchange = e => { EC.mes = e.target.checked; ls.set("sisr:mes", EC.mes
 
 /* ---------- Tableau de bord ---------- */
 const addJ = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
-const semPrec = () => F.sem ? iso(addJ(new Date(F.sem + "T00:00"), -7)) : null;
-/* o.sem : autre semaine que celle choisie ; o.sansSemaine : toutes les semaines (pour la courbe d'évolution) */
+/* ----- période : une semaine (F.sem), une période libre (du F.du au F.au, bornes comprises) ou toutes les semaines ----- */
+function perLibre() { return F.mode === "per" && !!F.du && !!F.au; }
+function jourDe(s) { return new Date(s + "T00:00"); }
+function nbJours(a, b) { return Math.round((b - a) / 864e5) + 1; }                       // a et b compris
+function libJours() { const n = nbJours(jourDe(F.du), jourDe(F.au)); return n + " jour" + (n > 1 ? "s" : ""); }
+function dernierDuMois(d) { return new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate() === d.getDate(); }
+function moisEntre(a, b) { return (b.getFullYear() - a.getFullYear()) * 12 + b.getMonth() - a.getMonth(); }
+/* période active : { s, e } (e exclu) ; null = toutes les semaines */
+function plage() {
+  if (perLibre()) return { s:jourDe(F.du), e:addJ(jourDe(F.au), 1) };
+  if (F.sem) { const s = jourDe(F.sem); return { s, e:addJ(s, 7) }; }
+  return null;
+}
+/* période précédente, comparable : semaine -> semaine d'avant ; mois entiers -> mêmes mois avant ; « à date » (mois, trimestre, année en cours) -> même
+   cumul de la période d'avant ; sinon -> même nombre de jours juste avant */
+function plagePrec() {
+  const p = plage(); if (!p) return null;
+  if (!perLibre()) return { s:addJ(p.s, -7), e:p.s };
+  const du = p.s, au = addJ(p.e, -1);
+  if (du.getDate() === 1) {
+    const k = moisEntre(du, au) + 1;
+    if (dernierDuMois(au)) return { s:new Date(du.getFullYear(), du.getMonth() - k, 1), e:du };
+    for (const u of [1, 3, 12]) if (du.getMonth() % u === 0 && moisEntre(du, au) < u) {
+      const s = new Date(du.getFullYear(), du.getMonth() - u, 1), m = new Date(au.getFullYear(), au.getMonth() - u, 1), max = new Date(m.getFullYear(), m.getMonth() + 1, 0).getDate();
+      return { s, e:new Date(m.getFullYear(), m.getMonth(), Math.min(au.getDate(), max) + 1) };
+    }
+  }
+  return { s:addJ(du, -nbJours(du, au)), e:du };
+}
+const refPrec = () => perLibre() ? "Période préc." : "S-1";
+function granul(n) { return n <= 31 ? "j" : n <= 183 ? "s" : "m"; }                    // évolution : par jour (jusqu'à 31 j), par semaine (jusqu'à 6 mois), par mois
+const GRANUL = { j:"jour", s:"semaine", m:"mois" };
+function granulLib() { return GRANUL[granul(nbJours(jourDe(F.du), jourDe(F.au)))]; }
+const majuscule = s => s.charAt(0).toUpperCase() + s.slice(1);
+function libSeau(x) {
+  if (x.g === "j") return majuscule(x.d.toLocaleDateString("fr-FR", { weekday:"long" })) + " " + fd(x.d);
+  if (x.g === "m") return majuscule(x.d.toLocaleDateString("fr-FR", { month:"long", year:"numeric" }));
+  return "Semaine du " + fd(x.d);
+}
+const lblAxe = x => x.g === "m" ? x.d.toLocaleDateString("fr-FR", { month:"short", year:"2-digit" }).replace(".", "") : `${pad(x.d.getDate())}/${pad(x.d.getMonth() + 1)}`;
+const enteteSeau = () => !perLibre() ? "Semaine du" : { j:"Jour", s:"Semaine du", m:"Mois" }[granul(nbJours(jourDe(F.du), jourDe(F.au)))];
+const celluleSeau = x => x.g === "j" || x.g === "m" ? libSeau(x) : fd(x.d);
+function tendancePer(libre) {
+  const rows = filtrer({ libre }), du = jourDe(F.du), au = jourDe(F.au), g = granul(nbJours(du, au)), b = [];
+  if (g === "j") for (let d = du; d <= au; d = addJ(d, 1)) b.push({ w:iso(d), d, g, res:0, enc:0 });
+  else if (g === "s") for (let d = lundi(du); d <= au; d = addJ(d, 7)) b.push({ w:iso(d), d, g, res:0, enc:0 });
+  else for (let d = new Date(du.getFullYear(), du.getMonth(), 1); d <= au; d = new Date(d.getFullYear(), d.getMonth() + 1, 1)) b.push({ w:iso(d), d, g, res:0, enc:0 });
+  const cle = g === "j" ? iso : g === "s" ? x => iso(lundi(x)) : x => iso(new Date(x.getFullYear(), x.getMonth(), 1)), idx = new Map(b.map((x, i) => [x.w, i]));
+  rows.forEach(r => { const i = idx.get(cle(r.date)); if (i != null) r.resolution ? b[i].res++ : b[i].enc++; });
+  return b;
+}
+/* o.plage : autre période que celle choisie ({ s, e }, e exclu) ; o.sansSemaine : toutes les semaines (pour la courbe d'évolution) */
 function filtrer(o = {}) {
-  const sem = o.sansSemaine ? "" : (o.sem !== undefined ? o.sem : F.sem), s = sem ? new Date(sem + "T00:00") : null, e = s && addJ(s, 7);
+  const pl = o.sansSemaine ? null : (o.plage !== undefined ? o.plage : plage()), s = pl && pl.s, e = pl && pl.e;
   const f = o.libre ? { mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", pri:"", mes:false } : F;      // « libre » : seule la semaine compte (rapport de direction)
   const k = norm(f.mot), qu = norm(f.usa), ex = qu && usagers().some(x => norm(x) === qu);
   return data.filter(r => (!s || (r.date >= s && r.date < e)) && (!f.mod || r.module === f.mod) && (!f.can || r.canal === f.can) && (!f.age || r.agent === f.age) && (!f.sta || (f.sta === "c") === !r.resolution) &&
@@ -1404,12 +1484,12 @@ function stats(rows) {
   return { sla, n:rows.length, nres:res.length, nenc:enc.length, taux:rows.length ? res.length / rows.length : null, med:med(dls), moy:moy(dls), tard:enc.filter(urgent).length,
     rep:{ module:rep("module"), canal:rep("canal"), agent:rep("agent"), categorie:rep("categorie"), usager:rep("usager").slice(0,5) }, delais:{ module:par("module"), agent:par("agent") } };
 }
-/* indicateurs clés ; p = même période, semaine précédente (comparaison « S-1 ») */
-function kpis(s, p) {
+/* indicateurs clés ; p = même période, semaine précédente (comparaison « S-1 » ; « Période préc. » pour une période libre) */
+function kpis(s, p, ref = "S-1") {
   const sg = (x, u) => (x > 0 ? "+" : x < 0 ? "-" : "") + nf.format(Math.abs(x)) + (u || "");
-  const dN = p ? (p.n ? `S-1 : ${p.n} (${sg(Math.round((s.n - p.n) / p.n * 100), " %")})` : "S-1 : 0") : "";
-  const dT = p && s.taux != null && p.taux != null ? [`S-1 : ${Math.round(p.taux * 100)} % (${sg(Math.round((s.taux - p.taux) * 100), " pts")})`, s.taux > p.taux ? "up" : s.taux < p.taux ? "dn" : ""] : ["", ""];
-  const dM = p && s.med != null && p.med != null ? [`S-1 : ${dur(p.med)} (${sg(Math.round((s.med - p.med) * 10) / 10, " h")})`, s.med < p.med ? "up" : s.med > p.med ? "dn" : ""] : ["", ""];
+  const dN = p ? (p.n ? `${ref} : ${p.n} (${sg(Math.round((s.n - p.n) / p.n * 100), " %")})` : `${ref} : 0`) : "";
+  const dT = p && s.taux != null && p.taux != null ? [`${ref} : ${Math.round(p.taux * 100)} % (${sg(Math.round((s.taux - p.taux) * 100), " pts")})`, s.taux > p.taux ? "up" : s.taux < p.taux ? "dn" : ""] : ["", ""];
+  const dM = p && s.med != null && p.med != null ? [`${ref} : ${dur(p.med)} (${sg(Math.round((s.med - p.med) * 10) / 10, " h")})`, s.med < p.med ? "up" : s.med > p.med ? "dn" : ""] : ["", ""];
   return [["Requêtes", s.n, dN, ""], ["Résolues", s.nres, "", ""], ["En cours", s.nenc, "", ""],
     ["Taux de résolution", s.taux == null ? "-" : Math.round(s.taux * 100) + " %", dT[0], dT[1]], ["Délai médian de résolution", dur(s.med), dM[0], dM[1]],
     ["Délai moyen de résolution", dur(s.moy), "", ""],
@@ -1418,12 +1498,13 @@ function kpis(s, p) {
 }
 const kpiPairs = k => k.map(x => [x[0], x[1]]);
 const optsPri = () => { $("#fp").innerHTML = `<option value="">Toutes les priorités</option>` + ["1","2","3","0","late"].map(k => `<option value="${k}">${esc(PRI_LIB[k])}</option>`).join(""); $("#fp").value = F.pri; };
-const periode = () => F.sem ? `Période : du ${fd(new Date(F.sem + "T00:00"))} au ${fd(addJ(new Date(F.sem + "T00:00"), 6))}` : "Période : toutes les semaines";
+const periode = () => perLibre() ? `Période : du ${fd(jourDe(F.du))} au ${fd(jourDe(F.au))} (${libJours()})` : F.sem ? `Période : du ${fd(new Date(F.sem + "T00:00"))} au ${fd(addJ(new Date(F.sem + "T00:00"), 6))}` : "Période : toutes les semaines";
 const ftxt = () => [F.mod && "Module : " + F.mod, F.can && "Canal : " + F.can, F.usa && "Usager : " + F.usa, F.age && "Agent : " + F.age, F.sta && "Statut : " + (F.sta === "c" ? "En cours" : "Résolues"), F.cat && "Catégorie : " + F.cat, F.pri && "Priorité : " + PRI_LIB[F.pri], F.mes && "Mes requêtes", F.mot && "Mot-clé : " + F.mot].filter(Boolean).join(" ; ") || "aucun";
 
 /* évolution sur 12 semaines (mêmes filtres, sauf la semaine) */
 let TREND = [];
 function tendance(libre) {
+  if (perLibre()) return tendancePer(libre);
   const rows = filtrer({ sansSemaine:true, libre }), fin = F.sem ? new Date(F.sem + "T00:00") : lundi(new Date()), sem = [];
   for (let i = 11; i >= 0; i--) { const d = addJ(fin, -7 * i); sem.push({ w:iso(d), d, res:0, enc:0 }); }
   const idx = new Map(sem.map((x,i) => [x.w, i]));
@@ -1437,22 +1518,23 @@ function renderTrend() {
   TREND = tendance(); const W = Math.max(280, Math.floor(el.clientWidth || 600)), H = 190, mg = { l:30, r:6, t:16, b:26 };
   const mx = Math.max(1, ...TREND.map(x => x.res + x.enc)), top = joli(mx), iw = W - mg.l - mg.r, ih = H - mg.t - mg.b, sl = iw / TREND.length, bw = Math.min(24, sl * .62), Y = v => mg.t + ih - v / top * ih;
   const ticks = top % 2 === 0 && top >= 4 ? [0, top / 2, top] : [0, top], pas = Math.ceil(40 / sl);
-  let o = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="Requêtes par semaine sur 12 semaines">`;
+  let o = `<svg viewBox="0 0 ${W} ${H}" role="group" aria-label="${perLibre() ? `Requêtes par ${granulLib()} sur la période` : "Requêtes par semaine sur 12 semaines"}">`;
   ticks.forEach(t => { o += `<line class="ax" x1="${mg.l}" x2="${W - mg.r}" y1="${Y(t)}" y2="${Y(t)}"/><text x="${mg.l - 6}" y="${Y(t) + 4}" text-anchor="end">${t}</text>`; });
   TREND.forEach((x, i) => {
-    const sx = mg.l + sl * i, bx = sx + (sl - bw) / 2, tot = x.res + x.enc, sel = x.w === F.sem || (!F.sem && i === TREND.length - 1);
-    o += `<g class="cl" tabindex="0" data-i="${i}" role="img" aria-label="Semaine du ${fd(x.d)} : ${tot} requêtes, ${x.res} résolues, ${x.enc} en cours">`;
+    const sx = mg.l + sl * i, bx = sx + (sl - bw) / 2, tot = x.res + x.enc, sel = !perLibre() && (x.w === F.sem || (!F.sem && i === TREND.length - 1));
+    o += `<g class="cl" tabindex="0" data-i="${i}" role="img" aria-label="${libSeau(x)} : ${tot} requêtes, ${x.res} résolues, ${x.enc} en cours">`;
     if (F.sem && sel) o += `<rect x="${sx}" y="${mg.t - 8}" width="${sl}" height="${ih + 8}" rx="6" fill="#0B203812"/>`;
     o += `<rect class="hit" x="${sx}" y="${mg.t - 8}" width="${sl}" height="${ih + 8}" rx="6" fill="transparent"/>`;
     if (x.res) o += `<path d="${hautArrondi(bx, Y(x.res), bw, ih * x.res / top, x.enc ? 0 : 4)}" fill="#12304F"/>`;
     if (x.enc) { const hh = ih * x.enc / top - (x.res ? 2 : 0); o += `<path d="${hautArrondi(bx, Y(tot), bw, hh, 4)}" fill="#6C8FBA"/>`; }
     if (F.sem && sel && tot) o += `<text x="${bx + bw / 2}" y="${Y(tot) - 5}" text-anchor="middle" style="fill:#101C2B;font-weight:700">${tot}</text>`;
-    if (i % pas === (TREND.length - 1) % pas) o += `<text x="${bx + bw / 2}" y="${H - 8}" text-anchor="middle"${F.sem && sel ? ' style="fill:#101C2B;font-weight:700"' : ""}>${pad(x.d.getDate())}/${pad(x.d.getMonth() + 1)}</text>`;
+    if (i % pas === (TREND.length - 1) % pas) o += `<text x="${bx + bw / 2}" y="${H - 8}" text-anchor="middle"${F.sem && sel ? ' style="fill:#101C2B;font-weight:700"' : ""}>${lblAxe(x)}</text>`;
     o += `</g>`;
   });
   el.innerHTML = o + `</svg>`;
-  $("#trs").textContent = F.sem ? `Les 12 semaines jusqu'à celle du ${fd(new Date(F.sem + "T00:00"))}, selon les filtres choisis (la semaine sélectionnée est surlignée).` : "Les 12 dernières semaines, selon les filtres choisis.";
-  $("#trt").innerHTML = `<table><thead><tr><th>Semaine du</th><th>Résolues</th><th>En cours</th><th>Total</th></tr></thead><tbody>` + TREND.map(x => `<tr><td>${fd(x.d)}</td><td>${x.res}</td><td>${x.enc}</td><td>${x.res + x.enc}</td></tr>`).join("") + `</tbody></table>`;
+  $("#trh").textContent = perLibre() ? "Évolution sur la période" : "Évolution sur 12 semaines";
+  $("#trs").textContent = perLibre() ? `Requêtes par ${granulLib()}, du ${fd(jourDe(F.du))} au ${fd(jourDe(F.au))}, selon les filtres choisis.` : F.sem ? `Les 12 semaines jusqu'à celle du ${fd(new Date(F.sem + "T00:00"))}, selon les filtres choisis (la semaine sélectionnée est surlignée).` : "Les 12 dernières semaines, selon les filtres choisis.";
+  $("#trt").innerHTML = `<table><thead><tr><th>${enteteSeau()}</th><th>Résolues</th><th>En cours</th><th>Total</th></tr></thead><tbody>` + TREND.map(x => `<tr><td>${celluleSeau(x)}</td><td>${x.res}</td><td>${x.enc}</td><td>${x.res + x.enc}</td></tr>`).join("") + `</tbody></table>`;
 }
 /* info-bulle (une seule pour tous les graphiques) : au survol, au toucher et au clavier */
 const tip = $("#tip");
@@ -1463,7 +1545,7 @@ function montrerTip(html, x, y) {
 const cacherTip = () => tip.classList.remove("on");
 function tipTrend(el, x, y) {
   const t = TREND[+el.dataset.i]; if (!t) return;
-  montrerTip(`<b>${t.res + t.enc} requête${t.res + t.enc > 1 ? "s" : ""}</b><span>Semaine du ${fd(t.d)}</span><span>Résolues : ${t.res} · En cours : ${t.enc}</span>`, x, y);
+  montrerTip(`<b>${t.res + t.enc} requête${t.res + t.enc > 1 ? "s" : ""}</b><span>${libSeau(t)}</span><span>Résolues : ${t.res} · En cours : ${t.enc}</span>`, x, y);
 }
 $("#trc").addEventListener("pointermove", e => { const g = e.target.closest(".cl"); if (g) tipTrend(g, e.clientX, e.clientY); else cacherTip(); });
 $("#trc").addEventListener("pointerleave", cacherTip);
@@ -1472,8 +1554,8 @@ $("#trc").addEventListener("focusout", cacherTip);
 let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => { if (vue === "bord") renderTrend(); }, 150); });
 
 function renderBord() {
-  const rows = filtrer(), s = stats(rows), p = F.sem ? stats(filtrer({ sem:semPrec() })) : null; if (vue === "bord") phMaj(); $("#per").textContent = periode(); $("#cnt").textContent = `Détail des requêtes (${rows.length})`;
-  $("#kpi").innerHTML = kpis(s, p).map(([a,b,c,d,e], i) => `<div class="k${[0, 1, 3, 6].includes(i) ? " h" : ""} ${e || ""}"><small>${a}</small><b>${b}</b>${c ? `<div class="dlt ${d}">${esc(c)}</div>` : ""}</div>`).join("");
+  const rows = filtrer(), s = stats(rows), pp = plagePrec(), p = pp ? stats(filtrer({ plage:pp })) : null; majPer(); if (vue === "bord") phMaj(); $("#per").textContent = periode() + (perLibre() && pp ? `  ·  comparée à : du ${fd(pp.s)} au ${fd(addJ(pp.e, -1))}` : ""); $("#cnt").textContent = `Détail des requêtes (${rows.length})`;
+  $("#kpi").innerHTML = kpis(s, p, refPrec()).map(([a,b,c,d,e], i) => `<div class="k${[0, 1, 3, 6].includes(i) ? " h" : ""} ${e || ""}"><small>${a}</small><b>${b}</b>${c ? `<div class="dlt ${d}">${esc(c)}</div>` : ""}</div>`).join("");
   renderTrend();
   const blk = (t,k,rs) => { const l = rs || s.rep[k], mx = l[0] ? l[0][1] : 1; return `<div class="rp"><h4>${t}</h4>` + (l.map(([n,c]) => `<div class="br"><span>${esc(n)}</span><span class="trk"><i style="width:${c / mx * 100}%"></i></span><b>${c}</b></div>`).join("") || `<div class="vide">-</div>`) + `</div>`; };
   const dly = (t, l, nom) => `<div class="rp"><h4>${t}</h4>` + (l.length ? `<div class="tw"><table><thead><tr><th>${nom}</th><th>Résolues</th><th>Médiane</th><th>Moyenne</th></tr></thead><tbody>` + l.map(([n,c,m,a]) => `<tr><td>${esc(n)}</td><td>${c}</td><td>${dur(m)}</td><td>${dur(a)}</td></tr>`).join("") + `</tbody></table></div>` : `<div class="vide">-</div>`) + `</div>`;
@@ -1488,7 +1570,7 @@ function renderBord() {
   $("#rep2").innerHTML = tabSla + blk("Par catégorie","categorie") + blk("Usagers les plus fréquents","usager") + dly("Délai de résolution par module", s.delais.module, "Module") + dly("Délai de résolution par agent", s.delais.agent, "Agent");
   $("#tb thead").innerHTML = "<tr>" + HEAD.map(h => `<th>${h}</th>`).join("") + "</tr>";
   const aff = rows.length > MAXL ? rows.slice(-MAXL) : rows;           // à l'écran : les plus récentes ; les exports contiennent tout
-  $("#plus").hidden = aff === rows; $("#plus").textContent = `Affichage des ${MAXL} requêtes les plus récentes sur ${rows.length}. Choisissez une semaine ou un filtre pour voir les autres ; les exports Excel et PDF contiennent les ${rows.length} requêtes.`;
+  $("#plus").hidden = aff === rows; $("#plus").textContent = `Affichage des ${MAXL} requêtes les plus récentes sur ${rows.length}. Choisissez ${perLibre() ? "une période plus courte" : "une semaine"} ou un filtre pour voir les autres ; les exports Excel et PDF contiennent les ${rows.length} requêtes.`;
   $("#tb tbody").innerHTML = aff.map(r => `<tr class="rw${slaEtat(r) === "cko" ? " late" : ""}" tabindex="0" data-open="${esc(r.id)}">` + ligne(r).map((c,i) => i === COL_STAT ? `<td><span class="pill ${r.resolution ? "" : "en"}">${esc(c)}</span></td>` : i === COL_PRIO ? `<td>${puce(r.priorite)}</td>` : i === COL_DEL ? `<td style="white-space:nowrap${horsDelai(r) ? ";color:var(--r);font-weight:700" : ""}">${esc(c)}</td>` : i === COL_OBS ? `<td class="obc"><div>${esc(c)}</div></td>` : i === 0 ? `<td style="white-space:nowrap;font-size:12px">${esc(c)}</td>` : `<td>${esc(c)}</td>`).join("") + "</tr>").join("")
     || `<tr><td colspan="${HEAD.length}">Aucune requête pour ces filtres.</td></tr>`;
 }
@@ -1496,12 +1578,56 @@ $("#tb").onclick = e => { const t = e.target.closest("[data-open]"); if (t) ouvr
 $("#tb").onkeydown = e => { if (e.key === "Enter" || e.key === " ") { const t = e.target.closest("[data-open]"); if (t) { e.preventDefault(); ouvrir(t.dataset.open); } } };
 [["fs","sem"],["fm","mod"],["fc","can"],["fa","age"],["ft","sta"],["fg","cat"],["fp","pri"],["fk","mot"]].forEach(([i,k]) => $("#" + i).oninput = e => { F[k] = e.target.value; renderBord(); });
 $("#fmes").onchange = e => { F.mes = e.target.checked; renderBord(); };
-$("#pv").onclick = () => { const i = WK.indexOf(F.sem), n = i < 0 ? WK[0] : WK[i + 1]; if (n) { F.sem = n; $("#fs").value = n; renderBord(); } };
-$("#nx").onclick = () => { const i = WK.indexOf(F.sem); if (i > 0) { F.sem = WK[i - 1]; $("#fs").value = F.sem; renderBord(); } };
+$("#pv").onclick = () => { if (perLibre()) return decalerPer(-1); const i = WK.indexOf(F.sem), n = i < 0 ? WK[0] : WK[i + 1]; if (n) { F.sem = n; $("#fs").value = n; renderBord(); } };
+$("#nx").onclick = () => { if (perLibre()) return decalerPer(1); const i = WK.indexOf(F.sem); if (i > 0) { F.sem = WK[i - 1]; $("#fs").value = F.sem; renderBord(); } };
 
 
-/* ---------- Exports Excel et PDF (selon la semaine et les filtres affichés) ---------- */
-const nomFichier = () => "Rapport_requetes_" + (F.sem ? F.sem.split("-").reverse().join("") : "toutes_semaines");
+/* ---------- Période libre : calendriers « Du » et « Au », raccourcis, flèches ---------- */
+const AN_OK = d => /^\d{4}-\d{2}-\d{2}$/.test(d) && d >= "2000-01-01" && d <= "2100-12-31";    // écarte les années en cours de saisie (0002, 0202…)
+const auj0 = () => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); };
+const RACC = [
+  ["7 jours", () => [addJ(auj0(), -6), auj0()]],
+  ["30 jours", () => [addJ(auj0(), -29), auj0()]],
+  ["Ce mois", () => { const a = auj0(); return [new Date(a.getFullYear(), a.getMonth(), 1), a]; }],
+  ["Mois dernier", () => { const a = auj0(); return [new Date(a.getFullYear(), a.getMonth() - 1, 1), new Date(a.getFullYear(), a.getMonth(), 0)]; }],
+  ["Ce trimestre", () => { const a = auj0(); return [new Date(a.getFullYear(), a.getMonth() - a.getMonth() % 3, 1), a]; }],
+  ["Cette année", () => { const a = auj0(); return [new Date(a.getFullYear(), 0, 1), a]; }]];
+$("#pre").innerHTML = RACC.map(([t], i) => `<button type="button" data-i="${i}" aria-pressed="false">${t}</button>`).join("");
+function majPer() {                                                                         // met l'écran d'accord avec le choix de période
+  const per = perLibre(); $("#bord").classList.toggle("lib", per);
+  $("#pms").setAttribute("aria-pressed", String(!per)); $("#pmp").setAttribute("aria-pressed", String(per));
+  $("#pv").setAttribute("aria-label", per ? "Période précédente" : "Semaine précédente"); $("#nx").setAttribute("aria-label", per ? "Période suivante" : "Semaine suivante");
+  if (!per) return;
+  [["#fdu", F.du], ["#fda", F.au]].forEach(([i, v]) => { const e = $(i); if (document.activeElement !== e && e.value !== v) e.value = v; });
+  $("#fdu").max = F.au; $("#fda").min = F.du;
+  $$("#pre button").forEach((b, i) => { const [a, z] = RACC[i][1](); b.setAttribute("aria-pressed", String(iso(a) === F.du && iso(z) === F.au)); });
+}
+function poserPer(du, au, cote) {
+  if (!AN_OK(du) || !AN_OK(au)) return;
+  if (du > au) { if (cote === "du") { au = du; toast("La date de fin a été alignée sur la date de début."); } else { du = au; toast("La date de début a été alignée sur la date de fin."); } }
+  F.du = du; F.au = au; renderBord();
+}
+$("#fdu").onchange = e => poserPer(e.target.value, F.au, "du");
+$("#fda").onchange = e => poserPer(F.du, e.target.value, "au");
+["#fdu", "#fda"].forEach(i => $(i).addEventListener("blur", () => { if (perLibre() && (!AN_OK($(i).value))) majPer(); }));          // champ laissé vide ou incomplet : on remet la date valide
+$("#pre").onclick = e => { const b = e.target.closest("button[data-i]"); if (!b) return; const [a, z] = RACC[+b.dataset.i][1](); F.du = iso(a); F.au = iso(z); renderBord(); };
+$("#pms").onclick = () => { if (F.mode === "sem") return; F.mode = "sem"; renderBord(); };
+$("#pmp").onclick = () => {
+  if (perLibre()) return;
+  if (!F.du || !F.au) { const s = F.sem ? jourDe(F.sem) : null, [a, z] = s ? [s, addJ(s, 6)] : RACC[1][1](); F.du = iso(a); F.au = iso(z); }       // 1re fois : la semaine affichée (ou les 30 derniers jours)
+  F.mode = "per"; renderBord();
+};
+function decalerPer(sens) {                                                                  // flèches : mois entiers -> mois d'avant / d'après ; sinon même nombre de jours
+  const du = jourDe(F.du), au = jourDe(F.au); let a, b;
+  if (du.getDate() === 1 && dernierDuMois(au)) { const k = moisEntre(du, au) + 1; a = new Date(du.getFullYear(), du.getMonth() + sens * k, 1); b = new Date(au.getFullYear(), au.getMonth() + sens * k + 1, 0); }
+  else { const n = nbJours(du, au); a = addJ(du, sens * n); b = addJ(au, sens * n); }
+  if (a > auj0()) return toast("Cette période n'a pas encore commencé.");
+  F.du = iso(a); F.au = iso(b); renderBord();
+}
+
+/* ---------- Exports Excel et PDF (selon la période et les filtres affichés) ---------- */
+const suffixeFic = () => perLibre() ? F.du.split("-").reverse().join("") + "_au_" + F.au.split("-").reverse().join("") : (F.sem ? F.sem.split("-").reverse().join("") : "toutes_semaines");
+const nomFichier = () => "Rapport_requetes_" + suffixeFic();
 const heures = h => h == null ? "-" : Math.round(h * 10) / 10;
 $("#xl").onclick = () => {
   const rows = filtrer(), s = stats(rows); if (!rows.length) return toast("Aucune requête à exporter");
@@ -1543,7 +1669,7 @@ $("#pdf").onclick = () => {
 /* ---------- Rapport de direction : 2 pages, la semaine choisie (ou toutes) sans les autres filtres ---------- */
 function rapportDirection() {
   const rows = filtrer({ libre:true }); if (!rows.length) return toast("Aucune requête sur cette période");
-  const s = stats(rows), p = F.sem ? stats(filtrer({ libre:true, sem:semPrec() })) : null, K = kpis(s, p), tr = tendance(true);
+  const s = stats(rows), pp = plagePrec(), p = pp ? stats(filtrer({ libre:true, plage:pp })) : null, K = kpis(s, p, refPrec()), tr = tendance(true);
   const d = new window.jspdf.jsPDF({ orientation:"portrait", unit:"mm", format:"a4" }), W = 210, M = 12, hs = { fillColor:NAVY };
   entetePdf(d, "Rapport de direction");
   d.setFontSize(10); d.setTextColor(255); d.text(periode().replace("Période : ", "") + "  ·  édité le " + fd(new Date(), true), W - M, 15, { align:"right" });
@@ -1557,20 +1683,22 @@ function rapportDirection() {
   };
   const w4 = (W - 2 * M - 9) / 4; K.slice(0,4).forEach((k,i) => tuile(M + i * (w4 + 3), y, w4, k));
   K.slice(4).forEach((k,i) => tuile(M + i * (w4 + 3), y + 26, w4, k));
+  if (perLibre() && pp) { d.setFontSize(7); d.setTextColor(...GRIS); d.text("Comparaison : période précédente, du " + fd(pp.s) + " au " + fd(addJ(pp.e, -1)) + ".", M, y + 54.5); }
   y += 58;
   /* évolution sur 12 semaines : colonnes empilées (résolues en bleu marine, en cours en bleu clair) */
-  d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text("Évolution sur 12 semaines", M, y); d.setFont("helvetica", "normal");
+  d.setTextColor(...NAVY); d.setFontSize(11); d.setFont("helvetica", "bold"); d.text(perLibre() ? "Évolution sur la période (par " + granulLib() + ")" : "Évolution sur 12 semaines", M, y); d.setFont("helvetica", "normal");
   d.setFillColor(...NAVY); d.rect(W - M - 52, y - 3, 3, 3, "F"); d.setFontSize(8); d.setTextColor(...GRIS); d.text("Résolues", W - M - 48, y - 0.4);
   d.setFillColor(...BLEU); d.rect(W - M - 28, y - 3, 3, 3, "F"); d.text("En cours", W - M - 24, y - 0.4);
   const cx = M + 8, cy = y + 4, cw = W - 2 * M - 8, ch = 42, mx = joli(Math.max(1, ...tr.map(x => x.res + x.enc))), sl = cw / tr.length, bw = Math.min(10, sl * .62);
   d.setDrawColor(213,219,226); d.setLineWidth(.2);
   [0, mx / 2, mx].forEach(t => { const yy = cy + ch - t / mx * ch; d.line(cx, yy, cx + cw, yy); d.setFontSize(7); d.setTextColor(...GRIS); d.text(nf.format(t), cx - 1.5, yy + 1, { align:"right" }); });
+  const pasP = Math.max(1, Math.ceil(8 / sl));
   tr.forEach((x,i) => {
     const bx = cx + sl * i + (sl - bw) / 2, hr = ch * x.res / mx, he = ch * x.enc / mx;
     if (x.res) { d.setFillColor(...NAVY); d.rect(bx, cy + ch - hr, bw, hr, "F"); }
     if (x.enc) { d.setFillColor(...BLEU); d.rect(bx, cy + ch - hr - he - (x.res ? .6 : 0), bw, he, "F"); }
-    d.setFontSize(7); d.setTextColor(...GRIS); d.text(`${pad(x.d.getDate())}/${pad(x.d.getMonth() + 1)}`, bx + bw / 2, cy + ch + 4, { align:"center" });
-    if (x.w === F.sem || (!F.sem && i === tr.length - 1)) { d.setTextColor(...NAVY); d.setFont("helvetica", "bold"); d.text(String(x.res + x.enc), bx + bw / 2, cy + ch - hr - he - 1.5, { align:"center" }); d.setFont("helvetica", "normal"); }
+    if (i % pasP === (tr.length - 1) % pasP) { d.setFontSize(7); d.setTextColor(...GRIS); d.text(lblAxe(x), bx + bw / 2, cy + ch + 4, { align:"center" }); }
+    if (!perLibre() && (x.w === F.sem || (!F.sem && i === tr.length - 1))) { d.setTextColor(...NAVY); d.setFont("helvetica", "bold"); d.text(String(x.res + x.enc), bx + bw / 2, cy + ch - hr - he - 1.5, { align:"center" }); d.setFont("helvetica", "normal"); }
   });
   y = cy + ch + 11;
   /* répartitions : barres horizontales */
@@ -1611,7 +1739,7 @@ function rapportDirection() {
   else { d.setFontSize(9); d.setTextColor(...GRIS); d.text("Aucune : tout est à jour.", M, y + 8); }
   if (surv.length > 20) { d.setFontSize(8); d.setTextColor(...GRIS); d.text(`… et ${surv.length - 20} autre(s), voir l'application.`, M, d.lastAutoTable.finalY + 5); }
   const n = d.getNumberOfPages(); for (let i = 1; i <= n; i++) { d.setPage(i); d.setFontSize(8); d.setTextColor(...GRIS); d.text(`${NOM} · Rapport de direction · page ${i} / ${n}`, W / 2, 291, { align:"center" }); }
-  d.save("Rapport_direction_" + (F.sem ? F.sem.split("-").reverse().join("") : "toutes_semaines") + ".pdf");
+  d.save("Rapport_direction_" + suffixeFic() + ".pdf");
 }
 $("#rdr").onclick = rapportDirection;
 
@@ -2055,7 +2183,7 @@ async function charger(u) {
   un = store.sub(l => { data = l; render(); });
 }
 function login(msg) {                                                   // remet l'appli à zéro : le collègue suivant ne voit ni filtres ni brouillon du précédent
-  uid = null; un && un(); un = null; data = []; tl = ""; document.title = TITRE; WK = []; init = false; editId = null; editMaj = null; ME = null; PROFILS = [];
+  uid = null; un && un(); un = null; data = []; tl = ""; document.title = TITRE; WK = []; init = false; editId = null; editMaj = null; ME = null; PROFILS = []; F.mode = "sem"; F.du = ""; F.au = "";
   LU = []; LA = []; LM = []; LC = []; LD = []; LK = []; LO = []; LROWS = []; SAUV = null; rapMasque = false; IMP = null; JR = []; Object.assign(ADM, { s:"cpt", type:"usager", filtre:"" });
   NT.liste = []; NT.connus = new Set(); NT.premier = true; try { navigator.clearAppBadge && navigator.clearAppBadge().catch(() => {}); } catch (e) { /* ignoré */ }
   Object.assign(F, { sem:"", mod:"", can:"", usa:"", age:"", sta:"", mot:"", cat:"", pri:"", mes:false });
